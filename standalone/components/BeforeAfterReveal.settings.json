@@ -1,0 +1,376 @@
+{
+  "component": "BeforeAfterReveal",
+  "type": "before-after-reveal",
+  "label": {
+    "en-US": "Before / After Reveal"
+  },
+  "compatibleSectionRoles": [
+    "media-gallery"
+  ],
+  "category": "media",
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "media",
+      "id": "beforeImage",
+      "label": {
+        "en-US": "Before Image"
+      },
+      "group": "content"
+    },
+    {
+      "type": "media",
+      "id": "afterImage",
+      "label": {
+        "en-US": "After Image"
+      },
+      "group": "content"
+    },
+    {
+      "type": "richtext-single",
+      "id": "beforeLabel",
+      "label": {
+        "en-US": "Before Label"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "caption",
+      "defaultPresetKey": "caption",
+      "validation": {
+        "maxLength": 100
+      }
+    },
+    {
+      "type": "richtext-single",
+      "id": "afterLabel",
+      "label": {
+        "en-US": "After Label"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "caption",
+      "defaultPresetKey": "caption",
+      "validation": {
+        "maxLength": 100
+      }
+    },
+    {
+      "type": "repeater",
+      "id": "stages",
+      "label": {
+        "en-US": "Phases"
+      },
+      "description": {
+        "en-US": "Optional. Add 2+ stages to turn this into a multi-phase reveal (e.g. existing → structure → finished); the visitor steps through each transition. Leave empty for a standard two-image before/after."
+      },
+      "group": "content",
+      "maxItems": 8,
+      "fields": [
+        {
+          "type": "media",
+          "id": "image",
+          "label": {
+            "en-US": "Stage image"
+          }
+        },
+        {
+          "type": "richtext-single",
+          "id": "label",
+          "label": {
+            "en-US": "Stage label"
+          },
+          "translatable": true,
+          "typographyRole": "caption",
+          "defaultPresetKey": "caption",
+          "validation": {
+            "maxLength": 100
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "axis",
+      "label": {
+        "en-US": "Axis"
+      },
+      "default": "horizontal",
+      "group": "layout",
+      "options": [
+        {
+          "value": "horizontal",
+          "label": {
+            "en-US": "Horizontal"
+          }
+        },
+        {
+          "value": "vertical",
+          "label": {
+            "en-US": "Vertical"
+          }
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "initialPosition",
+      "label": {
+        "en-US": "Initial Position"
+      },
+      "default": 50,
+      "group": "layout",
+      "options": {
+        "min": 0,
+        "max": 100
+      }
+    },
+    {
+      "type": "select",
+      "id": "interaction",
+      "label": {
+        "en-US": "Interaction"
+      },
+      "default": "drag",
+      "group": "style",
+      "options": [
+        {
+          "value": "drag",
+          "label": {
+            "en-US": "Drag to reveal"
+          }
+        },
+        {
+          "value": "hover",
+          "label": {
+            "en-US": "Hover to reveal (desktop)"
+          }
+        },
+        {
+          "value": "scroll",
+          "label": {
+            "en-US": "Scroll to reveal (cinematic)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "revealHint",
+      "label": {
+        "en-US": "Reveal hint on scroll-in"
+      },
+      "default": true,
+      "group": "style"
+    },
+    {
+      "type": "select",
+      "id": "handleStyle",
+      "label": {
+        "en-US": "Handle Style"
+      },
+      "default": "line",
+      "group": "style",
+      "options": [
+        {
+          "value": "line",
+          "label": {
+            "en-US": "Line"
+          }
+        },
+        {
+          "value": "circle",
+          "label": {
+            "en-US": "Circle"
+          }
+        },
+        {
+          "value": "arrows",
+          "label": {
+            "en-US": "Arrows"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "aspectRatio",
+      "label": {
+        "en-US": "Aspect Ratio"
+      },
+      "default": "16:9",
+      "group": "layout",
+      "options": [
+        {
+          "value": "16:9",
+          "label": {
+            "en-US": "Wide (16:9)"
+          }
+        },
+        {
+          "value": "4:3",
+          "label": {
+            "en-US": "Standard (4:3)"
+          }
+        },
+        {
+          "value": "1:1",
+          "label": {
+            "en-US": "Square (1:1)"
+          }
+        },
+        {
+          "value": "auto",
+          "label": {
+            "en-US": "Auto"
+          }
+        }
+      ]
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Border Radius"
+      },
+      "options": [
+        "none",
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "contentAlignH",
+      "type": "select",
+      "label": {
+        "en-US": "Content Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Reveal container",
+      "kind": "root"
+    },
+    "before": {
+      "selector": "[data-target='before']",
+      "description": "Before image layer",
+      "animatable": [
+        "opacity"
+      ],
+      "canTrigger": false,
+      "kind": "media"
+    },
+    "after": {
+      "selector": "[data-target='after']",
+      "description": "After image layer",
+      "animatable": [
+        "opacity"
+      ],
+      "canTrigger": false,
+      "kind": "media"
+    },
+    "handle": {
+      "selector": "[data-target='handle']",
+      "description": "Drag handle",
+      "animatable": [
+        "opacity"
+      ],
+      "canTrigger": false,
+      "kind": "decorative"
+    },
+    "beforeLabel": {
+      "selector": "[data-target='beforeLabel']",
+      "description": "Before label text",
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false,
+      "kind": "text"
+    },
+    "afterLabel": {
+      "selector": "[data-target='afterLabel']",
+      "description": "After label text",
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false,
+      "kind": "text"
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local"
+    ],
+    "excluded": []
+  }
+}

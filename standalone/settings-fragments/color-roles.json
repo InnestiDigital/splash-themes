@@ -1,0 +1,100 @@
+{
+  "id": "color-roles",
+  "label": {
+    "en-US": "Color roles"
+  },
+  "groups": [
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "background",
+      "label": {
+        "en-US": "Background"
+      },
+      "default": "section",
+      "group": "style",
+      "note": "Which of the enclosing section's surfaces this block paints with. Every value resolves through the section scheme, so switching a section light→dark re-colors the block for free.",
+      "options": [
+        {
+          "value": "section",
+          "label": {
+            "en-US": "Section background"
+          }
+        },
+        {
+          "value": "surface",
+          "label": {
+            "en-US": "Raised surface"
+          }
+        },
+        {
+          "value": "accent",
+          "label": {
+            "en-US": "Accent"
+          }
+        },
+        {
+          "value": "inverse",
+          "label": {
+            "en-US": "Inverse"
+          }
+        },
+        {
+          "value": "transparent",
+          "label": {
+            "en-US": "Transparent"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "textTone",
+      "label": {
+        "en-US": "Text tone"
+      },
+      "default": "section",
+      "group": "style",
+      "note": "Which of the enclosing section's text tones this block writes in.",
+      "options": [
+        {
+          "value": "section",
+          "label": {
+            "en-US": "Section text"
+          }
+        },
+        {
+          "value": "muted",
+          "label": {
+            "en-US": "Muted"
+          }
+        },
+        {
+          "value": "faint",
+          "label": {
+            "en-US": "Faint"
+          }
+        },
+        {
+          "value": "accent",
+          "label": {
+            "en-US": "Accent"
+          }
+        },
+        {
+          "value": "inverse",
+          "label": {
+            "en-US": "Inverse"
+          }
+        }
+      ]
+    }
+  ]
+}

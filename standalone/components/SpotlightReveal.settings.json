@@ -1,0 +1,176 @@
+{
+  "component": "SpotlightReveal",
+  "type": "spotlight-reveal",
+  "label": {
+    "en-US": "Spotlight Reveal"
+  },
+  "description": {
+    "en-US": "Two stacked images — a cover on top, a photo beneath. Moving the pointer punches a soft circular 'flashlight' hole through the cover, revealing the image underneath at the cursor (sketch → render). On touch it becomes tap-to-reveal; reduced-motion / editor / coarse-pointer fall back to a clean crossfade. Both images stay accessible."
+  },
+  "compatibleSectionRoles": [
+    "media-gallery",
+    "content"
+  ],
+  "category": "media",
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "media",
+      "id": "coverImage",
+      "label": {
+        "en-US": "Cover image (on top)"
+      },
+      "group": "content",
+      "note": "The layer the visitor 'looks through' — e.g. a sketch, plan or drawing."
+    },
+    {
+      "type": "media",
+      "id": "revealImage",
+      "label": {
+        "en-US": "Reveal image (beneath)"
+      },
+      "group": "content",
+      "note": "The layer exposed under the spotlight — e.g. the finished photograph."
+    },
+    {
+      "type": "richtext-single",
+      "id": "hint",
+      "label": {
+        "en-US": "Hint label"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "caption",
+      "defaultPresetKey": "caption",
+      "validation": {
+        "maxLength": 60
+      },
+      "note": "Small prompt shown until the visitor interacts (e.g. 'Move to reveal'). Leave empty to hide."
+    },
+    {
+      "type": "select",
+      "id": "spotlightSize",
+      "label": {
+        "en-US": "Spotlight size"
+      },
+      "default": "medium",
+      "group": "layout",
+      "options": [
+        { "value": "small", "label": { "en-US": "Small" } },
+        { "value": "medium", "label": { "en-US": "Medium" } },
+        { "value": "large", "label": { "en-US": "Large" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "edgeSoftness",
+      "label": {
+        "en-US": "Edge softness"
+      },
+      "default": "soft",
+      "group": "layout",
+      "options": [
+        { "value": "crisp", "label": { "en-US": "Crisp" } },
+        { "value": "soft", "label": { "en-US": "Soft" } },
+        { "value": "feathered", "label": { "en-US": "Feathered" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "aspectRatio",
+      "label": {
+        "en-US": "Aspect Ratio"
+      },
+      "default": "4:3",
+      "group": "layout",
+      "options": [
+        { "value": "16:9", "label": { "en-US": "Wide (16:9)" } },
+        { "value": "3:2", "label": { "en-US": "Photo (3:2)" } },
+        { "value": "4:3", "label": { "en-US": "Standard (4:3)" } },
+        { "value": "1:1", "label": { "en-US": "Square (1:1)" } },
+        { "value": "auto", "label": { "en-US": "Auto" } }
+      ]
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Border Radius"
+      },
+      "options": [
+        "none",
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "sm",
+      "group": "appearance"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "none",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "layout", "label": { "en-US": "Layout" } },
+    { "id": "appearance", "label": { "en-US": "Appearance" } }
+  ],
+  "presets": [
+    {
+      "name": { "en-US": "Sketch → Render" },
+      "settings": {
+        "coverImage": "",
+        "revealImage": "",
+        "hint": { "en-US": "Move to reveal", "it": "Muovi per scoprire" },
+        "spotlightSize": "medium",
+        "edgeSoftness": "soft",
+        "aspectRatio": "3:2",
+        "borderRadius": "sm",
+        "internalPadding": "none"
+      },
+      "description": {
+        "en-US": "A drawing on top; the finished building revealed under a soft flashlight that follows the cursor."
+      },
+      "category": "media",
+      "isDefault": true
+    }
+  ],
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Spotlight reveal frame"
+    },
+    "cover": {
+      "selector": "[data-target='cover']",
+      "description": "Cover image layer",
+      "animatable": ["opacity"],
+      "canTrigger": false,
+      "kind": "media"
+    },
+    "reveal": {
+      "selector": "[data-target='reveal']",
+      "description": "Revealed image layer",
+      "animatable": ["opacity"],
+      "canTrigger": false,
+      "kind": "media"
+    }
+  },
+  "motionSupport": {
+    "levels": ["local"],
+    "excluded": []
+  }
+}

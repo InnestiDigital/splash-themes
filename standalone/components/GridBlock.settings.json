@@ -1,0 +1,1025 @@
+{
+  "component": "GridBlock",
+  "type": "grid-block",
+  "label": {
+    "en-US": "Grid Block"
+  },
+  "category": "media",
+  "compatibleSectionRoles": [
+    "editorial-body",
+    "media-gallery",
+    "supporting-text"
+  ],
+  "roleNotes": {
+    "supporting-text": "Use 1 column for narrow sidebar widths (sidebar-left/right ratios)."
+  },
+  "typographySlots": [
+    {
+      "slot": "cardLink",
+      "label": "Card Link",
+      "defaultRole": "label"
+    },
+    {
+      "slot": "itemLink",
+      "label": "Item Link",
+      "defaultRole": "label"
+    }
+  ],
+  "$fragments": ["responsive-columns"],
+  "$fragmentOverrides": {
+    "gapTablet": {
+      "showIf": { "cardStyle": "card" }
+    },
+    "gapMobile": {
+      "showIf": { "cardStyle": "card" }
+    }
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "cardStyle",
+      "label": {
+        "en-US": "Style"
+      },
+      "default": "card",
+      "group": "content",
+      "options": [
+        {
+          "value": "card",
+          "label": {
+            "en-US": "Cards (image + text + CTA)"
+          }
+        },
+        {
+          "value": "feature",
+          "label": {
+            "en-US": "Features (icon + text + link)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "richtext-single",
+      "id": "title",
+      "label": {
+        "en-US": "Section Title"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "heading2",
+      "defaultPresetKey": "section-title",
+      "showIf": {
+        "cardStyle": "feature"
+      }
+    },
+    {
+      "type": "toggle",
+      "id": "showTitle",
+      "label": {
+        "en-US": "Show Block Title"
+      },
+      "default": true,
+      "group": "content",
+      "note": "Disable when section already has a heading block (e.g., ChapterDivider or EditorialText in section-heading role).",
+      "showIf": {
+        "cardStyle": "feature"
+      }
+    },
+    {
+      "type": "richtext-inline",
+      "id": "subtitle",
+      "label": {
+        "en-US": "Section Subtitle"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "lead",
+      "defaultPresetKey": "intro",
+      "showIf": {
+        "cardStyle": "feature",
+        "showTitle": true
+      }
+    },
+    {
+      "type": "blocks",
+      "id": "cards",
+      "label": {
+        "en-US": "Cards"
+      },
+      "group": "content",
+      "allowedBlocks": [
+        "info-card"
+      ],
+      "maxBlocks": 12,
+      "showIf": {
+        "cardStyle": "card"
+      }
+    },
+    {
+      "type": "repeater",
+      "id": "features",
+      "label": {
+        "en-US": "Features"
+      },
+      "group": "content",
+      "maxItems": 8,
+      "showIf": {
+        "cardStyle": "feature"
+      },
+      "fields": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": {
+            "en-US": "Icon (Material Icon name)"
+          },
+          "placeholder": "e.g. card_giftcard, flight, local_offer"
+        },
+        {
+          "type": "richtext-single",
+          "id": "title",
+          "label": {
+            "en-US": "Title"
+          },
+          "translatable": true,
+          "typographyRole": "heading3",
+          "defaultPresetKey": "section-title"
+        },
+        {
+          "type": "richtext-block",
+          "id": "description",
+          "label": {
+            "en-US": "Description"
+          },
+          "translatable": true,
+          "typographyRole": "body",
+          "defaultPresetKey": "body"
+        },
+        {
+          "type": "url",
+          "id": "linkUrl",
+          "label": {
+            "en-US": "Link URL"
+          }
+        },
+        {
+          "type": "text",
+          "id": "linkText",
+          "label": {
+            "en-US": "Link Text"
+          },
+          "translatable": true
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "layoutMode",
+      "label": {
+        "en-US": "Layout Mode"
+      },
+      "default": "grid",
+      "group": "layout",
+      "showIf": {
+        "cardStyle": "card"
+      },
+      "options": [
+        {
+          "value": "grid",
+          "label": {
+            "en-US": "Grid (multi-column)"
+          }
+        },
+        {
+          "value": "gallery",
+          "label": {
+            "en-US": "Gallery (large images with captions)"
+          }
+        },
+        {
+          "value": "masonry",
+          "label": {
+            "en-US": "Masonry (mixed-size tiles)"
+          }
+        },
+        {
+          "value": "featured",
+          "label": {
+            "en-US": "Featured (2 stacked left + 1 large right)"
+          }
+        },
+        {
+          "value": "list",
+          "label": {
+            "en-US": "List (single-column stack)"
+          }
+        },
+        {
+          "value": "rows",
+          "label": {
+            "en-US": "Feature Rows (alternating image + text)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": {
+        "en-US": "Columns"
+      },
+      "default": 3,
+      "group": "layout",
+      "options": {
+        "min": 1,
+        "max": 5,
+        "step": 1
+      }
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": {
+        "en-US": "Gap"
+      },
+      "default": 24,
+      "group": "layout",
+      "showIf": {
+        "cardStyle": "card"
+      },
+      "options": {
+        "min": 0,
+        "max": 48,
+        "step": 4,
+        "unit": "px"
+      }
+    },
+    {
+      "type": "select",
+      "id": "cardHoverEffect",
+      "label": {
+        "en-US": "Card Hover Effect"
+      },
+      "default": "none",
+      "group": "layout",
+      "showIf": {
+        "cardStyle": "card"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "lift",
+          "label": {
+            "en-US": "Lift"
+          }
+        },
+        {
+          "value": "scale",
+          "label": {
+            "en-US": "Zoom"
+          }
+        },
+        {
+          "value": "overlay-reveal",
+          "label": {
+            "en-US": "Caption Reveal"
+          }
+        }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "captionOverlay",
+      "label": {
+        "en-US": "Caption Overlay"
+      },
+      "default": false,
+      "group": "layout",
+      "showIf": {
+        "cardStyle": "card"
+      }
+    },
+    {
+      "type": "select",
+      "id": "captionAlign",
+      "label": {
+        "en-US": "Caption Overlay Alignment"
+      },
+      "default": "bottom-left",
+      "group": "layout",
+      "showIf": { "cardStyle": "card", "captionOverlay": true },
+      "options": [
+        {
+          "value": "bottom-left",
+          "label": {
+            "en-US": "Bottom Left (full-width gradient)"
+          }
+        },
+        {
+          "value": "bottom-right",
+          "label": {
+            "en-US": "Bottom Right (compact badge)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "captionReveal",
+      "label": {
+        "en-US": "Caption Reveal"
+      },
+      "default": "always",
+      "group": "layout",
+      "note": "Photo-wall option. 'On hover' hides the overlay caption until the card is hovered (fine pointers); captions always show on touch devices.",
+      "showIf": { "cardStyle": "card", "captionOverlay": true },
+      "options": [
+        {
+          "value": "always",
+          "label": {
+            "en-US": "Always visible"
+          }
+        },
+        {
+          "value": "hover",
+          "label": {
+            "en-US": "On hover (touch: always)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "captionPosition",
+      "label": {
+        "en-US": "Caption Position"
+      },
+      "default": "below",
+      "group": "layout",
+      "showIf": {
+        "cardStyle": "card"
+      },
+      "options": [
+        {
+          "value": "above",
+          "label": {
+            "en-US": "Above Image"
+          }
+        },
+        {
+          "value": "below",
+          "label": {
+            "en-US": "Below Image"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "imageHeight",
+      "label": {
+        "en-US": "Image Height"
+      },
+      "default": "md",
+      "group": "layout",
+      "showIf": {
+        "cardStyle": "card"
+      },
+      "options": [
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small (16rem)"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium (20rem)"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large (32rem)"
+          }
+        },
+        {
+          "value": "xl",
+          "label": {
+            "en-US": "Extra Large (48rem)"
+          }
+        },
+        {
+          "value": "portrait",
+          "label": {
+            "en-US": "Portrait (60rem)"
+          }
+        },
+        {
+          "value": "auto",
+          "label": {
+            "en-US": "Auto (natural ratio)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "imageRatio",
+      "label": {
+        "en-US": "Image Aspect Ratio"
+      },
+      "default": "off",
+      "group": "layout",
+      "showIf": {
+        "cardStyle": "card"
+      },
+      "note": {
+        "en-US": "Locks card images to a fixed aspect ratio that scales with column width — keeps cards proportional on any viewport. Applies to Grid, Gallery and List layouts. Off = use the fixed Image Height above."
+      },
+      "options": [
+        {
+          "value": "off",
+          "label": {
+            "en-US": "Off (use Image Height)"
+          }
+        },
+        {
+          "value": "1-1",
+          "label": {
+            "en-US": "Square (1:1)"
+          }
+        },
+        {
+          "value": "4-3",
+          "label": {
+            "en-US": "Landscape (4:3)"
+          }
+        },
+        {
+          "value": "3-2",
+          "label": {
+            "en-US": "Classic (3:2)"
+          }
+        },
+        {
+          "value": "16-9",
+          "label": {
+            "en-US": "Wide (16:9)"
+          }
+        },
+        {
+          "value": "3-4",
+          "label": {
+            "en-US": "Portrait (3:4)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "enableLightbox",
+      "label": {
+        "en-US": "Image Lightbox"
+      },
+      "default": false,
+      "group": "layout",
+      "showIf": {
+        "cardStyle": "card"
+      },
+      "note": {
+        "en-US": "Lets visitors click a card image to open it full screen. Every image in this grid becomes one gallery — arrows and ←/→ browse through them all. Card buttons and links keep working as normal."
+      }
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "containerMode",
+      "type": "select",
+      "label": { "en-US": "Container Width" },
+      "options": [
+        { "value": "inherit", "label": { "en-US": "Inherit (theme default)" } },
+        { "value": "wide", "label": { "en-US": "Wide" } },
+        { "value": "full-bleed", "label": { "en-US": "Full bleed" } },
+        { "value": "custom", "label": { "en-US": "Custom" } }
+      ],
+      "default": "inherit",
+      "group": "layout",
+      "showIf": {
+        "cardStyle": "card"
+      }
+    },
+    {
+      "id": "containerMaxWidth",
+      "type": "text",
+      "label": { "en-US": "Custom max width (CSS length, e.g. 90vw)" },
+      "placeholder": "1400px",
+      "showIf": { "cardStyle": "card", "containerMode": "custom" },
+      "group": "layout"
+    },
+    {
+      "id": "containerAlign",
+      "type": "select",
+      "label": { "en-US": "Container Alignment" },
+      "options": [
+        { "value": "start", "label": { "en-US": "Left" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "end", "label": { "en-US": "Right" } }
+      ],
+      "default": "center",
+      "group": "layout",
+      "showIf": {
+        "allOf": [
+          {
+            "cardStyle": "card"
+          },
+          {
+            "id": "containerMode",
+            "notEquals": "full-bleed"
+          }
+        ]
+      }
+    },
+    {
+      "type": "color",
+      "id": "accentColor",
+      "label": {
+        "en-US": "Icon/Accent Color"
+      },
+      "group": "appearance",
+      "note": "Leave empty to inherit section accent color.",
+      "showIf": {
+        "cardStyle": "feature"
+      }
+    },
+    {
+      "id": "contentAlignH",
+      "type": "select",
+      "label": {
+        "en-US": "Content Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "layout",
+      "showIf": {
+        "cardStyle": "feature"
+      }
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface Style"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Card Radius"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "pill",
+          "label": {
+            "en-US": "Pill"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "itemAlignX",
+      "type": "select",
+      "label": {
+        "en-US": "Horizontal Alignment"
+      },
+      "default": "stretch",
+      "group": "layout",
+      "showIf": {
+        "cardStyle": "card",
+        "layoutMode": [
+          "grid",
+          "gallery",
+          "masonry",
+          "featured"
+        ]
+      },
+      "options": [
+        {
+          "value": "start",
+          "label": {
+            "en-US": "Start"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "end",
+          "label": {
+            "en-US": "End"
+          }
+        },
+        {
+          "value": "stretch",
+          "label": {
+            "en-US": "Stretch"
+          }
+        }
+      ]
+    },
+    {
+      "id": "itemAlignY",
+      "type": "select",
+      "label": {
+        "en-US": "Vertical Alignment"
+      },
+      "default": "stretch",
+      "group": "layout",
+      "showIf": {
+        "cardStyle": "card",
+        "layoutMode": [
+          "grid",
+          "gallery",
+          "masonry",
+          "featured"
+        ]
+      },
+      "options": [
+        {
+          "value": "start",
+          "label": {
+            "en-US": "Top"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "end",
+          "label": {
+            "en-US": "Bottom"
+          }
+        },
+        {
+          "value": "stretch",
+          "label": {
+            "en-US": "Stretch"
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info-card",
+      "label": {
+        "en-US": "Info Card"
+      },
+      "settings": [
+        {
+          "type": "richtext-single",
+          "id": "title",
+          "label": {
+            "en-US": "Title"
+          },
+          "translatable": true,
+          "typographyRole": "heading3",
+          "defaultPresetKey": "section-title",
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "type": "richtext-block",
+          "id": "description",
+          "label": {
+            "en-US": "Description"
+          },
+          "translatable": true,
+          "typographyRole": "body",
+          "defaultPresetKey": "body"
+        },
+        {
+          "type": "image",
+          "id": "image",
+          "label": {
+            "en-US": "Image"
+          }
+        },
+        {
+          "type": "select",
+          "id": "span",
+          "label": {
+            "en-US": "Card Size"
+          },
+          "default": "1x1",
+          "options": [
+            {
+              "value": "1x1",
+              "label": {
+                "en-US": "Normal (1×1)"
+              }
+            },
+            {
+              "value": "2x1",
+              "label": {
+                "en-US": "Wide (2 columns)"
+              }
+            },
+            {
+              "value": "1x2",
+              "label": {
+                "en-US": "Tall (2 rows)"
+              }
+            },
+            {
+              "value": "2x2",
+              "label": {
+                "en-US": "Large (2×2)"
+              }
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "ctaText",
+          "label": {
+            "en-US": "Button Text"
+          },
+          "translatable": true
+        },
+        {
+          "type": "url",
+          "id": "ctaUrl",
+          "label": {
+            "en-US": "Button URL"
+          }
+        },
+        {
+          "type": "url",
+          "id": "socialUrl",
+          "label": {
+            "en-US": "Social / LinkedIn URL"
+          },
+          "note": "Optional. Renders a small LinkedIn icon on the card caption overlay."
+        },
+        {
+          "type": "text",
+          "id": "statusLabel",
+          "label": {
+            "en-US": "Status Label (pill)"
+          },
+          "note": "Short text rendered as a bottom-left teal pill on the card image. E.g. 'In corso', 'Conclusi'. Leave empty for no pill.",
+          "translatable": true
+        },
+        {
+          "type": "select",
+          "id": "titleColor",
+          "label": {
+            "en-US": "Title Color"
+          },
+          "default": "default",
+          "note": "Semantic palette token only — no freeform hex (D.5b freeze). Used for above-image card titles.",
+          "options": [
+            {
+              "value": "default",
+              "label": { "en-US": "Default (inherits section)" }
+            },
+            {
+              "value": "accent",
+              "label": { "en-US": "Accent (teal #1B8AB7)" }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en-US": "Rewards Features"
+      },
+      "settings": {
+        "cardStyle": "feature",
+        "title": {
+          "en-US": "Why Choose Our Rewards Program"
+        },
+        "features": [
+          {
+            "icon": "card_giftcard",
+            "title": {
+              "en-US": "Gift Cards"
+            },
+            "description": {
+              "en-US": "Choose from hundreds of top-brand gift cards."
+            }
+          },
+          {
+            "icon": "flight",
+            "title": {
+              "en-US": "Travel"
+            },
+            "description": {
+              "en-US": "Book flights, hotels, and vacation packages."
+            }
+          },
+          {
+            "icon": "local_offer",
+            "title": {
+              "en-US": "Merchandise"
+            },
+            "description": {
+              "en-US": "Explore thousands of products from top brands."
+            }
+          },
+          {
+            "icon": "account_balance_wallet",
+            "title": {
+              "en-US": "Cash Back"
+            },
+            "description": {
+              "en-US": "Convert your points directly to cash."
+            }
+          },
+          {
+            "icon": "volunteer_activism",
+            "title": {
+              "en-US": "Charity"
+            },
+            "description": {
+              "en-US": "Donate your points to causes you care about."
+            }
+          },
+          {
+            "icon": "local_activity",
+            "title": {
+              "en-US": "Experiences"
+            },
+            "description": {
+              "en-US": "Unique events and experiences money can't buy."
+            }
+          }
+        ]
+      },
+      "description": {
+        "en-US": "Icon-and-text feature grid highlighting rewards program benefits."
+      },
+      "category": "marketing",
+      "isDefault": true
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    },
+    "item": {
+      "selector": "[data-target='item']",
+      "description": "Grid item",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "group"
+    },
+    "heading": {
+      "selector": "[data-target='heading']",
+      "description": "Section heading",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": []
+  }
+}

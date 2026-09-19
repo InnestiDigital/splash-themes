@@ -1,0 +1,153 @@
+{
+  "id": "frame-tokens",
+  "label": {
+    "en-US": "Page frame"
+  },
+  "groups": [
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "containerMode",
+      "label": {
+        "en-US": "Container"
+      },
+      "default": "inherit",
+      "group": "layout",
+      "options": [
+        {
+          "value": "inherit",
+          "label": {
+            "en-US": "Inherit from page layout"
+          }
+        },
+        {
+          "value": "measure",
+          "label": {
+            "en-US": "Standard (1200px)"
+          }
+        },
+        {
+          "value": "content",
+          "label": {
+            "en-US": "Narrow (720px)"
+          }
+        },
+        {
+          "value": "wide",
+          "label": {
+            "en-US": "Wide (1400px)"
+          }
+        },
+        {
+          "value": "full-bleed",
+          "label": {
+            "en-US": "Full Width"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "sectionSpaceY",
+      "label": {
+        "en-US": "Vertical Spacing"
+      },
+      "default": "inherit",
+      "group": "layout",
+      "note": "Top + bottom padding of the section.",
+      "options": [
+        {
+          "value": "inherit",
+          "label": {
+            "en-US": "Inherit from page layout"
+          }
+        },
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "xl",
+          "label": {
+            "en-US": "Extra Large"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "containerInsetX",
+      "label": {
+        "en-US": "Horizontal Inset"
+      },
+      "default": "inherit",
+      "group": "layout",
+      "note": "Horizontal padding inside the section container.",
+      "options": [
+        {
+          "value": "inherit",
+          "label": {
+            "en-US": "Inherit from page layout"
+          }
+        },
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "xl",
+          "label": {
+            "en-US": "Extra Large"
+          }
+        }
+      ]
+    }
+  ]
+}

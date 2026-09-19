@@ -1,0 +1,152 @@
+{
+  "id": "media-art-direction",
+  "label": {
+    "en-US": "Media art direction"
+  },
+  "_comment": [
+    "How a block crops the media it was given: which part survives the crop",
+    "(focalPoint) and whether the frame is filled or fitted (objectFit).",
+    "",
+    "TWO-TIER FOCAL MODEL — deliberate, not drift. This fragment's `focalPoint`",
+    "is the ENUM tier: nine named positions for a block that renders ONE piece of",
+    "media into a frame the author does not otherwise control. The numeric tier",
+    "(normalized x/y, `admin/components/blocks/composition/FocalPointPicker.vue`;",
+    "0-100 `focalX`/`focalY` on ScatterCollage items) is PER-ITEM collage geometry,",
+    "where the author is already placing the item by hand and a nine-way enum",
+    "would be a downgrade. `resolveFocalPoint()` in",
+    "`shared/features/cms/media/artDirection.ts` is the bridge: it turns an enum",
+    "token into the same {x,y} percentages the numeric tier stores, so both tiers",
+    "end up as one object-position expression.",
+    "",
+    "WHY NO `aspectRatio` HERE (M1 scope decision). Ten schemas declare",
+    "`aspectRatio` today in two incompatible vocabularies: colon strings",
+    "(`16:9`, `4:3` — ImageBanner, ImageHotspots, FilterableGallery, ImageSequence,",
+    "SpotlightReveal, MapEmbed, CanvasShape, BeforeAfterReveal, ScatterCollage) and",
+    "keywords (`square`, `portrait`, `classic`, `landscape`, `wide` — CanvasImage).",
+    "Fragment ownership is theme-global — the fragment-vocabulary lint fires on",
+    "every local redeclaration whether or not the schema declared the fragment — so",
+    "owning the id forces all ten to adopt at once, and the id keeps its type and",
+    "its name while only its OPTION VALUES change. `diffSchemas()` compares field",
+    "id and field type only, so an option-value re-spelling is invisible to",
+    "auto-migration: no rename, no backup row, and every stored `wide` / `16:9`",
+    "silently falls out of vocabulary and renders as the block's fallback. Block",
+    "settings also have no `migratedFrom` read path (that exists for TEMPLATE",
+    "settings only, in `normalizeStoredTemplateSettings`), so the escape hatch used",
+    "elsewhere does not apply here. Converging the id therefore needs a value",
+    "migration over every version row — the",
+    "`2026_08_19_000003_rename_block_settings_in_all_versions` template — which is",
+    "server work and out of M1's scope.",
+    "Until then the convention is unified IN CODE, not in the schema:",
+    "`resolveAspectRatio()` accepts all three spellings and returns one CSS",
+    "`aspect-ratio` value, so adopters already share a single implementation.",
+    "",
+    "WHY NO `overlayColor` / `overlayOpacity` HERE. `overlayOpacity` is declared by",
+    "four blocks across two FIELD types — `range` on HeroBlock, `number` on",
+    "ChapterDivider, LayeredComposition and ScatterCollage. A fragment owns `type`,",
+    "so owning the id forces a type change on one side or the other, and a type",
+    "change is the one diff `applyAutoMigration` resolves destructively (remove the",
+    "old value, add the new field's default). `overlayColor` has exactly one",
+    "declaring block, and the D.5b freeze forbids widening freeform per-block color",
+    "surface, so there is nothing to consolidate yet either."
+  ],
+  "groups": [
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "objectFit",
+      "label": {
+        "en-US": "Image fit"
+      },
+      "default": "cover",
+      "group": "layout",
+      "note": "Whether the image fills the frame (cropping the overflow) or is fitted whole inside it.",
+      "options": [
+        {
+          "value": "cover",
+          "label": {
+            "en-US": "Fill frame (crop)"
+          }
+        },
+        {
+          "value": "contain",
+          "label": {
+            "en-US": "Show whole image"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "focalPoint",
+      "label": {
+        "en-US": "Focal point"
+      },
+      "default": "center",
+      "group": "layout",
+      "note": "Which part of the image stays in view when it is cropped to the frame.",
+      "options": [
+        {
+          "value": "top-left",
+          "label": {
+            "en-US": "Top left"
+          }
+        },
+        {
+          "value": "top",
+          "label": {
+            "en-US": "Top"
+          }
+        },
+        {
+          "value": "top-right",
+          "label": {
+            "en-US": "Top right"
+          }
+        },
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        },
+        {
+          "value": "bottom-left",
+          "label": {
+            "en-US": "Bottom left"
+          }
+        },
+        {
+          "value": "bottom",
+          "label": {
+            "en-US": "Bottom"
+          }
+        },
+        {
+          "value": "bottom-right",
+          "label": {
+            "en-US": "Bottom right"
+          }
+        }
+      ]
+    }
+  ]
+}

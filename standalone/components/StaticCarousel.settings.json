@@ -1,0 +1,346 @@
+{
+  "component": "StaticCarousel",
+  "type": "static-carousel",
+  "label": {
+    "en-US": "Static Carousel"
+  },
+  "category": "media",
+  "compatibleSectionRoles": [
+    "editorial-body",
+    "media-gallery",
+    "media-chrome"
+  ],
+  "typographySlots": [],
+  "$fragments": [
+    "color-roles"
+  ],
+  "$fragmentOmit": [
+    "textTone"
+  ],
+  "$fragmentOverrides": {
+    "background": {
+      "default": "section"
+    }
+  },
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "title",
+      "label": {
+        "en-US": "Title"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "heading2",
+      "defaultPresetKey": "section-title",
+      "note": {
+        "en-US": "Section heading"
+      }
+    },
+    {
+      "type": "richtext-inline",
+      "id": "subtitle",
+      "label": {
+        "en-US": "Subtitle"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "lead",
+      "note": {
+        "en-US": "Optional subtitle text"
+      }
+    },
+    {
+      "type": "toggle",
+      "id": "autoScroll",
+      "label": {
+        "en-US": "Auto Scroll"
+      },
+      "default": true,
+      "group": "display"
+    },
+    {
+      "type": "number",
+      "id": "scrollInterval",
+      "label": {
+        "en-US": "Scroll Interval (seconds)"
+      },
+      "default": 5,
+      "group": "display",
+      "validations": {
+        "en-US": 2
+      }
+    },
+    {
+      "type": "toggle",
+      "id": "showDots",
+      "label": {
+        "en-US": "Show Navigation Dots"
+      },
+      "default": true,
+      "group": "display"
+    },
+    {
+      "type": "blocks",
+      "id": "blocks",
+      "label": {
+        "en-US": "Carousel Items"
+      },
+      "group": "content",
+      "allowedBlocks": [
+        "carousel-item"
+      ],
+      "maxBlocks": 8
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "contentAlignH",
+      "type": "select",
+      "label": {
+        "en-US": "Content Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "appearance"
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface Style"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Card Radius"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "display",
+      "label": {
+        "en-US": "Display"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "type": "carousel-item",
+      "label": {
+        "en-US": "Carousel Item"
+      },
+      "max": 8,
+      "settings": [
+        {
+          "type": "image",
+          "id": "icon",
+          "label": {
+            "en-US": "Icon or Image"
+          },
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "type": "richtext-single",
+          "id": "heading",
+          "label": {
+            "en-US": "Heading"
+          },
+          "translatable": true,
+          "typographyRole": "heading3",
+          "defaultPresetKey": "section-title",
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "type": "richtext-block",
+          "id": "description",
+          "label": {
+            "en-US": "Description"
+          },
+          "translatable": true,
+          "typographyRole": "body",
+          "defaultPresetKey": "body",
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "id": "benefits-carousel",
+      "label": {
+        "en-US": "Benefits Carousel"
+      },
+      "settings": {
+        "autoScroll": true,
+        "scrollInterval": 5,
+        "showDots": true
+      },
+      "description": {
+        "en-US": "Auto-play carousel showcasing program benefits or value props."
+      },
+      "category": "marketing",
+      "isDefault": true
+    },
+    {
+      "id": "features-showcase",
+      "label": {
+        "en-US": "Features Showcase"
+      },
+      "settings": {
+        "autoScroll": false,
+        "showDots": true
+      },
+      "description": {
+        "en-US": "Feature showcase carousel with manual navigation. Use when each slide needs reader attention."
+      },
+      "category": "marketing"
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": []
+  },
+  "motionHints": {
+    "containsDynamicChildren": true,
+    "stableItemKeysTarget": "items"
+  },
+  "targets": {
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    },
+    "heading": {
+      "selector": "[data-target='heading']",
+      "description": "Carousel heading",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    },
+    "items": {
+      "selector": "[data-target='item']",
+      "description": "Individual slide",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": true,
+      "kind": "group"
+    }
+  }
+}

@@ -1,0 +1,240 @@
+{
+  "type": "editorial-split",
+  "label": "Editorial Split",
+  "description": "Content on one side, heading and supporting text on the other. Blocks placed by layout role.",
+  "usesContainer": true,
+  "layoutSlots": [
+    { "role": "section-heading", "required": true, "multiple": false, "description": "Section title and intro (renders at top of content column). For a sidebar-style label heading, place a Section Heading in the supporting-text slot instead." },
+    { "role": "editorial-body", "required": true, "multiple": true, "description": "Main content blocks (stack vertically in content column)" },
+    { "role": "supporting-text", "required": false, "multiple": true, "description": "Sidebar or supplementary content (renders in chrome column). Accepts Section Heading for label-column patterns (category, date, section label)." },
+    { "role": "media-gallery", "required": false, "multiple": true, "description": "Image or media blocks (render in content column, alongside editorial body)" },
+    { "role": "media-chrome", "required": false, "multiple": true, "description": "Image or media blocks (render in sidebar/chrome column, alongside supporting text)" },
+    { "role": "section-cta", "required": false, "multiple": true, "description": "Call-to-action blocks (render at bottom of chrome column)" }
+  ],
+  "layout": {
+    "engine": "grid",
+    "tiers": [
+      { "id": "full", "minWidth": "md" },
+      { "id": "stack", "minWidth": null }
+    ],
+    "areas": {
+      "full": ["content chrome"],
+      "stack": ["content", "chrome"]
+    },
+    "columns": {
+      "full": "minmax(0, 2fr) minmax(0, 1fr)",
+      "stack": "minmax(0, 1fr)"
+    },
+    "rows": {
+      "full": "auto",
+      "stack": "auto auto"
+    },
+    "gap": { "row": "lg", "column": "lg" },
+    "placeItems": "start stretch",
+    "zones": {
+      "content": { "flow": "stack", "gap": "md", "placeSelf": "start stretch" },
+      "chrome": {
+        "flow": "stack",
+        "gap": "md",
+        "placeSelf": "start stretch",
+        "sticky": { "top": "2rem", "tiers": ["full"] }
+      }
+    },
+    "slots": [
+      { "role": "section-heading", "zone": "content", "flow": "stack", "flowOptions": { "gap": "md" } },
+      { "role": "editorial-body", "zone": "content", "flow": "stack", "flowOptions": { "gap": "md" } },
+      { "role": "media-gallery", "zone": "content", "flow": "stack", "flowOptions": { "gap": "md" } },
+      { "role": "supporting-text", "zone": "chrome", "flow": "stack", "flowOptions": { "gap": "md" } },
+      { "role": "media-chrome", "zone": "chrome", "flow": "stack", "flowOptions": { "gap": "md" } },
+      { "role": "section-cta", "zone": "chrome", "flow": "stack", "flowOptions": { "gap": "md" } }
+    ]
+  },
+  "settings": [
+    {
+      "id": "shellSide",
+      "type": "select",
+      "display": "visual-picker",
+      "label": "Sidebar Side",
+      "default": "right",
+      "group": "layout",
+      "layoutBind": [{ "target": "areas", "tier": "full" }],
+      "options": [
+        { "value": "left", "label": "Left", "layoutValues": { "areas": ["chrome content"] } },
+        { "value": "right", "label": "Right", "layoutValues": { "areas": ["content chrome"] } },
+        { "value": "alternate", "label": "Alternate", "layoutResolver": "alternate-by-index" }
+      ],
+      "note": "Only the `full` tier is bound. The `stack` tier keeps [content, chrome] unconditionally — that is the SPL-131 R1 decision (chrome below content on mobile regardless of shellSide) expressed as ordering data instead of an order:1 override."
+    },
+    {
+      "id": "showSeparators",
+      "type": "toggle",
+      "label": "Show Divider",
+      "description": "Adds a vertical line between content and sidebar columns",
+      "default": false,
+      "group": "layout",
+      "note": "Unbound — a hairline border is decoration, not geometry. Emitted as data-show-separators."
+    },
+    {
+      "id": "contentWidthRatio",
+      "type": "select",
+      "display": "visual-picker",
+      "label": "Column Widths",
+      "default": "wide-left",
+      "group": "layout",
+      "layoutBind": [{ "target": "columns", "tier": "full" }],
+      "options": [
+        { "value": "equal", "label": "Equal (50 / 50)", "layoutValues": { "columns": "minmax(0, 1fr) minmax(0, 1fr)" } },
+        { "value": "wide-left", "label": "Wide Left (66 / 33)", "layoutValues": { "columns": "minmax(0, 2fr) minmax(0, 1fr)" } },
+        { "value": "wide-right", "label": "Wide Right (33 / 66)", "layoutValues": { "columns": "minmax(0, 1fr) minmax(0, 2fr)" } },
+        { "value": "narrow-left", "label": "Narrow Left (26 / 74)", "layoutValues": { "columns": "minmax(0, 1fr) minmax(0, 2.85fr)" } },
+        { "value": "sidebar-left", "label": "Sidebar Left (20 / 80)", "layoutValues": { "columns": "minmax(0, 1fr) minmax(0, 4fr)" } },
+        { "value": "sidebar-right", "label": "Sidebar Right (80 / 20)", "layoutValues": { "columns": "minmax(0, 4fr) minmax(0, 1fr)" } }
+      ],
+      "note": "The five-place enumeration collapses here. Label and track list sit on one line; the admin visual picker draws its diagram from layoutValues rather than from a hand-authored twin."
+    },
+    {
+      "id": "contentSurface",
+      "type": "select",
+      "label": "Content Surface",
+      "default": "none",
+      "group": "layout",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "outlined", "label": "Outlined card (thin border)" }
+      ],
+      "note": "Unbound — border + padding treatment, not geometry."
+    },
+    {
+      "id": "stackGap",
+      "type": "select",
+      "label": "Block Spacing",
+      "description": "Space between blocks within this section",
+      "default": "md",
+      "group": "layout",
+      "migratedFrom": "stackGap",
+      "layoutBind": [
+        { "target": "zone.content.gap" },
+        { "target": "zone.chrome.gap" }
+      ],
+      "options": [
+        { "value": "none", "label": "None", "layoutValues": { "zone.content.gap": "none", "zone.chrome.gap": "none" } },
+        { "value": "sm", "label": "Tight", "layoutValues": { "zone.content.gap": "sm", "zone.chrome.gap": "sm" } },
+        { "value": "md", "label": "Normal", "layoutValues": { "zone.content.gap": "md", "zone.chrome.gap": "md" } },
+        { "value": "lg", "label": "Spacious", "layoutValues": { "zone.content.gap": "lg", "zone.chrome.gap": "lg" } }
+      ]
+    },
+    {
+      "id": "chromeAlign",
+      "type": "select",
+      "label": "Sidebar Position",
+      "description": "Controls vertical alignment of the sidebar relative to content",
+      "default": "sticky-top",
+      "group": "layout",
+      "layoutBind": [
+        { "target": "zone.chrome.placeSelf" },
+        { "target": "zone.chrome.sticky" }
+      ],
+      "options": [
+        {
+          "value": "sticky-top",
+          "label": "Follow Scroll",
+          "description": "Sidebar stays visible as you scroll past main content",
+          "layoutValues": {
+            "zone.chrome.placeSelf": "start stretch",
+            "zone.chrome.sticky": { "top": "2rem", "tiers": ["full"] }
+          }
+        },
+        {
+          "value": "center",
+          "label": "Centered",
+          "description": "Sidebar is vertically centered next to content",
+          "layoutValues": { "zone.chrome.placeSelf": "center stretch", "zone.chrome.sticky": null }
+        },
+        {
+          "value": "top",
+          "label": "Top",
+          "description": "Sidebar aligns to top of content area",
+          "layoutValues": { "zone.chrome.placeSelf": "start stretch", "zone.chrome.sticky": null }
+        },
+        {
+          "value": "bottom",
+          "label": "Bottom",
+          "description": "Sidebar aligns to bottom of content area",
+          "layoutValues": { "zone.chrome.placeSelf": "end stretch", "zone.chrome.sticky": null }
+        }
+      ]
+    },
+    {
+      "id": "typographyScale",
+      "type": "select",
+      "label": "Typography Scale",
+      "description": "Scales all headings within this section",
+      "default": "default",
+      "group": "layout",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "display", "label": "Display (larger headings)" },
+        { "value": "compact", "label": "Compact (smaller headings)" }
+      ]
+    },
+    {
+      "id": "dividerTop",
+      "type": "select",
+      "label": "Top Edge Shape",
+      "description": "Decorative SVG separator at the top of this section, filled with the section background so the colour flows into the section above.",
+      "default": "none",
+      "group": "divider",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "wave", "label": "Wave" },
+        { "value": "curve", "label": "Curve" },
+        { "value": "tilt", "label": "Tilt" },
+        { "value": "triangle", "label": "Triangle" },
+        { "value": "zigzag", "label": "Zigzag" },
+        { "value": "arrow", "label": "Arrow" }
+      ]
+    },
+    {
+      "id": "dividerBottom",
+      "type": "select",
+      "label": "Bottom Edge Shape",
+      "description": "Decorative SVG separator at the bottom of this section, filled with the section background so the colour flows into the section below.",
+      "default": "none",
+      "group": "divider",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "wave", "label": "Wave" },
+        { "value": "curve", "label": "Curve" },
+        { "value": "tilt", "label": "Tilt" },
+        { "value": "triangle", "label": "Triangle" },
+        { "value": "zigzag", "label": "Zigzag" },
+        { "value": "arrow", "label": "Arrow" }
+      ]
+    },
+    {
+      "id": "dividerHeight",
+      "type": "select",
+      "label": "Divider Height",
+      "description": "Height of the shape dividers on this section.",
+      "default": "md",
+      "group": "divider",
+      "options": [
+        { "value": "sm", "label": "Small" },
+        { "value": "md", "label": "Medium" },
+        { "value": "lg", "label": "Large" }
+      ]
+    },
+    {
+      "id": "dividerFlip",
+      "type": "toggle",
+      "label": "Flip Direction",
+      "description": "Mirror the divider shapes horizontally.",
+      "default": false,
+      "group": "divider"
+    }
+  ],
+  "groups": [
+    { "id": "layout", "label": "Layout" },
+    { "id": "divider", "label": "Shape Dividers" }
+  ]
+}

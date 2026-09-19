@@ -1,0 +1,499 @@
+{
+  "component": "SideBySideEditorial",
+  "type": "side-by-side-editorial",
+  "label": {
+    "en-US": "Side-by-side Editorial"
+  },
+  "category": "editorial",
+  "compatibleSectionRoles": [
+    "editorial-body",
+    "supporting-text"
+  ],
+  "typographySlots": [],
+  "roleNotes": {
+    "supporting-text": "Image ratio may need adjustment for narrow sidebar widths. Consider 25–40% image width."
+  },
+  "$fragments": [
+    "media-side",
+    "color-roles"
+  ],
+  "$fragmentOverrides": {
+    "mediaSide": {
+      "default": "left",
+      "omitOptions": [
+        "above",
+        "below"
+      ]
+    },
+    "background": {
+      "default": "transparent"
+    }
+  },
+  "settings": [
+    {
+      "type": "image",
+      "id": "image",
+      "label": {
+        "en-US": "Image"
+      },
+      "group": "content",
+      "note": "Editorial image displayed alongside text"
+    },
+    {
+      "type": "text",
+      "id": "imageAlt",
+      "label": {
+        "en-US": "Image Alt Text"
+      },
+      "group": "content",
+      "translatable": true
+    },
+    {
+      "type": "select",
+      "id": "imageRatio",
+      "label": {
+        "en-US": "Image Width"
+      },
+      "default": "50",
+      "group": "layout",
+      "options": [
+        {
+          "value": "25",
+          "label": {
+            "en-US": "25% (minimal)"
+          }
+        },
+        {
+          "value": "33",
+          "label": {
+            "en-US": "33% (thirds)"
+          }
+        },
+        {
+          "value": "40",
+          "label": {
+            "en-US": "40%"
+          }
+        },
+        {
+          "value": "50",
+          "label": {
+            "en-US": "50% (equal)"
+          }
+        },
+        {
+          "value": "60",
+          "label": {
+            "en-US": "60%"
+          }
+        },
+        {
+          "value": "66",
+          "label": {
+            "en-US": "66% (thirds)"
+          }
+        },
+        {
+          "value": "75",
+          "label": {
+            "en-US": "75% (dominant)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "stickyMedia",
+      "label": {
+        "en-US": "Pin Image While Scrolling"
+      },
+      "default": "none",
+      "group": "layout",
+      "note": "Pins the image in view while the taller text column scrolls past it (editorial scrollytelling). Disabled automatically on narrow (single-column) layouts.",
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None (default)"
+          }
+        },
+        {
+          "value": "on",
+          "label": {
+            "en-US": "Pin Image"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "stickyTop",
+      "label": {
+        "en-US": "Pinned Offset From Top"
+      },
+      "default": "md",
+      "group": "layout",
+      "options": [
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "mediaParallax",
+      "label": {
+        "en-US": "Image Parallax on Scroll"
+      },
+      "default": "off",
+      "group": "layout",
+      "note": "Drifts the image vertically against scroll for editorial depth. Runs only on desktop with motion enabled — auto-disabled on mobile (single-column) layouts and when reduced-motion is on.",
+      "options": [
+        {
+          "value": "off",
+          "label": {
+            "en-US": "None (default)"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "strong",
+          "label": {
+            "en-US": "Strong"
+          }
+        }
+      ]
+    },
+    {
+      "type": "richtext-single",
+      "id": "title",
+      "label": {
+        "en-US": "Title"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "heading2",
+      "defaultPresetKey": "section-title",
+      "validation": {
+        "maxLength": 120
+      }
+    },
+    {
+      "type": "richtext-block",
+      "id": "body",
+      "label": {
+        "en-US": "Body Text"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "body",
+      "defaultPresetKey": "body"
+    },
+    {
+      "type": "toggle",
+      "id": "dividerEnabled",
+      "label": {
+        "en-US": "Show Divider"
+      },
+      "default": false,
+      "group": "style"
+    },
+    {
+      "type": "color",
+      "id": "dividerColor",
+      "label": {
+        "en-US": "Divider Color"
+      },
+      "default": "#108A00",
+      "group": "style"
+    },
+    {
+      "type": "toggle",
+      "id": "reverseOnMobile",
+      "label": {
+        "en-US": "Reverse Order on Mobile"
+      },
+      "default": false,
+      "group": "layout",
+      "note": "When enabled, content appears before the image on mobile"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "textAlign",
+      "type": "select",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "layout"
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface Style"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Border Radius"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "pill",
+          "label": {
+            "en-US": "Pill"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en-US": "Image Left (50/50)"
+      },
+      "settings": {
+        "mediaSide": "left",
+        "imageRatio": "50",
+        "dividerEnabled": false,
+        "reverseOnMobile": false,
+        "background": "section",
+        "textTone": "section"
+      },
+      "description": {
+        "en-US": "Equal 50/50 split with image on left. Standard editorial layout."
+      },
+      "category": "editorial",
+      "isDefault": true
+    },
+    {
+      "name": {
+        "en-US": "Image Right with Divider"
+      },
+      "settings": {
+        "mediaSide": "right",
+        "imageRatio": "50",
+        "dividerEnabled": true,
+        "dividerColor": "#108A00",
+        "reverseOnMobile": false,
+        "background": "section",
+        "textTone": "section"
+      },
+      "description": {
+        "en-US": "50/50 split with image on right and a vertical divider. Adds visual structure."
+      },
+      "category": "editorial"
+    },
+    {
+      "name": {
+        "en-US": "Wide Image Left (60/40)"
+      },
+      "settings": {
+        "mediaSide": "left",
+        "imageRatio": "60",
+        "dividerEnabled": false,
+        "reverseOnMobile": true,
+        "background": "surface",
+        "textTone": "section"
+      },
+      "description": {
+        "en-US": "60/40 wider image on left. Best when the visual carries more narrative weight."
+      },
+      "category": "editorial"
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    },
+    "media": {
+      "selector": "[data-target='media']",
+      "description": "Image container",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "media"
+    },
+    "heading": {
+      "selector": "[data-target='heading']",
+      "description": "Title text",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    },
+    "body": {
+      "selector": "[data-target='body']",
+      "description": "Body rich text",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    },
+    "divider": {
+      "selector": "[data-target='divider']",
+      "description": "Decorative divider line",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false,
+      "kind": "decorative"
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": []
+  }
+}

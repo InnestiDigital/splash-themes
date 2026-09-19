@@ -1,0 +1,100 @@
+{
+  "component": "LoginForm",
+  "type": "login-form",
+  "label": {
+    "en-US": "Login Form"
+  },
+  "category": "utility",
+  "description": {
+    "en-US": "Signs a visitor in via a configured API method. The API method's response contract stores the token, which switches auth-state block visibility ('Who sees this') and _auth/_guest setting overrides."
+  },
+  "compatibleSectionRoles": [
+    "editorial-body",
+    "supporting-text"
+  ],
+  "typographySlots": [],
+  "targets": {
+    "root": {
+      "description": "Entire login form container",
+      "kind": "root"
+    }
+  },
+  "motionSupport": {
+    "levels": [],
+    "excluded": []
+  },
+  "settings": [
+    {
+      "type": "api-method",
+      "id": "apiMethod",
+      "label": {
+        "en-US": "Login API Method"
+      },
+      "group": "content",
+      "default": "auth-login"
+    },
+    {
+      "type": "text",
+      "id": "emailLabel",
+      "label": {
+        "en-US": "Email Label"
+      },
+      "group": "content",
+      "translatable": true,
+      "default": "Email"
+    },
+    {
+      "type": "text",
+      "id": "passwordLabel",
+      "label": {
+        "en-US": "Password Label"
+      },
+      "group": "content",
+      "translatable": true,
+      "default": "Password"
+    },
+    {
+      "type": "text",
+      "id": "submitText",
+      "label": {
+        "en-US": "Submit Button Text"
+      },
+      "group": "content",
+      "translatable": true,
+      "default": "Sign In"
+    },
+    {
+      "type": "text",
+      "id": "errorText",
+      "label": {
+        "en-US": "Error Message"
+      },
+      "description": {
+        "en-US": "Shown for any sign-in failure. Deliberately generic — the upstream error is never surfaced."
+      },
+      "group": "content",
+      "translatable": true,
+      "default": "Sign-in failed. Check your details and try again."
+    },
+    {
+      "type": "text",
+      "id": "signedInText",
+      "label": {
+        "en-US": "Signed-In Message"
+      },
+      "group": "content",
+      "translatable": true,
+      "default": "You're signed in."
+    },
+    {
+      "type": "text",
+      "id": "signOutText",
+      "label": {
+        "en-US": "Sign Out Button Text"
+      },
+      "group": "content",
+      "translatable": true,
+      "default": "Sign Out"
+    }
+  ]
+}

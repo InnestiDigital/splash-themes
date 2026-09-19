@@ -1,0 +1,514 @@
+{
+  "component": "Footer",
+  "type": "footer",
+  "label": {
+    "en-US": "Splash Footer"
+  },
+  "isLayoutComponent": true,
+  "static": true,
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      },
+      "default": "horizontal-bar",
+      "group": "layout",
+      "options": [
+        {
+          "value": "horizontal-bar",
+          "label": {
+            "en-US": "Horizontal Bar"
+          }
+        },
+        {
+          "value": "grid",
+          "label": {
+            "en-US": "4-Column Grid"
+          }
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "id": "logo",
+      "label": {
+        "en-US": "Logo Image"
+      },
+      "group": "content",
+      "translatable": false
+    },
+    {
+      "type": "text",
+      "id": "logoAlt",
+      "label": {
+        "en-US": "Logo Alt Text"
+      },
+      "group": "content",
+      "translatable": true,
+      "note": {
+        "en-US": "Accessibility text for the logo image"
+      }
+    },
+    {
+      "type": "richtext-single",
+      "id": "logoText",
+      "label": {
+        "en-US": "Logo Text"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "heading3",
+      "defaultPresetKey": "section-title",
+      "note": {
+        "en-US": "Fallback if no logo image is provided"
+      }
+    },
+    {
+      "type": "text",
+      "id": "companyName",
+      "label": {
+        "en-US": "Company Name"
+      },
+      "group": "content",
+      "translatable": false,
+      "showIf": {
+        "layout": "grid"
+      },
+      "note": {
+        "en-US": "Legal entity name shown in footer grid layout"
+      }
+    },
+    {
+      "type": "text",
+      "id": "companyVat",
+      "label": {
+        "en-US": "VAT / Tax ID"
+      },
+      "group": "content",
+      "translatable": false,
+      "showIf": {
+        "layout": "grid"
+      }
+    },
+    {
+      "type": "richtext-inline",
+      "id": "companyAddress",
+      "label": {
+        "en-US": "Address"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "body",
+      "defaultPresetKey": "body",
+      "showIf": {
+        "layout": "grid"
+      }
+    },
+    {
+      "type": "select",
+      "id": "copyrightStyle",
+      "label": {
+        "en-US": "Copyright Style"
+      },
+      "default": "simple",
+      "group": "content",
+      "showIf": {
+        "layout": "grid"
+      },
+      "options": [
+        {
+          "value": "simple",
+          "label": {
+            "en-US": "Single line"
+          }
+        },
+        {
+          "value": "structured",
+          "label": {
+            "en-US": "Structured strip"
+          }
+        }
+      ],
+      "note": {
+        "en-US": "The horizontal bar layout always uses the single line."
+      }
+    },
+    {
+      "type": "richtext-inline",
+      "id": "copyright",
+      "label": {
+        "en-US": "Copyright Text"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "caption",
+      "defaultPresetKey": "caption",
+      "showIf": {
+        "anyOf": [
+          {
+            "layout": "horizontal-bar"
+          },
+          {
+            "copyrightStyle": "simple"
+          }
+        ]
+      },
+      "note": {
+        "en-US": "e.g., 'Copyright © 2026 Splash Program. All rights reserved.'"
+      }
+    },
+    {
+      "type": "text",
+      "id": "copyrightYear",
+      "label": {
+        "en-US": "Copyright — Year"
+      },
+      "group": "content",
+      "translatable": true,
+      "showIf": {
+        "allOf": [
+          {
+            "layout": "grid"
+          },
+          {
+            "copyrightStyle": "structured"
+          }
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "id": "copyrightRights",
+      "label": {
+        "en-US": "Copyright — Rights"
+      },
+      "group": "content",
+      "translatable": true,
+      "showIf": {
+        "allOf": [
+          {
+            "layout": "grid"
+          },
+          {
+            "copyrightStyle": "structured"
+          }
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "id": "copyrightMadeBy",
+      "label": {
+        "en-US": "Copyright — Credit"
+      },
+      "group": "content",
+      "translatable": true,
+      "showIf": {
+        "allOf": [
+          {
+            "layout": "grid"
+          },
+          {
+            "copyrightStyle": "structured"
+          }
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "id": "copyrightPrivacyLabel",
+      "label": {
+        "en-US": "Copyright — Privacy Link Label"
+      },
+      "group": "content",
+      "translatable": true,
+      "showIf": {
+        "allOf": [
+          {
+            "layout": "grid"
+          },
+          {
+            "copyrightStyle": "structured"
+          }
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "id": "copyrightPrivacyUrl",
+      "label": {
+        "en-US": "Copyright — Privacy Link URL"
+      },
+      "group": "content",
+      "translatable": false,
+      "showIf": {
+        "allOf": [
+          {
+            "layout": "grid"
+          },
+          {
+            "copyrightStyle": "structured"
+          }
+        ]
+      },
+      "note": {
+        "en-US": "Internal: /privacy, External: https://example.com"
+      }
+    },
+    {
+      "type": "repeater",
+      "id": "columns",
+      "label": {
+        "en-US": "Link Columns"
+      },
+      "group": "content",
+      "maxItems": 4,
+      "fields": [
+        {
+          "type": "repeater",
+          "id": "links",
+          "label": {
+            "en-US": "Links"
+          },
+          "maxItems": 10,
+          "fields": [
+            {
+              "type": "text",
+              "id": "label",
+              "label": {
+                "en-US": "Label"
+              },
+              "translatable": true,
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "type": "text",
+              "id": "url",
+              "label": {
+                "en-US": "URL"
+              },
+              "validation": {
+                "required": true
+              },
+              "note": {
+                "en-US": "Internal: /privacy, External: https://example.com"
+              }
+            },
+            {
+              "type": "checkbox",
+              "id": "openInNewTab",
+              "label": {
+                "en-US": "Open in New Tab"
+              },
+              "default": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "supportEmail",
+      "label": {
+        "en-US": "Support Email"
+      },
+      "group": "content",
+      "validation": {
+        "required": false
+      }
+    },
+    {
+      "type": "text",
+      "id": "supportPhone",
+      "label": {
+        "en-US": "Support Phone"
+      },
+      "group": "content",
+      "validation": {
+        "required": false
+      }
+    },
+    {
+      "type": "repeater",
+      "id": "socialLinks",
+      "label": {
+        "en-US": "Social Links"
+      },
+      "group": "content",
+      "maxItems": 8,
+      "showIf": {
+        "showSocialLinks": true
+      },
+      "fields": [
+        {
+          "type": "select",
+          "id": "platform",
+          "label": {
+            "en-US": "Platform"
+          },
+          "options": [
+            {
+              "value": "facebook",
+              "label": {
+                "en-US": "Facebook"
+              }
+            },
+            {
+              "value": "twitter",
+              "label": {
+                "en-US": "X (Twitter)"
+              }
+            },
+            {
+              "value": "instagram",
+              "label": {
+                "en-US": "Instagram"
+              }
+            },
+            {
+              "value": "linkedin",
+              "label": {
+                "en-US": "LinkedIn"
+              }
+            },
+            {
+              "value": "youtube",
+              "label": {
+                "en-US": "YouTube"
+              }
+            },
+            {
+              "value": "tiktok",
+              "label": {
+                "en-US": "TikTok"
+              }
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "url",
+          "label": {
+            "en-US": "URL"
+          },
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "showSocialLinks",
+      "label": {
+        "en-US": "Show Social Links"
+      },
+      "default": false,
+      "group": "behaviour",
+      "note": {
+        "en-US": "Display social media links in footer"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "showBackToTop",
+      "label": {
+        "en-US": "Show Back-to-Top Link"
+      },
+      "default": false,
+      "group": "behaviour",
+      "showIf": {
+        "layout": "grid"
+      },
+      "note": {
+        "en-US": "Adds a back-to-top link to the grid layout's copyright strip"
+      }
+    }
+  ],
+  "groups": [
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Placement"
+      }
+    },
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "behaviour",
+      "label": {
+        "en-US": "Behaviour"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "id": "full-footer",
+      "label": {
+        "en-US": "Full Footer"
+      },
+      "settings": {
+        "showSocialLinks": true,
+        "supportEmail": "support@splashprogram.com",
+        "supportPhone": "1-800-SPLASH",
+        "copyrightStyle": "simple",
+        "copyright": {
+          "en-US": "Copyright © 2026 Splash Program. All rights reserved."
+        },
+        "socialLinks": [
+          {
+            "platform": "facebook",
+            "url": "https://facebook.com"
+          },
+          {
+            "platform": "twitter",
+            "url": "https://x.com"
+          },
+          {
+            "platform": "linkedin",
+            "url": "https://linkedin.com"
+          }
+        ]
+      }
+    },
+    {
+      "id": "minimal-footer",
+      "label": {
+        "en-US": "Minimal Footer"
+      },
+      "settings": {
+        "showSocialLinks": false,
+        "copyrightStyle": "simple",
+        "copyright": {
+          "en-US": "Copyright © 2026. All rights reserved."
+        }
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local"
+    ],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "description": "Entire footer container",
+      "kind": "root",
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": true
+    }
+  }
+}

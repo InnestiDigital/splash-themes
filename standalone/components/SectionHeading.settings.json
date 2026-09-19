@@ -1,0 +1,609 @@
+{
+  "component": "SectionHeading",
+  "type": "section-heading",
+  "label": {
+    "en-US": "Section Heading"
+  },
+  "category": "editorial",
+  "compatibleSectionRoles": [
+    "section-heading",
+    "supporting-text"
+  ],
+  "roleNotes": {
+    "supporting-text": "In editorial-split, this renders as a sidebar label rather than a section title. Set Heading Style to h3 or smaller for narrow sidebar columns; avoid pairing with another Section Heading in the same section to keep the document outline clean."
+  },
+  "description": {
+    "en-US": "Section title block with eyebrow, heading, subtitle, description, and optional date. Supports stacked and split (two-column) layouts for different editorial tones."
+  },
+  "typographySlots": [],
+  "$fragments": [
+    "color-roles"
+  ],
+  "$fragmentOmit": [
+    "background"
+  ],
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "eyebrow",
+      "label": {
+        "en-US": "Eyebrow"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "eyebrow",
+      "defaultPresetKey": "eyebrow",
+      "validation": {
+        "maxLength": 100
+      }
+    },
+    {
+      "type": "richtext-single",
+      "id": "indexLabel",
+      "label": {
+        "en-US": "Index / Chapter Number"
+      },
+      "group": "content",
+      "translatable": true,
+      "note": "Optional editorial index numeral shown above the heading (e.g. \"01\"). Empty = hidden.",
+      "validation": {
+        "maxLength": 12
+      }
+    },
+    {
+      "id": "indexStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Index Style"
+      },
+      "default": "inline",
+      "group": "content",
+      "note": "Inline = small tabular kicker numeral above the eyebrow/title. Jumbo = large faint editorial numeral above the title. Both render in normal flow.",
+      "options": [
+        { "value": "inline", "label": { "en-US": "Inline (small kicker numeral)" } },
+        { "value": "jumbo",  "label": { "en-US": "Jumbo (large faint numeral)" } }
+      ]
+    },
+    {
+      "id": "indexColor",
+      "type": "select",
+      "label": {
+        "en-US": "Index Color"
+      },
+      "default": "muted",
+      "group": "content",
+      "note": "Semantic color role only — theme palette tokens, no freeform hex.",
+      "options": [
+        { "value": "muted",   "label": { "en-US": "Muted (subtle grey)" } },
+        { "value": "accent",  "label": { "en-US": "Accent (teal #1B8AB7)" } },
+        { "value": "primary", "label": { "en-US": "Primary (navy #1E3D4F)" } }
+      ]
+    },
+    {
+      "type": "richtext-single",
+      "id": "heading",
+      "label": {
+        "en-US": "Heading"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "sectionTitle",
+      "defaultPresetKey": "section-title",
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "id": "headingLevel",
+      "type": "select",
+      "label": {
+        "en-US": "Heading Level (semantic)"
+      },
+      "default": "h2",
+      "group": "content",
+      "note": "The HTML heading tag for accessibility + SEO — independent of visual size. Set the topmost heading on a page to H1 (one per page); keep subsection headings at H2/H3.",
+      "options": [
+        { "value": "h1", "label": { "en-US": "H1 — page title (one per page)" } },
+        { "value": "h2", "label": { "en-US": "H2 — section (default)" } },
+        { "value": "h3", "label": { "en-US": "H3 — subsection" } },
+        { "value": "h4", "label": { "en-US": "H4" } },
+        { "value": "h5", "label": { "en-US": "H5" } },
+        { "value": "h6", "label": { "en-US": "H6" } }
+      ]
+    },
+    {
+      "type": "richtext-inline",
+      "id": "subtitle",
+      "label": {
+        "en-US": "Subtitle"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "lead",
+      "defaultPresetKey": "intro",
+      "note": "Short line below the heading. Used in stacked layouts."
+    },
+    {
+      "type": "richtext-block",
+      "id": "description",
+      "label": {
+        "en-US": "Description"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "body",
+      "defaultPresetKey": "body",
+      "note": "Longer paragraph. In split layouts this goes into the meta column."
+    },
+    {
+      "type": "richtext-single",
+      "id": "dateLabel",
+      "label": {
+        "en-US": "Date Label"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "caption",
+      "defaultPresetKey": "caption",
+      "note": "Optional short date/range (e.g. \"(2016/2025)\"). Rendered in the meta column in split layouts.",
+      "validation": {
+        "maxLength": 60
+      }
+    },
+    {
+      "id": "layout",
+      "type": "select",
+      "label": {
+        "en-US": "Layout"
+      },
+      "default": "stacked",
+      "group": "layout",
+      "options": [
+        {
+          "value": "stacked",
+          "label": {
+            "en-US": "Stacked (eyebrow → heading → subtitle → description)"
+          }
+        },
+        {
+          "value": "split-title-left",
+          "label": {
+            "en-US": "Split — Title Left / Meta Right"
+          }
+        },
+        {
+          "value": "split-title-right",
+          "label": {
+            "en-US": "Split — Meta Left / Title Right"
+          }
+        }
+      ]
+    },
+    {
+      "id": "splitRatio",
+      "type": "select",
+      "label": {
+        "en-US": "Split Ratio (split layouts only)"
+      },
+      "default": "60-40",
+      "group": "layout",
+      "showIf": {
+        "layout": [
+          "split-title-left",
+          "split-title-right"
+        ]
+      },
+      "options": [
+        {
+          "value": "50-50",
+          "label": {
+            "en-US": "50 / 50"
+          }
+        },
+        {
+          "value": "60-40",
+          "label": {
+            "en-US": "60 / 40 (title wider)"
+          }
+        },
+        {
+          "value": "66-33",
+          "label": {
+            "en-US": "66 / 33"
+          }
+        },
+        {
+          "value": "75-25",
+          "label": {
+            "en-US": "75 / 25"
+          }
+        }
+      ]
+    },
+    {
+      "id": "metaAlign",
+      "type": "select",
+      "label": {
+        "en-US": "Meta Column Vertical Align"
+      },
+      "default": "baseline",
+      "group": "layout",
+      "showIf": {
+        "layout": [
+          "split-title-left",
+          "split-title-right"
+        ]
+      },
+      "options": [
+        {
+          "value": "top",
+          "label": {
+            "en-US": "Top"
+          }
+        },
+        {
+          "value": "baseline",
+          "label": {
+            "en-US": "Baseline with title"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "bottom",
+          "label": {
+            "en-US": "Bottom"
+          }
+        }
+      ]
+    },
+    {
+      "id": "textAlign",
+      "type": "select",
+      "label": {
+        "en-US": "Text Alignment (stacked layout)"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "layout",
+      "showIf": {
+        "layout": "stacked"
+      }
+    },
+    {
+      "id": "showDivider",
+      "type": "toggle",
+      "label": {
+        "en-US": "Show Column Divider (split layouts)"
+      },
+      "default": false,
+      "group": "layout",
+      "showIf": {
+        "layout": [
+          "split-title-left",
+          "split-title-right"
+        ]
+      }
+    },
+    {
+      "id": "measureWidth",
+      "type": "select",
+      "label": {
+        "en-US": "Content Width"
+      },
+      "default": "standard",
+      "canvasDefault": "full",
+      "group": "layout",
+      "options": [
+        { "value": "content",  "label": { "en-US": "Reading (65ch)" } },
+        { "value": "narrow",   "label": { "en-US": "Narrow (45rem)" } },
+        { "value": "standard", "label": { "en-US": "Standard (65rem)" } },
+        { "value": "wide",     "label": { "en-US": "Wide (80rem)" } },
+        { "value": "full",     "label": { "en-US": "Full" } }
+      ]
+    },
+    {
+      "id": "headingSize",
+      "type": "select",
+      "label": {
+        "en-US": "Heading Size"
+      },
+      "default": "default",
+      "group": "style",
+      "note": "Use 'Display XL' for large editorial section headings (~137px DM Serif Display, editorial style).",
+      "options": [
+        { "value": "default",    "label": { "en-US": "Default (section title ~3rem)" } },
+        { "value": "display-sm", "label": { "en-US": "Display SM (~4rem, statement tagline)" } },
+        { "value": "display-lg", "label": { "en-US": "Display LG (~5.5rem, large editorial row title)" } },
+        { "value": "display-xl", "label": { "en-US": "Display XL (~8.5rem, editorial mega)" } }
+      ]
+    },
+    {
+      "id": "headingColor",
+      "type": "select",
+      "label": {
+        "en-US": "Heading Color"
+      },
+      "default": "default",
+      "group": "style",
+      "note": "Semantic color role only — uses theme palette tokens, no freeform hex.",
+      "options": [
+        { "value": "default", "label": { "en-US": "Default (inherits from section)" } },
+        { "value": "accent",  "label": { "en-US": "Accent (teal #1B8AB7)" } },
+        { "value": "primary", "label": { "en-US": "Primary (navy #1E3D4F)" } }
+      ]
+    },
+    {
+      "id": "accentRule",
+      "type": "select",
+      "label": {
+        "en-US": "Accent Rule"
+      },
+      "default": "none",
+      "group": "style",
+      "note": "Thin decorative line to frame the heading. Editorial flourish — off by default.",
+      "options": [
+        { "value": "none",  "label": { "en-US": "None" } },
+        { "value": "above", "label": { "en-US": "Above heading (kicker rule)" } },
+        { "value": "below", "label": { "en-US": "Below heading" } }
+      ]
+    },
+    {
+      "id": "accentRuleColor",
+      "type": "select",
+      "label": {
+        "en-US": "Accent Rule Color"
+      },
+      "default": "accent",
+      "group": "style",
+      "note": "Semantic color role only — theme palette tokens, no freeform hex.",
+      "showIf": {
+        "accentRule": [
+          "above",
+          "below"
+        ]
+      },
+      "options": [
+        { "value": "accent",  "label": { "en-US": "Accent (teal #1B8AB7)" } },
+        { "value": "primary", "label": { "en-US": "Primary (navy #1E3D4F)" } },
+        { "value": "border",  "label": { "en-US": "Subtle (border tone)" } }
+      ]
+    },
+    {
+      "id": "accentRuleWidth",
+      "type": "select",
+      "label": {
+        "en-US": "Accent Rule Width"
+      },
+      "default": "short",
+      "group": "style",
+      "showIf": {
+        "accentRule": [
+          "above",
+          "below"
+        ]
+      },
+      "options": [
+        { "value": "short", "label": { "en-US": "Short (3rem)" } },
+        { "value": "full",  "label": { "en-US": "Full width" } }
+      ]
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "none",
+      "group": "style"
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface Style"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "style"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local"
+    ],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Entire block container",
+      "animatable": [
+        "motion-path"
+      ]
+    },
+    "titleColumn": {
+      "kind": "root",
+      "selector": "[data-target='titleColumn']",
+      "description": "Title column (split layouts) or main stack (stacked layout)",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    },
+    "metaColumn": {
+      "kind": "root",
+      "selector": "[data-target='metaColumn']",
+      "description": "Meta column (split layouts only): eyebrow + date + description",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    },
+    "eyebrow": {
+      "kind": "text",
+      "selector": "[data-target='eyebrow']",
+      "description": "Eyebrow text label",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    },
+    "heading": {
+      "kind": "text",
+      "selector": "[data-target='heading']",
+      "description": "Section heading",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    },
+    "subtitle": {
+      "kind": "text",
+      "selector": "[data-target='subtitle']",
+      "description": "Subtitle line",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    },
+    "description": {
+      "kind": "text",
+      "selector": "[data-target='description']",
+      "description": "Description paragraph",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    },
+    "dateLabel": {
+      "kind": "text",
+      "selector": "[data-target='dateLabel']",
+      "description": "Date label",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    },
+    "rule": {
+      "kind": "decorative",
+      "selector": "[data-target='rule']",
+      "description": "Decorative accent rule (optional line above/below heading)",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false
+    },
+    "index": {
+      "kind": "decorative",
+      "selector": "[data-target='index']",
+      "description": "Decorative editorial index numeral (optional, above the heading)",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false
+    }
+  }
+}

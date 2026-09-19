@@ -1,0 +1,282 @@
+{
+  "component": "KineticText",
+  "type": "kinetic-text",
+  "label": {
+    "en-US": "Kinetic Headline"
+  },
+  "category": "editorial",
+  "description": {
+    "en-US": "A headline that animates itself into view — decode/scramble, character rise, or word-mask reveal. Self-triggers on scroll, reduced-motion safe."
+  },
+  "compatibleSectionRoles": [
+    "section-heading",
+    "editorial-body",
+    "supporting-text"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "text",
+      "label": {
+        "en-US": "Headline Text"
+      },
+      "group": "content",
+      "translatable": true,
+      "validation": {
+        "maxLength": 160
+      },
+      "typographyRole": "heading1",
+      "defaultPresetKey": "display"
+    },
+    {
+      "type": "select",
+      "id": "tag",
+      "label": {
+        "en-US": "Heading Level"
+      },
+      "default": "h2",
+      "group": "content",
+      "note": "Semantic level for SEO / accessibility (visual size comes from typography).",
+      "options": [
+        { "value": "h1", "label": { "en-US": "H1" } },
+        { "value": "h2", "label": { "en-US": "H2" } },
+        { "value": "h3", "label": { "en-US": "H3" } },
+        { "value": "p", "label": { "en-US": "Paragraph" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "effect",
+      "label": {
+        "en-US": "Effect"
+      },
+      "default": "scramble",
+      "group": "motion",
+      "options": [
+        { "value": "scramble", "label": { "en-US": "Decode / Scramble" } },
+        { "value": "char-rise", "label": { "en-US": "Character Rise" } },
+        { "value": "word-mask", "label": { "en-US": "Word Mask Reveal" } },
+        { "value": "line-fade", "label": { "en-US": "Line Fade" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "speed",
+      "label": {
+        "en-US": "Speed"
+      },
+      "default": "normal",
+      "group": "motion",
+      "options": [
+        { "value": "slow", "label": { "en-US": "Slow" } },
+        { "value": "normal", "label": { "en-US": "Normal" } },
+        { "value": "fast", "label": { "en-US": "Fast" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "trigger",
+      "label": {
+        "en-US": "Trigger"
+      },
+      "default": "in-view",
+      "group": "motion",
+      "options": [
+        { "value": "in-view", "label": { "en-US": "When scrolled into view" } },
+        { "value": "immediate", "label": { "en-US": "Immediately on load" } }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "once",
+      "label": {
+        "en-US": "Play Once"
+      },
+      "default": true,
+      "group": "motion",
+      "note": "Off = replays every time it re-enters the viewport."
+    },
+    {
+      "type": "text",
+      "id": "glyphs",
+      "label": {
+        "en-US": "Scramble Glyph Set"
+      },
+      "group": "motion",
+      "note": "Characters cycled during the decode effect. Leave blank for the default alphanumeric set.",
+      "showIf": {
+        "effect": "scramble"
+      }
+    },
+    {
+      "type": "select",
+      "id": "textAlign",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "default": "left",
+      "group": "style",
+      "options": [
+        { "value": "left", "label": { "en-US": "Left" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "right", "label": { "en-US": "Right" } }
+      ]
+    },
+    {
+      "id": "measureWidth",
+      "type": "select",
+      "label": {
+        "en-US": "Content Width"
+      },
+      "default": "wide",
+      "canvasDefault": "full",
+      "group": "style",
+      "options": [
+        { "value": "content", "label": { "en-US": "Reading (65ch)" } },
+        { "value": "narrow", "label": { "en-US": "Narrow (45rem)" } },
+        { "value": "standard", "label": { "en-US": "Standard (65rem)" } },
+        { "value": "wide", "label": { "en-US": "Wide (80rem)" } },
+        { "value": "full", "label": { "en-US": "Full" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "fill",
+      "label": {
+        "en-US": "Text fill"
+      },
+      "default": "none",
+      "group": "style",
+      "note": "Knock the headline out as a window onto a moving gradient or a photo (background-clip:text). While a fill is active the headline reveals with a smooth whole-line motion — the per-glyph Effect above doesn't apply, since a continuous fill can't be split across scrambling letters.",
+      "options": [
+        { "value": "none", "label": { "en-US": "Solid color (default)" } },
+        { "value": "gradient", "label": { "en-US": "Animated gradient" } },
+        { "value": "image", "label": { "en-US": "Image knockout" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "fillGradient",
+      "label": {
+        "en-US": "Gradient preset"
+      },
+      "default": "accent",
+      "group": "style",
+      "showIf": {
+        "fill": "gradient"
+      },
+      "options": [
+        { "value": "accent", "label": { "en-US": "Accent" } },
+        { "value": "mono", "label": { "en-US": "Mono" } },
+        { "value": "warm", "label": { "en-US": "Warm" } },
+        { "value": "spectrum", "label": { "en-US": "Spectrum" } }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "fillAnimate",
+      "label": {
+        "en-US": "Animate gradient"
+      },
+      "default": true,
+      "group": "style",
+      "showIf": {
+        "fill": "gradient"
+      }
+    },
+    {
+      "type": "image",
+      "id": "fillImage",
+      "label": {
+        "en-US": "Knockout image"
+      },
+      "group": "style",
+      "showIf": {
+        "fill": "image"
+      }
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "motion", "label": { "en-US": "Motion" } },
+    { "id": "style", "label": { "en-US": "Style" } }
+  ],
+  "presets": [
+    {
+      "name": { "en-US": "Decode Headline" },
+      "settings": {
+        "effect": "scramble",
+        "speed": "normal",
+        "tag": "h2",
+        "trigger": "in-view",
+        "textAlign": "left",
+        "measureWidth": "wide"
+      },
+      "description": {
+        "en-US": "Technical decode effect — glyphs cycle then lock left-to-right. Great for studio/project titles."
+      },
+      "category": "editorial",
+      "isDefault": true
+    },
+    {
+      "name": { "en-US": "Rising Title" },
+      "settings": {
+        "effect": "char-rise",
+        "speed": "normal",
+        "tag": "h1",
+        "trigger": "in-view",
+        "textAlign": "center",
+        "measureWidth": "standard"
+      },
+      "description": {
+        "en-US": "Characters rise and settle into place — editorial hero heading."
+      },
+      "category": "editorial"
+    },
+    {
+      "name": { "en-US": "Masked Reveal" },
+      "settings": {
+        "effect": "word-mask",
+        "speed": "normal",
+        "tag": "h2",
+        "trigger": "in-view",
+        "textAlign": "left",
+        "measureWidth": "wide"
+      },
+      "description": {
+        "en-US": "Words slide up from behind a clip line, one after another."
+      },
+      "category": "editorial"
+    }
+  ],
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Entire kinetic headline block"
+    },
+    "text": {
+      "kind": "text",
+      "selector": "[data-target='text']",
+      "description": "The animated headline line",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": []
+  },
+  "motionHints": {
+    "containsDynamicChildren": true
+  }
+}

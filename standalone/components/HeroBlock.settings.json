@@ -1,0 +1,983 @@
+{
+  "component": "HeroBlock",
+  "type": "hero-block",
+  "label": {
+    "en-US": "Hero Block"
+  },
+  "category": "media",
+  "description": {
+    "en-US": "Unified hero block. Use the `standard` variant for full-bleed hero sections with overlay/gradient/parallax. Use the `promotion` variant for compact CTA banners with optional countdown. Use the `editorial` variant for a two-column magazine masthead — oversized title, eyebrow and CTA beside a full-bleed media column."
+  },
+  "compatibleSectionRoles": [
+    "media-gallery",
+    "section-cta"
+  ],
+  "typographySlots": [],
+  "$fragments": [
+    "media-side",
+    "color-roles"
+  ],
+  "$fragmentOverrides": {
+    "mediaSide": {
+      "default": "right",
+      "note": "Which column the media sits in (editorial variant).",
+      "showIf": {
+        "variant": "editorial"
+      },
+      "omitOptions": [
+        "above",
+        "below"
+      ]
+    },
+    "background": {
+      "default": "section"
+    },
+    "textTone": {
+      "showIf": {
+        "variant": "standard"
+      }
+    }
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "variant",
+      "label": {
+        "en-US": "Variant"
+      },
+      "default": "standard",
+      "group": "content",
+      "options": [
+        {
+          "value": "standard",
+          "label": {
+            "en-US": "Standard hero"
+          }
+        },
+        {
+          "value": "promotion",
+          "label": {
+            "en-US": "Promotion banner"
+          }
+        },
+        {
+          "value": "editorial",
+          "label": {
+            "en-US": "Editorial masthead"
+          }
+        }
+      ]
+    },
+    {
+      "type": "richtext-single",
+      "id": "title",
+      "label": {
+        "en-US": "Title"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "heading1",
+      "defaultPresetKey": "display",
+      "validation": {
+        "maxLength": 100
+      }
+    },
+    {
+      "type": "text",
+      "id": "editorialEyebrow",
+      "label": {
+        "en-US": "Eyebrow / Kicker"
+      },
+      "group": "content",
+      "translatable": true,
+      "note": "Small kicker above the masthead title (editorial variant).",
+      "showIf": {
+        "variant": "editorial"
+      }
+    },
+    {
+      "type": "richtext-inline",
+      "id": "subtitle",
+      "label": {
+        "en-US": "Subtitle"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "heading3",
+      "defaultPresetKey": "section-title",
+      "showIf": {
+        "variant": ["standard", "editorial"]
+      }
+    },
+    {
+      "type": "richtext-block",
+      "id": "body",
+      "label": {
+        "en-US": "Body Text"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "body",
+      "defaultPresetKey": "body",
+      "note": "Description or subtitle text below the heading",
+      "showIf": {
+        "variant": ["standard", "editorial"]
+      }
+    },
+    {
+      "type": "richtext-block",
+      "id": "description",
+      "label": {
+        "en-US": "Description"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "body",
+      "defaultPresetKey": "body",
+      "showIf": {
+        "variant": "promotion"
+      }
+    },
+    {
+      "type": "image",
+      "id": "backgroundImage",
+      "label": {
+        "en-US": "Background Image"
+      },
+      "group": "content",
+      "note": "Full-width background image from CMS"
+    },
+    {
+      "type": "text",
+      "id": "ctaText",
+      "label": {
+        "en-US": "Button Text"
+      },
+      "group": "content",
+      "translatable": true
+    },
+    {
+      "type": "url",
+      "id": "ctaUrl",
+      "label": {
+        "en-US": "Button URL"
+      },
+      "group": "content"
+    },
+    {
+      "type": "select",
+      "id": "ctaStyle",
+      "label": {
+        "en-US": "Button Style"
+      },
+      "default": "primary",
+      "group": "content",
+      "options": [
+        {
+          "value": "primary",
+          "label": {
+            "en-US": "Primary"
+          }
+        },
+        {
+          "value": "secondary",
+          "label": {
+            "en-US": "Secondary"
+          }
+        },
+        {
+          "value": "outline",
+          "label": {
+            "en-US": "Outline"
+          }
+        }
+      ],
+      "showIf": {
+        "variant": ["standard", "editorial"]
+      }
+    },
+    {
+      "type": "toggle",
+      "id": "showCountdown",
+      "label": {
+        "en-US": "Show Countdown Timer"
+      },
+      "default": false,
+      "group": "content",
+      "showIf": {
+        "variant": "promotion"
+      }
+    },
+    {
+      "type": "text",
+      "id": "endDate",
+      "label": {
+        "en-US": "End Date (YYYY-MM-DD)"
+      },
+      "group": "content",
+      "showIf": {
+        "variant": "promotion",
+        "showCountdown": true
+      },
+      "validation": {
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+      }
+    },
+    {
+      "type": "toggle",
+      "id": "displayWordmark",
+      "label": {
+        "en-US": "Display Wordmark"
+      },
+      "default": false,
+      "group": "style",
+      "note": "Render the title as a large full-bleed wordmark overlaid on the hero (editorial style).",
+      "showIf": {
+        "variant": "standard"
+      }
+    },
+    {
+      "type": "select",
+      "id": "textAlign",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "default": "center",
+      "group": "layout",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "showIf": {
+        "variant": "standard"
+      }
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": {
+        "en-US": "Height"
+      },
+      "default": "large",
+      "group": "style",
+      "note": "How tall the hero is. Sizes are relative to the variant: the standard hero uses fixed bands, the editorial masthead uses viewport fractions.",
+      "options": [
+        {
+          "value": "compact",
+          "label": {
+            "en-US": "Compact (content height)"
+          }
+        },
+        {
+          "value": "small",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "medium",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "large",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "viewport",
+          "label": {
+            "en-US": "Full viewport (100vh)"
+          }
+        }
+      ],
+      "showIf": {
+        "variant": ["standard", "editorial"]
+      }
+    },
+    {
+      "type": "toggle",
+      "id": "overlay",
+      "label": {
+        "en-US": "Dark Overlay"
+      },
+      "default": true,
+      "group": "style",
+      "note": "Adds a dark overlay over the background image",
+      "showIf": {
+        "variant": "standard"
+      }
+    },
+    {
+      "type": "color",
+      "id": "overlayColor",
+      "label": {
+        "en-US": "Overlay Color"
+      },
+      "default": "#000000",
+      "group": "style",
+      "note": "Color of the overlay layer",
+      "showIf": {
+        "variant": "standard"
+      }
+    },
+    {
+      "type": "range",
+      "id": "overlayOpacity",
+      "label": {
+        "en-US": "Overlay Opacity"
+      },
+      "default": 0.4,
+      "group": "style",
+      "min": 0,
+      "max": 1,
+      "step": 0.05,
+      "note": "Opacity of the overlay layer (0 = transparent, 1 = opaque)",
+      "showIf": {
+        "variant": "standard"
+      }
+    },
+    {
+      "type": "toggle",
+      "id": "fullViewport",
+      "label": {
+        "en-US": "Full Viewport Height"
+      },
+      "default": false,
+      "group": "style",
+      "note": "Legacy override kept so heroes authored before Height gained a \"Full viewport\" option keep rendering at 100vh. While it is on it wins over Height — turn it off to use Height instead.",
+      "showIf": {
+        "variant": ["standard", "editorial"]
+      }
+    },
+    {
+      "type": "select",
+      "id": "scrollCue",
+      "label": { "en-US": "Scroll-Down Cue" },
+      "default": "none",
+      "group": "style",
+      "note": "Animated scroll hint at the bottom of the hero. Best with Full Viewport Height.",
+      "options": [
+        { "value": "none", "label": { "en-US": "None" } },
+        { "value": "chevron", "label": { "en-US": "Chevron" } },
+        { "value": "line", "label": { "en-US": "Line" } }
+      ],
+      "showIf": { "variant": ["standard", "editorial"] }
+    },
+    {
+      "type": "text",
+      "id": "scrollCueLabel",
+      "label": { "en-US": "Scroll Cue Label" },
+      "group": "style",
+      "translatable": true,
+      "note": "Optional small caption above the cue (e.g. Scroll).",
+      "showIf": { "variant": ["standard", "editorial"] }
+    },
+    {
+      "type": "select",
+      "id": "scrollCueAction",
+      "label": { "en-US": "Scroll Cue Behavior" },
+      "default": "decorative",
+      "group": "style",
+      "note": "Make the scroll cue clickable to smooth-scroll to the next section.",
+      "options": [
+        { "value": "decorative", "label": { "en-US": "Decorative only" } },
+        { "value": "scrollToNext", "label": { "en-US": "Scroll to next section" } }
+      ],
+      "showIf": { "variant": ["standard", "editorial"] }
+    },
+    {
+      "type": "range",
+      "id": "parallaxIntensity",
+      "label": {
+        "en-US": "Parallax Intensity"
+      },
+      "default": 0,
+      "group": "advanced",
+      "options": {
+        "min": 0,
+        "max": 1,
+        "step": 0.1
+      },
+      "showIf": {
+        "variant": "standard"
+      }
+    },
+    {
+      "type": "select",
+      "id": "pointerParallax",
+      "label": {
+        "en-US": "Pointer Parallax"
+      },
+      "default": "off",
+      "group": "advanced",
+      "note": "Hero content subtly follows the cursor on desktop pointer devices; ignored on touch and with reduced motion.",
+      "options": [
+        {
+          "value": "off",
+          "label": {
+            "en-US": "Off"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "strong",
+          "label": {
+            "en-US": "Strong"
+          }
+        }
+      ],
+      "showIf": {
+        "variant": "standard"
+      }
+    },
+    {
+      "type": "select",
+      "id": "overlayGradientDirection",
+      "label": {
+        "en-US": "Gradient Direction"
+      },
+      "default": "none",
+      "group": "advanced",
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "top",
+          "label": {
+            "en-US": "Top"
+          }
+        },
+        {
+          "value": "bottom",
+          "label": {
+            "en-US": "Bottom"
+          }
+        },
+        {
+          "value": "both",
+          "label": {
+            "en-US": "Both"
+          }
+        }
+      ],
+      "showIf": {
+        "variant": "standard"
+      }
+    },
+    {
+      "type": "range",
+      "id": "overlayGradientOpacity",
+      "label": {
+        "en-US": "Gradient Opacity"
+      },
+      "default": 0.4,
+      "group": "advanced",
+      "options": {
+        "min": 0,
+        "max": 0.8,
+        "step": 0.05
+      },
+      "showIf": {
+        "variant": "standard"
+      }
+    },
+    {
+      "type": "color",
+      "id": "overlayGradientColor",
+      "label": {
+        "en-US": "Gradient Color"
+      },
+      "default": "#000000",
+      "group": "advanced",
+      "showIf": {
+        "variant": "standard"
+      }
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "lg",
+      "group": "appearance"
+    },
+    {
+      "id": "contentAlignH",
+      "type": "select",
+      "label": {
+        "en-US": "Content Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "center",
+      "group": "layout",
+      "showIf": {
+        "variant": [
+          "standard",
+          "promotion"
+        ]
+      }
+    },
+    {
+      "id": "contentAlignV",
+      "type": "select",
+      "label": {
+        "en-US": "Vertical Alignment"
+      },
+      "options": [
+        {
+          "value": "top",
+          "label": {
+            "en-US": "Top"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "bottom",
+          "label": {
+            "en-US": "Bottom"
+          }
+        }
+      ],
+      "default": "center",
+      "group": "layout",
+      "showIf": {
+        "variant": "standard"
+      }
+    },
+    {
+      "type": "select",
+      "id": "editorialMediaRatio",
+      "label": {
+        "en-US": "Media Aspect Ratio"
+      },
+      "default": "portrait",
+      "group": "layout",
+      "note": "Aspect ratio of the media column on desktop (editorial variant).",
+      "options": [
+        {
+          "value": "portrait",
+          "label": {
+            "en-US": "Portrait (3:4)"
+          }
+        },
+        {
+          "value": "landscape",
+          "label": {
+            "en-US": "Landscape (4:3)"
+          }
+        },
+        {
+          "value": "square",
+          "label": {
+            "en-US": "Square (1:1)"
+          }
+        }
+      ],
+      "showIf": {
+        "variant": "editorial"
+      }
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface Style"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance",
+      "showIf": {
+        "variant": "promotion"
+      }
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Border Radius"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "pill",
+          "label": {
+            "en-US": "Pill"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance",
+      "showIf": {
+        "variant": "promotion"
+      }
+    },
+    {
+      "type": "repeater",
+      "id": "slideshowImages",
+      "label": {
+        "en-US": "Cover Slideshow"
+      },
+      "group": "slideshow",
+      "note": "Add 2 or more images to cross-fade the hero background as a slideshow. When set, this overrides the single Background Image. Great behind a wordmark hero.",
+      "showIf": {
+        "variant": "standard"
+      },
+      "fields": [
+        {
+          "type": "media",
+          "id": "image",
+          "label": {
+            "en-US": "Image"
+          }
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "slideshowInterval",
+      "label": {
+        "en-US": "Slide Interval (seconds)"
+      },
+      "default": 6,
+      "group": "slideshow",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "note": "Seconds each slide is shown before cross-fading to the next.",
+      "showIf": {
+        "variant": "standard"
+      }
+    },
+    {
+      "type": "toggle",
+      "id": "slideshowKenBurns",
+      "label": {
+        "en-US": "Slow Zoom (Ken Burns)"
+      },
+      "default": false,
+      "group": "slideshow",
+      "note": "Add a slow cinematic zoom to each slide as it is shown. Disabled automatically for reduced-motion visitors.",
+      "showIf": {
+        "variant": "standard"
+      }
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    },
+    {
+      "id": "advanced",
+      "label": {
+        "en-US": "Advanced"
+      }
+    },
+    {
+      "id": "slideshow",
+      "label": {
+        "en-US": "Slideshow"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en-US": "Light Banner"
+      },
+      "settings": {
+        "variant": "standard",
+        "textAlign": "center",
+        "height": "medium",
+        "overlay": false,
+        "background": "surface",
+        "textTone": "section"
+      },
+      "description": {
+        "en-US": "Light-background banner with centered text. Ideal for feature announcements without a hero image."
+      },
+      "category": "hero",
+      "isDefault": true
+    },
+    {
+      "name": {
+        "en-US": "Dark Banner with Image"
+      },
+      "settings": {
+        "variant": "standard",
+        "textAlign": "center",
+        "height": "large",
+        "overlay": true,
+        "background": "inverse",
+        "textTone": "inverse"
+      },
+      "description": {
+        "en-US": "Full-height dark banner with an overlay image. Best for dramatic campaign headers."
+      },
+      "category": "hero"
+    },
+    {
+      "name": {
+        "en-US": "Image Banner"
+      },
+      "settings": {
+        "variant": "standard",
+        "textAlign": "center",
+        "height": "large",
+        "overlay": true,
+        "textTone": "inverse"
+      },
+      "description": {
+        "en-US": "Full-bleed image banner with dark overlay and centered text. Use when the visual is the hero."
+      },
+      "category": "hero"
+    },
+    {
+      "name": {
+        "en-US": "Editorial masthead"
+      },
+      "settings": {
+        "variant": "editorial",
+        "mediaSide": "right",
+        "editorialMediaRatio": "portrait",
+        "editorialEyebrow": "Studio notes",
+        "title": "A considered approach to space and light",
+        "subtitle": "Design-led projects, documented with care",
+        "ctaText": "Explore the work",
+        "ctaUrl": "#",
+        "ctaStyle": "outline"
+      },
+      "description": {
+        "en-US": "Two-column magazine masthead: oversized title, eyebrow and CTA beside a full-bleed media column. The flagship first impression."
+      },
+      "category": "hero"
+    },
+    {
+      "name": {
+        "en-US": "Promotion Banner"
+      },
+      "settings": {
+        "variant": "promotion",
+        "internalPadding": "none",
+        "contentAlignH": "left",
+        "surfaceStyle": "none",
+        "borderRadius": "none",
+        "showCountdown": false,
+        "background": "section"
+      },
+      "description": {
+        "en-US": "Compact CTA banner with optional countdown timer. Use for promotional callouts in CTA sections."
+      },
+      "category": "cta"
+    }
+  ],
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Entire block container"
+    },
+    "media": {
+      "kind": "media",
+      "selector": "[data-target='media']",
+      "description": "Background image/video",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path",
+        "motion-path"
+      ],
+      "canTrigger": true
+    },
+    "heading": {
+      "kind": "text",
+      "selector": "[data-target='heading']",
+      "description": "Title text",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path",
+        "motion-path"
+      ],
+      "canTrigger": true
+    },
+    "subheading": {
+      "kind": "text",
+      "selector": "[data-target='subheading']",
+      "description": "Subtitle text",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    },
+    "overlay": {
+      "kind": "decorative",
+      "selector": "[data-target='overlay']",
+      "description": "Color/gradient overlay",
+      "multiple": false,
+      "animatable": [
+        "opacity"
+      ],
+      "canTrigger": false
+    },
+    "body": {
+      "kind": "text",
+      "selector": "[data-target='body']",
+      "description": "Subtitle or description text",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    },
+    "cta": {
+      "kind": "decorative",
+      "selector": "[data-target='cta']",
+      "description": "Call-to-action button",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": true
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": [],
+    "animatableVars": [
+      { "name": "--motion-tint", "type": "color", "description": "Overlay tint color" },
+      { "name": "--motion-content-opacity", "type": "number", "description": "Content area opacity for scroll fade" }
+    ]
+  }
+}

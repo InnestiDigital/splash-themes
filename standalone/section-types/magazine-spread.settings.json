@@ -1,0 +1,55 @@
+{
+  "type": "magazine-spread",
+  "label": "Magazine Spread",
+  "description": "Asymmetric twelve-column spread: a lede across the text side, a held plate beside it, the body running under both, a closing full-width plate, and a pull quote laid over its trailing edge.",
+  "usesContainer": true,
+  "layoutSlots": [
+    { "role": "section-heading", "required": false, "multiple": false, "description": "Lede — the opening title block, across the text side of the spread" },
+    { "role": "editorial-body", "required": true, "multiple": true, "description": "Body copy (runs down the text column, under the lede and beside the held plate)" },
+    { "role": "media-gallery", "required": false, "multiple": true, "description": "Held plate — media beside the lede and the top of the body; stays put while the body scrolls past on wide screens" },
+    { "role": "media-chrome", "required": false, "multiple": true, "description": "Closing plate — media across the foot of the spread, laid out two-up" },
+    { "role": "supporting-text", "required": false, "multiple": true, "description": "Pull quote — laid over the trailing corner of the closing plate" }
+  ],
+  "settings": [
+    {
+      "id": "layoutPreset",
+      "type": "select",
+      "label": "Spread Balance",
+      "description": "How the widest tier divides its twelve columns between the text side and the held plate",
+      "default": "balanced",
+      "group": "layout",
+      "options": [
+        { "value": "balanced", "label": "Balanced (8 / 4)" },
+        { "value": "media-forward", "label": "Media Forward (6 / 6)" },
+        { "value": "text-forward", "label": "Text Forward (9 / 3)" }
+      ]
+    },
+    {
+      "id": "spreadGap",
+      "type": "select",
+      "label": "Spread Spacing",
+      "description": "Space between the zones of the spread, horizontally and vertically",
+      "default": "lg",
+      "group": "layout",
+      "options": [
+        { "value": "sm", "label": "Tight" },
+        { "value": "md", "label": "Normal" },
+        { "value": "lg", "label": "Spacious" },
+        { "value": "xl", "label": "Editorial" }
+      ]
+    },
+    {
+      "id": "pullQuoteAlign",
+      "type": "select",
+      "label": "Pull Quote Position",
+      "description": "Where the pull quote sits within the trailing corner it overlays",
+      "default": "bottom",
+      "group": "layout",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "middle", "label": "Middle" },
+        { "value": "bottom", "label": "Bottom" }
+      ]
+    }
+  ]
+}

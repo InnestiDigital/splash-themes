@@ -1,0 +1,247 @@
+{
+  "component": "StackedCards",
+  "type": "stacked-cards",
+  "label": {
+    "en-US": "Stacked Cards"
+  },
+  "category": "media",
+  "description": {
+    "en-US": "A scroll-driven card stack: each card pins as you scroll and the next slides up over it, leaving a peeking header spine — like a hand of cards fanning closed. Ideal for narrating a process, phases, or a shortlist of works. Pure-CSS sticky pinning with an optional scroll-driven depth recede, reduced-motion safe, folds to a plain vertical list on mobile."
+  },
+  "compatibleSectionRoles": [
+    "media-gallery",
+    "content",
+    "editorial-body"
+  ],
+  "typographySlots": [],
+  "$fragments": [
+    "media-side"
+  ],
+  "$fragmentOverrides": {
+    "mediaSide": {
+      "default": "right",
+      "showIf": {
+        "mediaLayout": "side"
+      }
+    }
+  },
+  "settings": [
+    {
+      "type": "repeater",
+      "id": "cards",
+      "label": { "en-US": "Cards" },
+      "group": "content",
+      "maxItems": 8,
+      "fields": [
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": { "en-US": "Eyebrow (e.g. 01 · Diagnosi)" },
+          "translatable": true
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": { "en-US": "Title" },
+          "translatable": true
+        },
+        {
+          "type": "text",
+          "id": "body",
+          "label": { "en-US": "Body" },
+          "translatable": true
+        },
+        {
+          "type": "media",
+          "id": "image",
+          "label": { "en-US": "Image (optional)" }
+        },
+        {
+          "type": "text",
+          "id": "link",
+          "label": { "en-US": "Link URL (optional)" }
+        },
+        {
+          "type": "text",
+          "id": "linkLabel",
+          "label": { "en-US": "Link label" },
+          "default": "Read more",
+          "translatable": true
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "cardHeight",
+      "label": { "en-US": "Card height (desktop)" },
+      "default": "standard",
+      "group": "layout",
+      "note": "How tall each card stands while pinned. On mobile the cards size to content.",
+      "options": [
+        { "value": "compact", "label": { "en-US": "Compact (60vh)" } },
+        { "value": "standard", "label": { "en-US": "Standard (74vh)" } },
+        { "value": "tall", "label": { "en-US": "Tall (86vh)" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "peek",
+      "label": { "en-US": "Stack peek" },
+      "default": "standard",
+      "group": "layout",
+      "note": "How much of each pinned card's header stays visible as the next card stacks over it.",
+      "options": [
+        { "value": "tight", "label": { "en-US": "Tight" } },
+        { "value": "standard", "label": { "en-US": "Standard" } },
+        { "value": "roomy", "label": { "en-US": "Roomy" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "mediaLayout",
+      "label": { "en-US": "Media layout" },
+      "default": "side",
+      "group": "layout",
+      "note": "How a card's image sits relative to its text. 'None' hides images even if set.",
+      "options": [
+        { "value": "side", "label": { "en-US": "Side by side" } },
+        { "value": "background", "label": { "en-US": "Full-bleed background" } },
+        { "value": "none", "label": { "en-US": "Text only" } }
+      ]
+    },
+    {
+      "id": "measureWidth",
+      "type": "select",
+      "label": { "en-US": "Content width" },
+      "default": "wide",
+      "canvasDefault": "full",
+      "group": "layout",
+      "options": [
+        { "value": "content", "label": { "en-US": "Reading (65ch)" } },
+        { "value": "narrow", "label": { "en-US": "Narrow (45rem)" } },
+        { "value": "standard", "label": { "en-US": "Standard (65rem)" } },
+        { "value": "wide", "label": { "en-US": "Wide (80rem)" } },
+        { "value": "full", "label": { "en-US": "Full" } }
+      ]
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": { "en-US": "Border radius" },
+      "default": "md",
+      "group": "appearance",
+      "options": ["none", "sm", "md", "lg"]
+    },
+    {
+      "type": "select",
+      "id": "shadowDepth",
+      "label": { "en-US": "Stack shadow" },
+      "default": "subtle",
+      "group": "appearance",
+      "note": "Drop shadow under each card so the deck reads as physically layered as cards stack over one another.",
+      "options": [
+        { "value": "none", "label": { "en-US": "None" } },
+        { "value": "subtle", "label": { "en-US": "Subtle" } },
+        { "value": "bold", "label": { "en-US": "Bold" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "depth",
+      "label": { "en-US": "Depth recede" },
+      "default": "off",
+      "group": "motion",
+      "note": "As each card stacks over the one below, the buried card recedes slightly (scale + dim) for a sense of physical depth. Desktop + motion only; folds off on mobile, in the editor, and under reduced-motion.",
+      "options": [
+        { "value": "off", "label": { "en-US": "Off (flat stack)" } },
+        { "value": "on", "label": { "en-US": "On (recede + dim)" } }
+      ]
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "layout", "label": { "en-US": "Layout" } },
+    { "id": "appearance", "label": { "en-US": "Appearance" } },
+    { "id": "motion", "label": { "en-US": "Motion" } }
+  ],
+  "presets": [
+    {
+      "name": { "en-US": "Our Process" },
+      "settings": {
+        "cardHeight": "standard",
+        "peek": "standard",
+        "mediaLayout": "side",
+        "measureWidth": "wide",
+        "borderRadius": "md",
+        "shadowDepth": "subtle",
+        "cards": [
+          {
+            "eyebrow": { "en-US": "01 · Diagnosi", "it": "01 · Diagnosi" },
+            "title": { "en-US": "We read the building first", "it": "Prima leggiamo l'edificio" },
+            "body": { "en-US": "Every intervention begins with listening. We survey the fabric, study the historical layering, and map what to conserve and what to transform.", "it": "Ogni intervento nasce dall'ascolto. Rileviamo la fabbrica, studiamo la stratificazione storica e definiamo cosa conservare e cosa trasformare." },
+            "image": "",
+            "link": "",
+            "linkLabel": { "en-US": "Read more", "it": "Scopri di più" }
+          },
+          {
+            "eyebrow": { "en-US": "02 · Approach", "it": "02 · Approccio" },
+            "title": { "en-US": "A system that adapts to context", "it": "Un sistema che si adatta al contesto" },
+            "body": { "en-US": "Discreet, reversible solutions in close dialogue with the Soprintendenza — balancing authenticity with performance.", "it": "Soluzioni discrete e reversibili, in stretto dialogo con la Soprintendenza — fra autenticità e prestazioni." },
+            "image": "",
+            "link": "",
+            "linkLabel": { "en-US": "Read more", "it": "Scopri di più" }
+          },
+          {
+            "eyebrow": { "en-US": "03 · Cantiere", "it": "03 · Cantiere" },
+            "title": { "en-US": "Craft executed to the letter", "it": "Esecuzione a regola d'arte" },
+            "body": { "en-US": "Clear responsibilities, shared decisions and regular reviews keep the work aligned from start to finish.", "it": "Responsabilità chiare, decisioni condivise e revisioni regolari mantengono il lavoro coerente dall'inizio alla fine." },
+            "image": "",
+            "link": "",
+            "linkLabel": { "en-US": "Read more", "it": "Scopri di più" }
+          },
+          {
+            "eyebrow": { "en-US": "04 · Consegna", "it": "04 · Consegna" },
+            "title": { "en-US": "A space returned to life", "it": "Uno spazio restituito alla vita" },
+            "body": { "en-US": "We hand back a place that carries its history forward — cared for, compliant, and ready for the next chapter.", "it": "Restituiamo un luogo che porta avanti la propria storia — curato, a norma e pronto per il capitolo successivo." },
+            "image": "",
+            "link": "",
+            "linkLabel": { "en-US": "Read more", "it": "Scopri di più" }
+          }
+        ]
+      },
+      "description": {
+        "en-US": "Four phases of the studio's method as a scroll-stacking card deck — diagnosis to delivery, one pinned card at a time."
+      },
+      "category": "media",
+      "isDefault": true
+    }
+  ],
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Entire stacked-cards deck"
+    },
+    "cards": {
+      "kind": "group",
+      "selector": "[data-target='cards']",
+      "description": "The card stack",
+      "multiple": false
+    },
+    "card": {
+      "kind": "group",
+      "selector": "[data-target='card']",
+      "description": "Individual card",
+      "multiple": true,
+      "addressable": true,
+      "animatable": ["opacity", "transform", "blur"],
+      "canTrigger": true
+    }
+  },
+  "motionSupport": {
+    "levels": ["local", "group"],
+    "excluded": []
+  },
+  "motionHints": {
+    "containsDynamicChildren": true
+  }
+}

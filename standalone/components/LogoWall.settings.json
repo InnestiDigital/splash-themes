@@ -1,0 +1,263 @@
+{
+  "component": "LogoWall",
+  "type": "logo-wall",
+  "label": {
+    "en-US": "Logo Wall"
+  },
+  "category": "content",
+  "compatibleSectionRoles": [
+    "content",
+    "supporting-text",
+    "media-gallery"
+  ],
+  "description": {
+    "en-US": "A wall of client / partner / press logos — responsive auto-fit grid or continuous marquee, with an editorial monochrome-until-hover treatment."
+  },
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "toggle",
+      "id": "showTitle",
+      "label": {
+        "en-US": "Show Block Title"
+      },
+      "default": true,
+      "group": "content",
+      "note": "Disable when the section already provides a heading block."
+    },
+    {
+      "type": "richtext-single",
+      "id": "title",
+      "label": {
+        "en-US": "Section Title"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "heading2",
+      "defaultPresetKey": "section-title"
+    },
+    {
+      "type": "repeater",
+      "id": "logos",
+      "label": {
+        "en-US": "Logos"
+      },
+      "group": "content",
+      "maxItems": 24,
+      "fields": [
+        {
+          "type": "image",
+          "id": "image",
+          "label": { "en-US": "Logo Image" }
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": { "en-US": "Name (alt text)" }
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": { "en-US": "Link (optional)" }
+        }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "grouped",
+      "label": {
+        "en-US": "Group into tiers"
+      },
+      "default": false,
+      "group": "content",
+      "note": "Organize logos into labeled tiers (e.g. Clients / Partners / Press) instead of one flat wall. Uses the Tiers below; the flat Logos list above is used when this is off."
+    },
+    {
+      "type": "repeater",
+      "id": "groups",
+      "label": {
+        "en-US": "Tiers"
+      },
+      "group": "content",
+      "maxItems": 8,
+      "showIf": {
+        "grouped": [true]
+      },
+      "fields": [
+        {
+          "type": "richtext-single",
+          "id": "label",
+          "label": { "en-US": "Tier Label" },
+          "translatable": true,
+          "typographyRole": "heading3"
+        },
+        {
+          "type": "repeater",
+          "id": "logos",
+          "label": { "en-US": "Logos" },
+          "maxItems": 24,
+          "fields": [
+            {
+              "type": "image",
+              "id": "image",
+              "label": { "en-US": "Logo Image" }
+            },
+            {
+              "type": "text",
+              "id": "name",
+              "label": { "en-US": "Name (alt text)" }
+            },
+            {
+              "type": "url",
+              "id": "link",
+              "label": { "en-US": "Link (optional)" }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      },
+      "default": "grid",
+      "group": "content",
+      "options": [
+        { "value": "grid",    "label": { "en-US": "Auto-fit grid" } },
+        { "value": "marquee", "label": { "en-US": "Continuous marquee" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "logoSize",
+      "label": {
+        "en-US": "Logo Size"
+      },
+      "default": "md",
+      "group": "content",
+      "options": [
+        { "value": "sm", "label": { "en-US": "Small" } },
+        { "value": "md", "label": { "en-US": "Medium" } },
+        { "value": "lg", "label": { "en-US": "Large" } }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "monochrome",
+      "label": {
+        "en-US": "Monochrome until hover"
+      },
+      "default": true,
+      "group": "content",
+      "note": "Desaturates and dims logos until hover / focus for an editorial, palette-consistent look."
+    },
+    {
+      "type": "select",
+      "id": "marqueeSpeed",
+      "label": {
+        "en-US": "Marquee Speed"
+      },
+      "default": "normal",
+      "group": "content",
+      "showIf": {
+        "layout": ["marquee"]
+      },
+      "options": [
+        { "value": "slow",   "label": { "en-US": "Slow" } },
+        { "value": "normal", "label": { "en-US": "Normal" } },
+        { "value": "fast",   "label": { "en-US": "Fast" } }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "pauseOnHover",
+      "label": {
+        "en-US": "Pause on Hover"
+      },
+      "default": true,
+      "group": "content",
+      "showIf": {
+        "layout": ["marquee"]
+      }
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface"
+      },
+      "options": [
+        { "value": "none",   "label": { "en-US": "None" } },
+        { "value": "subtle", "label": { "en-US": "Subtle" } },
+        { "value": "filled", "label": { "en-US": "Filled" } }
+      ],
+      "default": "none",
+      "group": "content"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Corner Radius"
+      },
+      "options": [
+        "none",
+        "sm",
+        "md",
+        "lg",
+        "pill"
+      ],
+      "default": "none",
+      "group": "content"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "none",
+      "group": "content"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": { "en-US": "Content" }
+    }
+  ],
+  "motionSupport": {
+    "levels": ["local", "group"],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    },
+    "logos": {
+      "selector": "[data-target='logos']",
+      "description": "Logo wall track / grid (one per tier when grouped)",
+      "multiple": true,
+      "kind": "group"
+    },
+    "logo": {
+      "selector": "[data-target='logo']",
+      "description": "Individual logo cell",
+      "multiple": true,
+      "addressable": true,
+      "animatable": ["opacity", "transform", "blur"],
+      "canTrigger": true,
+      "kind": "group"
+    }
+  }
+}

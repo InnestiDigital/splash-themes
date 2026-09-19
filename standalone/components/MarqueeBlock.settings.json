@@ -1,0 +1,271 @@
+{
+  "component": "MarqueeBlock",
+  "type": "marquee-block",
+  "label": {
+    "en-US": "Marquee"
+  },
+  "description": {
+    "en-US": "Horizontally scrolling content. Use 1 row for a classic ticker; 2 or 3 rows for a multi-row marquee with independent direction/speed per row."
+  },
+  "typographySlots": [
+    {
+      "slot": "item",
+      "label": "Item Text",
+      "defaultRole": "label"
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "rows",
+      "label": {
+        "en-US": "Row Count"
+      },
+      "default": 1,
+      "group": "content",
+      "options": [
+        { "value": 1, "label": { "en-US": "1 (Ticker)" } },
+        { "value": 2, "label": { "en-US": "2 Rows" } },
+        { "value": 3, "label": { "en-US": "3 Rows" } }
+      ]
+    },
+    {
+      "type": "repeater",
+      "id": "rowConfigs",
+      "label": {
+        "en-US": "Rows"
+      },
+      "group": "content",
+      "maxItems": 3,
+      "fields": [
+        {
+          "type": "select",
+          "id": "direction",
+          "label": {
+            "en-US": "Direction"
+          },
+          "default": "left",
+          "options": [
+            { "value": "left", "label": { "en-US": "Left" } },
+            { "value": "right", "label": { "en-US": "Right" } }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "speed",
+          "label": {
+            "en-US": "Speed"
+          },
+          "default": "medium",
+          "options": [
+            { "value": "slow", "label": { "en-US": "Slow" } },
+            { "value": "medium", "label": { "en-US": "Medium" } },
+            { "value": "fast", "label": { "en-US": "Fast" } }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "separator",
+          "label": {
+            "en-US": "Separator"
+          },
+          "default": "pipe",
+          "options": [
+            { "value": "none", "label": { "en-US": "None" } },
+            { "value": "pipe", "label": { "en-US": "Pipe (|)" } },
+            { "value": "dot", "label": { "en-US": "Dot (•)" } },
+            { "value": "dash", "label": { "en-US": "Dash (—)" } }
+          ]
+        },
+        {
+          "type": "repeater",
+          "id": "items",
+          "label": {
+            "en-US": "Items"
+          },
+          "fields": [
+            {
+              "type": "select",
+              "id": "itemType",
+              "label": {
+                "en-US": "Type"
+              },
+              "default": "text",
+              "options": [
+                { "value": "text" },
+                { "value": "image" }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "text",
+              "label": {
+                "en-US": "Text"
+              },
+              "translatable": true
+            },
+            {
+              "type": "image",
+              "id": "image",
+              "label": {
+                "en-US": "Image"
+              }
+            },
+            {
+              "type": "url",
+              "id": "href",
+              "label": {
+                "en-US": "Link"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "richtext-block",
+      "id": "subtitle",
+      "label": {
+        "en-US": "Subtitle (below rows)"
+      },
+      "group": "content",
+      "translatable": true,
+      "note": "Centered paragraph rendered below the marquee rows."
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": {
+        "en-US": "Text Size"
+      },
+      "default": "md",
+      "group": "style",
+      "options": [
+        { "value": "sm", "label": { "en-US": "Small" } },
+        { "value": "md", "label": { "en-US": "Medium" } },
+        { "value": "lg", "label": { "en-US": "Large" } }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": {
+        "en-US": "Gap"
+      },
+      "default": 48,
+      "group": "style",
+      "options": {
+        "min": 16,
+        "max": 96,
+        "step": 8,
+        "unit": "px"
+      }
+    },
+    {
+      "type": "toggle",
+      "id": "pauseOnHover",
+      "label": {
+        "en-US": "Pause on Hover"
+      },
+      "default": true,
+      "group": "behavior"
+    },
+    {
+      "type": "toggle",
+      "id": "scrollReactive",
+      "label": { "en-US": "Scroll-reactive speed" },
+      "default": false,
+      "group": "behavior",
+      "note": "The marquee speeds up as the reader scrolls and eases toward reverse on scroll-up, settling back to its base speed when the page is still. Respects reduced-motion (falls back to constant speed)."
+    },
+    {
+      "type": "text",
+      "id": "ariaLabel",
+      "label": {
+        "en-US": "Accessibility Label"
+      },
+      "default": "Scrolling content",
+      "group": "content"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Background"
+      },
+      "options": [
+        { "value": "none", "label": { "en-US": "None" } },
+        { "value": "section", "label": { "en-US": "Section" } },
+        { "value": "surface", "label": { "en-US": "Surface" } },
+        { "value": "accent", "label": { "en-US": "Accent" } },
+        { "value": "transparent", "label": { "en-US": "Transparent" } }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "edgeFade",
+      "type": "select",
+      "label": { "en-US": "Edge Fade" },
+      "default": "soft",
+      "group": "appearance",
+      "note": "Soft mask so items dissolve at the container edges instead of hard-clipping mid-word. Turn off for crisp edges inside a bordered/surface band; use Wide for a deeper dissolve.",
+      "options": [
+        { "value": "none", "label": { "en-US": "None (hard edges)" } },
+        { "value": "soft", "label": { "en-US": "Soft (default)" } },
+        { "value": "wide", "label": { "en-US": "Wide fade" } }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": { "en-US": "Content" }
+    },
+    {
+      "id": "appearance",
+      "label": { "en-US": "Appearance" }
+    },
+    {
+      "id": "behavior",
+      "label": { "en-US": "Behavior" }
+    },
+    {
+      "id": "style",
+      "label": { "en-US": "Style" }
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Marquee container",
+      "kind": "root"
+    },
+    "track": {
+      "selector": "[data-target='track']",
+      "description": "First scrolling row",
+      "animatable": ["opacity"],
+      "kind": "media"
+    }
+  },
+  "motionSupport": {
+    "levels": ["local"],
+    "excluded": []
+  }
+}

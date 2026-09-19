@@ -1,0 +1,136 @@
+{
+  "component": "FigureCaption",
+  "type": "figure-caption",
+  "label": {
+    "en-US": "Figure with Caption"
+  },
+  "category": "media",
+  "compatibleSectionRoles": [
+    "editorial-body",
+    "media-gallery",
+    "supporting-text"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "image",
+      "id": "image",
+      "label": {
+        "en-US": "Image"
+      },
+      "group": "content"
+    },
+    {
+      "type": "text",
+      "id": "altText",
+      "label": {
+        "en-US": "Alt Text"
+      },
+      "group": "content",
+      "translatable": true,
+      "note": "Describes the image for screen readers and when the image fails to load"
+    },
+    {
+      "type": "richtext-inline",
+      "id": "caption",
+      "label": {
+        "en-US": "Caption"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "caption",
+      "defaultPresetKey": "caption"
+    },
+    {
+      "type": "richtext-single",
+      "id": "credit",
+      "label": {
+        "en-US": "Credit"
+      },
+      "group": "content",
+      "translatable": true,
+      "note": "Photographer, source, or attribution. Rendered beneath the caption.",
+      "typographyRole": "caption",
+      "defaultPresetKey": "caption"
+    },
+    {
+      "id": "textAlign",
+      "type": "select",
+      "label": {
+        "en-US": "Alignment"
+      },
+      "default": "left",
+      "group": "layout",
+      "options": [
+        { "value": "left",   "label": { "en-US": "Left" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "right",  "label": { "en-US": "Right" } }
+      ]
+    },
+    {
+      "id": "measureWidth",
+      "type": "select",
+      "label": {
+        "en-US": "Content Width"
+      },
+      "default": "standard",
+      "canvasDefault": "full",
+      "group": "layout",
+      "options": [
+        { "value": "content",  "label": { "en-US": "Reading (65ch)" } },
+        { "value": "narrow",   "label": { "en-US": "Narrow (45rem)" } },
+        { "value": "standard", "label": { "en-US": "Standard (65rem)" } },
+        { "value": "wide",     "label": { "en-US": "Wide (80rem)" } },
+        { "value": "full",     "label": { "en-US": "Full" } }
+      ]
+    },
+    {
+      "id": "zoomable",
+      "type": "toggle",
+      "label": {
+        "en-US": "Click to Zoom"
+      },
+      "default": false,
+      "group": "layout",
+      "note": "Let visitors click the image to open it full-screen and pan/zoom to inspect detail."
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "layout",  "label": { "en-US": "Layout" } }
+  ],
+  "motionSupport": {
+    "levels": ["local"],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Figure wrapper"
+    },
+    "media": {
+      "kind": "media",
+      "selector": "[data-target='media']",
+      "description": "Image element",
+      "multiple": false,
+      "animatable": ["opacity", "transform", "blur", "clip-path"],
+      "canTrigger": true
+    },
+    "caption": {
+      "kind": "text",
+      "selector": "[data-target='caption']",
+      "description": "Caption text",
+      "multiple": false,
+      "animatable": ["opacity", "transform"],
+      "canTrigger": false
+    },
+    "credit": {
+      "kind": "text",
+      "selector": "[data-target='credit']",
+      "description": "Credit line",
+      "multiple": false,
+      "animatable": ["opacity", "transform"],
+      "canTrigger": false
+    }
+  }
+}

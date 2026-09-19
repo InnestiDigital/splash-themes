@@ -1,0 +1,53 @@
+{
+  "type": "collage-canvas",
+  "label": "Collage Canvas",
+  "description": "A free-composition surface: an optional heading, then a canvas whose blocks are placed by hand — overlapping, rotated, resized — instead of flowing one after another. On narrow screens the canvas either stacks in reading order or shrinks the whole composition, whichever the section chooses.",
+  "usesContainer": true,
+  "layoutSlots": [
+    { "role": "section-heading", "required": false, "multiple": false, "description": "Heading above the canvas — ordinary flow, never free-placed" },
+    { "role": "editorial-body", "required": true, "multiple": true, "description": "Canvas layer — every block placed here carries its own position, size and rotation on the canvas. Reading order is the order the blocks appear in the navigation tree, and later blocks paint over earlier ones." }
+  ],
+  "settings": [
+    {
+      "id": "canvasHeight",
+      "type": "select",
+      "label": "Canvas Height",
+      "description": "How tall the canvas box is — free-placed blocks are measured against it, so this is what the composition is authored inside",
+      "default": "ratio-16x9",
+      "group": "layout",
+      "options": [
+        { "value": "ratio-16x9", "label": "Widescreen (16:9)" },
+        { "value": "ratio-4x3", "label": "Classic (4:3)" },
+        { "value": "viewport", "label": "Full viewport" },
+        { "value": "content-min", "label": "Compact" }
+      ]
+    },
+    {
+      "id": "canvasCollapse",
+      "type": "select",
+      "label": "Narrow Screens",
+      "description": "What the canvas does below the tablet breakpoint: give up free placement and stack the blocks in reading order, or keep the composition and shrink it",
+      "default": "stack",
+      "group": "layout",
+      "options": [
+        { "value": "stack", "label": "Stack in reading order" },
+        { "value": "scale", "label": "Shrink the composition" }
+      ],
+      "note": "Shrinking keeps a deliberate composition intact, but a wide canvas scaled to a phone can end up too small to read. Stacking is the legible default."
+    },
+    {
+      "id": "canvasSpacing",
+      "type": "select",
+      "label": "Heading Spacing",
+      "description": "Space between the heading and the canvas below it",
+      "default": "lg",
+      "group": "layout",
+      "options": [
+        { "value": "sm", "label": "Tight" },
+        { "value": "md", "label": "Normal" },
+        { "value": "lg", "label": "Spacious" },
+        { "value": "xl", "label": "Editorial" }
+      ]
+    }
+  ]
+}

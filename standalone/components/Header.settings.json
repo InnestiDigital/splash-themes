@@ -1,0 +1,1672 @@
+{
+  "component": "Header",
+  "type": "header",
+  "label": {
+    "en-US": "Splash Header"
+  },
+  "isLayoutComponent": true,
+  "static": true,
+  "settings": [
+    {
+      "type": "select",
+      "id": "logoPosition",
+      "label": {
+        "en-US": "Logo Position"
+      },
+      "default": "center",
+      "group": "layout",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "expandedJustify",
+      "label": {
+        "en-US": "Expanded Justify"
+      },
+      "default": "space-between",
+      "group": "layout",
+      "options": [
+        {
+          "value": "space-between",
+          "label": {
+            "en-US": "Space Between"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "start",
+          "label": {
+            "en-US": "Start"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "expandedContentWidthMode",
+      "label": {
+        "en-US": "Expanded Content Width"
+      },
+      "default": "full",
+      "group": "layout",
+      "options": [
+        {
+          "value": "full",
+          "label": {
+            "en-US": "Full Width"
+          }
+        },
+        {
+          "value": "fit",
+          "label": {
+            "en-US": "Fit Content"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "compactJustify",
+      "label": {
+        "en-US": "Compact Justify"
+      },
+      "default": "center",
+      "group": "layout",
+      "options": [
+        {
+          "value": "space-between",
+          "label": {
+            "en-US": "Space Between"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "start",
+          "label": {
+            "en-US": "Start"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "compactContentWidthMode",
+      "label": {
+        "en-US": "Compact Content Width"
+      },
+      "default": "full",
+      "group": "layout",
+      "options": [
+        {
+          "value": "full",
+          "label": {
+            "en-US": "Full Width"
+          }
+        },
+        {
+          "value": "fit",
+          "label": {
+            "en-US": "Fit Content"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "drawerPosition",
+      "label": {
+        "en-US": "Drawer Position"
+      },
+      "default": "right",
+      "group": "layout",
+      "showIf": {
+        "navigationMode": "drawer"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "compactBgMode",
+      "label": {
+        "en-US": "Compact Background Mode"
+      },
+      "default": "pill",
+      "group": "appearance",
+      "options": [
+        {
+          "value": "pill",
+          "label": {
+            "en-US": "Pill"
+          }
+        },
+        {
+          "value": "shrink-bar",
+          "label": {
+            "en-US": "Shrinking Bar"
+          }
+        },
+        {
+          "value": "fade",
+          "label": {
+            "en-US": "Fade"
+          }
+        }
+      ],
+      "note": {
+        "en-US": "What the header background does once the visitor scrolls: float as a rounded pill, narrow into a shorter bar, or stay full width and fade."
+      }
+    },
+    {
+      "type": "number",
+      "id": "compactBgBorderRadius",
+      "label": {
+        "en-US": "Compact Background Border Radius"
+      },
+      "default": 12,
+      "group": "appearance",
+      "note": {
+        "en-US": "How rounded the corners of the scrolled header background are. Fade mode keeps square corners and ignores this."
+      }
+    },
+    {
+      "type": "number",
+      "id": "compactBgTargetOpacity",
+      "label": {
+        "en-US": "Compact Background Target Opacity"
+      },
+      "default": 1,
+      "group": "appearance",
+      "note": {
+        "en-US": "How see-through the header background becomes once the visitor has scrolled (0 = invisible, 1 = solid). Only used by Fade mode."
+      }
+    },
+    {
+      "type": "number",
+      "id": "compactBgInsetPadding",
+      "label": {
+        "en-US": "Compact Background Inset Padding"
+      },
+      "default": 12,
+      "group": "appearance",
+      "note": {
+        "en-US": "Breathing room between the header content and the edge of the scrolled pill or bar. Fade mode ignores this."
+      }
+    },
+    {
+      "type": "number",
+      "id": "expandedGap",
+      "label": {
+        "en-US": "Expanded Gap (px)"
+      },
+      "default": 24,
+      "group": "appearance"
+    },
+    {
+      "type": "number",
+      "id": "expandedPadding",
+      "label": {
+        "en-US": "Expanded Padding (px)"
+      },
+      "default": 32,
+      "group": "appearance"
+    },
+    {
+      "type": "number",
+      "id": "compactGap",
+      "label": {
+        "en-US": "Compact Gap (px)"
+      },
+      "default": 12,
+      "group": "appearance"
+    },
+    {
+      "type": "number",
+      "id": "compactPadding",
+      "label": {
+        "en-US": "Compact Padding (px)"
+      },
+      "default": 16,
+      "group": "appearance"
+    },
+    {
+      "type": "number",
+      "id": "drawerItemSize",
+      "label": {
+        "en-US": "Drawer Item Size (px)"
+      },
+      "default": 32,
+      "group": "appearance",
+      "showIf": {
+        "navigationMode": "drawer"
+      },
+      "note": {
+        "en-US": "Font size of drawer menu links"
+      }
+    },
+    {
+      "type": "text",
+      "id": "drawerHeight",
+      "label": {
+        "en-US": "Drawer Height"
+      },
+      "default": "100dvh",
+      "group": "appearance",
+      "showIf": {
+        "navigationMode": "drawer"
+      },
+      "note": {
+        "en-US": "Any CSS length, e.g. 70vh"
+      }
+    },
+    {
+      "type": "text",
+      "id": "drawerWidth",
+      "label": {
+        "en-US": "Drawer Width"
+      },
+      "default": "100vw",
+      "group": "appearance",
+      "showIf": {
+        "navigationMode": "drawer"
+      },
+      "note": {
+        "en-US": "Any CSS length, e.g. 32rem"
+      }
+    },
+    {
+      "type": "number",
+      "id": "accentBarHeight",
+      "label": {
+        "en-US": "Accent Bar Height (px)"
+      },
+      "default": 8,
+      "options": {
+        "unit": "px",
+        "min": 1,
+        "max": 32
+      },
+      "showIf": {
+        "showAccentBar": true
+      },
+      "group": "appearance"
+    },
+    {
+      "type": "text",
+      "id": "menuLabel",
+      "label": {
+        "en-US": "Menu Trigger Label"
+      },
+      "group": "content",
+      "translatable": true,
+      "showIf": {
+        "navigationMode": "drawer"
+      },
+      "note": {
+        "en-US": "Accessible name for the menu trigger icon (screen readers)."
+      }
+    },
+    {
+      "type": "image",
+      "id": "logo",
+      "label": {
+        "en-US": "Logo Image"
+      },
+      "group": "content",
+      "translatable": false
+    },
+    {
+      "type": "text",
+      "id": "logoAlt",
+      "label": {
+        "en-US": "Logo Alt Text"
+      },
+      "group": "content",
+      "translatable": true,
+      "note": {
+        "en-US": "Accessibility text for the logo image"
+      }
+    },
+    {
+      "type": "image",
+      "id": "compactLogo",
+      "label": {
+        "en-US": "Compact Logo"
+      },
+      "group": "content"
+    },
+    {
+      "type": "text",
+      "id": "logoText",
+      "label": {
+        "en-US": "Logo Text"
+      },
+      "group": "content",
+      "translatable": true,
+      "note": {
+        "en-US": "Fallback if no image is provided"
+      }
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": {
+        "en-US": "Tagline"
+      },
+      "group": "content",
+      "translatable": true,
+      "note": {
+        "en-US": "Short editorial line shown beside the logo. Leave empty to hide."
+      }
+    },
+    {
+      "type": "text",
+      "id": "hubReturnUrl",
+      "label": {
+        "en-US": "Hub Return URL"
+      },
+      "group": "content",
+      "validation": {
+        "required": false
+      },
+      "note": {
+        "en-US": "URL to return to the main program hub"
+      }
+    },
+    {
+      "type": "text",
+      "id": "hubReturnText",
+      "label": {
+        "en-US": "Hub Return Label"
+      },
+      "default": {
+        "en-US": "Back to main site"
+      },
+      "group": "content",
+      "translatable": true
+    },
+    {
+      "type": "blocks",
+      "id": "menuItems",
+      "label": {
+        "en-US": "Navigation Menu"
+      },
+      "group": "content",
+      "allowedBlocks": [
+        "menu-item"
+      ],
+      "maxBlocks": 24,
+      "note": {
+        "en-US": "Main navigation items shown in the header. Each item can carry up to two levels of submenu."
+      }
+    },
+    {
+      "type": "blocks",
+      "id": "drawerFooterLinks",
+      "label": {
+        "en-US": "Drawer Footer Links"
+      },
+      "group": "content",
+      "allowedBlocks": [
+        "menu-item"
+      ],
+      "maxBlocks": 6,
+      "showIf": {
+        "navigationMode": "drawer"
+      },
+      "note": {
+        "en-US": "Social/footer links shown at the bottom of the open drawer, with an automatic © line."
+      }
+    },
+    {
+      "type": "select",
+      "id": "compactTriggerUnit",
+      "label": {
+        "en-US": "Compact Trigger Unit"
+      },
+      "default": "px",
+      "group": "behaviour",
+      "options": [
+        {
+          "value": "px",
+          "label": {
+            "en-US": "Pixels (px)"
+          }
+        },
+        {
+          "value": "vh",
+          "label": {
+            "en-US": "Viewport Height (vh)"
+          }
+        }
+      ],
+      "note": {
+        "en-US": "Whether that scroll distance is counted in pixels or as a share of the screen height."
+      }
+    },
+    {
+      "type": "number",
+      "id": "compactTriggerValue",
+      "label": {
+        "en-US": "Compact Trigger Value"
+      },
+      "default": 200,
+      "group": "behaviour",
+      "note": {
+        "en-US": "How far the visitor scrolls before the header switches to its compact style."
+      }
+    },
+    {
+      "type": "select",
+      "id": "navigationMode",
+      "label": {
+        "en-US": "Navigation Mode"
+      },
+      "default": "inline",
+      "group": "behaviour",
+      "options": [
+        {
+          "value": "inline",
+          "label": {
+            "en-US": "Inline (desktop links, mobile drawer)"
+          }
+        },
+        {
+          "value": "drawer",
+          "label": {
+            "en-US": "Drawer (menu trigger on all breakpoints)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "drawerShowBackdrop",
+      "label": {
+        "en-US": "Show Backdrop"
+      },
+      "default": true,
+      "group": "behaviour",
+      "showIf": {
+        "navigationMode": "drawer"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "drawerLockBodyScroll",
+      "label": {
+        "en-US": "Lock Body Scroll"
+      },
+      "default": true,
+      "group": "behaviour",
+      "showIf": {
+        "navigationMode": "drawer"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky",
+      "label": {
+        "en-US": "Sticky Header"
+      },
+      "default": true,
+      "group": "behaviour",
+      "note": {
+        "en-US": "Keep header visible while scrolling"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "showLanguageToggle",
+      "label": {
+        "en-US": "Show Language Toggle"
+      },
+      "default": true,
+      "group": "behaviour"
+    },
+    {
+      "type": "checkbox",
+      "id": "showAccentBar",
+      "label": {
+        "en-US": "Show Accent Bar"
+      },
+      "default": false,
+      "group": "behaviour",
+      "note": {
+        "en-US": "Display a thin colored bar above the header (color comes from layout chrome palette)."
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "showHubReturn",
+      "label": {
+        "en-US": "Show Hub Return Link"
+      },
+      "default": false,
+      "group": "behaviour"
+    },
+    {
+      "type": "number",
+      "id": "transitionDuration",
+      "label": {
+        "en-US": "Transition Duration (ms)"
+      },
+      "default": 300,
+      "group": "motion",
+      "note": {
+        "en-US": "How long the header takes to move between its full-size and its compact look."
+      }
+    },
+    {
+      "type": "select",
+      "id": "transitionEasing",
+      "label": {
+        "en-US": "Transition Easing"
+      },
+      "default": "ease-out",
+      "group": "motion",
+      "options": [
+        {
+          "value": "linear",
+          "label": {
+            "en-US": "Linear"
+          }
+        },
+        {
+          "value": "ease",
+          "label": {
+            "en-US": "Ease"
+          }
+        },
+        {
+          "value": "ease-in",
+          "label": {
+            "en-US": "Ease In"
+          }
+        },
+        {
+          "value": "ease-out",
+          "label": {
+            "en-US": "Ease Out"
+          }
+        },
+        {
+          "value": "ease-in-out",
+          "label": {
+            "en-US": "Ease In-Out"
+          }
+        }
+      ],
+      "note": {
+        "en-US": "The speed curve of that move — Ease Out starts quickly and settles gently, Linear keeps one constant speed."
+      }
+    },
+    {
+      "type": "select",
+      "id": "sequenceMode",
+      "label": {
+        "en-US": "Sequence Mode"
+      },
+      "default": "simultaneous",
+      "group": "motion",
+      "options": [
+        {
+          "value": "simultaneous",
+          "label": {
+            "en-US": "Simultaneous"
+          }
+        },
+        {
+          "value": "sequenced",
+          "label": {
+            "en-US": "Sequenced"
+          }
+        }
+      ],
+      "note": {
+        "en-US": "Whether the logo, navigation and actions move together, or one after the other."
+      }
+    },
+    {
+      "type": "number",
+      "id": "sequenceStagger",
+      "label": {
+        "en-US": "Sequence Stagger (ms)"
+      },
+      "default": 60,
+      "group": "motion",
+      "showIf": {
+        "sequenceMode": "sequenced"
+      },
+      "note": {
+        "en-US": "How long each part waits before it starts moving after the one before it. Only used when Sequence Mode is Sequenced."
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "logoVisibleExpanded",
+      "label": {
+        "en-US": "Visible in Expanded"
+      },
+      "default": true,
+      "group": "logo-zone"
+    },
+    {
+      "type": "checkbox",
+      "id": "logoVisibleCompact",
+      "label": {
+        "en-US": "Visible in Compact"
+      },
+      "default": true,
+      "group": "logo-zone"
+    },
+    {
+      "type": "number",
+      "id": "logoExpandedScale",
+      "label": {
+        "en-US": "Expanded Scale"
+      },
+      "default": 1.4,
+      "group": "logo-zone",
+      "dependsOn": {
+        "logoVisibleExpanded": true
+      }
+    },
+    {
+      "type": "number",
+      "id": "logoExpandedOffsetX",
+      "label": {
+        "en-US": "Expanded Offset X (px)"
+      },
+      "default": 0,
+      "group": "logo-zone",
+      "dependsOn": {
+        "logoVisibleExpanded": true
+      },
+      "note": {
+        "en-US": "Nudges the logo left (negative) or right (positive) from where the layout places them, before the visitor scrolls."
+      }
+    },
+    {
+      "type": "number",
+      "id": "logoExpandedOffsetY",
+      "label": {
+        "en-US": "Expanded Offset Y (px)"
+      },
+      "default": 0,
+      "group": "logo-zone",
+      "dependsOn": {
+        "logoVisibleExpanded": true
+      },
+      "note": {
+        "en-US": "Nudges the logo up (negative) or down (positive) from where the layout places them, before the visitor scrolls."
+      }
+    },
+    {
+      "type": "number",
+      "id": "logoExpandedOpacity",
+      "label": {
+        "en-US": "Expanded Opacity"
+      },
+      "default": 1,
+      "group": "logo-zone",
+      "dependsOn": {
+        "logoVisibleExpanded": true
+      }
+    },
+    {
+      "type": "number",
+      "id": "logoCompactScale",
+      "label": {
+        "en-US": "Compact Scale"
+      },
+      "default": 1,
+      "group": "logo-zone",
+      "dependsOn": {
+        "logoVisibleCompact": true
+      }
+    },
+    {
+      "type": "number",
+      "id": "logoCompactOffsetX",
+      "label": {
+        "en-US": "Compact Offset X (px)"
+      },
+      "default": 0,
+      "group": "logo-zone",
+      "dependsOn": {
+        "logoVisibleCompact": true
+      },
+      "note": {
+        "en-US": "Nudges the logo left (negative) or right (positive) from where the layout places them, once the visitor has scrolled."
+      }
+    },
+    {
+      "type": "number",
+      "id": "logoCompactOffsetY",
+      "label": {
+        "en-US": "Compact Offset Y (px)"
+      },
+      "default": 0,
+      "group": "logo-zone",
+      "dependsOn": {
+        "logoVisibleCompact": true
+      },
+      "note": {
+        "en-US": "Nudges the logo up (negative) or down (positive) from where the layout places them, once the visitor has scrolled."
+      }
+    },
+    {
+      "type": "number",
+      "id": "logoCompactOpacity",
+      "label": {
+        "en-US": "Compact Opacity"
+      },
+      "default": 1,
+      "group": "logo-zone",
+      "dependsOn": {
+        "logoVisibleCompact": true
+      }
+    },
+    {
+      "type": "number",
+      "id": "logoTransitionDuration",
+      "label": {
+        "en-US": "Override Duration (ms)"
+      },
+      "default": null,
+      "group": "logo-zone",
+      "note": {
+        "en-US": "Leave empty to inherit from shell"
+      },
+      "dependsOn": {
+        "anyOf": [
+          {
+            "logoVisibleExpanded": true
+          },
+          {
+            "logoVisibleCompact": true
+          }
+        ]
+      }
+    },
+    {
+      "type": "select",
+      "id": "logoTransitionEasing",
+      "label": {
+        "en-US": "Override Easing"
+      },
+      "default": null,
+      "group": "logo-zone",
+      "options": [
+        {
+          "value": "",
+          "label": {
+            "en-US": "Inherit from Shell"
+          }
+        },
+        {
+          "value": "linear",
+          "label": {
+            "en-US": "Linear"
+          }
+        },
+        {
+          "value": "ease",
+          "label": {
+            "en-US": "Ease"
+          }
+        },
+        {
+          "value": "ease-in",
+          "label": {
+            "en-US": "Ease In"
+          }
+        },
+        {
+          "value": "ease-out",
+          "label": {
+            "en-US": "Ease Out"
+          }
+        },
+        {
+          "value": "ease-in-out",
+          "label": {
+            "en-US": "Ease In-Out"
+          }
+        }
+      ],
+      "dependsOn": {
+        "anyOf": [
+          {
+            "logoVisibleExpanded": true
+          },
+          {
+            "logoVisibleCompact": true
+          }
+        ]
+      },
+      "note": {
+        "en-US": "Speed curve for the logo alone. Leave on Inherit from Shell to follow the header-wide Transition Easing."
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "navVisibleExpanded",
+      "label": {
+        "en-US": "Visible in Expanded"
+      },
+      "default": true,
+      "group": "nav-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "navVisibleCompact",
+      "label": {
+        "en-US": "Visible in Compact"
+      },
+      "default": true,
+      "group": "nav-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      }
+    },
+    {
+      "type": "number",
+      "id": "navExpandedScale",
+      "label": {
+        "en-US": "Expanded Scale"
+      },
+      "default": 1,
+      "group": "nav-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "navVisibleExpanded": true
+      }
+    },
+    {
+      "type": "number",
+      "id": "navExpandedOffsetX",
+      "label": {
+        "en-US": "Expanded Offset X (px)"
+      },
+      "default": 0,
+      "group": "nav-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "navVisibleExpanded": true
+      },
+      "note": {
+        "en-US": "Nudges the navigation links left (negative) or right (positive) from where the layout places them, before the visitor scrolls."
+      }
+    },
+    {
+      "type": "number",
+      "id": "navExpandedOffsetY",
+      "label": {
+        "en-US": "Expanded Offset Y (px)"
+      },
+      "default": 0,
+      "group": "nav-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "navVisibleExpanded": true
+      },
+      "note": {
+        "en-US": "Nudges the navigation links up (negative) or down (positive) from where the layout places them, before the visitor scrolls."
+      }
+    },
+    {
+      "type": "number",
+      "id": "navExpandedOpacity",
+      "label": {
+        "en-US": "Expanded Opacity"
+      },
+      "default": 1,
+      "group": "nav-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "navVisibleExpanded": true
+      }
+    },
+    {
+      "type": "number",
+      "id": "navCompactScale",
+      "label": {
+        "en-US": "Compact Scale"
+      },
+      "default": 1,
+      "group": "nav-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "navVisibleCompact": true
+      }
+    },
+    {
+      "type": "number",
+      "id": "navCompactOffsetX",
+      "label": {
+        "en-US": "Compact Offset X (px)"
+      },
+      "default": 0,
+      "group": "nav-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "navVisibleCompact": true
+      },
+      "note": {
+        "en-US": "Nudges the navigation links left (negative) or right (positive) from where the layout places them, once the visitor has scrolled."
+      }
+    },
+    {
+      "type": "number",
+      "id": "navCompactOffsetY",
+      "label": {
+        "en-US": "Compact Offset Y (px)"
+      },
+      "default": 0,
+      "group": "nav-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "navVisibleCompact": true
+      },
+      "note": {
+        "en-US": "Nudges the navigation links up (negative) or down (positive) from where the layout places them, once the visitor has scrolled."
+      }
+    },
+    {
+      "type": "number",
+      "id": "navCompactOpacity",
+      "label": {
+        "en-US": "Compact Opacity"
+      },
+      "default": 1,
+      "group": "nav-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "navVisibleCompact": true
+      }
+    },
+    {
+      "type": "number",
+      "id": "navTransitionDuration",
+      "label": {
+        "en-US": "Override Duration (ms)"
+      },
+      "default": null,
+      "group": "nav-zone",
+      "note": {
+        "en-US": "Leave empty to inherit from shell"
+      },
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "anyOf": [
+          {
+            "navVisibleExpanded": true
+          },
+          {
+            "navVisibleCompact": true
+          }
+        ]
+      }
+    },
+    {
+      "type": "select",
+      "id": "navTransitionEasing",
+      "label": {
+        "en-US": "Override Easing"
+      },
+      "default": null,
+      "group": "nav-zone",
+      "options": [
+        {
+          "value": "",
+          "label": {
+            "en-US": "Inherit from Shell"
+          }
+        },
+        {
+          "value": "linear",
+          "label": {
+            "en-US": "Linear"
+          }
+        },
+        {
+          "value": "ease",
+          "label": {
+            "en-US": "Ease"
+          }
+        },
+        {
+          "value": "ease-in",
+          "label": {
+            "en-US": "Ease In"
+          }
+        },
+        {
+          "value": "ease-out",
+          "label": {
+            "en-US": "Ease Out"
+          }
+        },
+        {
+          "value": "ease-in-out",
+          "label": {
+            "en-US": "Ease In-Out"
+          }
+        }
+      ],
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "anyOf": [
+          {
+            "navVisibleExpanded": true
+          },
+          {
+            "navVisibleCompact": true
+          }
+        ]
+      },
+      "note": {
+        "en-US": "Speed curve for the navigation links alone. Leave on Inherit from Shell to follow the header-wide Transition Easing."
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "actionsVisibleExpanded",
+      "label": {
+        "en-US": "Visible in Expanded"
+      },
+      "default": true,
+      "group": "actions-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "actionsVisibleCompact",
+      "label": {
+        "en-US": "Visible in Compact"
+      },
+      "default": true,
+      "group": "actions-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      }
+    },
+    {
+      "type": "number",
+      "id": "actionsExpandedScale",
+      "label": {
+        "en-US": "Expanded Scale"
+      },
+      "default": 1,
+      "group": "actions-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "actionsVisibleExpanded": true
+      }
+    },
+    {
+      "type": "number",
+      "id": "actionsExpandedOffsetX",
+      "label": {
+        "en-US": "Expanded Offset X (px)"
+      },
+      "default": 0,
+      "group": "actions-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "actionsVisibleExpanded": true
+      },
+      "note": {
+        "en-US": "Nudges the action buttons left (negative) or right (positive) from where the layout places them, before the visitor scrolls."
+      }
+    },
+    {
+      "type": "number",
+      "id": "actionsExpandedOffsetY",
+      "label": {
+        "en-US": "Expanded Offset Y (px)"
+      },
+      "default": 0,
+      "group": "actions-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "actionsVisibleExpanded": true
+      },
+      "note": {
+        "en-US": "Nudges the action buttons up (negative) or down (positive) from where the layout places them, before the visitor scrolls."
+      }
+    },
+    {
+      "type": "number",
+      "id": "actionsExpandedOpacity",
+      "label": {
+        "en-US": "Expanded Opacity"
+      },
+      "default": 1,
+      "group": "actions-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "actionsVisibleExpanded": true
+      }
+    },
+    {
+      "type": "number",
+      "id": "actionsCompactScale",
+      "label": {
+        "en-US": "Compact Scale"
+      },
+      "default": 1,
+      "group": "actions-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "actionsVisibleCompact": true
+      }
+    },
+    {
+      "type": "number",
+      "id": "actionsCompactOffsetX",
+      "label": {
+        "en-US": "Compact Offset X (px)"
+      },
+      "default": 0,
+      "group": "actions-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "actionsVisibleCompact": true
+      },
+      "note": {
+        "en-US": "Nudges the action buttons left (negative) or right (positive) from where the layout places them, once the visitor has scrolled."
+      }
+    },
+    {
+      "type": "number",
+      "id": "actionsCompactOffsetY",
+      "label": {
+        "en-US": "Compact Offset Y (px)"
+      },
+      "default": 0,
+      "group": "actions-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "actionsVisibleCompact": true
+      },
+      "note": {
+        "en-US": "Nudges the action buttons up (negative) or down (positive) from where the layout places them, once the visitor has scrolled."
+      }
+    },
+    {
+      "type": "number",
+      "id": "actionsCompactOpacity",
+      "label": {
+        "en-US": "Compact Opacity"
+      },
+      "default": 1,
+      "group": "actions-zone",
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "actionsVisibleCompact": true
+      }
+    },
+    {
+      "type": "number",
+      "id": "actionsTransitionDuration",
+      "label": {
+        "en-US": "Override Duration (ms)"
+      },
+      "default": null,
+      "group": "actions-zone",
+      "note": {
+        "en-US": "Leave empty to inherit from shell"
+      },
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "anyOf": [
+          {
+            "actionsVisibleExpanded": true
+          },
+          {
+            "actionsVisibleCompact": true
+          }
+        ]
+      }
+    },
+    {
+      "type": "select",
+      "id": "actionsTransitionEasing",
+      "label": {
+        "en-US": "Override Easing"
+      },
+      "default": null,
+      "group": "actions-zone",
+      "options": [
+        {
+          "value": "",
+          "label": {
+            "en-US": "Inherit from Shell"
+          }
+        },
+        {
+          "value": "linear",
+          "label": {
+            "en-US": "Linear"
+          }
+        },
+        {
+          "value": "ease",
+          "label": {
+            "en-US": "Ease"
+          }
+        },
+        {
+          "value": "ease-in",
+          "label": {
+            "en-US": "Ease In"
+          }
+        },
+        {
+          "value": "ease-out",
+          "label": {
+            "en-US": "Ease Out"
+          }
+        },
+        {
+          "value": "ease-in-out",
+          "label": {
+            "en-US": "Ease In-Out"
+          }
+        }
+      ],
+      "showIf": {
+        "navigationMode": "inline"
+      },
+      "dependsOn": {
+        "anyOf": [
+          {
+            "actionsVisibleExpanded": true
+          },
+          {
+            "actionsVisibleCompact": true
+          }
+        ]
+      },
+      "note": {
+        "en-US": "Speed curve for the action buttons alone. Leave on Inherit from Shell to follow the header-wide Transition Easing."
+      }
+    }
+  ],
+  "groups": [
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Placement"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "behaviour",
+      "label": {
+        "en-US": "Behaviour"
+      }
+    },
+    {
+      "id": "motion",
+      "label": {
+        "en-US": "Motion"
+      }
+    },
+    {
+      "id": "logo-zone",
+      "label": {
+        "en-US": "Motion: Logo Zone"
+      }
+    },
+    {
+      "id": "nav-zone",
+      "label": {
+        "en-US": "Motion: Nav Zone"
+      }
+    },
+    {
+      "id": "actions-zone",
+      "label": {
+        "en-US": "Motion: Actions Zone"
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu-item",
+      "label": {
+        "en-US": "Menu Item"
+      },
+      "settings": [
+        {
+          "type": "text",
+          "id": "id",
+          "label": {
+            "en-US": "Item ID"
+          },
+          "note": {
+            "en-US": "Unique identifier for this menu item"
+          }
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": {
+            "en-US": "Label"
+          },
+          "translatable": true,
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "type": "text",
+          "id": "url",
+          "label": {
+            "en-US": "URL"
+          },
+          "validation": {
+            "required": true
+          },
+          "note": {
+            "en-US": "Internal: /shop, External: https://example.com"
+          }
+        },
+        {
+          "type": "checkbox",
+          "id": "openInNewTab",
+          "label": {
+            "en-US": "Open in New Tab"
+          },
+          "default": false
+        },
+        {
+          "type": "repeater",
+          "id": "children",
+          "label": {
+            "en-US": "Submenu"
+          },
+          "note": {
+            "en-US": "Leave empty for a plain link. A parent with children opens a dropdown; its own URL stays clickable."
+          },
+          "fields": [
+            {
+              "type": "text",
+              "id": "label",
+              "label": {
+                "en-US": "Label"
+              },
+              "translatable": true,
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "type": "text",
+              "id": "url",
+              "label": {
+                "en-US": "URL"
+              },
+              "note": {
+                "en-US": "Optional when this entry is only a heading for its own children."
+              }
+            },
+            {
+              "type": "checkbox",
+              "id": "openInNewTab",
+              "label": {
+                "en-US": "Open in New Tab"
+              },
+              "default": false
+            },
+            {
+              "type": "repeater",
+              "id": "children",
+              "label": {
+                "en-US": "Sub-submenu"
+              },
+              "fields": [
+                {
+                  "type": "text",
+                  "id": "label",
+                  "label": {
+                    "en-US": "Label"
+                  },
+                  "translatable": true,
+                  "validation": {
+                    "required": true
+                  }
+                },
+                {
+                  "type": "text",
+                  "id": "url",
+                  "label": {
+                    "en-US": "URL"
+                  },
+                  "validation": {
+                    "required": true
+                  }
+                },
+                {
+                  "type": "checkbox",
+                  "id": "openInNewTab",
+                  "label": {
+                    "en-US": "Open in New Tab"
+                  },
+                  "default": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "id": "full-configurable",
+      "label": {
+        "en-US": "Centered Brand"
+      },
+      "settings": {
+        "logoPosition": "center",
+        "compactBgMode": "pill",
+        "logoVisibleExpanded": true,
+        "logoVisibleCompact": true,
+        "logoExpandedScale": 1.4,
+        "navVisibleExpanded": false,
+        "navVisibleCompact": true,
+        "actionsVisibleExpanded": false,
+        "actionsVisibleCompact": true,
+        "sequenceMode": "sequenced"
+      }
+    },
+    {
+      "id": "classic-left",
+      "label": {
+        "en-US": "Classic Left"
+      },
+      "settings": {
+        "logoPosition": "left",
+        "compactBgMode": "fade",
+        "logoVisibleExpanded": true,
+        "logoVisibleCompact": true,
+        "navVisibleExpanded": true,
+        "navVisibleCompact": true,
+        "actionsVisibleExpanded": true,
+        "actionsVisibleCompact": true,
+        "sequenceMode": "simultaneous"
+      }
+    },
+    {
+      "id": "minimal",
+      "label": {
+        "en-US": "Minimal"
+      },
+      "settings": {
+        "logoPosition": "center",
+        "compactBgMode": "shrink-bar",
+        "logoVisibleExpanded": true,
+        "logoVisibleCompact": true,
+        "logoExpandedScale": 1.6,
+        "navVisibleExpanded": false,
+        "navVisibleCompact": true,
+        "actionsVisibleExpanded": false,
+        "actionsVisibleCompact": true,
+        "sequenceMode": "simultaneous"
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local"
+    ],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "description": "Entire header shell",
+      "kind": "root"
+    },
+    "logo": {
+      "selector": "[data-target='logo']",
+      "description": "Logo zone",
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": true,
+      "kind": "decorative"
+    },
+    "nav": {
+      "selector": "[data-target='nav']",
+      "description": "Navigation zone",
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false,
+      "kind": "decorative"
+    },
+    "actions": {
+      "selector": "[data-target='actions']",
+      "description": "Actions zone",
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false,
+      "kind": "decorative"
+    },
+    "background": {
+      "selector": "[data-target='header-bg']",
+      "description": "Header background layer",
+      "animatable": [
+        "opacity",
+        "transform",
+        "clip-path"
+      ],
+      "canTrigger": false,
+      "kind": "media"
+    }
+  }
+}

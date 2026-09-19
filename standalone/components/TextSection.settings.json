@@ -1,0 +1,238 @@
+{
+  "component": "TextSection",
+  "type": "text-section",
+  "label": {
+    "en-US": "Text Section"
+  },
+  "category": "content",
+  "description": {
+    "en-US": "Text with image layout. Use for side-by-side or stacked image+text compositions."
+  },
+  "compatibleSectionRoles": [
+    "section-heading",
+    "editorial-body",
+    "supporting-text"
+  ],
+  "typographySlots": [],
+  "$fragments": [
+    "media-side",
+    "color-roles"
+  ],
+  "$fragmentOverrides": {
+    "mediaSide": {
+      "default": "right"
+    },
+    "background": {
+      "default": "transparent"
+    }
+  },
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "eyebrow",
+      "label": {
+        "en-US": "Eyebrow"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "eyebrow",
+      "defaultPresetKey": "eyebrow"
+    },
+    {
+      "type": "richtext-single",
+      "id": "title",
+      "label": {
+        "en-US": "Title"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "heading2",
+      "defaultPresetKey": "section-title"
+    },
+    {
+      "type": "richtext-block",
+      "id": "body",
+      "label": {
+        "en-US": "Body Text"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "body",
+      "defaultPresetKey": "body"
+    },
+    {
+      "type": "image",
+      "id": "image",
+      "label": {
+        "en-US": "Image"
+      },
+      "group": "content"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "textAlign",
+      "type": "select",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "layout"
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface Style"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local"
+    ],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    },
+    "eyebrow": {
+      "selector": "[data-target='eyebrow']",
+      "description": "Eyebrow text label",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    },
+    "heading": {
+      "selector": "[data-target='heading']",
+      "description": "Section title",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    },
+    "body": {
+      "selector": "[data-target='body']",
+      "description": "Body text",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": false,
+      "kind": "text"
+    },
+    "media": {
+      "selector": "[data-target='media']",
+      "description": "Section image",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path",
+        "motion-path"
+      ],
+      "canTrigger": true,
+      "kind": "media"
+    }
+  }
+}

@@ -1,0 +1,387 @@
+{
+  "component": "ImageBanner",
+  "type": "image-banner",
+  "label": {
+    "en-US": "Image Banner"
+  },
+  "category": "media",
+  "compatibleSectionRoles": [
+    "media-gallery",
+    "media-chrome",
+    "editorial-body"
+  ],
+  "$fragments": ["media-art-direction"],
+  "$fragmentOmit": ["objectFit"],
+  "$fragmentOverrides": {
+    "focalPoint": {
+      "note": "Which part of the image stays in view when it's cropped to a fixed ratio."
+    }
+  },
+  "settings": [
+    {
+      "type": "image",
+      "id": "image",
+      "label": {
+        "en-US": "Image"
+      },
+      "group": "content"
+    },
+    {
+      "type": "text",
+      "id": "altText",
+      "label": {
+        "en-US": "Alt Text"
+      },
+      "group": "content",
+      "translatable": true
+    },
+    {
+      "type": "richtext-single",
+      "id": "caption",
+      "label": {
+        "en-US": "Caption"
+      },
+      "group": "content",
+      "translatable": true,
+      "note": "Short caption or credit shown beneath the image. Leave empty to hide.",
+      "validation": {
+        "maxLength": 200
+      }
+    },
+    {
+      "type": "text",
+      "id": "overlayTitle",
+      "label": { "en-US": "Overlay title" },
+      "group": "content",
+      "translatable": true,
+      "showIf": { "field": "captionPosition", "equals": "overlay" },
+      "note": "Optional large editorial title shown over the image in overlay caption mode. Leave empty to hide.",
+      "validation": { "maxLength": 120 }
+    },
+    {
+      "type": "url",
+      "id": "linkUrl",
+      "label": {
+        "en-US": "Link URL"
+      },
+      "group": "content"
+    },
+    {
+      "type": "toggle",
+      "id": "enableLightbox",
+      "label": {
+        "en-US": "Open full screen on click (lightbox)"
+      },
+      "default": false,
+      "group": "content"
+    },
+    {
+      "type": "text",
+      "id": "lightboxGroup",
+      "label": {
+        "en-US": "Lightbox gallery group"
+      },
+      "group": "content"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": {
+        "en-US": "Width"
+      },
+      "default": "full",
+      "group": "layout",
+      "options": [
+        {
+          "value": "full",
+          "label": {
+            "en-US": "Full Width"
+          }
+        },
+        {
+          "value": "contained",
+          "label": {
+            "en-US": "Contained"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "displayMode",
+      "label": {
+        "en-US": "Display Mode"
+      },
+      "default": "featured",
+      "group": "layout",
+      "options": [
+        {
+          "value": "featured",
+          "label": {
+            "en-US": "Featured (full-width)"
+          }
+        },
+        {
+          "value": "inline",
+          "label": {
+            "en-US": "Inline (flows with text)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "aspectRatio",
+      "label": {
+        "en-US": "Aspect Ratio"
+      },
+      "default": "auto",
+      "group": "layout",
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en-US": "Auto"
+          }
+        },
+        {
+          "value": "16:9",
+          "label": {
+            "en-US": "16:9 (Widescreen)"
+          }
+        },
+        {
+          "value": "4:3",
+          "label": {
+            "en-US": "4:3 (Standard)"
+          }
+        },
+        {
+          "value": "21:9",
+          "label": {
+            "en-US": "21:9 (Ultra-wide)"
+          }
+        },
+        {
+          "value": "3:1",
+          "label": {
+            "en-US": "3:1 (Banner)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "focalPointMobile",
+      "label": {
+        "en-US": "Focal point (mobile)"
+      },
+      "help": {
+        "en-US": "Optional distinct focal point on small screens (≤768px)."
+      },
+      "group": "layout",
+      "default": "inherit",
+      "options": [
+        { "value": "inherit", "label": { "en-US": "Same as desktop" } },
+        { "value": "top-left", "label": { "en-US": "Top left" } },
+        { "value": "top", "label": { "en-US": "Top" } },
+        { "value": "top-right", "label": { "en-US": "Top right" } },
+        { "value": "left", "label": { "en-US": "Left" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "right", "label": { "en-US": "Right" } },
+        { "value": "bottom-left", "label": { "en-US": "Bottom left" } },
+        { "value": "bottom", "label": { "en-US": "Bottom" } },
+        { "value": "bottom-right", "label": { "en-US": "Bottom right" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "parallax",
+      "label": {
+        "en-US": "Scroll parallax"
+      },
+      "help": {
+        "en-US": "Image drifts against scroll for editorial depth. Requires a fixed Aspect Ratio; automatically off on mobile, in the editor, and when reduced-motion is on."
+      },
+      "group": "layout",
+      "default": "off",
+      "options": [
+        {
+          "value": "off",
+          "label": {
+            "en-US": "Off"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "strong",
+          "label": {
+            "en-US": "Strong"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "captionAlign",
+      "label": {
+        "en-US": "Caption Alignment"
+      },
+      "default": "left",
+      "group": "layout",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "captionPosition",
+      "label": {
+        "en-US": "Caption position"
+      },
+      "default": "below",
+      "group": "layout",
+      "note": "Below the image (default), or as a magazine-style overlay on the image bottom over a gradient scrim.",
+      "options": [
+        {
+          "value": "below",
+          "label": {
+            "en-US": "Below image"
+          }
+        },
+        {
+          "value": "overlay",
+          "label": {
+            "en-US": "Overlay on image"
+          }
+        }
+      ]
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Corner Radius"
+      },
+      "default": "none",
+      "group": "appearance",
+      "options": [
+        { "value": "none", "label": { "en-US": "None" } },
+        { "value": "sm", "label": { "en-US": "Small" } },
+        { "value": "md", "label": { "en-US": "Medium" } },
+        { "value": "lg", "label": { "en-US": "Large" } },
+        { "value": "pill", "label": { "en-US": "Pill" } }
+      ]
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "type": "select",
+      "id": "hoverEffect",
+      "label": { "en-US": "Hover Effect" },
+      "default": "zoom",
+      "group": "appearance",
+      "note": "Subtle image zoom when a visitor hovers the banner. Set to None to keep the image static.",
+      "options": [
+        { "value": "none", "label": { "en-US": "None" } },
+        { "value": "zoom", "label": { "en-US": "Zoom" } }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local"
+    ],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Entire block container"
+    },
+    "media": {
+      "kind": "media",
+      "selector": "[data-target='media']",
+      "description": "Banner image wrapper",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path",
+        "motion-path"
+      ],
+      "canTrigger": true
+    },
+    "caption": {
+      "kind": "text",
+      "selector": "[data-target='caption']",
+      "description": "Image caption / credit line",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    }
+  }
+}

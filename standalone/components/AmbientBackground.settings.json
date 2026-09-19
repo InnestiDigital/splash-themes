@@ -1,0 +1,245 @@
+{
+  "component": "AmbientBackground",
+  "type": "ambient-background",
+  "label": {
+    "en-US": "Ambient Background"
+  },
+  "compatibleSectionRoles": [
+    "media-gallery"
+  ],
+  "category": "decorative",
+  "settings": [
+    {
+      "type": "select",
+      "id": "mediaType",
+      "label": {
+        "en-US": "Media Type"
+      },
+      "default": "image",
+      "group": "content",
+      "options": [
+        {
+          "value": "image",
+          "label": {
+            "en-US": "Image"
+          }
+        },
+        {
+          "value": "video",
+          "label": {
+            "en-US": "Video"
+          }
+        },
+        {
+          "value": "gradient",
+          "label": {
+            "en-US": "Gradient"
+          }
+        }
+      ]
+    },
+    {
+      "type": "media",
+      "id": "media",
+      "label": {
+        "en-US": "Media"
+      },
+      "group": "content"
+    },
+    {
+      "type": "select",
+      "id": "gradientType",
+      "label": {
+        "en-US": "Gradient Type"
+      },
+      "default": "linear",
+      "group": "content",
+      "options": [
+        {
+          "value": "linear",
+          "label": {
+            "en-US": "Linear"
+          }
+        },
+        {
+          "value": "radial",
+          "label": {
+            "en-US": "Radial"
+          }
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "gradientFrom",
+      "label": {
+        "en-US": "Gradient From"
+      },
+      "default": "#000000",
+      "group": "content"
+    },
+    {
+      "type": "color",
+      "id": "gradientTo",
+      "label": {
+        "en-US": "Gradient To"
+      },
+      "default": "#333333",
+      "group": "content"
+    },
+    {
+      "type": "range",
+      "id": "gradientAngle",
+      "label": {
+        "en-US": "Gradient Angle"
+      },
+      "default": 180,
+      "group": "content",
+      "options": {
+        "min": 0,
+        "max": 360
+      }
+    },
+    {
+      "type": "range",
+      "id": "opacity",
+      "label": {
+        "en-US": "Opacity"
+      },
+      "default": 100,
+      "group": "style",
+      "options": {
+        "min": 0,
+        "max": 100
+      }
+    },
+    {
+      "type": "select",
+      "id": "blendMode",
+      "label": {
+        "en-US": "Blend Mode"
+      },
+      "default": "normal",
+      "group": "style",
+      "options": [
+        {
+          "value": "normal",
+          "label": {
+            "en-US": "Normal"
+          }
+        },
+        {
+          "value": "multiply",
+          "label": {
+            "en-US": "Multiply"
+          }
+        },
+        {
+          "value": "screen",
+          "label": {
+            "en-US": "Screen"
+          }
+        },
+        {
+          "value": "overlay",
+          "label": {
+            "en-US": "Overlay"
+          }
+        },
+        {
+          "value": "soft-light",
+          "label": {
+            "en-US": "Soft Light"
+          }
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "parallaxIntensity",
+      "label": {
+        "en-US": "Parallax Intensity"
+      },
+      "default": 0,
+      "group": "style",
+      "options": {
+        "min": 0,
+        "max": 100,
+        "step": 1
+      }
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": {
+        "en-US": "Height"
+      },
+      "default": "viewport",
+      "group": "style",
+      "options": [
+        {
+          "value": "viewport",
+          "label": {
+            "en-US": "Viewport"
+          }
+        },
+        {
+          "value": "large",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "medium",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "small",
+          "label": {
+            "en-US": "Small"
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    },
+    "media": {
+      "selector": "[data-target='media']",
+      "description": "Media element (image, video, or gradient)",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false,
+      "kind": "media"
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local",
+      "choreography"
+    ],
+    "excluded": []
+  }
+}

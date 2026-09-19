@@ -1,0 +1,226 @@
+{
+  "component": "ProjectPager",
+  "type": "project-pager",
+  "label": {
+    "en-US": "Project Pager"
+  },
+  "category": "content",
+  "compatibleSectionRoles": [
+    "content",
+    "supporting-text"
+  ],
+  "description": {
+    "en-US": "An editorial prev/next project pager for the foot of a project page — the \"← Previous project / Next project →\" navigation portfolio and architecture sites use, with optional monochrome hover-reveal thumbnails."
+  },
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "prevEyebrow",
+      "label": {
+        "en-US": "Previous — Eyebrow"
+      },
+      "group": "content",
+      "translatable": true,
+      "default": {
+        "en-US": "Previous"
+      }
+    },
+    {
+      "type": "text",
+      "id": "prevTitle",
+      "label": {
+        "en-US": "Previous — Project Name"
+      },
+      "group": "content",
+      "translatable": true
+    },
+    {
+      "type": "text",
+      "id": "prevMeta",
+      "label": {
+        "en-US": "Previous — Meta (year / category)"
+      },
+      "group": "content",
+      "translatable": true
+    },
+    {
+      "type": "image",
+      "id": "prevImage",
+      "label": {
+        "en-US": "Previous — Thumbnail"
+      },
+      "group": "content"
+    },
+    {
+      "type": "url",
+      "id": "prevLink",
+      "label": {
+        "en-US": "Previous — Link"
+      },
+      "group": "content"
+    },
+    {
+      "type": "text",
+      "id": "nextEyebrow",
+      "label": {
+        "en-US": "Next — Eyebrow"
+      },
+      "group": "content",
+      "translatable": true,
+      "default": {
+        "en-US": "Next"
+      }
+    },
+    {
+      "type": "text",
+      "id": "nextTitle",
+      "label": {
+        "en-US": "Next — Project Name"
+      },
+      "group": "content",
+      "translatable": true
+    },
+    {
+      "type": "text",
+      "id": "nextMeta",
+      "label": {
+        "en-US": "Next — Meta (year / category)"
+      },
+      "group": "content",
+      "translatable": true
+    },
+    {
+      "type": "image",
+      "id": "nextImage",
+      "label": {
+        "en-US": "Next — Thumbnail"
+      },
+      "group": "content"
+    },
+    {
+      "type": "url",
+      "id": "nextLink",
+      "label": {
+        "en-US": "Next — Link"
+      },
+      "group": "content"
+    },
+    {
+      "type": "toggle",
+      "id": "showThumbnails",
+      "label": {
+        "en-US": "Show Thumbnails"
+      },
+      "default": true,
+      "group": "content",
+      "note": "Reveals a small project thumbnail on each side — by default it fades in on hover / focus for an editorial peek."
+    },
+    {
+      "type": "select",
+      "id": "thumbnailReveal",
+      "label": {
+        "en-US": "Thumbnail Reveal"
+      },
+      "default": "hover",
+      "group": "content",
+      "showIf": {
+        "showThumbnails": [true]
+      },
+      "options": [
+        { "value": "hover",  "label": { "en-US": "On hover / focus" } },
+        { "value": "always", "label": { "en-US": "Always visible" } }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "monochrome",
+      "label": {
+        "en-US": "Monochrome until hover"
+      },
+      "default": false,
+      "group": "content",
+      "note": "Desaturate thumbnails until hover for an editorial look."
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface"
+      },
+      "options": [
+        { "value": "none",   "label": { "en-US": "None" } },
+        { "value": "subtle", "label": { "en-US": "Subtle" } },
+        { "value": "filled", "label": { "en-US": "Filled" } }
+      ],
+      "default": "none",
+      "group": "content"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Corner Radius"
+      },
+      "options": [
+        "none",
+        "sm",
+        "md",
+        "lg",
+        "pill"
+      ],
+      "default": "none",
+      "group": "content"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "none",
+      "group": "content"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": { "en-US": "Content" }
+    }
+  ],
+  "motionSupport": {
+    "levels": ["local", "group"],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    },
+    "prev": {
+      "selector": "[data-target='prev']",
+      "description": "Previous-project card",
+      "multiple": false,
+      "addressable": true,
+      "animatable": ["opacity", "transform"],
+      "canTrigger": true,
+      "kind": "group"
+    },
+    "next": {
+      "selector": "[data-target='next']",
+      "description": "Next-project card",
+      "multiple": false,
+      "addressable": true,
+      "animatable": ["opacity", "transform"],
+      "canTrigger": true,
+      "kind": "group"
+    }
+  }
+}

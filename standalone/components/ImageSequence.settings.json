@@ -1,0 +1,341 @@
+{
+  "component": "ImageSequence",
+  "type": "image-sequence",
+  "label": {
+    "en-US": "Image Sequence"
+  },
+  "category": "media",
+  "compatibleSectionRoles": [
+    "media-gallery"
+  ],
+  "typographySlots": [],
+  "$fragments": [
+    "color-roles"
+  ],
+  "$fragmentOmit": [
+    "textTone"
+  ],
+  "$fragmentOverrides": {
+    "background": {
+      "default": "transparent"
+    }
+  },
+  "settings": [
+    {
+      "type": "repeater",
+      "id": "items",
+      "label": {
+        "en-US": "Images"
+      },
+      "group": "content",
+      "fields": [
+        {
+          "type": "media",
+          "id": "image",
+          "label": {
+            "en-US": "Image"
+          }
+        },
+        {
+          "type": "richtext-inline",
+          "id": "caption",
+          "label": {
+            "en-US": "Caption"
+          },
+          "translatable": true,
+          "typographyRole": "caption",
+          "defaultPresetKey": "caption"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": {
+            "en-US": "Alt Text"
+          },
+          "translatable": true
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      },
+      "default": "grid",
+      "group": "layout",
+      "options": [
+        {
+          "value": "masonry",
+          "label": {
+            "en-US": "Masonry"
+          }
+        },
+        {
+          "value": "grid",
+          "label": {
+            "en-US": "Grid"
+          }
+        },
+        {
+          "value": "filmstrip",
+          "label": {
+            "en-US": "Filmstrip"
+          }
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "columns",
+      "label": {
+        "en-US": "Columns"
+      },
+      "default": 3,
+      "group": "layout",
+      "options": {
+        "min": 2,
+        "max": 5
+      }
+    },
+    {
+      "type": "text",
+      "id": "gap",
+      "label": {
+        "en-US": "Gap"
+      },
+      "default": "1rem",
+      "group": "layout"
+    },
+    {
+      "type": "select",
+      "id": "aspectRatio",
+      "label": {
+        "en-US": "Aspect Ratio"
+      },
+      "default": "auto",
+      "group": "layout",
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en-US": "Auto"
+          }
+        },
+        {
+          "value": "1:1",
+          "label": {
+            "en-US": "Square (1:1)"
+          }
+        },
+        {
+          "value": "4:3",
+          "label": {
+            "en-US": "Standard (4:3)"
+          }
+        },
+        {
+          "value": "16:9",
+          "label": {
+            "en-US": "Wide (16:9)"
+          }
+        },
+        {
+          "value": "3:2",
+          "label": {
+            "en-US": "Photo (3:2)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "captionPosition",
+      "label": {
+        "en-US": "Caption Position"
+      },
+      "default": "below",
+      "group": "style",
+      "options": [
+        {
+          "value": "below",
+          "label": {
+            "en-US": "Below"
+          }
+        },
+        {
+          "value": "overlay",
+          "label": {
+            "en-US": "Overlay"
+          }
+        },
+        {
+          "value": "hidden",
+          "label": {
+            "en-US": "Hidden"
+          }
+        }
+      ]
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "contentAlignH",
+      "type": "select",
+      "label": {
+        "en-US": "Content Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en-US": "3-Column Grid"
+      },
+      "settings": {
+        "layout": "grid",
+        "columns": 3,
+        "gap": "1rem",
+        "aspectRatio": "auto",
+        "captionPosition": "below"
+      },
+      "description": {
+        "en-US": "3-column grid of images. Use for galleries, team photos, or product image sets."
+      },
+      "category": "media",
+      "isDefault": true
+    },
+    {
+      "name": {
+        "en-US": "Filmstrip"
+      },
+      "settings": {
+        "layout": "filmstrip",
+        "columns": 3,
+        "gap": "1rem",
+        "aspectRatio": "16:9",
+        "captionPosition": "overlay"
+      },
+      "description": {
+        "en-US": "Horizontally scrollable filmstrip. Best for curated image stories or event coverage."
+      },
+      "category": "media"
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Gallery container",
+      "kind": "root"
+    },
+    "items": {
+      "selector": "[data-target='items']",
+      "description": "Individual gallery items",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": true,
+      "kind": "group"
+    },
+    "media": {
+      "selector": "[data-target='media']",
+      "description": "Image elements",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur"
+      ],
+      "canTrigger": false,
+      "kind": "media"
+    },
+    "caption": {
+      "selector": "[data-target='caption']",
+      "description": "Caption text",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false,
+      "kind": "text"
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": []
+  },
+  "motionHints": {
+    "containsDynamicChildren": false,
+    "prefersLayerPromotion": [
+      "items"
+    ]
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "component": "MapEmbed",
+  "type": "map-embed",
+  "label": {
+    "en-US": "Map"
+  },
+  "category": "content",
+  "compatibleSectionRoles": [
+    "editorial-body",
+    "media-gallery",
+    "supporting-text"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "repeater",
+      "id": "locations",
+      "label": {
+        "en-US": "Locations"
+      },
+      "group": "content",
+      "maxItems": 6,
+      "note": "Optional. Add two or more offices to show a chip switcher that re-points the map. Leave empty to use the single Latitude / Longitude / Zoom / Address below.",
+      "fields": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": { "en-US": "Label" },
+          "translatable": true,
+          "note": "Chip caption, e.g. \"Bologna\"."
+        },
+        {
+          "type": "text",
+          "id": "latitude",
+          "label": { "en-US": "Latitude" },
+          "note": "Decimal latitude, e.g. 44.4949"
+        },
+        {
+          "type": "text",
+          "id": "longitude",
+          "label": { "en-US": "Longitude" },
+          "note": "Decimal longitude, e.g. 11.3426"
+        },
+        {
+          "type": "text",
+          "id": "zoom",
+          "label": { "en-US": "Zoom" },
+          "note": "12 (city), 14 (district), 15 (street) or 17 (building)."
+        },
+        {
+          "type": "text",
+          "id": "address",
+          "label": { "en-US": "Address" },
+          "translatable": true,
+          "note": "Shown as the caption and used as the map's accessible name for this location."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "latitude",
+      "label": {
+        "en-US": "Latitude"
+      },
+      "group": "content",
+      "default": "41.8992",
+      "note": "Single-location fallback (used when no Locations are added). Decimal latitude, e.g. 41.8992"
+    },
+    {
+      "type": "text",
+      "id": "longitude",
+      "label": {
+        "en-US": "Longitude"
+      },
+      "group": "content",
+      "default": "12.4768",
+      "note": "Decimal longitude, e.g. 12.4768"
+    },
+    {
+      "type": "select",
+      "id": "zoom",
+      "label": {
+        "en-US": "Zoom"
+      },
+      "group": "content",
+      "default": "15",
+      "options": [
+        { "value": "12", "label": { "en-US": "City" } },
+        { "value": "14", "label": { "en-US": "District" } },
+        { "value": "15", "label": { "en-US": "Street" } },
+        { "value": "17", "label": { "en-US": "Building" } }
+      ]
+    },
+    {
+      "type": "richtext-single",
+      "id": "address",
+      "label": {
+        "en-US": "Address"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "caption",
+      "defaultPresetKey": "caption",
+      "note": "Shown as the caption and used as the map's accessible name."
+    },
+    {
+      "type": "toggle",
+      "id": "showMarker",
+      "label": {
+        "en-US": "Marker"
+      },
+      "group": "content",
+      "default": true
+    },
+    {
+      "type": "toggle",
+      "id": "showDirections",
+      "label": {
+        "en-US": "Directions link"
+      },
+      "group": "content",
+      "default": true,
+      "note": "Adds an 'Open in maps' link below the map."
+    },
+    {
+      "type": "toggle",
+      "id": "requireConsent",
+      "label": {
+        "en-US": "Ask before loading"
+      },
+      "group": "layout",
+      "default": true,
+      "note": "Privacy-first: shows a placeholder and loads the external map only after the visitor clicks. Turn off to load immediately."
+    },
+    {
+      "type": "text",
+      "id": "consentLabel",
+      "label": {
+        "en-US": "Load button text"
+      },
+      "group": "layout",
+      "translatable": true,
+      "default": "Carica la mappa"
+    },
+    {
+      "type": "select",
+      "id": "aspectRatio",
+      "label": {
+        "en-US": "Aspect Ratio"
+      },
+      "group": "layout",
+      "default": "16:9",
+      "options": [
+        { "value": "16:9", "label": { "en-US": "16:9" } },
+        { "value": "4:3",  "label": { "en-US": "4:3" } },
+        { "value": "1:1",  "label": { "en-US": "1:1" } },
+        { "value": "21:9", "label": { "en-US": "21:9" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "borderRadius",
+      "label": {
+        "en-US": "Corner Radius"
+      },
+      "group": "layout",
+      "default": "none",
+      "options": [
+        { "value": "none", "label": { "en-US": "None" } },
+        { "value": "sm",   "label": { "en-US": "Small" } },
+        { "value": "md",   "label": { "en-US": "Medium" } },
+        { "value": "lg",   "label": { "en-US": "Large" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "internalPadding",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "group": "layout",
+      "default": "none",
+      "options": [
+        { "value": "none", "label": { "en-US": "None" } },
+        { "value": "sm",   "label": { "en-US": "Small" } },
+        { "value": "md",   "label": { "en-US": "Medium" } },
+        { "value": "lg",   "label": { "en-US": "Large" } },
+        { "value": "xl",   "label": { "en-US": "XL" } }
+      ]
+    },
+    {
+      "id": "contentAlignH",
+      "type": "select",
+      "label": {
+        "en-US": "Alignment"
+      },
+      "default": "left",
+      "group": "layout",
+      "options": [
+        { "value": "left",   "label": { "en-US": "Left" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "right",  "label": { "en-US": "Right" } }
+      ]
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "layout",  "label": { "en-US": "Layout" } }
+  ],
+  "motionSupport": {
+    "levels": ["local"],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Map wrapper"
+    },
+    "media": {
+      "kind": "media",
+      "selector": "[data-target='media']",
+      "description": "Map frame",
+      "multiple": false,
+      "animatable": ["opacity", "transform"],
+      "canTrigger": true
+    },
+    "caption": {
+      "kind": "text",
+      "selector": "[data-target='caption']",
+      "description": "Address caption",
+      "multiple": false,
+      "animatable": ["opacity", "transform"],
+      "canTrigger": false
+    }
+  }
+}

@@ -1,0 +1,88 @@
+// Hero media focal point, under the schema-driven layout engine (L3).
+//
+// The hand-written `HeroSectionLayout.vue` resolved the three `mediaPosition*`
+// settings in TS (`heroMediaPosition.ts`), wrote the answer into
+// `--hero-media-position`, and mapped it onto `object-position` for replaced
+// children. Under the engine those three settings are UNBOUND (contract §3.7):
+// a focal point is paint, not geometry — it moves no grid track and reflows
+// nothing — so there is no `layoutBind` target for it. The engine emits them as
+// `data-media-position` / `-tablet` / `-mobile` on its root and stops there,
+// which is why §8c recorded "no home under the engine": nothing consumed them.
+//
+// This is that home, and it is deliberately THEME SCSS rather than engine code:
+//
+//  - The engine must stay section-type-agnostic. Teaching it about a setting
+//    called `mediaPosition` would re-hardcode the vocabulary L3 just opened.
+//  - The `structural-media-query` lint refuses `@media` inside
+//    `section-layouts/engine/**` because a COLLAPSE decision belongs to the
+//    container. `object-position` is not a collapse decision — it changes which
+//    part of an image is visible, never the box tree — so the tier resolution
+//    that must live in TS for layout does not apply to it.
+//
+// The breakpoints below mirror `heroViewportFor()` exactly (mobile
+// `<= BREAKPOINTS.md`, tablet `< BREAKPOINTS.lg`, desktop above), and the token
+// table mirrors `CSS` in `heroMediaPosition.ts`. Both mirrorings are pinned by
+// `tests/themes/section-media-focal-point.test.ts` — change one and that test
+// fails rather than the two drifting apart unnoticed.
+//
+// Local values, NOT the injected `$bp-*` vars: Vite's `additionalData` is
+// prepended to entry stylesheets only, and this file is reached via `@use`
+// from `main.scss`, where sass module scope never sees the injection.
+$bp-md: 768px;
+$bp-lg: 1024px;
+
+$hero-media-positions: (
+  'center': center,
+  'top': center top,
+  'bottom': center bottom,
+  'left': left center,
+  'right': right center,
+  'top-left': left top,
+  'top-right': right top,
+  'bottom-left': left bottom,
+  'bottom-right': right bottom,
+);
+
+// Cascade order matches `resolveHeroMediaPosition`: the base value is written
+// unconditionally, the tablet override inside the tablet range, and the mobile
+// override inside the mobile range. `inherit` is not an option value here on
+// purpose — an override that says "inherit" simply declares no rule, which is
+// how the fall-through happens in CSS as well as in TS.
+// `.schema-layout` is the engine's own root div — the element `dataAttrs`
+// lands on. Global stylesheet, so no `:deep()`: these are ordinary descendant
+// selectors reaching into whatever block a slot rendered.
+.schema-layout {
+  @each $token, $value in $hero-media-positions {
+    &[data-media-position='#{$token}'] {
+      --hero-media-position: #{$value};
+    }
+  }
+
+  @media (max-width: #{$bp-lg - 1px}) {
+    @each $token, $value in $hero-media-positions {
+      &[data-media-position-tablet='#{$token}'] {
+        --hero-media-position: #{$value};
+      }
+    }
+  }
+
+  @media (max-width: $bp-md) {
+    @each $token, $value in $hero-media-positions {
+      &[data-media-position-mobile='#{$token}'] {
+        --hero-media-position: #{$value};
+      }
+    }
+  }
+
+  // Same two tiers `HeroSectionLayout.vue` splits the slotted-child contract
+  // into (SPL-077): `object-*` only affects replaced elements, so scope it to
+  // them. A block that paints its own `background-image` reads the custom
+  // property directly, which inherits without any rule here.
+  // Scoped to the media-gallery slot so a focal point never reaches an
+  // unrelated inline image in a body block.
+  [data-slot-role='media-gallery'] img,
+  [data-slot-role='media-gallery'] video {
+    object-fit: cover;
+    object-position: var(--hero-media-position, center);
+  }
+}

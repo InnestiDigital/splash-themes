@@ -1,0 +1,120 @@
+{
+  "sections": [
+    {
+      "name": "Canvas",
+      "anchor": "canvas",
+      "colorScheme": "light",
+      "sectionRole": "hero",
+      "sectionType": "stacked",
+      "containerMode": "full-bleed",
+      "sectionSpaceY": "none",
+      "containerInsetX": "none",
+      "layoutConfig": { "shellLayout": "stacked", "stackGap": "none" }
+    }
+  ],
+  "blocks": [
+    {
+      "type": "canvas-shape",
+      "sectionRef": 0,
+      "settings": {
+        "shape": "rectangle",
+        "size": "full",
+        "fillRole": "brandPrimary",
+        "strokeWidth": 0
+      },
+      "placement": {
+        "canvas": { "x": 50, "y": 50, "width": 100, "height": 100, "rotation": 0, "zIndex": 1, "locked": true }
+      }
+    },
+    {
+      "type": "canvas-shape",
+      "sectionRef": 0,
+      "settings": {
+        "shape": "rectangle",
+        "size": "full",
+        "fillRole": "brandSurface",
+        "strokeWidth": 0
+      },
+      "placement": {
+        "canvas": { "x": 81, "y": 50, "width": 38, "height": 100, "rotation": 0, "zIndex": 2, "locked": true }
+      }
+    },
+    {
+      "type": "canvas-shape",
+      "sectionRef": 0,
+      "settings": {
+        "shape": "ellipse",
+        "size": "full",
+        "fillRole": "brandSecondary",
+        "strokeWidth": 0,
+        "opacity": 0.8
+      },
+      "placement": {
+        "canvas": { "x": 82, "y": 50, "width": 27, "height": 52, "rotation": -8, "zIndex": 3, "locked": false }
+      }
+    },
+    {
+      "type": "brand-mark",
+      "sectionRef": 0,
+      "settings": {
+        "markVariant": "inverse",
+        "size": "full",
+        "align": "left",
+        "verticalAlign": "center",
+        "foregroundRole": "brandSurface"
+      },
+      "placement": {
+        "canvas": { "x": 19, "y": 14, "width": 28, "height": 12, "rotation": 0, "zIndex": 4, "locked": false }
+      }
+    },
+    {
+      "type": "canvas-badge",
+      "sectionRef": 0,
+      "settings": {
+        "text": { "en-US": "Featured story" },
+        "variant": "outline",
+        "backgroundRole": "brandSurface",
+        "foregroundRole": "brandSurface",
+        "align": "left",
+        "uppercase": true
+      },
+      "placement": {
+        "canvas": { "x": 20, "y": 35, "width": 30, "height": 10, "rotation": 0, "zIndex": 5, "locked": false }
+      }
+    },
+    {
+      "type": "canvas-text",
+      "sectionRef": 0,
+      "settings": {
+        "content": { "en-US": "<h1>Give every shared link a recognizable voice.</h1>" },
+        "typographyRole": "brandHeadline",
+        "foregroundRole": "brandSurface",
+        "backgroundRole": "transparent",
+        "textAlign": "left",
+        "blockAlign": "left",
+        "measureWidth": "full",
+        "verticalAlign": "center"
+      },
+      "placement": {
+        "canvas": { "x": 34, "y": 63, "width": 56, "height": 40, "rotation": 0, "zIndex": 6, "locked": false }
+      }
+    },
+    {
+      "type": "canvas-text",
+      "sectionRef": 0,
+      "settings": {
+        "content": { "en-US": "<p>Article title · Category · Date</p>" },
+        "typographyRole": "brandBody",
+        "foregroundRole": "brandSurface",
+        "backgroundRole": "transparent",
+        "textAlign": "left",
+        "blockAlign": "left",
+        "measureWidth": "full",
+        "verticalAlign": "center"
+      },
+      "placement": {
+        "canvas": { "x": 34, "y": 89, "width": 56, "height": 8, "rotation": 0, "zIndex": 7, "locked": false }
+      }
+    }
+  ]
+}

@@ -1,0 +1,466 @@
+{
+  "component": "IconGridBlock",
+  "type": "icon-grid-block",
+  "label": {
+    "en-US": "Icon Grid"
+  },
+  "category": "content",
+  "compatibleSectionRoles": [
+    "supporting-text",
+    "editorial-body"
+  ],
+  "typographySlots": [
+    {
+      "slot": "title",
+      "label": "Title",
+      "defaultRole": "heading2"
+    }
+  ],
+  "$fragments": [
+    "color-roles"
+  ],
+  "$fragmentOverrides": {
+    "background": {
+      "default": "section"
+    }
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "itemKind",
+      "label": {
+        "en-US": "Item Kind"
+      },
+      "default": "stat",
+      "group": "content",
+      "options": [
+        {
+          "value": "stat",
+          "label": {
+            "en-US": "Stats (numeric metrics)"
+          }
+        },
+        {
+          "value": "logo",
+          "label": {
+            "en-US": "Logos (images)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "richtext-single",
+      "id": "title",
+      "label": {
+        "en-US": "Section Title"
+      },
+      "group": "content",
+      "translatable": true,
+      "preset": "section-title"
+    },
+    {
+      "type": "toggle",
+      "id": "showTitle",
+      "label": {
+        "en-US": "Show Block Title"
+      },
+      "default": true,
+      "group": "content",
+      "note": "Disable when section already has a heading block (e.g., ChapterDivider or EditorialText in section-heading role)."
+    },
+    {
+      "type": "richtext-inline",
+      "id": "subtitle",
+      "label": {
+        "en-US": "Section Subtitle"
+      },
+      "group": "content",
+      "translatable": true,
+      "preset": "body",
+      "showIf": {
+        "showTitle": true,
+        "itemKind": "stat"
+      }
+    },
+    {
+      "type": "repeater",
+      "id": "stats",
+      "label": {
+        "en-US": "Stats"
+      },
+      "group": "content",
+      "maxItems": 6,
+      "showIf": {
+        "itemKind": "stat"
+      },
+      "fields": [
+        {
+          "type": "richtext-single",
+          "id": "value",
+          "label": {
+            "en-US": "Value"
+          },
+          "placeholder": "e.g. 10M, 500K, 99",
+          "preset": "section-title"
+        },
+        {
+          "type": "text",
+          "id": "prefix",
+          "label": {
+            "en-US": "Prefix (e.g. $)"
+          }
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": {
+            "en-US": "Suffix (e.g. +, %)"
+          }
+        },
+        {
+          "type": "richtext-single",
+          "id": "label",
+          "label": {
+            "en-US": "Label"
+          },
+          "translatable": true,
+          "preset": "caption"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": {
+            "en-US": "Icon (Material Icon name)"
+          },
+          "placeholder": "e.g. people, star, shopping_cart"
+        }
+      ]
+    },
+    {
+      "type": "repeater",
+      "id": "logos",
+      "label": {
+        "en-US": "Logos"
+      },
+      "group": "content",
+      "maxItems": 20,
+      "showIf": {
+        "itemKind": "logo"
+      },
+      "fields": [
+        {
+          "type": "image",
+          "id": "image",
+          "label": {
+            "en-US": "Logo Image"
+          }
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": {
+            "en-US": "Alt Text / Partner Name"
+          }
+        },
+        {
+          "type": "url",
+          "id": "linkUrl",
+          "label": {
+            "en-US": "Link URL"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "logoVariant",
+      "label": {
+        "en-US": "Logo Layout"
+      },
+      "default": "grid",
+      "group": "appearance",
+      "showIf": {
+        "itemKind": "logo"
+      },
+      "options": [
+        {
+          "value": "grid",
+          "label": {
+            "en-US": "Grid"
+          }
+        },
+        {
+          "value": "scroll",
+          "label": {
+            "en-US": "Scrolling Marquee"
+          }
+        }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "grayscale",
+      "label": {
+        "en-US": "Grayscale Logos"
+      },
+      "default": true,
+      "group": "appearance",
+      "showIf": {
+        "itemKind": "logo"
+      }
+    },
+    {
+      "type": "toggle",
+      "id": "pauseOnHover",
+      "label": {
+        "en-US": "Pause Marquee on Hover"
+      },
+      "default": true,
+      "group": "appearance",
+      "showIf": {
+        "logoVariant": "scroll"
+      }
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface Style"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Item Corner Radius"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "pill",
+          "label": {
+            "en-US": "Pill"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "contentAlignH",
+      "type": "select",
+      "label": {
+        "en-US": "Content Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "appearance"
+    },
+    {
+      "type": "color",
+      "id": "accentColor",
+      "label": {
+        "en-US": "Accent Color"
+      },
+      "group": "style",
+      "note": "Leave empty to inherit section accent color.",
+      "showIf": {
+        "itemKind": "stat"
+      }
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en-US": "Program Stats"
+      },
+      "settings": {
+        "itemKind": "stat",
+        "title": {
+          "en-US": "Our Program by the Numbers"
+        },
+        "stats": [
+          {
+            "value": "10M+",
+            "label": {
+              "en-US": "Members"
+            },
+            "icon": "people"
+          },
+          {
+            "value": "500+",
+            "label": {
+              "en-US": "Brand Partners"
+            },
+            "icon": "storefront"
+          },
+          {
+            "value": "$2B+",
+            "label": {
+              "en-US": "Rewards Redeemed"
+            },
+            "icon": "redeem"
+          },
+          {
+            "value": "99%",
+            "label": {
+              "en-US": "Satisfaction Rate"
+            },
+            "icon": "thumb_up"
+          }
+        ]
+      }
+    },
+    {
+      "name": {
+        "en-US": "Partner Logos"
+      },
+      "settings": {
+        "itemKind": "logo",
+        "logoVariant": "grid",
+        "grayscale": true,
+        "background": "transparent"
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": []
+  },
+  "targets": {
+    "items": {
+      "selector": "[data-target='item']",
+      "description": "Individual stat or logo item",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "group"
+    },
+    "heading": {
+      "selector": "[data-target='heading']",
+      "description": "Section heading",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    },
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    }
+  }
+}

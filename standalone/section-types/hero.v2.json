@@ -1,0 +1,217 @@
+{
+  "type": "hero",
+  "label": "Hero",
+  "description": "Full-bleed hero section. Blocks fill the entire viewport area.",
+  "usesContainer": false,
+  "layoutSlots": [
+    { "role": "section-heading", "required": false, "multiple": false, "description": "Section title and intro (centered overlay, only first block renders)" },
+    { "role": "media-gallery", "required": false, "multiple": false, "description": "Background media (only first block renders, fills viewport)" },
+    { "role": "section-cta", "required": false, "multiple": true, "description": "Call-to-action blocks (render at bottom of hero)" }
+  ],
+  "layout": {
+    "engine": "grid",
+    "tiers": [
+      { "id": "full", "minWidth": "md" },
+      { "id": "stack", "minWidth": null }
+    ],
+    "columns": { "full": "minmax(0, 1fr)", "stack": "minmax(0, 1fr)" },
+    "rows": { "full": "minmax(0, 1fr)", "stack": "minmax(0, 1fr)" },
+    "gap": { "row": "none", "column": "none" },
+    "minHeight": "100svh",
+    "placeItems": "stretch stretch",
+    "slots": [
+      {
+        "role": "media-gallery",
+        "place": { "column": "1 / -1", "row": "1 / -1" },
+        "flow": "stack",
+        "flowOptions": { "gap": "none" },
+        "placeSelf": "stretch stretch",
+        "zIndex": 0
+      },
+      {
+        "role": "section-heading",
+        "place": { "column": "1 / -1", "row": "1 / -1" },
+        "flow": "stack",
+        "flowOptions": { "gap": "md" },
+        "placeSelf": "center center",
+        "zIndex": 1
+      },
+      {
+        "role": "section-cta",
+        "place": { "column": "1 / -1", "row": "1 / -1" },
+        "flow": "stack",
+        "flowOptions": { "gap": "sm" },
+        "placeSelf": "end stretch",
+        "zIndex": 2
+      }
+    ]
+  },
+  "settings": [
+    {
+      "id": "mediaPosition",
+      "type": "select",
+      "display": "visual-picker",
+      "label": "Media Position",
+      "default": "center",
+      "group": "layout",
+      "options": [
+        { "value": "center", "label": "Center" },
+        { "value": "top", "label": "Top" },
+        { "value": "bottom", "label": "Bottom" },
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" },
+        { "value": "top-left", "label": "Top Left" },
+        { "value": "top-right", "label": "Top Right" },
+        { "value": "bottom-left", "label": "Bottom Left" },
+        { "value": "bottom-right", "label": "Bottom Right" }
+      ],
+      "note": "Focal point of the background/hero image (object/background position), not grid geometry. Unbound: keeps its existing --hero-media-position custom-property path."
+    },
+    {
+      "id": "mediaPositionTablet",
+      "type": "select",
+      "display": "visual-picker",
+      "label": "Media Position (Tablet)",
+      "default": "inherit",
+      "group": "layout",
+      "options": [
+        { "value": "inherit", "label": "Inherit (Desktop)" },
+        { "value": "center", "label": "Center" },
+        { "value": "top", "label": "Top" },
+        { "value": "bottom", "label": "Bottom" },
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" },
+        { "value": "top-left", "label": "Top Left" },
+        { "value": "top-right", "label": "Top Right" },
+        { "value": "bottom-left", "label": "Bottom Left" },
+        { "value": "bottom-right", "label": "Bottom Right" }
+      ],
+      "note": "Focal point on tablet. Inherit uses the desktop value."
+    },
+    {
+      "id": "mediaPositionMobile",
+      "type": "select",
+      "display": "visual-picker",
+      "label": "Media Position (Mobile)",
+      "default": "inherit",
+      "group": "layout",
+      "options": [
+        { "value": "inherit", "label": "Inherit (Tablet)" },
+        { "value": "center", "label": "Center" },
+        { "value": "top", "label": "Top" },
+        { "value": "bottom", "label": "Bottom" },
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" },
+        { "value": "top-left", "label": "Top Left" },
+        { "value": "top-right", "label": "Top Right" },
+        { "value": "bottom-left", "label": "Bottom Left" },
+        { "value": "bottom-right", "label": "Bottom Right" }
+      ],
+      "note": "Focal point on mobile. Inherit falls back to tablet, then desktop."
+    },
+    {
+      "id": "contentAlign",
+      "type": "select",
+      "label": "Content Alignment",
+      "default": "center",
+      "group": "layout",
+      "layoutBind": [{ "target": "slot.section-heading.placeSelf" }],
+      "options": [
+        { "value": "center", "label": "Center", "layoutValues": { "slot.section-heading.placeSelf": "center center" } },
+        { "value": "bottom-left", "label": "Bottom Left", "layoutValues": { "slot.section-heading.placeSelf": "end start" } },
+        { "value": "bottom-center", "label": "Bottom Center", "layoutValues": { "slot.section-heading.placeSelf": "end center" } },
+        { "value": "bottom-right", "label": "Bottom Right", "layoutValues": { "slot.section-heading.placeSelf": "end end" } },
+        { "value": "top-left", "label": "Top Left", "layoutValues": { "slot.section-heading.placeSelf": "start start" } },
+        { "value": "top-center", "label": "Top Center", "layoutValues": { "slot.section-heading.placeSelf": "start center" } },
+        { "value": "top-right", "label": "Top Right", "layoutValues": { "slot.section-heading.placeSelf": "start end" } }
+      ],
+      "note": "Seven SCSS rules in HeroSectionLayout.vue become seven place-self shorthand values."
+    },
+    {
+      "id": "height",
+      "type": "select",
+      "label": "Height",
+      "default": "viewport",
+      "group": "layout",
+      "layoutBind": [{ "target": "minHeight" }],
+      "options": [
+        { "value": "viewport", "label": "Full Viewport (100vh)", "layoutValues": { "minHeight": "100svh" } },
+        { "value": "large", "label": "Large (80vh)", "layoutValues": { "minHeight": "80svh" } },
+        { "value": "medium", "label": "Medium (60vh)", "layoutValues": { "minHeight": "60svh" } },
+        { "value": "auto", "label": "Auto (content height)", "layoutValues": { "minHeight": "0" } }
+      ]
+    },
+    {
+      "id": "typographyScale",
+      "type": "select",
+      "label": "Typography Scale",
+      "description": "Scales all headings within this section",
+      "default": "default",
+      "group": "layout",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "display", "label": "Display (larger headings)" },
+        { "value": "compact", "label": "Compact (smaller headings)" }
+      ]
+    },
+    {
+      "id": "dividerTop",
+      "type": "select",
+      "label": "Top Edge Shape",
+      "description": "Decorative SVG separator at the top of this section, filled with the section background so the colour flows into the section above.",
+      "default": "none",
+      "group": "divider",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "wave", "label": "Wave" },
+        { "value": "curve", "label": "Curve" },
+        { "value": "tilt", "label": "Tilt" },
+        { "value": "triangle", "label": "Triangle" },
+        { "value": "zigzag", "label": "Zigzag" },
+        { "value": "arrow", "label": "Arrow" }
+      ]
+    },
+    {
+      "id": "dividerBottom",
+      "type": "select",
+      "label": "Bottom Edge Shape",
+      "description": "Decorative SVG separator at the bottom of this section, filled with the section background so the colour flows into the section below.",
+      "default": "none",
+      "group": "divider",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "wave", "label": "Wave" },
+        { "value": "curve", "label": "Curve" },
+        { "value": "tilt", "label": "Tilt" },
+        { "value": "triangle", "label": "Triangle" },
+        { "value": "zigzag", "label": "Zigzag" },
+        { "value": "arrow", "label": "Arrow" }
+      ]
+    },
+    {
+      "id": "dividerHeight",
+      "type": "select",
+      "label": "Divider Height",
+      "description": "Height of the shape dividers on this section.",
+      "default": "md",
+      "group": "divider",
+      "options": [
+        { "value": "sm", "label": "Small" },
+        { "value": "md", "label": "Medium" },
+        { "value": "lg", "label": "Large" }
+      ]
+    },
+    {
+      "id": "dividerFlip",
+      "type": "toggle",
+      "label": "Flip Direction",
+      "description": "Mirror the divider shapes horizontally.",
+      "default": false,
+      "group": "divider"
+    }
+  ],
+  "groups": [
+    { "id": "layout", "label": "Layout" },
+    { "id": "divider", "label": "Shape Dividers" }
+  ]
+}

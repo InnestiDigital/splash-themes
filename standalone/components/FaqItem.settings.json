@@ -1,0 +1,85 @@
+{
+  "component": "FaqItem",
+  "type": "faq-item",
+  "label": {
+    "en-US": "FAQ Item"
+  },
+  "isNestedComponent": true,
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "question",
+      "label": {
+        "en-US": "Question"
+      },
+      "translatable": true,
+      "validation": {
+        "required": true
+      },
+      "group": "content",
+      "typographyRole": "heading3",
+      "defaultPresetKey": "section-title"
+    },
+    {
+      "type": "richtext-block",
+      "id": "answer",
+      "label": {
+        "en-US": "Answer"
+      },
+      "translatable": true,
+      "validation": {
+        "required": true
+      },
+      "group": "content",
+      "typographyRole": "body",
+      "defaultPresetKey": "body"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local"
+    ],
+    "excluded": []
+  },
+  "targets": {
+    "question": {
+      "selector": "[data-target='question']",
+      "description": "FAQ question",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    },
+    "root": {
+      "description": "Entire FAQ item container",
+      "kind": "root"
+    },
+    "answer": {
+      "selector": "[data-target='answer']",
+      "description": "FAQ answer",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": false,
+      "kind": "text"
+    }
+  }
+}

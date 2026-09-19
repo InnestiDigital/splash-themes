@@ -1,0 +1,536 @@
+{
+  "component": "CanvasText",
+  "type": "canvas-text",
+  "label": {
+    "en-US": "Text"
+  },
+  "category": "content",
+  "description": {
+    "en-US": "Add a flexible text layer for headlines, body copy, captions, or calls to action."
+  },
+  "surfaces": [
+    "canvas"
+  ],
+  "tier": "basic",
+  "keywords": [
+    "headline",
+    "copy",
+    "paragraph",
+    "caption",
+    "typography"
+  ],
+  "compatibleSectionRoles": [
+    "section-heading",
+    "editorial-body",
+    "supporting-text"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "richtext-block",
+      "id": "content",
+      "label": {
+        "en-US": "Text"
+      },
+      "default": "<p>Add your text</p>",
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "brandHeadline"
+    },
+    {
+      "type": "select",
+      "id": "textAlign",
+      "label": {
+        "en-US": "Text alignment"
+      },
+      "default": "left",
+      "group": "layout",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "blockAlign",
+      "label": {
+        "en-US": "Block alignment"
+      },
+      "default": "left",
+      "group": "layout",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "measureWidth",
+      "label": {
+        "en-US": "Text width"
+      },
+      "default": "full",
+      "canvasDefault": "full",
+      "group": "layout",
+      "options": [
+        {
+          "value": "content",
+          "label": {
+            "en-US": "Content"
+          }
+        },
+        {
+          "value": "narrow",
+          "label": {
+            "en-US": "Narrow"
+          }
+        },
+        {
+          "value": "standard",
+          "label": {
+            "en-US": "Standard"
+          }
+        },
+        {
+          "value": "wide",
+          "label": {
+            "en-US": "Wide"
+          }
+        },
+        {
+          "value": "full",
+          "label": {
+            "en-US": "Full width"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "typographyRole",
+      "label": {
+        "en-US": "Typography"
+      },
+      "default": "brandHeadline",
+      "group": "style",
+      "options": [
+        {
+          "value": "brandHeadline",
+          "label": {
+            "en-US": "Brand headline"
+          }
+        },
+        {
+          "value": "brandBody",
+          "label": {
+            "en-US": "Brand body"
+          }
+        },
+        {
+          "value": "heading1",
+          "label": {
+            "en-US": "Heading 1"
+          }
+        },
+        {
+          "value": "heading2",
+          "label": {
+            "en-US": "Heading 2"
+          }
+        },
+        {
+          "value": "heading3",
+          "label": {
+            "en-US": "Heading 3"
+          }
+        },
+        {
+          "value": "sectionTitle",
+          "label": {
+            "en-US": "Section title"
+          }
+        },
+        {
+          "value": "lead",
+          "label": {
+            "en-US": "Lead"
+          }
+        },
+        {
+          "value": "body",
+          "label": {
+            "en-US": "Body"
+          }
+        },
+        {
+          "value": "caption",
+          "label": {
+            "en-US": "Caption"
+          }
+        },
+        {
+          "value": "eyebrow",
+          "label": {
+            "en-US": "Eyebrow"
+          }
+        },
+        {
+          "value": "pullquote",
+          "label": {
+            "en-US": "Pull quote"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "foregroundRole",
+      "label": {
+        "en-US": "Text tone"
+      },
+      "default": "brandOnSurface",
+      "group": "style",
+      "options": [
+        {
+          "value": "brandOnSurface",
+          "label": {
+            "en-US": "Brand on surface"
+          }
+        },
+        {
+          "value": "brandPrimary",
+          "label": {
+            "en-US": "Brand primary"
+          }
+        },
+        {
+          "value": "brandSecondary",
+          "label": {
+            "en-US": "Brand secondary"
+          }
+        },
+        {
+          "value": "brandSurface",
+          "label": {
+            "en-US": "Brand surface"
+          }
+        },
+        {
+          "value": "text",
+          "label": {
+            "en-US": "Section text"
+          }
+        },
+        {
+          "value": "muted",
+          "label": {
+            "en-US": "Muted text"
+          }
+        },
+        {
+          "value": "faint",
+          "label": {
+            "en-US": "Faint text"
+          }
+        },
+        {
+          "value": "accent",
+          "label": {
+            "en-US": "Section accent"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "backgroundRole",
+      "label": {
+        "en-US": "Background tone"
+      },
+      "default": "transparent",
+      "group": "style",
+      "options": [
+        {
+          "value": "transparent",
+          "label": {
+            "en-US": "Transparent"
+          }
+        },
+        {
+          "value": "brandSurface",
+          "label": {
+            "en-US": "Brand surface"
+          }
+        },
+        {
+          "value": "brandPrimary",
+          "label": {
+            "en-US": "Brand primary"
+          }
+        },
+        {
+          "value": "brandSecondary",
+          "label": {
+            "en-US": "Brand secondary"
+          }
+        },
+        {
+          "value": "brandOnSurface",
+          "label": {
+            "en-US": "Brand on surface"
+          }
+        },
+        {
+          "value": "background",
+          "label": {
+            "en-US": "Section background"
+          }
+        },
+        {
+          "value": "surface",
+          "label": {
+            "en-US": "Section surface"
+          }
+        },
+        {
+          "value": "accent",
+          "label": {
+            "en-US": "Section accent"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "minHeight",
+      "label": {
+        "en-US": "Minimum height"
+      },
+      "default": "auto",
+      "group": "advanced",
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en-US": "Automatic"
+          }
+        },
+        {
+          "value": "compact",
+          "label": {
+            "en-US": "Compact"
+          }
+        },
+        {
+          "value": "medium",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "tall",
+          "label": {
+            "en-US": "Tall"
+          }
+        },
+        {
+          "value": "fill",
+          "label": {
+            "en-US": "Fill available height"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "verticalAlign",
+      "label": {
+        "en-US": "Vertical alignment"
+      },
+      "default": "top",
+      "group": "advanced",
+      "options": [
+        {
+          "value": "top",
+          "label": {
+            "en-US": "Top"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "bottom",
+          "label": {
+            "en-US": "Bottom"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "internalPadding",
+      "label": {
+        "en-US": "Inner padding"
+      },
+      "default": "none",
+      "group": "advanced",
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "xs",
+          "label": {
+            "en-US": "Extra small"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "xl",
+          "label": {
+            "en-US": "Extra large"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "borderRadius",
+      "label": {
+        "en-US": "Corner radius"
+      },
+      "default": "none",
+      "group": "advanced",
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "pill",
+          "label": {
+            "en-US": "Pill"
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    },
+    {
+      "id": "advanced",
+      "label": {
+        "en-US": "Advanced"
+      }
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Entire text block",
+      "kind": "root"
+    },
+    "text": {
+      "selector": "[data-target='text']",
+      "description": "Rendered text content",
+      "multiple": false,
+      "kind": "text"
+    }
+  },
+  "motionSupport": {
+    "levels": [],
+    "excluded": []
+  }
+}

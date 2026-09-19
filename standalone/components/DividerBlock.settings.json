@@ -1,0 +1,314 @@
+{
+  "component": "DividerBlock",
+  "type": "divider-block",
+  "label": {
+    "en-US": "Divider"
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "lineStyle",
+      "label": {
+        "en-US": "Style"
+      },
+      "default": "line",
+      "group": "style",
+      "options": [
+        {
+          "value": "line",
+          "label": {
+            "en-US": "Solid"
+          }
+        },
+        {
+          "value": "dashed",
+          "label": {
+            "en-US": "Dashed"
+          }
+        },
+        {
+          "value": "dotted",
+          "label": {
+            "en-US": "Dotted"
+          }
+        },
+        {
+          "value": "gradient",
+          "label": {
+            "en-US": "Fade"
+          }
+        },
+        {
+          "value": "ornament",
+          "label": {
+            "en-US": "Ornament"
+          }
+        },
+        {
+          "value": "space",
+          "label": {
+            "en-US": "Space Only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "glyph",
+      "label": {
+        "en-US": "Glyph"
+      },
+      "default": "✦",
+      "group": "style",
+      "options": [
+        {
+          "value": "✦",
+          "label": {
+            "en-US": "Sparkle"
+          }
+        },
+        {
+          "value": "◆",
+          "label": {
+            "en-US": "Diamond"
+          }
+        },
+        {
+          "value": "•",
+          "label": {
+            "en-US": "Dot"
+          }
+        },
+        {
+          "value": "❖",
+          "label": {
+            "en-US": "Floral"
+          }
+        },
+        {
+          "value": "§",
+          "label": {
+            "en-US": "Section"
+          }
+        },
+        {
+          "value": "—",
+          "label": {
+            "en-US": "Em dash"
+          }
+        }
+      ],
+      "showIf": {
+        "lineStyle": [
+          "ornament"
+        ]
+      }
+    },
+    {
+      "type": "select",
+      "id": "thickness",
+      "label": {
+        "en-US": "Thickness"
+      },
+      "default": "thin",
+      "group": "style",
+      "options": [
+        {
+          "value": "thin",
+          "label": {
+            "en-US": "Thin (1px)"
+          }
+        },
+        {
+          "value": "medium",
+          "label": {
+            "en-US": "Medium (2px)"
+          }
+        },
+        {
+          "value": "thick",
+          "label": {
+            "en-US": "Thick (4px)"
+          }
+        }
+      ],
+      "showIf": {
+        "lineStyle": [
+          "line",
+          "dashed",
+          "dotted",
+          "gradient",
+          "ornament"
+        ]
+      }
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": {
+        "en-US": "Color"
+      },
+      "default": "#e5e5e5",
+      "group": "style",
+      "showIf": {
+        "lineStyle": [
+          "line",
+          "dashed",
+          "dotted",
+          "gradient",
+          "ornament"
+        ]
+      }
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": {
+        "en-US": "Width"
+      },
+      "default": "full",
+      "group": "layout",
+      "options": [
+        {
+          "value": "full",
+          "label": {
+            "en-US": "Full Width"
+          }
+        },
+        {
+          "value": "large",
+          "label": {
+            "en-US": "Large (75%)"
+          }
+        },
+        {
+          "value": "medium",
+          "label": {
+            "en-US": "Medium (50%)"
+          }
+        },
+        {
+          "value": "small",
+          "label": {
+            "en-US": "Small (25%)"
+          }
+        },
+        {
+          "value": "tiny",
+          "label": {
+            "en-US": "Tiny (80px)"
+          }
+        }
+      ],
+      "showIf": {
+        "lineStyle": [
+          "line",
+          "dashed",
+          "dotted",
+          "gradient",
+          "ornament"
+        ]
+      }
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": {
+        "en-US": "Alignment"
+      },
+      "default": "center",
+      "group": "layout",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "showIf": {
+        "lineStyle": [
+          "line",
+          "dashed",
+          "dotted",
+          "gradient",
+          "ornament"
+        ]
+      }
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "label": {
+        "en-US": "Spacing"
+      },
+      "default": 32,
+      "group": "layout",
+      "options": {
+        "min": 0,
+        "max": 120,
+        "step": 8,
+        "unit": "px"
+      }
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Divider element",
+      "kind": "root"
+    }
+  },
+  "motionSupport": {
+    "levels": [],
+    "excluded": []
+  }
+}

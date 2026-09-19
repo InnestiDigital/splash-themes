@@ -1,0 +1,509 @@
+{
+  "component": "CreditsList",
+  "type": "credits-list",
+  "label": {
+    "en-US": "Credits List"
+  },
+  "category": "editorial",
+  "compatibleSectionRoles": [
+    "supporting-text",
+    "editorial-body",
+    "section-heading"
+  ],
+  "description": {
+    "en-US": "Label/value credit list. Use for project metadata (Client, Services, Design), film credits, event sponsors, team attributions, or any label-value column of information. Four layouts fit different editorial contexts."
+  },
+  "typographySlots": [],
+  "$fragments": [
+    "color-roles"
+  ],
+  "$fragmentOmit": [
+    "background"
+  ],
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "sectionHeading",
+      "label": {
+        "en-US": "Section Heading (optional)"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "sectionTitle",
+      "defaultPresetKey": "section-title",
+      "validation": {
+        "maxLength": 120
+      },
+      "note": "Shown above the credits list. Leave empty for a headless list."
+    },
+    {
+      "type": "repeater",
+      "id": "items",
+      "label": {
+        "en-US": "Credits"
+      },
+      "group": "content",
+      "maxItems": 30,
+      "fields": [
+        {
+          "type": "richtext-single",
+          "id": "label",
+          "label": {
+            "en-US": "Label"
+          },
+          "translatable": true,
+          "typographyRole": "caption",
+          "defaultPresetKey": "caption",
+          "validation": {
+            "required": true,
+            "maxLength": 80
+          }
+        },
+        {
+          "type": "richtext-inline",
+          "id": "value",
+          "label": {
+            "en-US": "Value"
+          },
+          "translatable": true,
+          "typographyRole": "body",
+          "defaultPresetKey": "body",
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "type": "richtext-single",
+          "id": "note",
+          "label": {
+            "en-US": "Note (secondary line)"
+          },
+          "translatable": true,
+          "typographyRole": "caption",
+          "defaultPresetKey": "caption",
+          "note": "Optional small line below the value (e.g. a person's title or a short description)."
+        },
+        {
+          "type": "text",
+          "id": "url",
+          "label": {
+            "en-US": "Link URL (optional)"
+          },
+          "note": "If set, the value becomes a clickable link."
+        }
+      ]
+    },
+    {
+      "id": "layout",
+      "type": "select",
+      "label": {
+        "en-US": "Layout"
+      },
+      "default": "stacked",
+      "group": "layout",
+      "options": [
+        {
+          "value": "stacked",
+          "label": {
+            "en-US": "Stacked (label above value, full width)"
+          }
+        },
+        {
+          "value": "inline",
+          "label": {
+            "en-US": "Inline (label left / value right, same row)"
+          }
+        },
+        {
+          "value": "sidebar",
+          "label": {
+            "en-US": "Sidebar (compact column, small labels)"
+          }
+        },
+        {
+          "value": "grid",
+          "label": {
+            "en-US": "Grid (responsive 2-column)"
+          }
+        },
+        {
+          "value": "ledger",
+          "label": {
+            "en-US": "Ledger (year-anchored, large left column)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "labelWidth",
+      "type": "select",
+      "label": {
+        "en-US": "Label Column Width (inline only)"
+      },
+      "default": "narrow",
+      "group": "layout",
+      "showIf": {
+        "layout": "inline"
+      },
+      "options": [
+        {
+          "value": "narrow",
+          "label": {
+            "en-US": "Narrow (20%)"
+          }
+        },
+        {
+          "value": "medium",
+          "label": {
+            "en-US": "Medium (33%)"
+          }
+        },
+        {
+          "value": "wide",
+          "label": {
+            "en-US": "Wide (50%)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "gridColumns",
+      "type": "select",
+      "label": {
+        "en-US": "Grid Columns (grid only)"
+      },
+      "default": "2",
+      "group": "layout",
+      "showIf": {
+        "layout": "grid"
+      },
+      "options": [
+        {
+          "value": "2",
+          "label": {
+            "en-US": "2 columns"
+          }
+        },
+        {
+          "value": "3",
+          "label": {
+            "en-US": "3 columns"
+          }
+        },
+        {
+          "value": "4",
+          "label": {
+            "en-US": "4 columns"
+          }
+        }
+      ]
+    },
+    {
+      "id": "alignment",
+      "type": "select",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "default": "left",
+      "group": "layout",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ]
+    },
+    {
+      "id": "showDividers",
+      "type": "toggle",
+      "label": {
+        "en-US": "Show Dividers Between Items"
+      },
+      "default": false,
+      "group": "layout"
+    },
+    {
+      "id": "sticky",
+      "type": "toggle",
+      "label": {
+        "en-US": "Sticky (pin while parent section scrolls past)"
+      },
+      "default": false,
+      "group": "layout",
+      "note": "Makes the list stay visible while the rest of the section scrolls. Use for case-study sidebars where the metadata stays in view across a long visual narrative."
+    },
+    {
+      "id": "stickyOffset",
+      "type": "range",
+      "label": {
+        "en-US": "Sticky Top Offset (px)"
+      },
+      "default": 24,
+      "group": "layout",
+      "showIf": {
+        "sticky": true
+      },
+      "options": {
+        "min": 0,
+        "max": 200,
+        "step": 4,
+        "unit": "px"
+      }
+    },
+    {
+      "id": "labelStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Label Style"
+      },
+      "default": "default",
+      "group": "style",
+      "options": [
+        {
+          "value": "default",
+          "label": {
+            "en-US": "Default"
+          }
+        },
+        {
+          "value": "uppercase",
+          "label": {
+            "en-US": "Uppercase"
+          }
+        },
+        {
+          "value": "muted",
+          "label": {
+            "en-US": "Muted"
+          }
+        }
+      ]
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "none",
+      "group": "style"
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface Style"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "style"
+    },
+    {
+      "id": "itemAlignX",
+      "type": "select",
+      "label": {
+        "en-US": "Horizontal Alignment"
+      },
+      "default": "start",
+      "group": "layout",
+      "options": [
+        {
+          "value": "start",
+          "label": {
+            "en-US": "Start"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "end",
+          "label": {
+            "en-US": "End"
+          }
+        },
+        {
+          "value": "stretch",
+          "label": {
+            "en-US": "Stretch"
+          }
+        }
+      ]
+    },
+    {
+      "id": "itemAlignY",
+      "type": "select",
+      "label": {
+        "en-US": "Vertical Alignment"
+      },
+      "default": "start",
+      "group": "layout",
+      "options": [
+        {
+          "value": "start",
+          "label": {
+            "en-US": "Top"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "end",
+          "label": {
+            "en-US": "Bottom"
+          }
+        },
+        {
+          "value": "stretch",
+          "label": {
+            "en-US": "Stretch"
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    },
+    "sectionHeading": {
+      "selector": "[data-target='sectionHeading']",
+      "description": "Section heading above the list",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    },
+    "item": {
+      "selector": "[data-target='item']",
+      "description": "Each credit row",
+      "multiple": true,
+      "addressable": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "group"
+    },
+    "label": {
+      "selector": "[data-target='label']",
+      "description": "Item label text",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "kind": "text"
+    },
+    "value": {
+      "selector": "[data-target='value']",
+      "description": "Item value text",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "kind": "text"
+    },
+    "note": {
+      "selector": "[data-target='note']",
+      "description": "Item note / secondary line",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "kind": "text"
+    }
+  }
+}

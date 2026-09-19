@@ -1,0 +1,309 @@
+{
+  "type": "stacked",
+  "label": "Stacked",
+  "description": "Blocks stacked vertically in position order. Default section type.",
+  "usesContainer": true,
+  "layoutSlots": [],
+  "layout": {
+    "engine": "grid",
+    "tiers": [
+      {
+        "id": "full",
+        "minWidth": "md"
+      },
+      {
+        "id": "stack",
+        "minWidth": null
+      }
+    ],
+    "areas": {
+      "full": [
+        "body"
+      ],
+      "stack": [
+        "body"
+      ]
+    },
+    "columns": {
+      "full": "minmax(0, 1fr)",
+      "stack": "minmax(0, 1fr)"
+    },
+    "rows": {
+      "full": "auto",
+      "stack": "auto"
+    },
+    "gap": {
+      "row": "none",
+      "column": "none"
+    },
+    "placeItems": "start stretch",
+    "zones": {
+      "body": {
+        "flow": "stack",
+        "gap": "md",
+        "placeSelf": "start stretch"
+      }
+    },
+    "slots": [
+      {
+        "role": "_default",
+        "zone": "body",
+        "flow": "stack",
+        "flowOptions": {
+          "gap": "md"
+        }
+      }
+    ]
+  },
+  "settings": [
+    {
+      "id": "shellLayout",
+      "type": "select",
+      "display": "visual-picker",
+      "label": "Block Alignment",
+      "default": "stacked",
+      "group": "layout",
+      "options": [
+        {
+          "value": "stacked",
+          "label": "Default"
+        },
+        {
+          "value": "centered",
+          "label": "Centered"
+        },
+        {
+          "value": "none",
+          "label": "Raw"
+        }
+      ],
+      "note": "Unbound on purpose: 'centered' also centers text, which the engine cannot express as grid geometry — the theme SCSS keys off the emitted data-shell-layout attribute. 'none' has never had visuals in either renderer and remains selectable only because authored rows use it."
+    },
+    {
+      "id": "contentAlignment",
+      "type": "select",
+      "label": "Content Alignment",
+      "description": "Controls how blocks align within the section container",
+      "default": "left",
+      "group": "layout",
+      "layoutBind": [
+        {
+          "target": "zone.body.placeSelf"
+        }
+      ],
+      "options": [
+        {
+          "value": "left",
+          "label": "Left",
+          "layoutValues": {
+            "zone.body.placeSelf": "start start"
+          }
+        },
+        {
+          "value": "center",
+          "label": "Center",
+          "layoutValues": {
+            "zone.body.placeSelf": "start center"
+          }
+        },
+        {
+          "value": "full",
+          "label": "Full Width",
+          "layoutValues": {
+            "zone.body.placeSelf": "start stretch"
+          }
+        }
+      ],
+      "note": "Center mode is useful for editorial layouts. Use block-level width settings (e.g. maxWidth) to fine-tune individual block widths."
+    },
+    {
+      "id": "stackGap",
+      "type": "select",
+      "label": "Block Spacing",
+      "description": "Space between blocks within this section",
+      "default": "md",
+      "group": "layout",
+      "migratedFrom": "stackGap",
+      "layoutBind": [
+        {
+          "target": "zone.body.gap"
+        },
+        {
+          "target": "slot._default.flowOptions.gap"
+        }
+      ],
+      "options": [
+        {
+          "value": "none",
+          "label": "None",
+          "layoutValues": {
+            "zone.body.gap": "none",
+            "slot._default.flowOptions.gap": "none"
+          }
+        },
+        {
+          "value": "sm",
+          "label": "Tight",
+          "layoutValues": {
+            "zone.body.gap": "sm",
+            "slot._default.flowOptions.gap": "sm"
+          }
+        },
+        {
+          "value": "md",
+          "label": "Normal",
+          "layoutValues": {
+            "zone.body.gap": "md",
+            "slot._default.flowOptions.gap": "md"
+          }
+        },
+        {
+          "value": "lg",
+          "label": "Spacious",
+          "layoutValues": {
+            "zone.body.gap": "lg",
+            "slot._default.flowOptions.gap": "lg"
+          }
+        }
+      ]
+    },
+    {
+      "id": "typographyScale",
+      "type": "select",
+      "label": "Typography Scale",
+      "description": "Scales all headings within this section",
+      "default": "default",
+      "group": "layout",
+      "options": [
+        {
+          "value": "default",
+          "label": "Default"
+        },
+        {
+          "value": "display",
+          "label": "Display (larger headings)"
+        },
+        {
+          "value": "compact",
+          "label": "Compact (smaller headings)"
+        }
+      ]
+    },
+    {
+      "id": "dividerTop",
+      "type": "select",
+      "label": "Top Edge Shape",
+      "description": "Decorative SVG separator at the top of this section, filled with the section background so the colour flows into the section above.",
+      "default": "none",
+      "group": "divider",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "wave",
+          "label": "Wave"
+        },
+        {
+          "value": "curve",
+          "label": "Curve"
+        },
+        {
+          "value": "tilt",
+          "label": "Tilt"
+        },
+        {
+          "value": "triangle",
+          "label": "Triangle"
+        },
+        {
+          "value": "zigzag",
+          "label": "Zigzag"
+        },
+        {
+          "value": "arrow",
+          "label": "Arrow"
+        }
+      ]
+    },
+    {
+      "id": "dividerBottom",
+      "type": "select",
+      "label": "Bottom Edge Shape",
+      "description": "Decorative SVG separator at the bottom of this section, filled with the section background so the colour flows into the section below.",
+      "default": "none",
+      "group": "divider",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "wave",
+          "label": "Wave"
+        },
+        {
+          "value": "curve",
+          "label": "Curve"
+        },
+        {
+          "value": "tilt",
+          "label": "Tilt"
+        },
+        {
+          "value": "triangle",
+          "label": "Triangle"
+        },
+        {
+          "value": "zigzag",
+          "label": "Zigzag"
+        },
+        {
+          "value": "arrow",
+          "label": "Arrow"
+        }
+      ]
+    },
+    {
+      "id": "dividerHeight",
+      "type": "select",
+      "label": "Divider Height",
+      "description": "Height of the shape dividers on this section.",
+      "default": "md",
+      "group": "divider",
+      "options": [
+        {
+          "value": "sm",
+          "label": "Small"
+        },
+        {
+          "value": "md",
+          "label": "Medium"
+        },
+        {
+          "value": "lg",
+          "label": "Large"
+        }
+      ]
+    },
+    {
+      "id": "dividerFlip",
+      "type": "toggle",
+      "label": "Flip Direction",
+      "description": "Mirror the divider shapes horizontally.",
+      "default": false,
+      "group": "divider"
+    }
+  ],
+  "groups": [
+    {
+      "id": "layout",
+      "label": "Layout"
+    },
+    {
+      "id": "divider",
+      "label": "Shape Dividers"
+    }
+  ]
+}

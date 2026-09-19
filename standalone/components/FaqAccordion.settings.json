@@ -1,0 +1,318 @@
+{
+  "component": "FaqAccordion",
+  "type": "faq-accordion",
+  "label": {
+    "en-US": "FAQ Accordion"
+  },
+  "category": "content",
+  "compatibleSectionRoles": [
+    "editorial-body",
+    "supporting-text"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "allowMultipleOpen",
+      "label": {
+        "en-US": "Allow Multiple Open Items"
+      },
+      "default": false,
+      "group": "options"
+    },
+    {
+      "type": "select",
+      "id": "initiallyOpen",
+      "label": {
+        "en-US": "Initially Open"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None (all collapsed)"
+          }
+        },
+        {
+          "value": "first",
+          "label": {
+            "en-US": "First item"
+          }
+        },
+        {
+          "value": "all",
+          "label": {
+            "en-US": "All items"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "options"
+    },
+    {
+      "type": "checkbox",
+      "id": "showControls",
+      "label": {
+        "en-US": "Show Search & Controls"
+      },
+      "default": false,
+      "group": "options"
+    },
+    {
+      "type": "text",
+      "id": "searchLabel",
+      "label": {
+        "en-US": "Search Label"
+      },
+      "default": {
+        "en-US": "Search FAQs"
+      },
+      "group": "options"
+    },
+    {
+      "type": "text",
+      "id": "noResultsText",
+      "label": {
+        "en-US": "No Results Text"
+      },
+      "default": {
+        "en-US": "No matching questions."
+      },
+      "group": "options"
+    },
+    {
+      "type": "text",
+      "id": "expandAllText",
+      "label": {
+        "en-US": "Expand All Label"
+      },
+      "default": {
+        "en-US": "Expand all"
+      },
+      "group": "options"
+    },
+    {
+      "type": "text",
+      "id": "collapseAllText",
+      "label": {
+        "en-US": "Collapse All Label"
+      },
+      "default": {
+        "en-US": "Collapse all"
+      },
+      "group": "options"
+    },
+    {
+      "type": "checkbox",
+      "id": "deepLink",
+      "label": {
+        "en-US": "Shareable answer links"
+      },
+      "help": {
+        "en-US": "Give each open answer a copy-link button and let a URL #faq-… anchor open and scroll to a specific question."
+      },
+      "default": false,
+      "group": "options"
+    },
+    {
+      "type": "text",
+      "id": "copyLinkText",
+      "label": {
+        "en-US": "Copy Link Label"
+      },
+      "default": {
+        "en-US": "Copy link"
+      },
+      "group": "options"
+    },
+    {
+      "type": "text",
+      "id": "copiedText",
+      "label": {
+        "en-US": "Copied Label"
+      },
+      "default": {
+        "en-US": "Copied!"
+      },
+      "group": "options"
+    },
+    {
+      "type": "blocks",
+      "id": "items",
+      "label": {
+        "en-US": "FAQ Items"
+      },
+      "group": "content",
+      "allowedBlocks": [
+        "faq-item"
+      ],
+      "maxBlocks": 50
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Corner Radius"
+      },
+      "options": [
+        "none",
+        "sm",
+        "md",
+        "lg",
+        "pill"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "textAlign",
+      "type": "select",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "appearance"
+    },
+    {
+      "id": "toggleIcon",
+      "type": "select",
+      "label": {
+        "en-US": "Toggle Icon"
+      },
+      "options": [
+        {
+          "value": "chevron",
+          "label": {
+            "en-US": "Chevron"
+          }
+        },
+        {
+          "value": "plus-minus",
+          "label": {
+            "en-US": "Plus / Minus"
+          }
+        }
+      ],
+      "default": "chevron",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "options",
+      "label": {
+        "en-US": "Options"
+      }
+    },
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": []
+  },
+  "motionHints": {
+    "containsDynamicChildren": true,
+    "isolateTransforms": [
+      "items"
+    ]
+  },
+  "targets": {
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    },
+    "items": {
+      "selector": "[data-target='item']",
+      "description": "Individual FAQ item",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "group"
+    }
+  }
+}

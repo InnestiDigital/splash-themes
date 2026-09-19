@@ -1,0 +1,456 @@
+{
+  "component": "Testimonials",
+  "type": "testimonials",
+  "label": {
+    "en-US": "Testimonials"
+  },
+  "category": "content",
+  "compatibleSectionRoles": [
+    "supporting-text",
+    "editorial-body"
+  ],
+  "typographySlots": [],
+  "$fragments": [
+    "color-roles"
+  ],
+  "$fragmentOmit": [
+    "textTone"
+  ],
+  "$fragmentOverrides": {
+    "background": {
+      "default": "section"
+    }
+  },
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "title",
+      "label": {
+        "en-US": "Section Title"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "heading2",
+      "defaultPresetKey": "section-title"
+    },
+    {
+      "type": "toggle",
+      "id": "showTitle",
+      "label": {
+        "en-US": "Show Block Title"
+      },
+      "default": true,
+      "group": "content",
+      "note": "Disable when section already has a heading block (e.g., ChapterDivider or EditorialText in section-heading role)."
+    },
+    {
+      "type": "repeater",
+      "id": "items",
+      "label": {
+        "en-US": "Testimonials"
+      },
+      "group": "content",
+      "maxItems": 8,
+      "fields": [
+        {
+          "type": "richtext-block",
+          "id": "quote",
+          "label": {
+            "en-US": "Quote"
+          },
+          "translatable": true,
+          "typographyRole": "pullquote",
+          "defaultPresetKey": "body"
+        },
+        {
+          "type": "richtext-single",
+          "id": "author",
+          "label": {
+            "en-US": "Author Name"
+          },
+          "translatable": false,
+          "typographyRole": "caption",
+          "defaultPresetKey": "caption"
+        },
+        {
+          "type": "richtext-single",
+          "id": "role",
+          "label": {
+            "en-US": "Author Role / Title"
+          },
+          "translatable": true,
+          "typographyRole": "caption",
+          "defaultPresetKey": "caption"
+        },
+        {
+          "type": "image",
+          "id": "avatar",
+          "label": {
+            "en-US": "Avatar Image"
+          }
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": {
+            "en-US": "Star Rating"
+          },
+          "default": 5,
+          "options": {
+            "min": 1,
+            "max": 5,
+            "step": 1
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "variant",
+      "label": {
+        "en-US": "Layout"
+      },
+      "default": "grid",
+      "group": "style",
+      "options": [
+        {
+          "value": "grid",
+          "label": {
+            "en-US": "Grid"
+          }
+        },
+        {
+          "value": "carousel",
+          "label": {
+            "en-US": "Carousel"
+          }
+        },
+        {
+          "value": "spotlight",
+          "label": {
+            "en-US": "Spotlight"
+          }
+        },
+        {
+          "value": "marquee",
+          "label": {
+            "en-US": "Marquee Wall"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "marqueeRows",
+      "label": {
+        "en-US": "Marquee Rows"
+      },
+      "default": "double",
+      "group": "carousel",
+      "showIf": {
+        "variant": ["marquee"]
+      },
+      "options": [
+        {
+          "value": "single",
+          "label": {
+            "en-US": "Single row"
+          }
+        },
+        {
+          "value": "double",
+          "label": {
+            "en-US": "Two rows"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "marqueeSpeed",
+      "label": {
+        "en-US": "Marquee Speed"
+      },
+      "default": "normal",
+      "group": "carousel",
+      "showIf": {
+        "variant": ["marquee"]
+      },
+      "options": [
+        {
+          "value": "slow",
+          "label": {
+            "en-US": "Slow"
+          }
+        },
+        {
+          "value": "normal",
+          "label": {
+            "en-US": "Normal"
+          }
+        },
+        {
+          "value": "fast",
+          "label": {
+            "en-US": "Fast"
+          }
+        }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "pauseOnHover",
+      "label": {
+        "en-US": "Pause on Hover"
+      },
+      "default": true,
+      "group": "carousel",
+      "showIf": {
+        "variant": ["marquee"]
+      }
+    },
+    {
+      "type": "toggle",
+      "id": "showControls",
+      "label": {
+        "en-US": "Show Arrows & Dots"
+      },
+      "default": true,
+      "group": "carousel",
+      "showIf": {
+        "variant": ["carousel", "spotlight"]
+      }
+    },
+    {
+      "type": "toggle",
+      "id": "autoplay",
+      "label": {
+        "en-US": "Autoplay"
+      },
+      "default": false,
+      "group": "carousel",
+      "showIf": {
+        "variant": ["carousel", "spotlight"]
+      }
+    },
+    {
+      "type": "select",
+      "id": "autoplayInterval",
+      "label": {
+        "en-US": "Autoplay Interval"
+      },
+      "default": 6000,
+      "group": "carousel",
+      "showIf": {
+        "variant": ["carousel", "spotlight"],
+        "autoplay": true
+      },
+      "options": [
+        {
+          "value": 4000,
+          "label": {
+            "en-US": "4 seconds"
+          }
+        },
+        {
+          "value": 6000,
+          "label": {
+            "en-US": "6 seconds"
+          }
+        },
+        {
+          "value": 8000,
+          "label": {
+            "en-US": "8 seconds"
+          }
+        }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "loop",
+      "label": {
+        "en-US": "Loop"
+      },
+      "default": true,
+      "group": "carousel",
+      "showIf": {
+        "variant": ["carousel", "spotlight"]
+      }
+    },
+    {
+      "type": "color",
+      "id": "cardColor",
+      "label": {
+        "en-US": "Card Color"
+      },
+      "default": "#f9f9f9",
+      "group": "style"
+    },
+    {
+      "type": "toggle",
+      "id": "showRating",
+      "label": {
+        "en-US": "Show Star Rating"
+      },
+      "default": true,
+      "group": "style"
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Card Surface"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Card Corner Radius"
+      },
+      "options": [
+        "none",
+        "sm",
+        "md",
+        "lg",
+        "pill"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "contentAlignH",
+      "type": "select",
+      "label": {
+        "en-US": "Content Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "carousel",
+      "label": {
+        "en-US": "Carousel"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": []
+  },
+  "targets": {
+    "items": {
+      "selector": "[data-target='item']",
+      "description": "Individual testimonial card",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "group"
+    },
+    "heading": {
+      "selector": "[data-target='heading']",
+      "description": "Section heading",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    },
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    }
+  }
+}

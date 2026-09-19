@@ -1,0 +1,323 @@
+{
+  "component": "NarrativeScene",
+  "type": "narrative-scene",
+  "label": {
+    "en-US": "Narrative Scene"
+  },
+  "category": "editorial",
+  "compatibleSectionRoles": [
+    "editorial-body"
+  ],
+  "typographySlots": [],
+  "roleNotes": {
+    "editorial-body": "Scroll mode with pinned backgrounds may not work correctly inside editorial-split sections. CSS Grid layout conflicts with position:sticky, causing the pinned media to break. Use scrollMode=false for reliable behavior, or place this block in a stacked section."
+  },
+  "$fragments": [
+    "color-roles"
+  ],
+  "$fragmentOmit": [
+    "textTone"
+  ],
+  "$fragmentOverrides": {
+    "background": {
+      "default": "section"
+    }
+  },
+  "settings": [
+    {
+      "type": "repeater",
+      "id": "steps",
+      "label": {
+        "en-US": "Steps"
+      },
+      "group": "content",
+      "fields": [
+        {
+          "type": "richtext-single",
+          "id": "heading",
+          "label": {
+            "en-US": "Heading"
+          },
+          "translatable": true,
+          "typographyRole": "heading2",
+          "defaultPresetKey": "section-title"
+        },
+        {
+          "type": "richtext-block",
+          "id": "body",
+          "label": {
+            "en-US": "Body"
+          },
+          "translatable": true,
+          "typographyRole": "body",
+          "defaultPresetKey": "body"
+        },
+        {
+          "type": "image",
+          "id": "media",
+          "label": {
+            "en-US": "Media"
+          }
+        },
+        {
+          "type": "select",
+          "id": "mediaPosition",
+          "label": {
+            "en-US": "Media Position"
+          },
+          "default": "right",
+          "options": [
+            {
+              "value": "left",
+              "label": {
+                "en-US": "Left"
+              }
+            },
+            {
+              "value": "right",
+              "label": {
+                "en-US": "Right"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "stepSpacing",
+      "label": {
+        "en-US": "Step Spacing"
+      },
+      "default": "normal",
+      "group": "layout",
+      "options": [
+        {
+          "value": "compact",
+          "label": {
+            "en-US": "Compact"
+          }
+        },
+        {
+          "value": "normal",
+          "label": {
+            "en-US": "Normal"
+          }
+        },
+        {
+          "value": "spacious",
+          "label": {
+            "en-US": "Spacious"
+          }
+        }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "showStepIndicator",
+      "label": {
+        "en-US": "Show Step Indicator"
+      },
+      "default": true,
+      "group": "layout"
+    },
+    {
+      "type": "toggle",
+      "id": "scrollMode",
+      "label": {
+        "en-US": "Scroll Mode"
+      },
+      "description": {
+        "en-US": "Reveal steps progressively as the user scrolls through the block"
+      },
+      "default": false,
+      "group": "layout"
+    },
+    {
+      "type": "toggle",
+      "id": "revealOnce",
+      "label": {
+        "en-US": "Reveal once"
+      },
+      "description": {
+        "en-US": "When enabled, steps stay visible after they enter the viewport. Disable to fade steps out when they leave."
+      },
+      "default": true,
+      "group": "layout",
+      "showIf": {
+        "scrollMode": true
+      }
+    },
+    {
+      "type": "toggle",
+      "id": "pinnedMode",
+      "label": {
+        "en-US": "Pinned Background"
+      },
+      "description": {
+        "en-US": "Pin the media/background in place while text steps scroll over it"
+      },
+      "default": false,
+      "group": "layout",
+      "showIf": {
+        "scrollMode": true
+      }
+    },
+    {
+      "type": "select",
+      "id": "scrollSpeed",
+      "label": {
+        "en-US": "Scroll Speed"
+      },
+      "description": {
+        "en-US": "Controls how much vertical space each step consumes in scroll mode"
+      },
+      "default": "normal",
+      "group": "layout",
+      "showIf": {
+        "scrollMode": true
+      },
+      "options": [
+        {
+          "value": "slow",
+          "label": {
+            "en-US": "Slow"
+          }
+        },
+        {
+          "value": "normal",
+          "label": {
+            "en-US": "Normal"
+          }
+        },
+        {
+          "value": "fast",
+          "label": {
+            "en-US": "Fast"
+          }
+        }
+      ]
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "textAlign",
+      "type": "select",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en-US": "Default Narrative"
+      },
+      "settings": {
+        "stepSpacing": "normal",
+        "showStepIndicator": true,
+        "background": "section"
+      }
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Narrative container",
+      "kind": "root"
+    },
+    "steps": {
+      "selector": "[data-target='step']",
+      "description": "Individual story steps",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur"
+      ],
+      "canTrigger": true,
+      "kind": "group"
+    },
+    "background": {
+      "selector": "[data-target='background']",
+      "description": "Background layer",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false,
+      "kind": "media"
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local"
+    ],
+    "excluded": [
+      "steps"
+    ]
+  }
+}

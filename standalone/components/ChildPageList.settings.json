@@ -1,0 +1,275 @@
+{
+  "component": "ChildPageList",
+  "type": "child-page-list",
+  "label": {
+    "en-US": "Child Page List"
+  },
+  "category": "content",
+  "compatibleSectionRoles": [
+    "content",
+    "editorial-body",
+    "supporting-text"
+  ],
+  "description": {
+    "en-US": "An automatic index of a page's child pages, read live from the site's page tree — no hand-maintained link lists. Lists the current page's children by default, or any other page's. Three displays: editorial rows, cards or a thumbnail grid."
+  },
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "sectionHeading",
+      "label": {
+        "en-US": "Section Heading (optional)"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "sectionTitle",
+      "defaultPresetKey": "section-title",
+      "validation": {
+        "maxLength": 120
+      },
+      "note": "Optional heading above the index."
+    },
+    {
+      "type": "select",
+      "id": "source",
+      "label": {
+        "en-US": "Source"
+      },
+      "default": "children-of-current",
+      "group": "content",
+      "options": [
+        {
+          "value": "children-of-current",
+          "label": {
+            "en-US": "Children of the current page"
+          }
+        },
+        {
+          "value": "children-of-page",
+          "label": {
+            "en-US": "Children of a specific page"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "parentPage",
+      "label": {
+        "en-US": "Parent page"
+      },
+      "options": {
+        "source": "pages"
+      },
+      "showIf": {
+        "field": "source",
+        "equals": "children-of-page"
+      },
+      "group": "content"
+    },
+    {
+      "type": "select",
+      "id": "depth",
+      "label": {
+        "en-US": "Depth"
+      },
+      "default": "1",
+      "group": "content",
+      "options": [
+        {
+          "value": "1",
+          "label": {
+            "en-US": "Direct children only"
+          }
+        },
+        {
+          "value": "2",
+          "label": {
+            "en-US": "Children + their children (list display)"
+          }
+        }
+      ],
+      "note": "The nested second level renders in the list display only."
+    },
+    {
+      "type": "select",
+      "id": "sort",
+      "label": {
+        "en-US": "Sort"
+      },
+      "default": "position",
+      "group": "content",
+      "options": [
+        {
+          "value": "position",
+          "label": {
+            "en-US": "Page order"
+          }
+        },
+        {
+          "value": "title",
+          "label": {
+            "en-US": "Title (A–Z)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "display",
+      "label": {
+        "en-US": "Display"
+      },
+      "default": "list",
+      "group": "layout",
+      "options": [
+        {
+          "value": "list",
+          "label": {
+            "en-US": "List (editorial rows)"
+          }
+        },
+        {
+          "value": "card",
+          "label": {
+            "en-US": "Cards"
+          }
+        },
+        {
+          "value": "grid",
+          "label": {
+            "en-US": "Grid (thumbnails)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "showThumbnail",
+      "label": {
+        "en-US": "Show Thumbnails"
+      },
+      "default": true,
+      "group": "layout",
+      "note": "Card/grid displays only. Uses each page's featured image; pages without one render text-only."
+    },
+    {
+      "type": "toggle",
+      "id": "showCount",
+      "label": {
+        "en-US": "Show Child Counts"
+      },
+      "default": false,
+      "group": "layout",
+      "note": "A small badge with each entry's own number of child pages."
+    },
+    {
+      "type": "select",
+      "id": "emptyBehaviour",
+      "label": {
+        "en-US": "When Empty"
+      },
+      "default": "message",
+      "group": "content",
+      "options": [
+        {
+          "value": "message",
+          "label": {
+            "en-US": "Show empty-state message"
+          }
+        },
+        {
+          "value": "hide",
+          "label": {
+            "en-US": "Hide the block"
+          }
+        }
+      ],
+      "note": "The editor preview always shows the empty state so the block stays selectable."
+    },
+    {
+      "type": "text",
+      "id": "emptyMessage",
+      "label": {
+        "en-US": "Empty-state message"
+      },
+      "group": "content",
+      "translatable": true,
+      "showIf": {
+        "field": "emptyBehaviour",
+        "equals": "message"
+      },
+      "note": "Optional; a generic message is used when empty.",
+      "validation": {
+        "maxLength": 200
+      }
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    },
+    "sectionHeading": {
+      "selector": "[data-target='sectionHeading']",
+      "description": "Section heading above the index",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    },
+    "item": {
+      "selector": "[data-target='item']",
+      "description": "Each child-page row / card",
+      "multiple": true,
+      "addressable": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "group"
+    },
+    "title": {
+      "selector": "[data-target='title']",
+      "description": "Child-page title text",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "kind": "text"
+    }
+  }
+}

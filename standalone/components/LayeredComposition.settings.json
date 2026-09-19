@@ -1,0 +1,304 @@
+{
+  "component": "LayeredComposition",
+  "type": "layered-composition",
+  "label": {
+    "en-US": "Layered Composition"
+  },
+  "compatibleSectionRoles": [
+    "media-gallery",
+    "media-chrome"
+  ],
+  "typographySlots": [],
+  "$fragments": [
+    "color-roles"
+  ],
+  "$fragmentOmit": [
+    "textTone"
+  ],
+  "$fragmentOverrides": {
+    "background": {
+      "default": "section"
+    }
+  },
+  "settings": [
+    {
+      "type": "repeater",
+      "id": "items",
+      "label": {
+        "en-US": "Items"
+      },
+      "group": "content",
+      "fields": [
+        {
+          "type": "richtext-block",
+          "id": "content",
+          "label": {
+            "en-US": "Content"
+          },
+          "translatable": true,
+          "typographyRole": "body",
+          "defaultPresetKey": "body"
+        },
+        {
+          "type": "image",
+          "id": "media",
+          "label": {
+            "en-US": "Image"
+          }
+        },
+        {
+          "type": "number",
+          "id": "positionX",
+          "label": {
+            "en-US": "X Position (%)"
+          },
+          "default": 0,
+          "options": {
+            "unit": "%",
+            "min": 0,
+            "max": 100
+          }
+        },
+        {
+          "type": "number",
+          "id": "positionY",
+          "label": {
+            "en-US": "Y Position (%)"
+          },
+          "default": 0,
+          "options": {
+            "unit": "%",
+            "min": 0,
+            "max": 100
+          }
+        },
+        {
+          "type": "number",
+          "id": "width",
+          "label": {
+            "en-US": "Width (%)"
+          },
+          "default": 30,
+          "options": {
+            "unit": "%",
+            "min": 5,
+            "max": 100
+          }
+        },
+        {
+          "type": "number",
+          "id": "height",
+          "label": {
+            "en-US": "Height (%)"
+          },
+          "default": 30,
+          "options": {
+            "unit": "%",
+            "min": 5,
+            "max": 100
+          }
+        },
+        {
+          "type": "number",
+          "id": "zIndex",
+          "label": {
+            "en-US": "Z-Index"
+          },
+          "default": 1,
+          "options": {
+            "min": 0,
+            "max": 100
+          }
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "id": "backgroundMedia",
+      "label": {
+        "en-US": "Background Media"
+      },
+      "group": "style"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": {
+        "en-US": "Height"
+      },
+      "default": "large",
+      "group": "layout",
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en-US": "Auto"
+          }
+        },
+        {
+          "value": "viewport",
+          "label": {
+            "en-US": "Viewport"
+          }
+        },
+        {
+          "value": "large",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "medium",
+          "label": {
+            "en-US": "Medium"
+          }
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "overlayOpacity",
+      "label": {
+        "en-US": "Overlay Opacity"
+      },
+      "default": 0,
+      "group": "style",
+      "options": {
+        "min": 0,
+        "max": 100
+      }
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "contentAlignH",
+      "type": "select",
+      "label": {
+        "en-US": "Content Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en-US": "Default Composition"
+      },
+      "settings": {
+        "height": "large",
+        "overlayOpacity": 0,
+        "background": "section"
+      }
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Composition container",
+      "kind": "root"
+    },
+    "background": {
+      "selector": "[data-target='background']",
+      "description": "Background layer",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false,
+      "kind": "media"
+    },
+    "items": {
+      "selector": "[data-target='items']",
+      "description": "Positioned items",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur"
+      ],
+      "canTrigger": true,
+      "kind": "group"
+    },
+    "overlay": {
+      "selector": "[data-target='overlay']",
+      "description": "Color overlay layer",
+      "multiple": false,
+      "animatable": [
+        "opacity"
+      ],
+      "canTrigger": false,
+      "kind": "decorative"
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group",
+      "choreography"
+    ],
+    "excluded": []
+  },
+  "status": "deprecated"
+}

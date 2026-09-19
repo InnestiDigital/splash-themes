@@ -1,0 +1,543 @@
+{
+  "component": "ProfileGrid",
+  "type": "profile-grid",
+  "label": {
+    "en-US": "Profile Grid"
+  },
+  "category": "media",
+  "compatibleSectionRoles": [
+    "editorial-body",
+    "media-gallery",
+    "media-chrome"
+  ],
+  "typographySlots": [],
+  "$fragments": [
+    "responsive-columns",
+    "color-roles"
+  ],
+  "$fragmentOmit": [
+    "gapTablet",
+    "gapMobile",
+    "textTone"
+  ],
+  "$fragmentOverrides": {
+    "background": {
+      "default": "section"
+    }
+  },
+  "settings": [
+    {
+      "type": "repeater",
+      "id": "items",
+      "label": {
+        "en-US": "Profiles"
+      },
+      "group": "content",
+      "maxItems": 20,
+      "fields": [
+        {
+          "type": "richtext-single",
+          "id": "name",
+          "label": {
+            "en-US": "Name"
+          },
+          "translatable": true,
+          "typographyRole": "heading3",
+          "defaultPresetKey": "section-title",
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "type": "richtext-single",
+          "id": "role",
+          "label": {
+            "en-US": "Role"
+          },
+          "translatable": true,
+          "typographyRole": "caption",
+          "defaultPresetKey": "caption"
+        },
+        {
+          "type": "image",
+          "id": "avatar",
+          "label": {
+            "en-US": "Avatar"
+          }
+        },
+        {
+          "type": "text",
+          "id": "avatarAlt",
+          "label": {
+            "en-US": "Avatar Alt Text"
+          }
+        },
+        {
+          "type": "richtext-block",
+          "id": "bio",
+          "label": {
+            "en-US": "Bio"
+          },
+          "translatable": true,
+          "typographyRole": "body",
+          "defaultPresetKey": "body"
+        },
+        {
+          "type": "repeater",
+          "id": "links",
+          "label": {
+            "en-US": "Links"
+          },
+          "maxItems": 5,
+          "fields": [
+            {
+              "type": "text",
+              "id": "label",
+              "label": {
+                "en-US": "Label"
+              },
+              "translatable": true
+            },
+            {
+              "type": "url",
+              "id": "url",
+              "label": {
+                "en-US": "URL"
+              }
+            },
+            {
+              "type": "text",
+              "id": "icon",
+              "label": {
+                "en-US": "Icon (Material Icon name)"
+              },
+              "placeholder": "e.g. link, email, language"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": {
+        "en-US": "Columns"
+      },
+      "default": "3",
+      "group": "layout",
+      "options": [
+        {
+          "value": "2",
+          "label": {
+            "en-US": "2"
+          }
+        },
+        {
+          "value": "3",
+          "label": {
+            "en-US": "3"
+          }
+        },
+        {
+          "value": "4",
+          "label": {
+            "en-US": "4"
+          }
+        },
+        {
+          "value": "5",
+          "label": {
+            "en-US": "5"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      },
+      "default": "grid",
+      "group": "layout",
+      "options": [
+        {
+          "value": "grid",
+          "label": {
+            "en-US": "Grid"
+          }
+        },
+        {
+          "value": "masonry",
+          "label": {
+            "en-US": "Masonry"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "showBio",
+      "label": {
+        "en-US": "Show Bio"
+      },
+      "default": "hover",
+      "group": "layout",
+      "options": [
+        {
+          "value": "hover",
+          "label": {
+            "en-US": "On Hover"
+          }
+        },
+        {
+          "value": "click",
+          "label": {
+            "en-US": "On Click"
+          }
+        },
+        {
+          "value": "always",
+          "label": {
+            "en-US": "Always Visible"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "cardStyle",
+      "label": {
+        "en-US": "Card Style"
+      },
+      "default": "minimal",
+      "group": "appearance",
+      "options": [
+        {
+          "value": "minimal",
+          "label": {
+            "en-US": "Minimal"
+          }
+        },
+        {
+          "value": "bordered",
+          "label": {
+            "en-US": "Bordered"
+          }
+        },
+        {
+          "value": "elevated",
+          "label": {
+            "en-US": "Elevated"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "avatarShape",
+      "label": {
+        "en-US": "Avatar Shape"
+      },
+      "default": "circle",
+      "group": "appearance",
+      "options": [
+        {
+          "value": "circle",
+          "label": {
+            "en-US": "Circle"
+          }
+        },
+        {
+          "value": "square",
+          "label": {
+            "en-US": "Square"
+          }
+        },
+        {
+          "value": "rounded",
+          "label": {
+            "en-US": "Rounded"
+          }
+        }
+      ]
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface Style"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Card Corner Radius"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "pill",
+          "label": {
+            "en-US": "Pill"
+          }
+        }
+      ],
+      "default": "lg",
+      "group": "appearance",
+      "showIf": {
+        "cardStyle": [
+          "bordered",
+          "elevated"
+        ]
+      }
+    },
+    {
+      "id": "itemAlignX",
+      "type": "select",
+      "label": {
+        "en-US": "Horizontal Alignment"
+      },
+      "default": "start",
+      "group": "layout",
+      "options": [
+        {
+          "value": "start",
+          "label": {
+            "en-US": "Start"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "end",
+          "label": {
+            "en-US": "End"
+          }
+        },
+        {
+          "value": "stretch",
+          "label": {
+            "en-US": "Stretch"
+          }
+        }
+      ]
+    },
+    {
+      "id": "itemAlignY",
+      "type": "select",
+      "label": {
+        "en-US": "Vertical Alignment"
+      },
+      "default": "start",
+      "group": "layout",
+      "options": [
+        {
+          "value": "start",
+          "label": {
+            "en-US": "Top"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "end",
+          "label": {
+            "en-US": "Bottom"
+          }
+        },
+        {
+          "value": "stretch",
+          "label": {
+            "en-US": "Stretch"
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en-US": "Team Members"
+      },
+      "settings": {
+        "items": [
+          {
+            "name": {
+              "en-US": "Jane Smith"
+            },
+            "role": {
+              "en-US": "CEO"
+            },
+            "bio": {
+              "en-US": "Leading the company vision and strategy."
+            },
+            "links": []
+          },
+          {
+            "name": {
+              "en-US": "John Doe"
+            },
+            "role": {
+              "en-US": "CTO"
+            },
+            "bio": {
+              "en-US": "Leading product development and technical strategy."
+            },
+            "links": []
+          },
+          {
+            "name": {
+              "en-US": "Emily Chen"
+            },
+            "role": {
+              "en-US": "Head of Design"
+            },
+            "bio": {
+              "en-US": "Crafting beautiful and intuitive user experiences."
+            },
+            "links": []
+          }
+        ],
+        "columns": "3",
+        "layout": "grid",
+        "showBio": "hover",
+        "cardStyle": "minimal",
+        "avatarShape": "circle"
+      }
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    },
+    "items": {
+      "selector": "[data-target='items']",
+      "description": "Individual profile card",
+      "multiple": true,
+      "addressable": true,
+      "canTrigger": false,
+      "kind": "group"
+    },
+    "avatar": {
+      "selector": "[data-target='avatar']",
+      "description": "Profile avatar image",
+      "multiple": true,
+      "canTrigger": false,
+      "kind": "media"
+    },
+    "name": {
+      "selector": "[data-target='name']",
+      "description": "Profile name text",
+      "multiple": true,
+      "canTrigger": false,
+      "kind": "text"
+    },
+    "role": {
+      "selector": "[data-target='role']",
+      "description": "Profile role text",
+      "multiple": true,
+      "canTrigger": false,
+      "kind": "text"
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": []
+  }
+}

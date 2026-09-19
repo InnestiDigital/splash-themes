@@ -1,0 +1,515 @@
+{
+  "component": "CanvasImage",
+  "type": "canvas-image",
+  "label": {
+    "en-US": "Image"
+  },
+  "category": "media",
+  "description": {
+    "en-US": "Place one image with simple crop, framing, caption, and alignment controls."
+  },
+  "surfaces": [
+    "canvas"
+  ],
+  "$fragments": ["media-art-direction"],
+  "$fragmentOverrides": {
+    "focalPoint": {
+      "note": "Choose which part stays visible when the image is cropped.",
+      "showIf": {
+        "objectFit": "cover"
+      }
+    }
+  },
+  "tier": "basic",
+  "keywords": [
+    "photo",
+    "picture",
+    "media",
+    "visual",
+    "caption"
+  ],
+  "compatibleSectionRoles": [
+    "media-gallery",
+    "media-chrome",
+    "editorial-body"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "image",
+      "id": "image",
+      "label": {
+        "en-US": "Image"
+      },
+      "group": "content"
+    },
+    {
+      "type": "richtext-single",
+      "id": "caption",
+      "label": {
+        "en-US": "Caption"
+      },
+      "group": "content",
+      "translatable": true,
+      "note": "Optional caption or credit shown beneath the image.",
+      "validation": {
+        "maxLength": 240
+      }
+    },
+    {
+      "type": "text",
+      "id": "altText",
+      "label": {
+        "en-US": "Alternative text"
+      },
+      "group": "accessibility",
+      "translatable": true,
+      "note": "Describe the image for people using assistive technology.",
+      "validation": {
+        "maxLength": 240
+      }
+    },
+    {
+      "type": "select",
+      "id": "aspectRatio",
+      "label": {
+        "en-US": "Aspect ratio"
+      },
+      "default": "auto",
+      "group": "layout",
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en-US": "Original"
+          }
+        },
+        {
+          "value": "square",
+          "label": {
+            "en-US": "Square (1:1)"
+          }
+        },
+        {
+          "value": "portrait",
+          "label": {
+            "en-US": "Portrait (4:5)"
+          }
+        },
+        {
+          "value": "classic",
+          "label": {
+            "en-US": "Classic (4:3)"
+          }
+        },
+        {
+          "value": "landscape",
+          "label": {
+            "en-US": "Landscape (3:2)"
+          }
+        },
+        {
+          "value": "wide",
+          "label": {
+            "en-US": "Wide (16:9)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "measureWidth",
+      "label": {
+        "en-US": "Image width"
+      },
+      "default": "full",
+      "canvasDefault": "full",
+      "group": "layout",
+      "options": [
+        {
+          "value": "content",
+          "label": {
+            "en-US": "Content"
+          }
+        },
+        {
+          "value": "narrow",
+          "label": {
+            "en-US": "Narrow"
+          }
+        },
+        {
+          "value": "standard",
+          "label": {
+            "en-US": "Standard"
+          }
+        },
+        {
+          "value": "wide",
+          "label": {
+            "en-US": "Wide"
+          }
+        },
+        {
+          "value": "full",
+          "label": {
+            "en-US": "Full width"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "blockAlign",
+      "label": {
+        "en-US": "Block alignment"
+      },
+      "default": "center",
+      "group": "layout",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "captionAlign",
+      "label": {
+        "en-US": "Caption alignment"
+      },
+      "default": "left",
+      "group": "layout",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "frameRole",
+      "label": {
+        "en-US": "Frame tone"
+      },
+      "default": "transparent",
+      "group": "style",
+      "options": [
+        {
+          "value": "transparent",
+          "label": {
+            "en-US": "Transparent"
+          }
+        },
+        {
+          "value": "brandSurface",
+          "label": {
+            "en-US": "Brand surface"
+          }
+        },
+        {
+          "value": "brandPrimary",
+          "label": {
+            "en-US": "Brand primary"
+          }
+        },
+        {
+          "value": "brandSecondary",
+          "label": {
+            "en-US": "Brand secondary"
+          }
+        },
+        {
+          "value": "brandOnSurface",
+          "label": {
+            "en-US": "Brand on surface"
+          }
+        },
+        {
+          "value": "background",
+          "label": {
+            "en-US": "Section background"
+          }
+        },
+        {
+          "value": "surface",
+          "label": {
+            "en-US": "Section surface"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "captionRole",
+      "label": {
+        "en-US": "Caption tone"
+      },
+      "default": "brandSecondary",
+      "group": "style",
+      "options": [
+        {
+          "value": "brandSecondary",
+          "label": {
+            "en-US": "Brand secondary"
+          }
+        },
+        {
+          "value": "brandOnSurface",
+          "label": {
+            "en-US": "Brand on surface"
+          }
+        },
+        {
+          "value": "brandPrimary",
+          "label": {
+            "en-US": "Brand primary"
+          }
+        },
+        {
+          "value": "brandSurface",
+          "label": {
+            "en-US": "Brand surface"
+          }
+        },
+        {
+          "value": "text",
+          "label": {
+            "en-US": "Section text"
+          }
+        },
+        {
+          "value": "muted",
+          "label": {
+            "en-US": "Muted text"
+          }
+        },
+        {
+          "value": "faint",
+          "label": {
+            "en-US": "Faint text"
+          }
+        },
+        {
+          "value": "accent",
+          "label": {
+            "en-US": "Section accent"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "borderRadius",
+      "label": {
+        "en-US": "Corner radius"
+      },
+      "default": "none",
+      "group": "style",
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "pill",
+          "label": {
+            "en-US": "Pill"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "shadow",
+      "label": {
+        "en-US": "Shadow"
+      },
+      "default": "none",
+      "group": "style",
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "internalPadding",
+      "label": {
+        "en-US": "Inner padding"
+      },
+      "default": "none",
+      "group": "advanced",
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "xs",
+          "label": {
+            "en-US": "Extra small"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "xl",
+          "label": {
+            "en-US": "Extra large"
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    },
+    {
+      "id": "accessibility",
+      "label": {
+        "en-US": "Accessibility"
+      }
+    },
+    {
+      "id": "advanced",
+      "label": {
+        "en-US": "Advanced"
+      }
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Entire image block",
+      "kind": "root"
+    },
+    "frame": {
+      "selector": "[data-target='frame']",
+      "description": "Image frame",
+      "multiple": false,
+      "kind": "media"
+    },
+    "image": {
+      "selector": "[data-target='image']",
+      "description": "Image asset",
+      "multiple": false,
+      "kind": "media"
+    },
+    "caption": {
+      "selector": "[data-target='caption']",
+      "description": "Image caption",
+      "multiple": false,
+      "kind": "text"
+    }
+  },
+  "motionSupport": {
+    "levels": [],
+    "excluded": []
+  }
+}

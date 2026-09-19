@@ -1,0 +1,186 @@
+{
+  "component": "ScrollReadAlong",
+  "type": "scroll-read-along",
+  "label": {
+    "en-US": "Scroll Read-Along"
+  },
+  "category": "editorial",
+  "description": {
+    "en-US": "Long-form copy whose words illuminate one-by-one in reading order as the passage scrolls through the viewport — the editorial \"read-along\" effect. Reduced-motion & no-JS safe (text stays fully legible)."
+  },
+  "compatibleSectionRoles": [
+    "editorial-body",
+    "supporting-text",
+    "section-heading"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "eyebrow",
+      "label": {
+        "en-US": "Eyebrow"
+      },
+      "group": "content",
+      "translatable": true,
+      "note": "Optional small label shown above the passage.",
+      "validation": {
+        "maxLength": 100
+      },
+      "typographyRole": "eyebrow",
+      "defaultPresetKey": "eyebrow"
+    },
+    {
+      "type": "richtext-block",
+      "id": "text",
+      "label": {
+        "en-US": "Passage"
+      },
+      "group": "content",
+      "translatable": true,
+      "note": "Plain paragraphs work best — inline formatting is flattened so each word can animate.",
+      "typographyRole": "body",
+      "defaultPresetKey": "body",
+      "options": {
+        "toolbar": "basic"
+      }
+    },
+    {
+      "type": "select",
+      "id": "dimLevel",
+      "label": {
+        "en-US": "Resting Dimness"
+      },
+      "default": "medium",
+      "group": "motion",
+      "note": "How faint an un-read word sits before the reading line reaches it.",
+      "options": [
+        { "value": "subtle", "label": { "en-US": "Subtle" } },
+        { "value": "medium", "label": { "en-US": "Medium" } },
+        { "value": "strong", "label": { "en-US": "Strong" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "focus",
+      "label": {
+        "en-US": "Reading Line"
+      },
+      "default": "center",
+      "group": "motion",
+      "note": "Where in the viewport words switch on as you scroll.",
+      "options": [
+        { "value": "early", "label": { "en-US": "Early (low on screen)" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "lower", "label": { "en-US": "Late (high on screen)" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "fade",
+      "label": {
+        "en-US": "Word Fade"
+      },
+      "default": "smooth",
+      "group": "motion",
+      "options": [
+        { "value": "crisp", "label": { "en-US": "Crisp" } },
+        { "value": "smooth", "label": { "en-US": "Smooth" } },
+        { "value": "soft", "label": { "en-US": "Soft" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "textAlign",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "default": "left",
+      "group": "style",
+      "options": [
+        { "value": "left", "label": { "en-US": "Left" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "right", "label": { "en-US": "Right" } }
+      ]
+    },
+    {
+      "id": "measureWidth",
+      "type": "select",
+      "label": {
+        "en-US": "Content Width"
+      },
+      "default": "content",
+      "canvasDefault": "full",
+      "group": "style",
+      "options": [
+        { "value": "content", "label": { "en-US": "Reading (65ch)" } },
+        { "value": "narrow", "label": { "en-US": "Narrow (45rem)" } },
+        { "value": "standard", "label": { "en-US": "Standard (65rem)" } },
+        { "value": "wide", "label": { "en-US": "Wide (80rem)" } },
+        { "value": "full", "label": { "en-US": "Full" } }
+      ]
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "motion", "label": { "en-US": "Motion" } },
+    { "id": "style", "label": { "en-US": "Style" } }
+  ],
+  "presets": [
+    {
+      "name": { "en-US": "Illuminated Passage" },
+      "settings": {
+        "dimLevel": "medium",
+        "focus": "center",
+        "fade": "smooth",
+        "textAlign": "left",
+        "measureWidth": "content"
+      },
+      "description": {
+        "en-US": "Words brighten in reading order as the paragraph crosses the middle of the screen. The editorial default."
+      },
+      "category": "editorial",
+      "isDefault": true
+    },
+    {
+      "name": { "en-US": "Manifesto" },
+      "settings": {
+        "dimLevel": "strong",
+        "focus": "lower",
+        "fade": "soft",
+        "textAlign": "center",
+        "measureWidth": "standard"
+      },
+      "description": {
+        "en-US": "High-contrast, slow soft fade near the top of the viewport — for a bold centered statement."
+      },
+      "category": "editorial"
+    }
+  ],
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Entire block container"
+    },
+    "eyebrow": {
+      "kind": "text",
+      "selector": "[data-target='eyebrow']",
+      "description": "Eyebrow text label",
+      "multiple": false,
+      "animatable": ["opacity", "transform", "blur"],
+      "canTrigger": true
+    },
+    "text": {
+      "kind": "text",
+      "selector": "[data-target='text']",
+      "description": "The read-along passage",
+      "multiple": false,
+      "animatable": ["opacity", "transform", "blur"],
+      "canTrigger": true
+    }
+  },
+  "motionSupport": {
+    "levels": ["local"],
+    "excluded": ["text"]
+  }
+}

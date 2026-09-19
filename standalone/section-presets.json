@@ -1,0 +1,618 @@
+[
+  {
+    "id": "hero-banner",
+    "label": {
+      "en-US": "Hero Banner"
+    },
+    "description": {
+      "en-US": "Full-viewport hero with background image and call-to-action"
+    },
+    "sectionType": "hero",
+    "layoutConfig": {
+      "height": "viewport",
+      "contentAlign": "center",
+      "mediaPosition": "center"
+    },
+    "blocks": [
+      {
+        "type": "hero-block",
+        "layoutRole": "media-gallery",
+        "settings": {
+          "variant": "standard",
+          "title": "Welcome to Your Site",
+          "subtitle": "Discover amazing features and benefits",
+          "ctaText": "Get Started",
+          "height": "large",
+          "textAlign": "center",
+          "overlay": true
+        }
+      },
+      {
+        "type": "cta-section",
+        "layoutRole": "section-cta",
+        "settings": {
+          "heading": "Ready to begin?",
+          "ctaText": "Learn More",
+          "layout": "centered"
+        }
+      }
+    ]
+  },
+  {
+    "id": "feature-grid",
+    "label": {
+      "en-US": "Feature Grid"
+    },
+    "description": {
+      "en-US": "Grid of features with icons, titles, and descriptions"
+    },
+    "sectionType": "stacked",
+    "layoutConfig": {
+      "shellLayout": "stacked",
+      "stackGap": "md"
+    },
+    "blocks": [
+      {
+        "type": "section-heading",
+        "settings": {
+          "heading": "Our Features",
+          "subtitle": "Everything you need to succeed",
+          "textAlign": "center"
+        }
+      },
+      {
+        "type": "grid-block",
+        "settings": {
+          "cardStyle": "feature",
+          "showTitle": false,
+          "columns": 3,
+          "features": [
+            {
+              "icon": "card_giftcard",
+              "title": "Gift Cards",
+              "description": "Choose from hundreds of top-brand gift cards"
+            },
+            {
+              "icon": "flight",
+              "title": "Travel",
+              "description": "Book flights, hotels, and vacation packages"
+            },
+            {
+              "icon": "local_offer",
+              "title": "Merchandise",
+              "description": "Explore thousands of products from top brands"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "testimonials-with-cta",
+    "label": {
+      "en-US": "Testimonials + CTA"
+    },
+    "description": {
+      "en-US": "Testimonials in main column with sidebar call-to-action"
+    },
+    "sectionType": "editorial-split",
+    "layoutConfig": {
+      "shellSide": "right",
+      "contentWidthRatio": "wide-left",
+      "chromeAlign": "sticky-top"
+    },
+    "blocks": [
+      {
+        "type": "section-heading",
+        "layoutRole": "section-heading",
+        "settings": {
+          "heading": "What Our Customers Say",
+          "textAlign": "left"
+        }
+      },
+      {
+        "type": "testimonials",
+        "layoutRole": "editorial-body",
+        "settings": {
+          "showTitle": false,
+          "variant": "grid",
+          "items": [
+            {
+              "quote": "This service exceeded all our expectations. Highly recommend!",
+              "author": "Jane Smith",
+              "role": "CEO, Tech Corp",
+              "rating": 5
+            },
+            {
+              "quote": "Outstanding support and quality. Will definitely use again.",
+              "author": "John Doe",
+              "role": "Product Manager",
+              "rating": 5
+            }
+          ]
+        }
+      },
+      {
+        "type": "cta-section",
+        "layoutRole": "section-cta",
+        "settings": {
+          "heading": "Join thousands of satisfied customers",
+          "ctaText": "Get Started",
+          "layout": "stacked"
+        }
+      }
+    ]
+  },
+  {
+    "id": "faq-section",
+    "label": {
+      "en-US": "FAQ Section"
+    },
+    "description": {
+      "en-US": "Frequently asked questions with accordion"
+    },
+    "sectionType": "stacked",
+    "layoutConfig": {
+      "shellLayout": "centered",
+      "stackGap": "md"
+    },
+    "blocks": [
+      {
+        "type": "section-heading",
+        "settings": {
+          "heading": "Frequently Asked Questions",
+          "subtitle": "Find answers to common questions",
+          "textAlign": "center"
+        }
+      },
+      {
+        "type": "faq-accordion",
+        "settings": {
+          "collapseAll": true,
+          "allowMultipleOpen": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "image-gallery",
+    "label": {
+      "en-US": "Image Gallery"
+    },
+    "description": {
+      "en-US": "Grid of images using the gallery section type"
+    },
+    "preview": "/assets/section-presets/image-gallery.png",
+    "sectionType": "gallery",
+    "layoutConfig": {
+      "layout": "grid",
+      "columns": 3,
+      "gap": "sm"
+    },
+    "blocks": [
+      {
+        "type": "section-heading",
+        "layoutRole": "section-heading",
+        "settings": {
+          "heading": "Gallery",
+          "textAlign": "center"
+        }
+      },
+      {
+        "type": "image-banner",
+        "layoutRole": "media-gallery",
+        "settings": {
+          "height": "medium",
+          "overlay": false
+        }
+      },
+      {
+        "type": "image-banner",
+        "layoutRole": "media-gallery",
+        "settings": {
+          "height": "medium",
+          "overlay": false
+        }
+      },
+      {
+        "type": "image-banner",
+        "layoutRole": "media-gallery",
+        "settings": {
+          "height": "medium",
+          "overlay": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "image-gallery-carousel",
+    "label": {
+      "en-US": "Image Carousel"
+    },
+    "description": {
+      "en-US": "Carousel of images using the gallery section type"
+    },
+    "preview": "/assets/section-presets/image-gallery-carousel.png",
+    "sectionType": "gallery",
+    "layoutConfig": {
+      "layout": "carousel",
+      "gap": "none",
+      "showDots": true,
+      "showArrows": true
+    },
+    "blocks": [
+      {
+        "type": "section-heading",
+        "layoutRole": "section-heading",
+        "settings": {
+          "heading": "Gallery",
+          "headingToken": "sectionTitle",
+          "textAlign": "center"
+        }
+      },
+      {
+        "type": "image-banner",
+        "layoutRole": "media-gallery",
+        "settings": {
+          "height": "large",
+          "overlay": false
+        }
+      },
+      {
+        "type": "image-banner",
+        "layoutRole": "media-gallery",
+        "settings": {
+          "height": "large",
+          "overlay": false
+        }
+      },
+      {
+        "type": "image-banner",
+        "layoutRole": "media-gallery",
+        "settings": {
+          "height": "large",
+          "overlay": false
+        }
+      }
+    ]
+  },
+  {
+    "id": "side-by-side",
+    "label": {
+      "en-US": "Side-by-Side Content"
+    },
+    "description": {
+      "en-US": "Editorial text alongside supporting content"
+    },
+    "sectionType": "editorial-split",
+    "layoutConfig": {
+      "shellSide": "right",
+      "contentWidthRatio": "equal",
+      "chromeAlign": "center"
+    },
+    "blocks": [
+      {
+        "type": "section-heading",
+        "layoutRole": "section-heading",
+        "settings": {
+          "heading": "About Us",
+          "textAlign": "left"
+        }
+      },
+      {
+        "type": "editorial-text",
+        "layoutRole": "editorial-body",
+        "settings": {
+          "body": "<p>Tell your story here. Add rich text content to engage your audience.</p>"
+        }
+      },
+      {
+        "type": "editorial-text",
+        "layoutRole": "supporting-text",
+        "settings": {
+          "body": "<p>Supporting information or additional context.</p>"
+        }
+      }
+    ]
+  },
+  {
+    "id": "dark-intro",
+    "label": {
+      "en-US": "Dark Intro Section"
+    },
+    "description": {
+      "en-US": "Dark-themed intro band with eyebrow heading and editorial body"
+    },
+    "preview": "/assets/section-presets/dark-intro.png",
+    "sectionType": "stacked",
+    "colorScheme": "dark",
+    "layoutConfig": {
+      "shellLayout": "stacked",
+      "stackGap": "md"
+    },
+    "blocks": [
+      {
+        "type": "section-heading",
+        "layoutRole": "section-heading",
+        "settings": {
+          "eyebrow": "Chapter One",
+          "heading": "A darker, focused moment",
+          "subtitle": "Use this section to set tone with a dark background and editorial rhythm.",
+          "headingToken": "sectionTitle",
+          "textAlign": "left"
+        }
+      },
+      {
+        "type": "editorial-text",
+        "layoutRole": "editorial-body",
+        "settings": {
+          "body": "<p>Introduce the section with a short editorial paragraph. Dark sections work well between lighter bands to create visual cadence across a long page.</p>"
+        }
+      }
+    ]
+  },
+  {
+    "id": "accent-cta-band",
+    "label": {
+      "en-US": "Accent CTA Band"
+    },
+    "description": {
+      "en-US": "Primary-color call-out band with a centered call-to-action"
+    },
+    "preview": "/assets/section-presets/accent-cta-band.png",
+    "sectionType": "stacked",
+    "colorScheme": "accent",
+    "containerMode": "measure",
+    "layoutConfig": {
+      "shellLayout": "centered",
+      "stackGap": "md"
+    },
+    "blocks": [
+      {
+        "type": "cta-section",
+        "layoutRole": "section-cta",
+        "settings": {
+          "heading": "Ready to take the next step?",
+          "body": "<p>A short supporting line that reinforces the call to action.</p>",
+          "ctaText": "Get Started",
+          "ctaStyle": "solid",
+          "layout": "centered"
+        }
+      }
+    ]
+  },
+  {
+    "id": "gallery-masonry",
+    "label": {
+      "en-US": "Gallery — Masonry"
+    },
+    "description": {
+      "en-US": "Masonry gallery with heading and six image tiles"
+    },
+    "preview": "/assets/section-presets/gallery-masonry.png",
+    "sectionType": "gallery",
+    "colorScheme": "light",
+    "layoutConfig": {
+      "layout": "masonry",
+      "columns": 3,
+      "gap": "sm"
+    },
+    "blocks": [
+      {
+        "type": "section-heading",
+        "layoutRole": "section-heading",
+        "settings": {
+          "heading": "Selected Work",
+          "subtitle": "A masonry gallery for mixed-aspect imagery.",
+          "headingToken": "sectionTitle",
+          "textAlign": "center"
+        }
+      },
+      {
+        "type": "image-banner",
+        "layoutRole": "media-gallery",
+        "settings": { "height": "medium", "overlay": false }
+      },
+      {
+        "type": "image-banner",
+        "layoutRole": "media-gallery",
+        "settings": { "height": "medium", "overlay": false }
+      },
+      {
+        "type": "image-banner",
+        "layoutRole": "media-gallery",
+        "settings": { "height": "medium", "overlay": false }
+      },
+      {
+        "type": "image-banner",
+        "layoutRole": "media-gallery",
+        "settings": { "height": "medium", "overlay": false }
+      },
+      {
+        "type": "image-banner",
+        "layoutRole": "media-gallery",
+        "settings": { "height": "medium", "overlay": false }
+      },
+      {
+        "type": "image-banner",
+        "layoutRole": "media-gallery",
+        "settings": { "height": "medium", "overlay": false }
+      }
+    ]
+  },
+  {
+    "id": "project-stats",
+    "label": {
+      "en-US": "Project Stats Row"
+    },
+    "description": {
+      "en-US": "Editorial split with project narrative and supporting stats row"
+    },
+    "preview": "/assets/section-presets/project-stats.png",
+    "sectionType": "editorial-split",
+    "colorScheme": "light",
+    "layoutConfig": {
+      "shellSide": "right",
+      "contentWidthRatio": "wide-left",
+      "chromeAlign": "top"
+    },
+    "blocks": [
+      {
+        "type": "section-heading",
+        "layoutRole": "section-heading",
+        "settings": {
+          "eyebrow": "Project",
+          "heading": "By the numbers",
+          "headingToken": "sectionTitle",
+          "textAlign": "left"
+        }
+      },
+      {
+        "type": "editorial-text",
+        "layoutRole": "editorial-body",
+        "settings": {
+          "body": "<p>Describe the project in a short paragraph. The supporting column lists key facts and credits so readers can scan essentials without leaving the narrative.</p>"
+        }
+      },
+      {
+        "type": "item-grid-block",
+        "layoutRole": "supporting-text",
+        "settings": {
+          "layout": "row",
+          "columns": 2,
+          "dividerEnabled": true,
+          "dividerStyle": "line",
+          "labelStyle": "uppercase",
+          "background": "section",
+          "items": [
+            { "label": "Year", "value": "2024", "unit": "" },
+            { "label": "Location", "value": "Barcelona", "unit": "" },
+            { "label": "Area", "value": "2,400", "unit": "m²" },
+            { "label": "Team", "value": "12", "unit": "" }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "id": "magazine-feature-spread",
+    "label": {
+      "en-US": "Magazine Feature Spread"
+    },
+    "description": {
+      "en-US": "Lede and body on the text side, a held plate beside them, a closing plate with a pull quote over its corner"
+    },
+    "sectionType": "magazine-spread",
+    "layoutConfig": {
+      "layoutPreset": "balanced",
+      "spreadGap": "lg",
+      "pullQuoteAlign": "bottom"
+    },
+    "blocks": [
+      {
+        "type": "section-heading",
+        "layoutRole": "section-heading",
+        "settings": {
+          "eyebrow": "Feature",
+          "heading": "A spread that reads like a magazine",
+          "subtitle": "Open with a lede, run the body under it, and let the plates carry the page.",
+          "textAlign": "left"
+        }
+      },
+      {
+        "type": "editorial-text",
+        "layoutRole": "editorial-body",
+        "settings": {
+          "body": "<p>Write the feature here. The body column runs beneath the lede and beside the held plate, so long copy keeps its measure while the image stays in view.</p>"
+        }
+      },
+      {
+        "type": "image-banner",
+        "layoutRole": "media-gallery",
+        "settings": {
+          "caption": "The held plate — stays in view while the body scrolls past"
+        }
+      },
+      {
+        "type": "image-banner",
+        "layoutRole": "media-chrome",
+        "settings": {
+          "caption": "Closing plate, left"
+        }
+      },
+      {
+        "type": "image-banner",
+        "layoutRole": "media-chrome",
+        "settings": {
+          "caption": "Closing plate, right"
+        }
+      },
+      {
+        "type": "pull-quote",
+        "layoutRole": "supporting-text",
+        "settings": {
+          "body": "The quote sits over the trailing corner of the closing plate.",
+          "attribution": "Feature editor",
+          "size": "compact",
+          "fontSize": 20,
+          "textAlign": "left",
+          "background": "section"
+        }
+      }
+    ]
+  },
+  {
+    "id": "collage-canvas-freeform",
+    "label": {
+      "en-US": "Collage Canvas"
+    },
+    "description": {
+      "en-US": "Heading over a free-placement canvas — drag, resize and overlap the blocks anywhere inside it"
+    },
+    "sectionType": "collage-canvas",
+    "layoutConfig": {
+      "canvasHeight": "ratio-16x9",
+      "canvasCollapse": "stack",
+      "canvasSpacing": "lg"
+    },
+    "blocks": [
+      {
+        "type": "section-heading",
+        "layoutRole": "section-heading",
+        "settings": {
+          "eyebrow": "Composition",
+          "heading": "Arrange this however you like",
+          "headingLevel": "h2",
+          "textAlign": "left"
+        }
+      },
+      {
+        "type": "canvas-image",
+        "layoutRole": "editorial-body",
+        "settings": {
+          "altText": "First canvas layer",
+          "aspectRatio": "auto",
+          "borderRadius": "none"
+        }
+      },
+      {
+        "type": "canvas-image",
+        "layoutRole": "editorial-body",
+        "settings": {
+          "altText": "Second canvas layer",
+          "aspectRatio": "auto",
+          "borderRadius": "none"
+        }
+      },
+      {
+        "type": "canvas-text",
+        "layoutRole": "editorial-body",
+        "settings": {
+          "content": "<p>Drag me anywhere on the canvas.</p>",
+          "textAlign": "left",
+          "verticalAlign": "top"
+        }
+      }
+    ]
+  }
+]

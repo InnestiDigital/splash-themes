@@ -1,0 +1,200 @@
+{
+  "component": "Tabs",
+  "type": "tabs",
+  "label": {
+    "en-US": "Tabs"
+  },
+  "category": "content",
+  "description": {
+    "en-US": "Tabbed content panels: a switchable tab strip with one panel visible at a time. Fully keyboard operable with a roving-tabindex tablist (arrow keys, Home/End), reduced-motion safe, and on mobile the strip scrolls horizontally — or, opt-in, collapses into an accordion so every label stays visible. Optionally make tabs deep-linkable so a shared URL opens and scrolls to a specific tab, with a per-tab copy-link button."
+  },
+  "compatibleSectionRoles": [
+    "content",
+    "editorial-body"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "repeater",
+      "id": "tabs",
+      "label": { "en-US": "Tabs" },
+      "group": "content",
+      "maxItems": 8,
+      "fields": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": { "en-US": "Tab label" },
+          "translatable": true
+        },
+        {
+          "type": "richtext-block",
+          "id": "body",
+          "label": { "en-US": "Panel content" },
+          "translatable": true,
+          "typographyRole": "body",
+          "defaultPresetKey": "body"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "variant",
+      "label": { "en-US": "Tab style" },
+      "default": "underline",
+      "group": "layout",
+      "options": [
+        { "value": "underline", "label": { "en-US": "Underline" } },
+        { "value": "pills", "label": { "en-US": "Pills" } },
+        { "value": "boxed", "label": { "en-US": "Boxed" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": { "en-US": "Tab alignment" },
+      "default": "left",
+      "group": "layout",
+      "options": [
+        { "value": "left", "label": { "en-US": "Left" } },
+        { "value": "center", "label": { "en-US": "Center" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "fit",
+      "label": { "en-US": "Tab width" },
+      "default": "auto",
+      "group": "layout",
+      "note": "Auto sizes each tab to its label; Stretch makes all tabs equal width.",
+      "options": [
+        { "value": "auto", "label": { "en-US": "Auto" } },
+        { "value": "stretch", "label": { "en-US": "Stretch (equal width)" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "mobileLayout",
+      "label": { "en-US": "Mobile layout" },
+      "default": "strip",
+      "group": "layout",
+      "note": "On phones, keep tabs as a horizontal scroll strip, or stack them into an accordion so every label stays visible.",
+      "options": [
+        { "value": "strip", "label": { "en-US": "Scroll strip" } },
+        { "value": "accordion", "label": { "en-US": "Accordion" } }
+      ]
+    },
+    {
+      "id": "measureWidth",
+      "type": "select",
+      "label": { "en-US": "Content Width" },
+      "default": "standard",
+      "canvasDefault": "full",
+      "group": "layout",
+      "options": [
+        { "value": "content", "label": { "en-US": "Reading (65ch)" } },
+        { "value": "narrow", "label": { "en-US": "Narrow (45rem)" } },
+        { "value": "standard", "label": { "en-US": "Standard (65rem)" } },
+        { "value": "wide", "label": { "en-US": "Wide (80rem)" } },
+        { "value": "full", "label": { "en-US": "Full" } }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "activeTab",
+      "label": { "en-US": "Initially open tab" },
+      "default": 1,
+      "group": "layout",
+      "note": "1-based index of the tab shown first.",
+      "options": { "min": 1, "max": 8 }
+    },
+    {
+      "type": "checkbox",
+      "id": "deepLink",
+      "label": { "en-US": "Deep-linkable tabs" },
+      "help": {
+        "en-US": "Give each tab a copy-link button and let a URL #tab-… anchor open and scroll to a specific tab when the page loads or the link is shared."
+      },
+      "default": false,
+      "group": "behaviour"
+    },
+    {
+      "type": "text",
+      "id": "copyLinkText",
+      "label": { "en-US": "Copy Link Label" },
+      "default": { "en-US": "Copy link" },
+      "group": "behaviour"
+    },
+    {
+      "type": "text",
+      "id": "copiedText",
+      "label": { "en-US": "Copied Label" },
+      "default": { "en-US": "Copied!" },
+      "group": "behaviour"
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "layout", "label": { "en-US": "Layout" } },
+    { "id": "behaviour", "label": { "en-US": "Behaviour" } }
+  ],
+  "presets": [
+    {
+      "name": { "en-US": "Service Tabs" },
+      "settings": {
+        "variant": "underline",
+        "align": "left",
+        "fit": "auto",
+        "measureWidth": "standard",
+        "activeTab": 1,
+        "tabs": [
+          {
+            "label": { "en-US": "Overview" },
+            "body": { "en-US": "<p>Introduce the first topic here. Summarise what this tab covers in a sentence or two.</p>" }
+          },
+          {
+            "label": { "en-US": "Details" },
+            "body": { "en-US": "<p>Use the second tab for specifics — features, steps, or anything worth its own panel.</p>" }
+          },
+          {
+            "label": { "en-US": "Pricing" },
+            "body": { "en-US": "<p>The third tab keeps related content one click away without leaving the page.</p>" }
+          }
+        ]
+      },
+      "description": {
+        "en-US": "A three-tab panel set — group related content into switchable tabs that share one space."
+      },
+      "category": "content",
+      "isDefault": true
+    }
+  ],
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Entire tabs block"
+    },
+    "strip": {
+      "kind": "group",
+      "selector": "[data-target='strip']",
+      "description": "The tab strip (tablist)",
+      "multiple": false
+    },
+    "panel": {
+      "kind": "group",
+      "selector": "[data-target='panel']",
+      "description": "Individual tab panel",
+      "multiple": true,
+      "addressable": true,
+      "animatable": ["opacity", "transform", "blur"],
+      "canTrigger": true
+    }
+  },
+  "motionSupport": {
+    "levels": ["local", "group"],
+    "excluded": []
+  },
+  "motionHints": {
+    "containsDynamicChildren": true
+  }
+}

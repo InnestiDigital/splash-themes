@@ -1,0 +1,297 @@
+{
+  "component": "BrandMark",
+  "type": "brand-mark",
+  "label": {
+    "en-US": "Brand Mark"
+  },
+  "category": "content",
+  "description": {
+    "en-US": "Place the client's primary logo, inverse logo, or symbol using the active brand identity."
+  },
+  "surfaces": [
+    "canvas"
+  ],
+  "tier": "basic",
+  "keywords": [
+    "logo",
+    "identity",
+    "wordmark",
+    "symbol",
+    "tagline"
+  ],
+  "compatibleSectionRoles": [
+    "media-chrome",
+    "supporting-text",
+    "section-heading"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "select",
+      "id": "markVariant",
+      "label": {
+        "en-US": "Brand asset"
+      },
+      "default": "primary",
+      "group": "content",
+      "options": [
+        {
+          "value": "primary",
+          "label": {
+            "en-US": "Primary logo"
+          }
+        },
+        {
+          "value": "inverse",
+          "label": {
+            "en-US": "Inverse logo"
+          }
+        },
+        {
+          "value": "mark",
+          "label": {
+            "en-US": "Symbol only"
+          }
+        }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "showTagline",
+      "label": {
+        "en-US": "Show brand tagline"
+      },
+      "default": false,
+      "group": "content"
+    },
+    {
+      "type": "text",
+      "id": "altText",
+      "label": {
+        "en-US": "Alternative text"
+      },
+      "group": "accessibility",
+      "translatable": true,
+      "note": "Optional. The brand name is used when this is empty.",
+      "validation": {
+        "maxLength": 160
+      }
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": {
+        "en-US": "Size"
+      },
+      "default": "md",
+      "group": "layout",
+      "options": [
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "full",
+          "label": {
+            "en-US": "Full width"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "fit",
+      "label": {
+        "en-US": "Logo fit"
+      },
+      "default": "contain",
+      "group": "layout",
+      "options": [
+        {
+          "value": "contain",
+          "label": {
+            "en-US": "Show whole logo"
+          }
+        },
+        {
+          "value": "cover",
+          "label": {
+            "en-US": "Fill frame"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": {
+        "en-US": "Horizontal alignment"
+      },
+      "default": "center",
+      "group": "layout",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "verticalAlign",
+      "label": {
+        "en-US": "Vertical alignment"
+      },
+      "default": "center",
+      "group": "layout",
+      "options": [
+        {
+          "value": "top",
+          "label": {
+            "en-US": "Top"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "bottom",
+          "label": {
+            "en-US": "Bottom"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "foregroundRole",
+      "label": {
+        "en-US": "Fallback text tone"
+      },
+      "default": "brandOnSurface",
+      "group": "style",
+      "options": [
+        { "value": "brandOnSurface", "label": { "en-US": "Brand on surface" } },
+        { "value": "brandPrimary", "label": { "en-US": "Brand primary" } },
+        { "value": "brandSecondary", "label": { "en-US": "Brand secondary" } },
+        { "value": "brandSurface", "label": { "en-US": "Brand surface" } },
+        { "value": "text", "label": { "en-US": "Section text" } },
+        { "value": "muted", "label": { "en-US": "Muted text" } },
+        { "value": "faint", "label": { "en-US": "Faint text" } },
+        { "value": "accent", "label": { "en-US": "Section accent" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "backgroundRole",
+      "label": {
+        "en-US": "Background tone"
+      },
+      "default": "transparent",
+      "group": "style",
+      "options": [
+        { "value": "transparent", "label": { "en-US": "Transparent" } },
+        { "value": "brandSurface", "label": { "en-US": "Brand surface" } },
+        { "value": "brandPrimary", "label": { "en-US": "Brand primary" } },
+        { "value": "brandSecondary", "label": { "en-US": "Brand secondary" } },
+        { "value": "brandOnSurface", "label": { "en-US": "Brand on surface" } },
+        { "value": "background", "label": { "en-US": "Section background" } },
+        { "value": "surface", "label": { "en-US": "Section surface" } },
+        { "value": "accent", "label": { "en-US": "Section accent" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "internalPadding",
+      "label": {
+        "en-US": "Inner padding"
+      },
+      "default": "none",
+      "group": "advanced",
+      "options": [
+        { "value": "none", "label": { "en-US": "None" } },
+        { "value": "xs", "label": { "en-US": "Extra small" } },
+        { "value": "sm", "label": { "en-US": "Small" } },
+        { "value": "md", "label": { "en-US": "Medium" } },
+        { "value": "lg", "label": { "en-US": "Large" } },
+        { "value": "xl", "label": { "en-US": "Extra large" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "borderRadius",
+      "label": {
+        "en-US": "Corner radius"
+      },
+      "default": "none",
+      "group": "advanced",
+      "options": [
+        { "value": "none", "label": { "en-US": "None" } },
+        { "value": "sm", "label": { "en-US": "Small" } },
+        { "value": "md", "label": { "en-US": "Medium" } },
+        { "value": "lg", "label": { "en-US": "Large" } },
+        { "value": "pill", "label": { "en-US": "Pill" } }
+      ]
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "layout", "label": { "en-US": "Layout" } },
+    { "id": "style", "label": { "en-US": "Style" } },
+    { "id": "accessibility", "label": { "en-US": "Accessibility" } },
+    { "id": "advanced", "label": { "en-US": "Advanced" } }
+  ],
+  "targets": {
+    "root": {
+      "description": "Entire brand mark block",
+      "kind": "root"
+    },
+    "mark": {
+      "selector": "[data-target='mark']",
+      "description": "Selected logo or visible brand-name fallback",
+      "multiple": false,
+      "kind": "media"
+    },
+    "tagline": {
+      "selector": "[data-target='tagline']",
+      "description": "Brand tagline",
+      "multiple": false,
+      "kind": "text"
+    }
+  },
+  "motionSupport": {
+    "levels": [],
+    "excluded": []
+  }
+}

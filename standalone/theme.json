@@ -1,0 +1,2199 @@
+{
+  "schemaVersion": "1.3.0",
+  "migrations": [
+    {
+      "version": "1.2.0",
+      "description": "Canonical article-feed vocabulary: the ArticleList block and the blog-index template name the same feed controls the same way (WP-12).",
+      "changes": [
+        {
+          "type": "rename",
+          "block": "article-list",
+          "from": "display",
+          "to": "feedDisplay"
+        },
+        {
+          "type": "rename",
+          "block": "article-list",
+          "from": "subtitle",
+          "to": "cardSubtitle"
+        },
+        {
+          "type": "rename",
+          "block": "article-list",
+          "from": "imageRatio",
+          "to": "cardImageRatio"
+        }
+      ]
+    },
+    {
+      "version": "1.3.0",
+      "description": "Canonical mediaSide: four spellings of \"which side is the media on\" become one fragment-owned vocabulary (left/right/above/below). Dormant until the block schemas adopt the media-side fragment (WP-09R bumps schemaVersion to 1.3.0); the value maps are exhaustive over each block's legacy options, so anything outside them is a value no schema ever offered and falls to the default tiers.",
+      "changes": [
+        {
+          "type": "rename",
+          "block": "side-by-side-editorial",
+          "from": "imagePosition",
+          "to": "mediaSide",
+          "valueMap": {
+            "left": "left",
+            "right": "right"
+          },
+          "unmappedValue": "default"
+        },
+        {
+          "type": "rename",
+          "block": "text-section",
+          "from": "imagePosition",
+          "to": "mediaSide",
+          "valueMap": {
+            "left": "left",
+            "right": "right",
+            "top": "above",
+            "bottom": "below"
+          },
+          "unmappedValue": "default"
+        },
+        {
+          "type": "rename",
+          "block": "case-study-card",
+          "from": "mediaPosition",
+          "to": "mediaSide",
+          "valueMap": {
+            "left": "left",
+            "right": "right",
+            "top": "above"
+          },
+          "unmappedValue": "default"
+        },
+        {
+          "type": "rename",
+          "block": "hero-block",
+          "from": "editorialImageSide",
+          "to": "mediaSide",
+          "valueMap": {
+            "left": "left",
+            "right": "right"
+          },
+          "unmappedValue": "default"
+        },
+        {
+          "type": "rename",
+          "block": "text-card-block",
+          "from": "imagePosition",
+          "to": "mediaSide",
+          "valueMap": {
+            "left": "left",
+            "right": "right",
+            "none": {
+              "set": {
+                "mediaSide": "right",
+                "showMedia": false
+              }
+            }
+          },
+          "unmappedValue": "default",
+          "note": "\"none\" is not a side, it is \"no media\" — mapping it into the side vocabulary would either pollute every adopter with an option most cannot render, or silently turn a card that hides its image into one that shows it. It splits: the card keeps its side (right, the block default) and hides the media through the companion showMedia flag WP-09R adds to the schema."
+        }
+      ]
+    }
+  ],
+  "layout": {
+    "layouts": [
+      {
+        "id": "default",
+        "label": {
+          "en-US": "Default"
+        },
+        "frame": {
+          "containerMode": "measure",
+          "insetX": "md",
+          "overflowX": "visible",
+          "sectionSpacingDefault": "md",
+          "responsiveMode": "breakpoint",
+          "designWidth": 1440,
+          "minScale": 0.25,
+          "maxScale": 1,
+          "scaleOrigin": "top-center"
+        },
+        "header": {
+          "enabled": true,
+          "palette": {}
+        },
+        "footer": {
+          "enabled": true,
+          "position": "normal"
+        },
+        "scroll": {
+          "mode": "normal"
+        },
+        "overridePolicy": {
+          "allowPageHeaderOverride": true,
+          "allowPageFooterOverride": true,
+          "allowPageBackgroundOverride": true,
+          "allowPageChromeOverride": true,
+          "allowPageChromeAdditions": false,
+          "allowPageScrollOverride": true
+        },
+        "allowedBlocks": [
+          "ambient-background",
+          "article-list",
+          "asymmetric-tile-grid",
+          "audio-playlist",
+          "before-after-reveal",
+          "breadcrumb-nav",
+          "brand-mark",
+          "broadcast-message",
+          "canvas-badge",
+          "canvas-image",
+          "canvas-shape",
+          "canvas-text",
+          "case-study-card",
+          "certifications-grid",
+          "chapter-divider",
+          "child-page-list",
+          "comparison-table",
+          "contact-form",
+          "login-form",
+          "credits-list",
+          "cta-section",
+          "divider-block",
+          "document-list",
+          "editorial-text",
+          "event-calendar",
+          "expanding-panels",
+          "faq-accordion",
+          "figure-caption",
+          "filterable-gallery",
+          "grid-block",
+          "hero-block",
+          "horizontal-scroll",
+          "icon-grid-block",
+          "image-banner",
+          "image-hotspots",
+          "image-sequence",
+          "image-trail",
+          "item-grid-block",
+          "kinetic-text",
+          "logo-wall",
+          "map-embed",
+          "marquee-block",
+          "materials-board",
+          "metadata-row",
+          "narrative-scene",
+          "notification",
+          "page-header",
+          "process-steps",
+          "profile-grid",
+          "project-index",
+          "project-pager",
+          "pull-quote",
+          "qr-code",
+          "scatter-collage",
+          "scroll-color-reveal",
+          "scroll-read-along",
+          "section-heading",
+          "service-panel",
+          "side-by-side-editorial",
+          "spotlight-reveal",
+          "stacked-cards",
+          "stat-counter",
+          "static-carousel",
+          "table-of-contents",
+          "tabs",
+          "testimonials",
+          "text-card-block",
+          "text-section",
+          "text-split",
+          "timeline",
+          "video-block"
+        ],
+        "background": {
+          "color": "#f8f8f8"
+        },
+        "chrome": {
+          "elements": [
+            {
+              "id": "default-blue-line",
+              "type": "line",
+              "enabled": true,
+              "position": "fixed",
+              "anchor": "top-right",
+              "orientation": "vertical",
+              "color": "var(--color-accent)",
+              "thickness": "1px",
+              "length": "100%",
+              "offsetX": "20vw",
+              "offsetY": "0px",
+              "zIndex": 0,
+              "opacity": 1,
+              "pointerEvents": "none",
+              "hideBelow": "lg",
+              "layer": "background",
+              "positionMode": "flow"
+            },
+            {
+              "id": "reading-progress",
+              "type": "progress",
+              "indicator": "bar",
+              "enabled": false,
+              "position": "fixed",
+              "anchor": "top-left",
+              "edge": "bottom",
+              "color": "var(--color-accent)",
+              "trackColor": "transparent",
+              "thickness": "3px",
+              "offsetX": "0px",
+              "offsetY": "0px",
+              "zIndex": 1130,
+              "opacity": 1,
+              "pointerEvents": "none",
+              "hideBelow": null,
+              "layer": "foreground"
+            }
+          ]
+        }
+      },
+      {
+        "id": "blank",
+        "label": {
+          "en-US": "Blank"
+        },
+        "frame": {
+          "containerMode": "full-bleed",
+          "insetX": "none",
+          "overflowX": "visible",
+          "sectionSpacingDefault": "none"
+        },
+        "canvasPreset": {
+          "label": { "en-US": "Plain sheet", "it": "Foglio semplice" },
+          "hint": { "en-US": "Your blocks and nothing else — no brand frame, no site chrome. Social posts, OG images, ads, anything with a cut-out edge.", "it": "Solo i tuoi blocchi, senza cornice del brand né elementi del sito. Ideale per post social, immagini OG e annunci." },
+          "order": 1,
+          "default": true,
+          "initialSection": { "containerMode": "full-bleed", "containerInsetX": "none", "sectionSpaceY": "none" }
+        },
+        "allowedBlocks": [
+          "ambient-background",
+          "article-list",
+          "asymmetric-tile-grid",
+          "audio-playlist",
+          "before-after-reveal",
+          "breadcrumb-nav",
+          "brand-mark",
+          "broadcast-message",
+          "canvas-badge",
+          "canvas-image",
+          "canvas-shape",
+          "canvas-text",
+          "case-study-card",
+          "certifications-grid",
+          "chapter-divider",
+          "child-page-list",
+          "comparison-table",
+          "contact-form",
+          "login-form",
+          "credits-list",
+          "cta-section",
+          "divider-block",
+          "document-list",
+          "editorial-text",
+          "event-calendar",
+          "expanding-panels",
+          "faq-accordion",
+          "figure-caption",
+          "filterable-gallery",
+          "grid-block",
+          "hero-block",
+          "horizontal-scroll",
+          "icon-grid-block",
+          "image-banner",
+          "image-hotspots",
+          "image-sequence",
+          "image-trail",
+          "item-grid-block",
+          "kinetic-text",
+          "logo-wall",
+          "map-embed",
+          "marquee-block",
+          "materials-board",
+          "metadata-row",
+          "narrative-scene",
+          "notification",
+          "page-header",
+          "process-steps",
+          "profile-grid",
+          "project-index",
+          "project-pager",
+          "pull-quote",
+          "qr-code",
+          "scatter-collage",
+          "scroll-color-reveal",
+          "scroll-read-along",
+          "section-heading",
+          "service-panel",
+          "side-by-side-editorial",
+          "spotlight-reveal",
+          "stacked-cards",
+          "stat-counter",
+          "static-carousel",
+          "table-of-contents",
+          "tabs",
+          "testimonials",
+          "text-card-block",
+          "text-section",
+          "text-split",
+          "timeline",
+          "video-block"
+        ]
+      },
+      {
+        "id": "editorial",
+        "label": { "en-US": "Editorial" },
+        "allowedBlocks": [
+          "ambient-background", "article-list", "asymmetric-tile-grid", "audio-playlist", "before-after-reveal",
+          "brand-mark", "breadcrumb-nav", "broadcast-message", "canvas-badge", "canvas-image", "canvas-shape", "canvas-text", "case-study-card", "certifications-grid",
+          "chapter-divider", "child-page-list", "comparison-table", "contact-form", "login-form", "credits-list", "cta-section", "divider-block",
+          "document-list", "editorial-text", "event-calendar", "expanding-panels", "faq-accordion",
+          "figure-caption", "filterable-gallery", "grid-block", "hero-block", "horizontal-scroll",
+          "icon-grid-block", "image-banner", "image-hotspots", "image-sequence", "image-trail",
+          "item-grid-block", "kinetic-text", "logo-wall", "map-embed", "marquee-block", "materials-board",
+          "metadata-row", "narrative-scene", "notification", "page-header", "process-steps", "profile-grid",
+          "project-index", "project-pager", "pull-quote", "qr-code", "scatter-collage", "scroll-color-reveal", "scroll-read-along",
+          "section-heading", "service-panel", "side-by-side-editorial", "spotlight-reveal",
+          "stacked-cards", "stat-counter", "static-carousel", "table-of-contents", "tabs", "testimonials",
+          "text-card-block", "text-section", "text-split", "timeline", "video-block"
+        ],
+        "frame": {
+          "containerMode": "wide",
+          "insetX": "lg",
+          "overflowX": "clip",
+          "sectionSpacingDefault": "md"
+        },
+        "header": {
+          "enabled": true,
+          "morphStyle": "glass-pill",
+          "palette": {
+            "bgColor": "#ffffff",
+            "textColor": "#1E3D4F",
+            "navLinkColor": "var(--color-primary)",
+            "scrollFade": true
+          }
+        },
+        "footer": {
+          "enabled": true,
+          "position": "normal"
+        },
+        "background": {
+          "color": "#f8f8f8"
+        },
+        "chrome": {
+          "elements": [
+            {
+              "id": "default-blue-line",
+              "type": "line",
+              "enabled": true,
+              "position": "fixed",
+              "anchor": "top-right",
+              "orientation": "vertical",
+              "color": "var(--color-accent)",
+              "thickness": "1px",
+              "length": "100%",
+              "offsetX": "23.3vw",
+              "offsetY": "0px",
+              "zIndex": 0,
+              "opacity": 1,
+              "pointerEvents": "none",
+              "hideBelow": "lg",
+              "layer": "background",
+              "positionMode": "flow"
+            },
+            {
+              "id": "reading-progress",
+              "type": "progress",
+              "indicator": "ring",
+              "enabled": true,
+              "position": "fixed",
+              "anchor": "bottom-right",
+              "color": "var(--color-accent)",
+              "trackColor": "rgba(27,61,79,0.14)",
+              "thickness": "3px",
+              "size": "46px",
+              "showLabel": true,
+              "offsetX": "24px",
+              "offsetY": "24px",
+              "zIndex": 60,
+              "opacity": 1,
+              "pointerEvents": "none",
+              "hideBelow": "sm",
+              "layer": "foreground"
+            }
+          ]
+        },
+        "scroll": {
+          "mode": "normal",
+          "smoothScroll": true
+        },
+        "overridePolicy": {
+          "allowPageHeaderOverride": true,
+          "allowPageFooterOverride": true,
+          "allowPageBackgroundOverride": true,
+          "allowPageChromeOverride": true,
+          "allowPageChromeAdditions": false,
+          "allowPageScrollOverride": false
+        }
+      },
+      {
+        "id": "scale-canvas",
+        "label": { "en-US": "Branded canvas — scaled to fit" },
+        "canvasPreset": {
+          "label": { "en-US": "Branded sheet", "it": "Foglio con brand" },
+          "hint": { "en-US": "Adds the theme's canvas frame and accent line. Designed at 1440px wide and shrunk to fit smaller canvases. No site header or footer is ever rendered.", "it": "Aggiunge la cornice e la linea distintiva del tema. Si adatta ai canvas più piccoli senza mostrare intestazione o piè di pagina." },
+          "order": 2,
+          "initialSection": { "containerMode": "full-bleed", "containerInsetX": "none", "sectionSpaceY": "none" }
+        },
+        "allowedBlocks": [
+          "ambient-background", "article-list", "asymmetric-tile-grid", "audio-playlist", "before-after-reveal",
+          "brand-mark", "breadcrumb-nav", "broadcast-message", "canvas-badge", "canvas-image", "canvas-shape", "canvas-text", "case-study-card", "certifications-grid",
+          "chapter-divider", "child-page-list", "comparison-table", "contact-form", "login-form", "credits-list", "cta-section", "divider-block",
+          "document-list", "editorial-text", "event-calendar", "expanding-panels", "faq-accordion",
+          "figure-caption", "filterable-gallery", "grid-block", "hero-block", "horizontal-scroll",
+          "icon-grid-block", "image-banner", "image-hotspots", "image-sequence", "image-trail",
+          "item-grid-block", "kinetic-text", "logo-wall", "map-embed", "marquee-block", "materials-board",
+          "metadata-row", "narrative-scene", "notification", "page-header", "process-steps", "profile-grid",
+          "project-index", "project-pager", "pull-quote", "qr-code", "scatter-collage", "scroll-color-reveal", "scroll-read-along",
+          "section-heading", "service-panel", "side-by-side-editorial", "spotlight-reveal",
+          "stacked-cards", "stat-counter", "static-carousel", "table-of-contents", "tabs", "testimonials",
+          "text-card-block", "text-section", "text-split", "timeline", "video-block"
+        ],
+        "frame": {
+          "containerMode": "full-bleed",
+          "insetX": "none",
+          "overflowX": "clip",
+          "sectionSpacingDefault": "none",
+          "responsiveMode": "scale",
+          "designWidth": 1440,
+          "minScale": 0.25,
+          "maxScale": 1,
+          "scaleOrigin": "top-center"
+        },
+        "header": {
+          "enabled": true,
+          "morphStyle": "editorial-slide",
+          "palette": {
+            "bgColor": "#ffffff",
+            "textColor": "#1E3D4F",
+            "navLinkColor": "var(--color-primary)",
+            "scrollFade": true
+          }
+        },
+        "footer": {
+          "enabled": true,
+          "position": "normal"
+        },
+        "background": {
+          "color": "#ffffff"
+        },
+        "chrome": {
+          "elements": [
+            {
+              "id": "scale-blue-line",
+              "type": "line",
+              "enabled": true,
+              "layer": "background",
+              "positionMode": "flow",
+              "position": "fixed",
+              "anchor": "top-right",
+              "orientation": "vertical",
+              "color": "var(--color-accent)",
+              "thickness": "1px",
+              "length": "100%",
+              "offsetX": "23.3%",
+              "offsetY": "0px",
+              "zIndex": 0,
+              "opacity": 1,
+              "pointerEvents": "none",
+              "hideBelow": "lg"
+            },
+            {
+              "id": "reading-progress",
+              "type": "progress",
+              "indicator": "bar",
+              "enabled": false,
+              "position": "fixed",
+              "anchor": "top-left",
+              "edge": "bottom",
+              "color": "var(--color-accent)",
+              "trackColor": "transparent",
+              "thickness": "3px",
+              "offsetX": "0px",
+              "offsetY": "0px",
+              "zIndex": 1130,
+              "opacity": 1,
+              "pointerEvents": "none",
+              "hideBelow": null,
+              "layer": "foreground"
+            }
+          ]
+        },
+        "scroll": { "mode": "normal", "smoothScroll": true },
+        "overridePolicy": {
+          "allowPageHeaderOverride": true,
+          "allowPageFooterOverride": true,
+          "allowPageBackgroundOverride": true,
+          "allowPageChromeOverride": true,
+          "allowPageChromeAdditions": false,
+          "allowPageScrollOverride": false
+        }
+      },
+      {
+        "id": "scale-canvas-fill",
+        "label": { "en-US": "Branded canvas — scales up for large prints" },
+        "canvasPreset": {
+          "label": { "en-US": "Poster sheet", "it": "Foglio per poster" },
+          "hint": { "en-US": "The branded sheet, allowed to scale up to 4× so a 1440px design fills a large sheet. Posters, banners, print.", "it": "Il foglio con brand può essere ingrandito fino a 4× per poster, banner e materiali stampati." },
+          "order": 3,
+          "initialSection": { "containerMode": "full-bleed", "containerInsetX": "none", "sectionSpaceY": "none" }
+        },
+        "allowedBlocks": [
+          "ambient-background", "article-list", "asymmetric-tile-grid", "audio-playlist", "before-after-reveal",
+          "brand-mark", "breadcrumb-nav", "broadcast-message", "canvas-badge", "canvas-image", "canvas-shape", "canvas-text", "case-study-card", "certifications-grid",
+          "chapter-divider", "child-page-list", "comparison-table", "contact-form", "login-form", "credits-list", "cta-section", "divider-block",
+          "document-list", "editorial-text", "event-calendar", "expanding-panels", "faq-accordion",
+          "figure-caption", "filterable-gallery", "grid-block", "hero-block", "horizontal-scroll",
+          "icon-grid-block", "image-banner", "image-hotspots", "image-sequence", "image-trail",
+          "item-grid-block", "kinetic-text", "logo-wall", "map-embed", "marquee-block", "materials-board",
+          "metadata-row", "narrative-scene", "notification", "page-header", "process-steps", "profile-grid",
+          "project-index", "project-pager", "pull-quote", "qr-code", "scatter-collage", "scroll-color-reveal", "scroll-read-along",
+          "section-heading", "service-panel", "side-by-side-editorial", "spotlight-reveal",
+          "stacked-cards", "stat-counter", "static-carousel", "table-of-contents", "tabs", "testimonials",
+          "text-card-block", "text-section", "text-split", "timeline", "video-block"
+        ],
+        "frame": {
+          "containerMode": "full-bleed",
+          "insetX": "none",
+          "overflowX": "clip",
+          "sectionSpacingDefault": "none",
+          "responsiveMode": "scale",
+          "designWidth": 1440,
+          "minScale": 0.25,
+          "maxScale": 4,
+          "scaleOrigin": "top-center"
+        },
+        "header": {
+          "enabled": true,
+          "morphStyle": "editorial-slide",
+          "palette": {
+            "bgColor": "#ffffff",
+            "textColor": "#1E3D4F",
+            "navLinkColor": "var(--color-primary)",
+            "scrollFade": true
+          }
+        },
+        "footer": {
+          "enabled": true,
+          "position": "normal"
+        },
+        "background": {
+          "color": "#ffffff"
+        },
+        "chrome": {
+          "elements": [
+            {
+              "id": "scale-blue-line",
+              "type": "line",
+              "enabled": true,
+              "layer": "background",
+              "positionMode": "flow",
+              "position": "fixed",
+              "anchor": "top-right",
+              "orientation": "vertical",
+              "color": "var(--color-accent)",
+              "thickness": "1px",
+              "length": "100%",
+              "offsetX": "23.3%",
+              "offsetY": "0px",
+              "zIndex": 0,
+              "opacity": 1,
+              "pointerEvents": "none",
+              "hideBelow": "lg"
+            },
+            {
+              "id": "reading-progress",
+              "type": "progress",
+              "indicator": "bar",
+              "enabled": false,
+              "position": "fixed",
+              "anchor": "top-left",
+              "edge": "bottom",
+              "color": "var(--color-accent)",
+              "trackColor": "transparent",
+              "thickness": "3px",
+              "offsetX": "0px",
+              "offsetY": "0px",
+              "zIndex": 1130,
+              "opacity": 1,
+              "pointerEvents": "none",
+              "hideBelow": null,
+              "layer": "foreground"
+            }
+          ]
+        },
+        "scroll": { "mode": "normal", "smoothScroll": true },
+        "overridePolicy": {
+          "allowPageHeaderOverride": true,
+          "allowPageFooterOverride": true,
+          "allowPageBackgroundOverride": true,
+          "allowPageChromeOverride": true,
+          "allowPageChromeAdditions": false,
+          "allowPageScrollOverride": false
+        }
+      }
+    ]
+  },
+  "templates": [
+    {
+      "id": "static-default",
+      "label": { "en-US": "Static Page", "it": "Pagina statica" },
+      "appliesTo": "static",
+      "layoutId": "default",
+      "allowedBlocks": [
+        "ambient-background",
+        "article-list",
+        "asymmetric-tile-grid",
+        "audio-playlist",
+        "before-after-reveal",
+        "brand-mark",
+        "breadcrumb-nav",
+        "broadcast-message",
+        "canvas-badge",
+        "canvas-image",
+        "canvas-shape",
+        "canvas-text",
+        "case-study-card",
+        "certifications-grid",
+        "chapter-divider",
+        "child-page-list",
+        "comparison-table",
+        "contact-form",
+          "login-form",
+        "credits-list",
+        "cta-section",
+        "divider-block",
+        "document-list",
+        "editorial-text",
+        "event-calendar",
+        "expanding-panels",
+        "faq-accordion",
+        "figure-caption",
+        "filterable-gallery",
+        "grid-block",
+        "hero-block",
+        "horizontal-scroll",
+        "icon-grid-block",
+        "image-banner",
+        "image-hotspots",
+        "image-sequence",
+        "image-trail",
+        "item-grid-block",
+        "kinetic-text",
+        "logo-wall",
+        "map-embed",
+        "marquee-block",
+        "materials-board",
+        "metadata-row",
+        "narrative-scene",
+        "notification",
+        "page-header",
+        "process-steps",
+        "profile-grid",
+        "project-index",
+        "project-pager",
+        "pull-quote",
+        "qr-code",
+        "scatter-collage",
+        "scroll-color-reveal",
+        "scroll-read-along",
+        "section-heading",
+        "service-panel",
+        "side-by-side-editorial",
+        "spotlight-reveal",
+        "stacked-cards",
+        "stat-counter",
+        "static-carousel",
+        "table-of-contents",
+        "tabs",
+        "testimonials",
+        "text-card-block",
+        "text-section",
+        "text-split",
+        "timeline",
+        "video-block"
+      ],
+      "defaultBlocks": [
+        { "type": "page-header", "settings": {} }
+      ],
+      "defaultSeo": {
+        "metaTitle": null,
+        "metaDescription": null,
+        "ogImageId": null,
+        "noIndex": false
+      }
+    },
+    {
+      "id": "blog-index-editorial-grid",
+      "label": { "en-US": "Editorial — Blog Grid (Hero + Article Grid)", "it": "Editoriale — Griglia blog (hero + griglia articoli)" },
+      "appliesTo": "blog-index",
+      "layoutId": "editorial",
+      "allowedBlocks": [],
+      "defaultBlocks": [],
+      "component": "templates/blog-index-editorial-grid.vue",
+      "version": "1.0",
+      "contentSchema": [
+        { "type": "text", "id": "title", "label": { "en-US": "Blog title" }, "role": "title", "translatable": true, "required": true },
+        { "type": "richtext-inline", "id": "intro", "label": { "en-US": "Intro" }, "translatable": true, "helpText": { "en-US": "Optional intro paragraph above the article grid" } },
+        { "type": "image", "id": "heroImage", "label": { "en-US": "Hero image" }, "helpText": { "en-US": "Optional banner image (recommended 1920×600)" } }
+      ],
+      "$fragments": ["feed-settings", "frame-tokens"],
+      "$fragmentOverrides": {
+        "containerMode": { "default": "full-bleed" },
+        "containerInsetX": { "default": "sm" },
+        "sectionSpaceY": { "default": "sm" },
+        "pageSize": { "label": { "en-US": "Articles per page" } },
+        "feedDisplay": {
+          "label": { "en-US": "Default view" },
+          "note": "The view a reader lands on; the toggle below lets them switch it themselves.",
+          "migratedFrom": { "id": "defaultView", "valueMap": { "grid": "card" } }
+        },
+        "cardImageRatio": { "default": "portrait-3-4", "migratedFrom": { "id": "imageRatio" } },
+        "leadFeature": { "label": { "en-US": "Lead feature (first article as hero)" }, "default": true },
+        "groupByYear": { "label": { "en-US": "Group into year archive" } }
+      },
+      "settingsSchema": [
+        { "type": "select", "id": "sort", "label": { "en-US": "Sort by" }, "options": [
+          { "value": "newest", "label": { "en-US": "Newest first" } },
+          { "value": "oldest", "label": { "en-US": "Oldest first" } }
+        ], "default": "newest" },
+        { "type": "select", "id": "sortDirection", "label": { "en-US": "Sort direction" }, "options": [
+          { "value": "desc", "label": { "en-US": "Descending" } },
+          { "value": "asc", "label": { "en-US": "Ascending" } }
+        ], "default": "desc" },
+        { "type": "select", "id": "columns", "label": { "en-US": "Grid columns" }, "options": [
+          { "value": "2", "label": { "en-US": "2" } },
+          { "value": "3", "label": { "en-US": "3" } },
+          { "value": "4", "label": { "en-US": "4" } }
+        ], "default": "3" },
+        { "type": "boolean", "id": "showHero", "label": { "en-US": "Show hero" }, "default": true },
+        { "type": "boolean", "id": "showViewToggle", "label": { "en-US": "Show cards/list view toggle" }, "default": true },
+        { "type": "boolean", "id": "showChildPages", "label": { "en-US": "List child pages above the feed" }, "default": false },
+        { "type": "text", "id": "childPagesHeading", "label": { "en-US": "Child page list heading" }, "default": "" },
+        { "type": "select", "id": "childPagesDisplay", "label": { "en-US": "Child page layout" }, "options": [
+          { "value": "grid", "label": { "en-US": "Grid" } },
+          { "value": "card", "label": { "en-US": "Cards" } },
+          { "value": "list", "label": { "en-US": "List" } }
+        ], "default": "grid" },
+        { "type": "select", "id": "childPagesDepth", "label": { "en-US": "Child page depth" }, "options": [
+          { "value": "1", "label": { "en-US": "Direct children only" } },
+          { "value": "2", "label": { "en-US": "Two levels" } }
+        ], "default": "1" },
+        { "type": "select", "id": "childPagesSort", "label": { "en-US": "Child page order" }, "options": [
+          { "value": "position", "label": { "en-US": "Authored order" } },
+          { "value": "title", "label": { "en-US": "Alphabetical" } }
+        ], "default": "position" }
+      ],
+      "defaultContent": {
+        "title": { "en-US": "Blog" },
+        "intro": null,
+        "heroImage": null
+      }
+    },
+    {
+      "id": "blog-index-chronicle-list",
+      "label": { "en-US": "Chronicle — Year-Grouped Text Archive", "it": "Cronaca — Archivio testuale per anno" },
+      "appliesTo": "blog-index",
+      "layoutId": "editorial",
+      "allowedBlocks": [],
+      "defaultBlocks": [],
+      "component": "templates/blog-index-chronicle-list.vue",
+      "version": "1.0",
+      "contentSchema": [
+        { "type": "text", "id": "title", "label": { "en-US": "Blog title", "it": "Titolo del blog" }, "role": "title", "translatable": true, "required": true },
+        { "type": "richtext-inline", "id": "intro", "label": { "en-US": "Intro", "it": "Introduzione" }, "translatable": true, "helpText": { "en-US": "Optional paragraph under the title.", "it": "Paragrafo facoltativo sotto il titolo." } }
+      ],
+      "$fragments": ["feed-settings", "frame-tokens"],
+      "$fragmentOverrides": {
+        "containerMode": { "default": "wide" },
+        "containerInsetX": { "default": "md" },
+        "sectionSpaceY": { "default": "md" },
+        "feedDisplay": { "default": "list" },
+        "cardSubtitle": { "default": "date" },
+        "groupByYear": { "default": true }
+      },
+      "settingsSchema": [
+        { "type": "select", "id": "sort", "label": { "en-US": "Sort by", "it": "Ordina per" }, "options": [
+          { "value": "newest", "label": { "en-US": "Newest first", "it": "Prima i più recenti" } },
+          { "value": "oldest", "label": { "en-US": "Oldest first", "it": "Prima i più vecchi" } }
+        ], "default": "newest" }
+      ],
+      "defaultContent": {
+        "title": { "en-US": "Archive", "it": "Archivio" },
+        "intro": null
+      }
+    },
+    {
+      "id": "blog-index-mosaic",
+      "label": { "en-US": "Mosaic — Dense Image Tile Grid", "it": "Mosaico — Griglia fitta di immagini" },
+      "appliesTo": "blog-index",
+      "layoutId": "editorial",
+      "allowedBlocks": [],
+      "defaultBlocks": [],
+      "component": "templates/blog-index-mosaic.vue",
+      "version": "1.0",
+      "contentSchema": [
+        { "type": "text", "id": "title", "label": { "en-US": "Blog title", "it": "Titolo del blog" }, "role": "title", "translatable": true, "required": true },
+        { "type": "richtext-inline", "id": "intro", "label": { "en-US": "Intro", "it": "Introduzione" }, "translatable": true, "helpText": { "en-US": "Optional short line shown beside the title.", "it": "Riga breve facoltativa mostrata accanto al titolo." } }
+      ],
+      "$fragments": ["feed-settings", "frame-tokens"],
+      "$fragmentOverrides": {
+        "containerMode": { "default": "full-bleed" },
+        "containerInsetX": { "default": "sm" },
+        "sectionSpaceY": { "default": "sm" },
+        "cardImageRatio": { "default": "square" },
+        "cardSubtitle": { "default": "none" }
+      },
+      "settingsSchema": [
+        { "type": "select", "id": "sort", "label": { "en-US": "Sort by", "it": "Ordina per" }, "options": [
+          { "value": "newest", "label": { "en-US": "Newest first", "it": "Prima i più recenti" } },
+          { "value": "oldest", "label": { "en-US": "Oldest first", "it": "Prima i più vecchi" } }
+        ], "default": "newest" },
+        { "type": "select", "id": "columns", "label": { "en-US": "Grid columns", "it": "Colonne della griglia" }, "group": "layout", "options": [
+          { "value": "3", "label": { "en-US": "3" } },
+          { "value": "4", "label": { "en-US": "4" } },
+          { "value": "5", "label": { "en-US": "5" } }
+        ], "default": "4" }
+      ],
+      "defaultContent": {
+        "title": { "en-US": "Gallery", "it": "Galleria" },
+        "intro": null
+      }
+    },
+    {
+      "id": "article-editorial",
+      "label": { "en-US": "Editorial Article — Text First", "it": "Articolo editoriale — Prima il testo" },
+      "appliesTo": "article",
+      "layoutId": "editorial",
+      "allowedBlocks": [],
+      "defaultBlocks": [],
+      "component": "templates/article-editorial.vue",
+      "version": "1.0",
+      "contentSchema": [
+        {
+          "type": "text",
+          "id": "headerEyebrow",
+          "label": { "en-US": "Kicker", "it": "Occhiello" },
+          "translatable": true,
+          "helpText": { "en-US": "Short label above the title, e.g. the section name." }
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": { "en-US": "Title", "it": "Titolo" },
+          "role": "title",
+          "translatable": true,
+          "required": true
+        },
+        {
+          "type": "richtext-inline",
+          "id": "subtitle",
+          "label": { "en-US": "Standfirst", "it": "Sottotitolo" },
+          "translatable": true,
+          "helpText": { "en-US": "One or two sentences summarising the article." }
+        },
+        {
+          "type": "image",
+          "id": "featuredImage",
+          "label": { "en-US": "Lead image", "it": "Immagine principale" },
+          "helpText": { "en-US": "Optional. Displayed wider than the text column." }
+        },
+        {
+          "type": "richtext-block",
+          "id": "body",
+          "label": { "en-US": "Body", "it": "Testo" },
+          "translatable": true,
+          "required": true
+        },
+        {
+          "type": "image-gallery",
+          "id": "gallery",
+          "label": { "en-US": "Gallery", "it": "Galleria" },
+          "helpText": { "en-US": "Optional images shown in a grid below the body." }
+        }
+      ],
+      "$fragments": ["article-baseline", "frame-tokens"],
+      "$fragmentOverrides": {
+        "containerMode": { "default": "full-bleed" },
+        "containerInsetX": { "default": "md" },
+        "sectionSpaceY": { "default": "lg" },
+        "showAuthor": { "migratedFrom": { "id": "showMeta" } },
+        "showPublishedDate": { "migratedFrom": { "id": "showMeta" } }
+      },
+      "settingsSchema": [],
+      "defaultContent": {
+        "headerEyebrow": null,
+        "title": { "en-US": "Article" },
+        "subtitle": null,
+        "featuredImage": null,
+        "body": null,
+        "gallery": []
+      }
+    },
+    {
+      "id": "article-gallery-sticky",
+      "label": { "en-US": "Editorial Gallery — Sticky Info + Related Content", "it": "Galleria editoriale — Scheda fissa + contenuti correlati" },
+      "appliesTo": "article",
+      "layoutId": "editorial",
+      "allowedBlocks": [],
+      "defaultBlocks": [],
+      "component": "templates/article-gallery-sticky.vue",
+      "version": "2.0",
+      "contentSchema": [
+        { "type": "richtext-single", "id": "headerEyebrow", "label": { "en-US": "Header eyebrow" }, "translatable": true, "helpText": { "en-US": "Optional small label above the title (e.g. tagline)" } },
+        { "type": "text", "id": "title", "label": { "en-US": "Title" }, "role": "title", "translatable": true, "required": true },
+        { "type": "text", "id": "subtitle", "label": { "en-US": "Subtitle" }, "translatable": true },
+        { "type": "text", "id": "year", "label": { "en-US": "Year" }, "translatable": true, "helpText": { "en-US": "e.g. (2016)" } },
+        { "type": "richtext-block", "id": "headerDescription", "label": { "en-US": "Header description" }, "role": "excerpt", "translatable": true },
+        { "type": "image", "id": "featuredImage", "label": { "en-US": "Hero / featured image" }, "helpText": { "en-US": "Recommended 1600×900" } },
+        { "type": "image-gallery", "id": "gallery", "label": { "en-US": "Image gallery" }, "role": "gallery", "helpText": { "en-US": "Drag to reorder" } },
+        { "type": "richtext-block", "id": "infoText", "label": { "en-US": "Info" }, "translatable": true, "helpText": { "en-US": "Main info paragraph (sticky right column)" } },
+        { "type": "richtext-inline", "id": "client", "label": { "en-US": "Client" }, "translatable": true },
+        { "type": "richtext-inline", "id": "services", "label": { "en-US": "Services" }, "translatable": true },
+        { "type": "richtext-inline", "id": "contributors", "label": { "en-US": "Contributors" }, "translatable": true, "helpText": { "en-US": "List of names and roles. Press Shift+Enter for a line break." } },
+        { "type": "richtext-inline", "id": "address", "label": { "en-US": "Address" }, "translatable": true }
+      ],
+      "$fragments": ["article-baseline", "frame-tokens"],
+      "$fragmentOverrides": {
+        "containerMode": { "default": "full-bleed" },
+        "containerInsetX": { "default": "md" },
+        "sectionSpaceY": { "default": "md" },
+        "showRelated": { "label": { "en-US": "Show related content carousel" } },
+        "relatedTitle": { "label": { "en-US": "Related section title" }, "default": "Related content" }
+      },
+      "settingsSchema": [
+        { "type": "select", "id": "shellSide", "label": { "en-US": "Sidebar Side" }, "group": "layout", "helpText": { "en-US": "Side the sticky info card sits on; the gallery takes the other one." }, "options": [
+          { "value": "left", "label": { "en-US": "Left" } },
+          { "value": "right", "label": { "en-US": "Right" } }
+        ], "default": "right", "migratedFrom": { "id": "gallerySide", "valueMap": { "left": "right", "right": "left" } } },
+        { "type": "boolean", "id": "stickyInfoCard", "label": { "en-US": "Sticky info card" }, "default": true },
+        { "type": "select", "id": "imageRatio", "label": { "en-US": "Image ratio" }, "options": [
+          { "value": "natural", "label": { "en-US": "Natural (no crop)" } },
+          { "value": "4-3", "label": { "en-US": "4 : 3" } },
+          { "value": "3-2", "label": { "en-US": "3 : 2" } },
+          { "value": "16-9", "label": { "en-US": "16 : 9" } }
+        ], "default": "4-3" },
+        { "type": "select", "id": "galleryImageBleed", "label": { "en-US": "Gallery image bleed" }, "options": [
+          { "value": "full", "label": { "en-US": "Full-bleed (edge to edge)" } },
+          { "value": "inset", "label": { "en-US": "Inset (page gutter)" } }
+        ], "default": "full", "helpText": { "en-US": "Full-bleed runs gallery photos to the screen edge; inset keeps them within the page gutter, aligned with the title." } },
+        { "type": "boolean", "id": "enableLightbox", "label": { "en-US": "Enable image lightbox" }, "default": true, "helpText": { "en-US": "Let visitors click gallery photos to view them full-screen with keyboard navigation." } },
+        { "type": "boolean", "id": "showArticleFooterNav", "label": { "en-US": "Show end-of-article navigation" }, "default": true, "helpText": { "en-US": "A footer at the end of the article with a back-to-index link and a back-to-top button." } }
+      ],
+      "defaultContent": {
+        "headerEyebrow": null,
+        "title": { "en-US": "Untitled article" },
+        "subtitle": { "en-US": "" },
+        "year": { "en-US": "" },
+        "headerDescription": null,
+        "featuredImage": null,
+        "gallery": [],
+        "infoText": null,
+        "client": null,
+        "services": null,
+        "contributors": null,
+        "address": null
+      }
+    },
+    {
+      "id": "article-cover-story",
+      "label": { "en-US": "Cover Story — Full-Screen Image Opening", "it": "Cover story — Apertura a tutto schermo" },
+      "appliesTo": "article",
+      "layoutId": "editorial",
+      "allowedBlocks": [],
+      "defaultBlocks": [],
+      "component": "templates/article-cover-story.vue",
+      "version": "1.0",
+      "contentSchema": [
+        { "type": "text", "id": "title", "label": { "en-US": "Title", "it": "Titolo" }, "role": "title", "translatable": true, "required": true },
+        { "type": "richtext-inline", "id": "subtitle", "label": { "en-US": "Standfirst", "it": "Sottotitolo" }, "translatable": true, "helpText": { "en-US": "One or two sentences shown over the cover image.", "it": "Una o due frasi mostrate sopra l'immagine di copertina." } },
+        { "type": "image", "id": "featuredImage", "label": { "en-US": "Cover image", "it": "Immagine di copertina" }, "helpText": { "en-US": "Fills the screen behind the title. Recommended 2400×1600.", "it": "Riempie lo schermo dietro il titolo. Consigliato 2400×1600." } },
+        { "type": "text", "id": "coverCredit", "label": { "en-US": "Image credit", "it": "Credito immagine" }, "translatable": true, "helpText": { "en-US": "Optional photographer / source line shown above the body.", "it": "Riga facoltativa con fotografo / fonte mostrata sopra il testo." } },
+        { "type": "richtext-block", "id": "body", "label": { "en-US": "Body", "it": "Testo" }, "translatable": true }
+      ],
+      "$fragments": ["article-baseline", "frame-tokens"],
+      "$fragmentOverrides": {
+        "containerMode": { "default": "full-bleed" },
+        "containerInsetX": { "default": "md" },
+        "sectionSpaceY": { "default": "md" }
+      },
+      "settingsSchema": [
+        { "type": "select", "id": "coverHeight", "label": { "en-US": "Cover height", "it": "Altezza copertina" }, "group": "layout", "options": [
+          { "value": "full", "label": { "en-US": "Full screen", "it": "Schermo intero" } },
+          { "value": "half", "label": { "en-US": "Half screen", "it": "Mezzo schermo" } }
+        ], "default": "full", "helpText": { "en-US": "Half screen leaves the start of the article visible below the cover.", "it": "Mezzo schermo lascia visibile l'inizio dell'articolo sotto la copertina." } }
+      ],
+      "defaultContent": {
+        "title": { "en-US": "Cover story" },
+        "subtitle": null,
+        "featuredImage": null,
+        "coverCredit": null,
+        "body": null
+      },
+      "defaultSettings": { "coverHeight": "full" }
+    },
+    {
+      "id": "article-split-panorama",
+      "label": { "en-US": "Split Panorama — Pinned Image + Scrolling Text", "it": "Split panorama — Immagine fissa + testo scorrevole" },
+      "appliesTo": "article",
+      "layoutId": "editorial",
+      "allowedBlocks": [],
+      "defaultBlocks": [],
+      "component": "templates/article-split-panorama.vue",
+      "version": "1.0",
+      "contentSchema": [
+        { "type": "text", "id": "kicker", "label": { "en-US": "Kicker", "it": "Occhiello" }, "translatable": true, "helpText": { "en-US": "Short label above the title, e.g. the section name.", "it": "Breve etichetta sopra il titolo, ad esempio il nome della sezione." } },
+        { "type": "text", "id": "title", "label": { "en-US": "Title", "it": "Titolo" }, "role": "title", "translatable": true, "required": true },
+        { "type": "image", "id": "featuredImage", "label": { "en-US": "Panorama image", "it": "Immagine panoramica" }, "helpText": { "en-US": "Stays pinned on one side while the text scrolls. Recommended 1600×2000 or taller.", "it": "Resta fissa su un lato mentre il testo scorre. Consigliato 1600×2000 o più alta." } },
+        { "type": "richtext-block", "id": "body", "label": { "en-US": "Body", "it": "Testo" }, "translatable": true }
+      ],
+      "$fragments": ["article-baseline", "frame-tokens"],
+      "$fragmentOverrides": {
+        "containerMode": { "default": "full-bleed" },
+        "containerInsetX": { "default": "md" },
+        "sectionSpaceY": { "default": "md" }
+      },
+      "settingsSchema": [
+        { "type": "select", "id": "mediaSide", "label": { "en-US": "Image side", "it": "Lato immagine" }, "group": "layout", "options": [
+          { "value": "left", "label": { "en-US": "Left", "it": "Sinistra" } },
+          { "value": "right", "label": { "en-US": "Right", "it": "Destra" } }
+        ], "default": "left" }
+      ],
+      "defaultContent": {
+        "kicker": null,
+        "title": { "en-US": "Untitled article" },
+        "featuredImage": null,
+        "body": null
+      },
+      "defaultSettings": { "mediaSide": "left" }
+    },
+    {
+      "id": "article-plain-typographic",
+      "label": { "en-US": "Plain Typographic — Text Only, No Images", "it": "Solo tipografia — Solo testo, senza immagini" },
+      "appliesTo": "article",
+      "layoutId": "editorial",
+      "allowedBlocks": [],
+      "defaultBlocks": [],
+      "component": "templates/article-plain-typographic.vue",
+      "version": "1.0",
+      "contentSchema": [
+        { "type": "text", "id": "title", "label": { "en-US": "Title", "it": "Titolo" }, "role": "title", "translatable": true, "required": true },
+        { "type": "richtext-inline", "id": "standfirst", "label": { "en-US": "Standfirst", "it": "Sottotitolo" }, "translatable": true, "helpText": { "en-US": "One or two sentences under the oversized title.", "it": "Una o due frasi sotto il titolo a grandi dimensioni." } },
+        { "type": "richtext-block", "id": "body", "label": { "en-US": "Body", "it": "Testo" }, "translatable": true }
+      ],
+      "$fragments": ["article-baseline", "frame-tokens"],
+      "$fragmentOverrides": {
+        "containerMode": { "default": "wide" },
+        "containerInsetX": { "default": "md" },
+        "sectionSpaceY": { "default": "md" }
+      },
+      "settingsSchema": [
+        { "type": "select", "id": "bodyColumns", "label": { "en-US": "Body columns", "it": "Colonne del testo" }, "group": "layout", "options": [
+          { "value": "1", "label": { "en-US": "1" } },
+          { "value": "2", "label": { "en-US": "2 (wide screens only)", "it": "2 (solo schermi larghi)" } }
+        ], "default": "1" },
+        { "type": "boolean", "id": "dropCap", "label": { "en-US": "Drop cap on first paragraph", "it": "Capolettera sul primo paragrafo" }, "default": false }
+      ],
+      "defaultContent": {
+        "title": { "en-US": "Untitled" },
+        "standfirst": null,
+        "body": null
+      },
+      "defaultSettings": { "bodyColumns": "1", "dropCap": false }
+    }
+  ],
+  "name": "standalone",
+  "label": {
+    "en-US": "Standalone Theme"
+  },
+  "locales": [
+    "it",
+    "en-US",
+    "en-CA",
+    "fr-CA"
+  ],
+  "defaultLocale": "it",
+  "settings": [
+    {
+      "id": "logoAltText",
+      "type": "text",
+      "label": {
+        "en-US": "Logo Alt Text"
+      },
+      "default": "Logo",
+      "group": "logo"
+    },
+    {
+      "id": "logoWidth",
+      "type": "number",
+      "label": {
+        "en-US": "Logo Width (px)"
+      },
+      "default": 140,
+      "cssVar": true,
+      "options": {
+        "unit": "px",
+        "min": 40,
+        "max": 300
+      },
+      "group": "logo"
+    },
+    {
+      "id": "logoHeight",
+      "type": "number",
+      "label": {
+        "en-US": "Logo Height (px)"
+      },
+      "default": 48,
+      "cssVar": true,
+      "options": {
+        "unit": "px",
+        "min": 20,
+        "max": 120
+      },
+      "group": "logo"
+    },
+    {
+      "id": "primaryColor",
+      "type": "color",
+      "label": {
+        "en-US": "Primary Color"
+      },
+      "default": "#108A00",
+      "cssVar": "color-primary",
+      "group": "colors"
+    },
+    {
+      "id": "secondaryColor",
+      "type": "color",
+      "label": {
+        "en-US": "Secondary Color"
+      },
+      "default": "#038203",
+      "cssVar": "color-secondary",
+      "group": "colors"
+    },
+    {
+      "id": "primaryHoverColor",
+      "type": "color",
+      "label": {
+        "en-US": "Primary Hover Color"
+      },
+      "default": "#038203",
+      "cssVar": "color-primary-light",
+      "group": "colors"
+    },
+    {
+      "id": "backgroundColor",
+      "type": "color",
+      "label": {
+        "en-US": "Background Color"
+      },
+      "default": "#FFFFFF",
+      "cssVar": "color-background",
+      "group": "colors"
+    },
+    {
+      "id": "textColor",
+      "type": "color",
+      "label": {
+        "en-US": "Text Color"
+      },
+      "default": "#1C1C1C",
+      "cssVar": "color-text",
+      "group": "colors"
+    },
+    {
+      "id": "textLightColor",
+      "type": "color",
+      "label": {
+        "en-US": "Light Text Color"
+      },
+      "default": "#616161",
+      "cssVar": "color-text-light",
+      "group": "colors"
+    },
+    {
+      "id": "errorColor",
+      "type": "color",
+      "label": {
+        "en-US": "Error Color"
+      },
+      "default": "#D63301",
+      "cssVar": "color-error",
+      "group": "colors"
+    },
+    {
+      "id": "warningColor",
+      "type": "color",
+      "label": {
+        "en-US": "Warning Color"
+      },
+      "default": "#ffc107",
+      "cssVar": "color-warning",
+      "group": "colors"
+    },
+    {
+      "id": "successColor",
+      "type": "color",
+      "label": {
+        "en-US": "Success Color"
+      },
+      "default": "#198754",
+      "cssVar": "color-success",
+      "group": "colors"
+    },
+    {
+      "id": "borderColor",
+      "type": "color",
+      "label": {
+        "en-US": "Border Color"
+      },
+      "default": "#e0e0e0",
+      "cssVar": "border-color",
+      "group": "colors"
+    },
+    {
+      "id": "inputBorderColor",
+      "type": "color",
+      "label": {
+        "en-US": "Input Border Color"
+      },
+      "default": "#8C8C8C",
+      "cssVar": "border-color-input",
+      "group": "colors"
+    },
+    {
+      "id": "darkBgColor",
+      "type": "color",
+      "label": {
+        "en-US": "Dark Background"
+      },
+      "default": "#1a1a1a",
+      "cssVar": "color-dark-bg",
+      "group": "colors"
+    },
+    {
+      "id": "darkTextColor",
+      "type": "color",
+      "label": {
+        "en-US": "Dark Text Color"
+      },
+      "default": "#ffffff",
+      "cssVar": "color-dark-text",
+      "group": "colors"
+    },
+    {
+      "id": "accentColor",
+      "type": "color",
+      "label": {
+        "en-US": "Accent Color"
+      },
+      "default": "#FF8614",
+      "cssVar": "color-accent",
+      "group": "colors"
+    },
+    {
+      "id": "containerMaxWidth",
+      "type": "number",
+      "label": {
+        "en-US": "Container Max Width (px)"
+      },
+      "default": 1200,
+      "cssVar": "container-max-width",
+      "options": {
+        "unit": "px",
+        "min": 800,
+        "max": 1600
+      },
+      "group": "layout"
+    },
+    {
+      "id": "gridGap",
+      "type": "number",
+      "label": {
+        "en-US": "Grid Gap (px)"
+      },
+      "default": 24,
+      "cssVar": "spacing-xl",
+      "options": {
+        "unit": "px",
+        "min": 8,
+        "max": 48
+      },
+      "group": "layout"
+    },
+    {
+      "id": "buttonBorderRadius",
+      "type": "number",
+      "label": {
+        "en-US": "Border Radius (px)"
+      },
+      "default": 4,
+      "cssVar": "border-radius",
+      "options": {
+        "unit": "px",
+        "min": 0,
+        "max": 32
+      },
+      "group": "buttons"
+    },
+    {
+      "id": "buttonMinHeight",
+      "type": "number",
+      "label": {
+        "en-US": "Min Height (px)"
+      },
+      "default": 40,
+      "cssVar": "button-min-height",
+      "options": {
+        "unit": "px",
+        "min": 32,
+        "max": 56
+      },
+      "group": "buttons"
+    },
+    {
+      "id": "buttonPaddingX",
+      "type": "number",
+      "label": {
+        "en-US": "Horizontal Padding (px)"
+      },
+      "default": 48,
+      "cssVar": "button-padding-x",
+      "options": {
+        "unit": "px",
+        "min": 12,
+        "max": 64
+      },
+      "group": "buttons"
+    },
+    {
+      "id": "buttonFontWeight",
+      "type": "select",
+      "label": {
+        "en-US": "Font Weight"
+      },
+      "default": "500",
+      "cssVar": "button-font-weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "group": "buttons"
+    },
+    {
+      "id": "secondaryButtonColor",
+      "type": "color",
+      "label": {
+        "en-US": "Secondary Button Color"
+      },
+      "default": "#038203",
+      "cssVar": "color-secondary-button",
+      "group": "buttons"
+    },
+    {
+      "id": "inputHeight",
+      "type": "number",
+      "label": {
+        "en-US": "Input Height (px)"
+      },
+      "default": 48,
+      "cssVar": "input-height",
+      "options": {
+        "unit": "px",
+        "min": 32,
+        "max": 56
+      },
+      "group": "forms"
+    },
+    {
+      "id": "inputBorderRadius",
+      "type": "number",
+      "label": {
+        "en-US": "Input Border Radius (px)"
+      },
+      "default": 4,
+      "cssVar": "input-border-radius",
+      "options": {
+        "unit": "px",
+        "min": 0,
+        "max": 16
+      },
+      "group": "forms"
+    },
+    {
+      "id": "inputFocusColor",
+      "type": "color",
+      "label": {
+        "en-US": "Input Focus Color"
+      },
+      "default": "#108A00",
+      "cssVar": "color-focus",
+      "group": "forms"
+    },
+    {
+      "id": "labelFontSize",
+      "type": "number",
+      "label": {
+        "en-US": "Label Font Size (px)"
+      },
+      "default": 13,
+      "cssVar": "label-font-size",
+      "options": {
+        "unit": "px",
+        "min": 11,
+        "max": 16
+      },
+      "group": "forms"
+    },
+    {
+      "id": "labelFontWeight",
+      "type": "select",
+      "label": {
+        "en-US": "Label Font Weight"
+      },
+      "default": "400",
+      "cssVar": "label-font-weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semibold"
+        }
+      ],
+      "group": "forms"
+    },
+    {
+      "id": "placeholderColor",
+      "type": "color",
+      "label": {
+        "en-US": "Placeholder Color"
+      },
+      "default": "#999999",
+      "cssVar": "color-placeholder",
+      "group": "forms"
+    },
+    {
+      "id": "navFontSize",
+      "type": "number",
+      "label": {
+        "en-US": "Nav Font Size (px)"
+      },
+      "default": 13,
+      "cssVar": "nav-font-size",
+      "options": {
+        "unit": "px",
+        "min": 11,
+        "max": 18
+      },
+      "group": "navigation"
+    },
+    {
+      "id": "supportEmail",
+      "type": "text",
+      "label": {
+        "en-US": "Support Email"
+      },
+      "default": "",
+      "placeholder": "support@example.com",
+      "group": "general"
+    },
+    {
+      "id": "supportPhone",
+      "type": "text",
+      "label": {
+        "en-US": "Support Phone"
+      },
+      "default": "",
+      "placeholder": "1-800-XXX-XXXX",
+      "group": "general"
+    },
+    {
+      "id": "siteDescription",
+      "type": "textarea",
+      "label": {
+        "en-US": "Default meta description"
+      },
+      "helpText": {
+        "en-US": "Site-wide fallback SERP/social description used on any page that doesn't set its own. Keep it ~150–160 characters."
+      },
+      "default": "",
+      "placeholder": "One or two sentences describing the site…",
+      "group": "seo"
+    },
+    {
+      "id": "contentTimeZone",
+      "type": "text",
+      "label": {
+        "en-US": "Content time zone"
+      },
+      "helpText": {
+        "en-US": "IANA time zone used to render publication dates (e.g. Europe/Rome). Empty = viewer's local zone."
+      },
+      "default": "",
+      "placeholder": "Europe/Rome",
+      "group": "general"
+    },
+    {
+      "id": "socialImage",
+      "type": "image",
+      "label": {
+        "en-US": "Default social share image"
+      },
+      "helpText": {
+        "en-US": "Fallback og:image / Twitter card used on any page without its own share image. Recommended 1200×630."
+      },
+      "group": "seo"
+    },
+    {
+      "id": "favicon",
+      "type": "image",
+      "label": {
+        "en-US": "Favicon"
+      },
+      "helpText": {
+        "en-US": "Browser tab and bookmark icon. Square PNG, 32×32 or larger. Without one the site falls back to the platform's default icon."
+      },
+      "group": "general"
+    }
+  ],
+  "groups": [
+    {
+      "id": "general",
+      "label": {
+        "en-US": "General"
+      }
+    },
+    {
+      "id": "seo",
+      "label": {
+        "en-US": "SEO & Social"
+      }
+    },
+    {
+      "id": "logo",
+      "label": {
+        "en-US": "Logo"
+      }
+    },
+    {
+      "id": "colors",
+      "label": {
+        "en-US": "Colors"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    },
+    {
+      "id": "buttons",
+      "label": {
+        "en-US": "Buttons"
+      }
+    },
+    {
+      "id": "forms",
+      "label": {
+        "en-US": "Form Inputs"
+      }
+    },
+    {
+      "id": "navigation",
+      "label": {
+        "en-US": "Navigation"
+      }
+    }
+  ],
+  "blockDefaults": {
+    "hero-block": {
+      "variant": "standard",
+      "textAlign": "left",
+      "height": "large",
+      "overlay": true,
+      "overlayOpacity": 0.3,
+      "showCountdown": false,
+      "background": "inverse",
+      "textTone": "section"
+    },
+    "text-section": {
+      "mediaSide": "right",
+      "background": "section",
+      "textTone": "section"
+    },
+    "grid-block": {
+      "cardStyle": "card",
+      "columns": 3,
+      "gap": 24
+    },
+    "search-bar": {
+      "maxSuggestions": 5
+    },
+    "breadcrumb-nav": {
+      "separator": "/",
+      "showHome": true
+    },
+    "broadcast-message": {
+      "variant": "info",
+      "dismissible": true
+    },
+    "faq-accordion": {
+      "allowMultipleOpen": false
+    },
+    "icon-grid-block": {
+      "itemKind": "stat",
+      "accentColor": "#108A00",
+      "background": "section",
+      "textTone": "section"
+    },
+    "testimonials": {
+      "variant": "grid",
+      "cardColor": "#f9f9f9",
+      "showRating": true,
+      "background": "section"
+    },
+    "image-banner": {
+      "width": "full",
+      "aspectRatio": "auto",
+      "borderRadius": 0
+    },
+    "video-block": {
+      "layout": "contained",
+      "background": "section"
+    },
+    "page-header": {
+      "showBreadcrumb": true,
+      "background": "surface",
+      "textTone": "section"
+    },
+    "timeline": {
+      "variant": "horizontal",
+      "accentColor": "#108A00",
+      "background": "section"
+    },
+    "divider-block": {
+      "lineStyle": "line",
+      "color": "#e5e5e5",
+      "spacing": 32
+    },
+    "pull-quote": {
+      "accentStyle": "line",
+      "accentColor": "#108A00",
+      "textAlign": "center",
+      "fontSize": 48,
+      "letterSpacing": "-0.02em",
+      "background": "section",
+      "textTone": "section"
+    },
+    "side-by-side-editorial": {
+      "mediaSide": "left",
+      "imageRatio": "50",
+      "dividerEnabled": false,
+      "reverseOnMobile": false,
+      "background": "section",
+      "textTone": "section"
+    },
+    "marquee-block": {
+      "rows": 1,
+      "size": "md",
+      "gap": 48,
+      "pauseOnHover": true
+    },
+    "item-grid-block": {
+      "layout": "list",
+      "listMode": "stacked",
+      "columns": 3,
+      "dividerEnabled": true,
+      "dividerStyle": "line",
+      "labelStyle": "uppercase",
+      "tagVariant": "outline",
+      "tagSize": "sm",
+      "background": "section"
+    },
+    "scatter-collage": {
+      "mobileMode": "scale"
+    }
+  },
+  "typography": {
+    "variants": [
+      {
+        "name": "open-sans-vf",
+        "family": "Open Sans",
+        "file": "OpenSans-VF",
+        "variable": true,
+        "axes": {
+          "wght": { "min": 300, "max": 800, "default": 400, "step": 1, "label": "Weight", "order": 1 },
+          "wdth": { "min": 75,  "max": 100, "default": 100, "step": 0.1, "label": "Width",  "order": 2 }
+        }
+      },
+      {
+        "name": "dm-serif-display",
+        "family": "DM Serif Display",
+        "file": "DMSerifDisplay-Regular",
+        "weight": 400,
+        "style": "normal"
+      },
+      {
+        "name": "gothic-a1-semibold",
+        "family": "Gothic A1",
+        "file": "GothicA1-SemiBold",
+        "weight": 600
+      },
+      {
+        "name": "gothic-a1-bold",
+        "family": "Gothic A1",
+        "file": "GothicA1-Bold",
+        "weight": 700
+      },
+      {
+        "name": "gothic-a1-extrabold",
+        "family": "Gothic A1",
+        "file": "GothicA1-ExtraBold",
+        "weight": 800
+      },
+      {
+        "name": "jost-medium",
+        "family": "Jost",
+        "file": "Jost-Medium",
+        "weight": 500
+      },
+      {
+        "name": "libre-caslon-text",
+        "family": "Libre Caslon Text",
+        "file": "LibreCaslonText-Regular",
+        "weight": 400
+      },
+      {
+        "name": "inter-vf",
+        "family": "Inter",
+        "file": "Inter-VF",
+        "variable": true,
+        "axes": {
+          "wght": { "min": 100, "max": 900, "default": 400, "step": 1, "label": "Weight",       "order": 1 },
+          "opsz": { "min": 14,  "max": 32,  "default": 14,  "step": 1, "label": "Optical Size", "order": 2 }
+        }
+      },
+      {
+        "name": "fraunces-vf",
+        "family": "Fraunces",
+        "file": "Fraunces-VF",
+        "variable": true,
+        "axes": {
+          "wght": { "min": 100, "max": 900, "default": 400, "step": 1, "label": "Weight",       "order": 1 },
+          "opsz": { "min": 9,   "max": 144, "default": 14,  "step": 1, "label": "Optical Size", "order": 2 },
+          "SOFT": { "min": 0,   "max": 100, "default": 0,   "step": 1, "label": "Softness",     "order": 3 },
+          "WONK": { "min": 0,   "max": 1,   "default": 0,   "step": 1, "label": "Wonky",        "order": 4, "experimental": true }
+        }
+      },
+      { "name": "sul-sans-regular",          "family": "Sul Sans", "file": "SulSans-Regular",             "weight": 400 }
+    ],
+    "defaults": {
+      "displayXl": { "fontFamily": "Sul Sans", "fontWeight": "400" },
+      "display": { "fontFamily": "Sul Sans", "fontWeight": "400" },
+      "sectionTitle": { "fontFamily": "Sul Sans", "fontWeight": "400" },
+      "body": {
+        "fontFamily": "Sul Sans",
+        "fontSize": "16px",
+        "lineHeight": 1.5
+      },
+      "h1": {
+        "fontFamily": "Sul Sans",
+        "fontSize": "32px",
+        "lineHeight": 1.2
+      },
+      "h2": {
+        "fontFamily": "Sul Sans",
+        "fontSize": "24px",
+        "lineHeight": 1.3
+      },
+      "h3": {
+        "fontFamily": "Sul Sans",
+        "fontSize": "20px",
+        "lineHeight": 1.4
+      },
+      "h4": {
+        "fontFamily": "Sul Sans",
+        "fontSize": "18px",
+        "lineHeight": 1.4
+      },
+      "displayEditorialMega": {
+        "fontFamily": "DM Serif Display",
+        "fontSize": "160px",
+        "lineHeight": "0.92",
+        "fontWeight": "400"
+      },
+      "frauncesDisplay": {
+        "fontFamily": "Fraunces",
+        "fontSize": "96px",
+        "lineHeight": "1.05",
+        "fontWeight": "700",
+        "variationAxes": { "wght": 700, "opsz": 96, "SOFT": 30 }
+      },
+      "frauncesSoftDisplay": {
+        "fontFamily": "Fraunces",
+        "fontSize": "80px",
+        "lineHeight": "1.05",
+        "fontWeight": "600",
+        "variationAxes": { "wght": 600, "opsz": 72, "SOFT": 100 }
+      },
+      "frauncesEditorialMega": {
+        "fontFamily": "Fraunces",
+        "fontSize": "200px",
+        "lineHeight": "0.9",
+        "fontWeight": "900",
+        "variationAxes": { "wght": 900, "opsz": 144, "SOFT": 0 }
+      },
+      "frauncesText": {
+        "fontFamily": "Fraunces",
+        "fontSize": "18px",
+        "lineHeight": "1.55",
+        "fontWeight": "400",
+        "variationAxes": { "wght": 400, "opsz": 14 }
+      },
+      "openSansDisplay": {
+        "fontFamily": "Open Sans",
+        "fontSize": "72px",
+        "lineHeight": "1.1",
+        "fontWeight": "700",
+        "variationAxes": { "wght": 700, "wdth": 100 }
+      },
+      "legal": {
+        "fontFamily": "Inter",
+        "fontSize": "11px",
+        "fontWeight": "400",
+        "variationAxes": { "wght": 400, "opsz": 14 }
+      },
+      "metadata": {
+        "fontFamily": "Inter",
+        "fontSize": "12px",
+        "fontWeight": "600",
+        "variationAxes": { "wght": 600, "opsz": 14 }
+      },
+      "quoteAttribution": {
+        "fontFamily": "Inter",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "variationAxes": { "wght": 500, "opsz": 14 }
+      },
+      "statLabel": {
+        "fontFamily": "Inter",
+        "fontSize": "13px",
+        "fontWeight": "600",
+        "variationAxes": { "wght": 600, "opsz": 14 }
+      },
+      "statValue": {
+        "fontFamily": "Inter",
+        "fontSize": "64px",
+        "fontWeight": "700",
+        "variationAxes": { "wght": 700, "opsz": 32 }
+      },
+      "sidebarNote": {
+        "fontFamily": "Inter",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "variationAxes": { "wght": 400, "opsz": 14 }
+      }
+    },
+    "tokens": {
+      "displayXl": { "fontSize": "clamp(6.4rem, 9.5vw, 13.7rem)", "fontFamily": "Sul Sans", "letterSpacing": "-0.03em", "lineHeight": 0.95 },
+      "displayEditorialMega": { "fontSize": "clamp(5rem, 14vw, 10rem)", "fontFamily": "DM Serif Display", "letterSpacing": "-0.03em", "lineHeight": 0.92 },
+      "displayMega": { "fontSize": "clamp(4.5rem, 13vw, 9.4rem)", "fontFamily": "Jost", "letterSpacing": "-0.04em", "lineHeight": 0.9, "textTransform": "uppercase", "fontWeight": 500 },
+      "display": { "fontSize": "clamp(2.75rem, 6.5vw, 4rem)", "fontFamily": "Sul Sans", "letterSpacing": "-0.01em", "lineHeight": 1.1 },
+      "editorialDisplay": { "fontSize": "clamp(3rem, 8vw, 5rem)", "fontFamily": "Gothic A1", "letterSpacing": "-0.02em", "lineHeight": 0.95, "fontWeight": 600 },
+      "sectionTitle": { "fontSize": "clamp(2.25rem, 5vw, 3rem)", "fontFamily": "Sul Sans", "letterSpacing": "-0.01em", "lineHeight": 1.15 },
+      "editorialHeading": { "fontSize": "clamp(2.25rem, 5vw, 3rem)", "fontFamily": "Gothic A1", "letterSpacing": "-0.02em", "lineHeight": 1.0, "fontWeight": 700 },
+      "eyebrow": { "fontSize": "13px", "fontFamily": "Inter", "letterSpacing": "1px", "lineHeight": 1.4, "textTransform": "uppercase" },
+      "editorialEyebrow": { "fontSize": "12px", "fontFamily": "Gothic A1", "letterSpacing": "0", "lineHeight": 1.4, "textTransform": "uppercase", "fontWeight": 800 },
+      "intro": { "fontSize": "20px", "fontFamily": "Inter", "letterSpacing": "0", "lineHeight": 1.6 },
+      "editorialBody": { "fontSize": "16px", "fontFamily": "Libre Caslon Text", "letterSpacing": "0", "lineHeight": 1.5 },
+      "body": { "fontSize": "16px", "fontFamily": "Sul Sans", "letterSpacing": "0", "lineHeight": 1.5 },
+      "editorialCaption": { "fontSize": "12px", "fontFamily": "Libre Caslon Text", "letterSpacing": "0", "lineHeight": 1.4 },
+      "caption": { "fontSize": "13px", "fontFamily": "Inter", "letterSpacing": "0", "lineHeight": 1.4 },
+      "tag": { "fontSize": "12px", "fontFamily": "Inter", "letterSpacing": "0.5px", "lineHeight": 1.3, "fontWeight": 600 },
+      "frauncesDisplay": { "fontSize": "clamp(3.5rem, 10vw, 7.5rem)", "fontFamily": "Fraunces", "letterSpacing": "-0.02em", "lineHeight": 1.05 },
+      "frauncesSoftDisplay": { "fontSize": "clamp(3rem, 8vw, 5rem)", "fontFamily": "Fraunces", "letterSpacing": "-0.01em", "lineHeight": 1.05 },
+      "frauncesEditorialMega": { "fontSize": "clamp(6rem, 16vw, 12.5rem)", "fontFamily": "Fraunces", "letterSpacing": "-0.03em", "lineHeight": 0.9 },
+      "frauncesText": { "fontSize": "18px", "fontFamily": "Fraunces", "letterSpacing": "0em", "lineHeight": 1.55 },
+      "openSansDisplay": { "fontSize": "clamp(3rem, 8vw, 4.5rem)", "fontFamily": "Open Sans", "letterSpacing": "-0.01em", "lineHeight": 1.1 },
+      "legal": { "fontSize": "11px", "fontFamily": "Inter", "letterSpacing": "0.02em", "lineHeight": 1.45 },
+      "metadata": { "fontSize": "12px", "fontFamily": "Inter", "letterSpacing": "0.08em", "lineHeight": 1.3, "textTransform": "uppercase" },
+      "quoteAttribution": { "fontSize": "14px", "fontFamily": "Inter", "letterSpacing": "0.04em", "lineHeight": 1.4, "textTransform": "uppercase" },
+      "statLabel": { "fontSize": "13px", "fontFamily": "Inter", "letterSpacing": "0.06em", "lineHeight": 1.3, "textTransform": "uppercase" },
+      "statValue": { "fontSize": "clamp(2.5rem, 6vw, 4rem)", "fontFamily": "Inter", "letterSpacing": "-0.02em", "lineHeight": 1.0 },
+      "sidebarNote": { "fontSize": "14px", "fontFamily": "Inter", "letterSpacing": "0", "lineHeight": 1.55 }
+    }
+  },
+  "motion": {
+    "defaultDuration": 600,
+    "defaultEasing": "cubic-bezier(.25,.1,.25,1)",
+    "reducedMotion": "fade-only",
+    "defaultEntrance": "fade-in",
+    "defaultChoreography": { "mode": "stagger", "baseDelay": 80, "order": "top-down" },
+    "entranceDelay": 150,
+    "entranceThreshold": 0.15,
+    "motionScale": 1.0,
+    "scrollOffset": {
+      "edge": "top",
+      "viewport": 0.85
+    },
+    "defaultRevealPreset": "editorial-reveal",
+    "revealPresets": {
+      "editorial-reveal": { "startOpacity": 0.08, "yOffset": 24, "duration": 800, "easing": "cubic-bezier(.33,0,.2,1)", "triggerThreshold": 0.15 },
+      "fade-up": { "startOpacity": 0, "yOffset": 32, "duration": 600, "easing": "cubic-bezier(.25,.1,.25,1)", "triggerThreshold": 0.2 },
+      "slide-in": { "startOpacity": 0, "xOffset": -40, "duration": 500, "easing": "cubic-bezier(.16,1,.3,1)", "triggerThreshold": 0.2 }
+    },
+    "entrancePresets": {
+      "fade-in": {
+        "presetVersion": "1.0",
+        "name": "Fade In",
+        "group": "safe",
+        "channels": ["opacity"],
+        "keyframes": [
+          { "offset": 0, "opacity": 0 },
+          { "offset": 1, "opacity": 1 }
+        ]
+      },
+      "fade-up": {
+        "presetVersion": "1.0",
+        "name": "Fade Up",
+        "group": "safe",
+        "channels": ["opacity", "transform"],
+        "keyframes": [
+          { "offset": 0, "opacity": 0, "transform": { "y": "40px" } },
+          { "offset": 1, "opacity": 1, "transform": { "y": "0px" } }
+        ]
+      },
+      "fade-down": {
+        "presetVersion": "1.0",
+        "name": "Fade Down",
+        "group": "expressive",
+        "keyframes": [
+          { "offset": 0, "opacity": 0, "transform": { "y": "-40px" } },
+          { "offset": 1, "opacity": 1, "transform": { "y": "0px" } }
+        ]
+      },
+      "fade-left": {
+        "presetVersion": "1.0",
+        "name": "Fade Left",
+        "group": "expressive",
+        "keyframes": [
+          { "offset": 0, "opacity": 0, "transform": { "x": "-60px" } },
+          { "offset": 1, "opacity": 1, "transform": { "x": "0px" } }
+        ]
+      },
+      "fade-right": {
+        "presetVersion": "1.0",
+        "name": "Fade Right",
+        "group": "expressive",
+        "keyframes": [
+          { "offset": 0, "opacity": 0, "transform": { "x": "60px" } },
+          { "offset": 1, "opacity": 1, "transform": { "x": "0px" } }
+        ]
+      },
+      "scale-in": {
+        "presetVersion": "1.0",
+        "name": "Scale In",
+        "group": "safe",
+        "channels": ["opacity", "transform"],
+        "keyframes": [
+          { "offset": 0, "opacity": 0, "transform": { "scale": 0.85 } },
+          { "offset": 1, "opacity": 1, "transform": { "scale": 1 } }
+        ]
+      },
+      "blur-in": {
+        "presetVersion": "1.0",
+        "name": "Blur In",
+        "group": "expressive",
+        "keyframes": [
+          { "offset": 0, "opacity": 0, "blur": "12px" },
+          { "offset": 1, "opacity": 1, "blur": "0px" }
+        ]
+      },
+      "reveal-up": {
+        "presetVersion": "1.0",
+        "name": "Reveal Up",
+        "group": "safe",
+        "easing": "cubic-bezier(.77,0,.18,1)",
+        "keyframes": [
+          { "offset": 0, "clipPath": "inset(100% 0 0 0)" },
+          { "offset": 1, "clipPath": "inset(0)" }
+        ]
+      },
+      "reveal-left": {
+        "presetVersion": "1.0",
+        "name": "Reveal Left",
+        "group": "expressive",
+        "easing": "cubic-bezier(.77,0,.18,1)",
+        "keyframes": [
+          { "offset": 0, "clipPath": "inset(0 100% 0 0)" },
+          { "offset": 1, "clipPath": "inset(0)" }
+        ]
+      },
+      "reveal-right": {
+        "presetVersion": "1.0",
+        "name": "Reveal Right",
+        "group": "expressive",
+        "easing": "cubic-bezier(.77,0,.18,1)",
+        "keyframes": [
+          { "offset": 0, "clipPath": "inset(0 0 0 100%)" },
+          { "offset": 1, "clipPath": "inset(0)" }
+        ]
+      },
+      "mask-reveal": {
+        "presetVersion": "1.0",
+        "name": "Mask Reveal",
+        "group": "expressive",
+        "easing": "cubic-bezier(.77,0,.18,1)",
+        "keyframes": [
+          { "offset": 0, "clipPath": "inset(20% 20% 20% 20%)", "opacity": 0.3 },
+          { "offset": 1, "clipPath": "inset(0)", "opacity": 1 }
+        ]
+      },
+      "mask-reveal-up": {
+        "presetVersion": "1.0",
+        "name": "Mask Reveal Up",
+        "group": "expressive",
+        "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "keyframes": [
+          { "offset": 0, "clipPath": "inset(100% 0 0 0)" },
+          { "offset": 1, "clipPath": "inset(0 0 0 0)" }
+        ]
+      },
+      "mask-reveal-down": {
+        "presetVersion": "1.0",
+        "name": "Mask Reveal Down",
+        "group": "expressive",
+        "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "keyframes": [
+          { "offset": 0, "clipPath": "inset(0 0 100% 0)" },
+          { "offset": 1, "clipPath": "inset(0 0 0 0)" }
+        ]
+      },
+      "mask-reveal-left": {
+        "presetVersion": "1.0",
+        "name": "Mask Reveal Left",
+        "group": "expressive",
+        "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "keyframes": [
+          { "offset": 0, "clipPath": "inset(0 100% 0 0)" },
+          { "offset": 1, "clipPath": "inset(0 0 0 0)" }
+        ]
+      },
+      "mask-reveal-right": {
+        "presetVersion": "1.0",
+        "name": "Mask Reveal Right",
+        "group": "expressive",
+        "easing": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "keyframes": [
+          { "offset": 0, "clipPath": "inset(0 0 0 100%)" },
+          { "offset": 1, "clipPath": "inset(0 0 0 0)" }
+        ]
+      },
+      "color-reveal": {
+        "presetVersion": "1.0",
+        "name": "Color Reveal",
+        "group": "expressive",
+        "duration": 600,
+        "easing": "cubic-bezier(.25,.1,.25,1)",
+        "keyframes": [
+          { "offset": 0, "opacity": 0, "color": "var(--color-primary, #0066cc)" },
+          { "offset": 1, "opacity": 1, "color": "var(--color-text, inherit)" }
+        ]
+      }
+    }
+  },
+  "spacingTokens": {
+    "sectionSpaceY": {
+      "none": "0",
+      "sm": "4rem",
+      "md": "6.4rem",
+      "lg": "9.6rem",
+      "xl": "12.8rem"
+    },
+    "containerInsetX": {
+      "none": "0",
+      "sm": "2.4rem",
+      "md": "4.8rem",
+      "lg": "6vw",
+      "xl": "10vw"
+    },
+    "stackGap": {
+      "none": "0",
+      "tight": "0.5rem",
+      "normal": "1.5rem",
+      "spacious": "3rem"
+    },
+    "sectionGap": {
+      "none": "0",
+      "sm": "0.5rem",
+      "md": "1.5rem",
+      "lg": "3rem",
+      "xl": "4.8rem"
+    },
+    "measureWidth": {
+      "none": "none",
+      "content": "min(65ch, 100%)",
+      "narrow": "min(45rem, 100%)",
+      "standard": "min(65rem, 100%)",
+      "wide": "min(80rem, 100%)",
+      "full": "100%"
+    }
+  },
+  "envVariables": {
+    "defaultLocale": {
+      "type": "text",
+      "label": {
+        "en-US": "Default Locale"
+      },
+      "description": "Default application locale (e.g., en-US, en-CA, fr-CA)",
+      "default": "en-US"
+    },
+    "analyticsId": {
+      "type": "text",
+      "label": {
+        "en-US": "Analytics ID"
+      },
+      "description": "Google Analytics or tracking ID",
+      "default": ""
+    }
+  }
+}

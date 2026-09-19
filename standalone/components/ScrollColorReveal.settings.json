@@ -1,0 +1,109 @@
+{
+  "component": "ScrollColorReveal",
+  "type": "scroll-color-reveal",
+  "label": {
+    "en-US": "Scroll Color Reveal"
+  },
+  "description": {
+    "en-US": "Large category names that interpolate from a muted tint to the primary navy as each linked section scrolls into view. Acts as a scroll-progress table of contents."
+  },
+  "category": "navigation",
+  "compatibleSectionRoles": [
+    "content",
+    "section-heading",
+    "supporting-text"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "repeater",
+      "id": "items",
+      "label": {
+        "en-US": "Category items"
+      },
+      "group": "content",
+      "maxItems": 8,
+      "fields": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": { "en-US": "Label" },
+          "translatable": true
+        },
+        {
+          "type": "text",
+          "id": "targetAnchor",
+          "label": { "en-US": "Target section anchor (id, no #)" },
+          "helpText": { "en-US": "The anchor of the section this name lights up for (e.g. restauro)." }
+        }
+      ]
+    },
+    {
+      "id": "measureWidth",
+      "type": "select",
+      "label": {
+        "en-US": "Content Width"
+      },
+      "default": "full",
+      "canvasDefault": "full",
+      "group": "appearance",
+      "options": [
+        { "value": "content", "label": { "en-US": "Reading (65ch)" } },
+        { "value": "narrow", "label": { "en-US": "Narrow (45rem)" } },
+        { "value": "standard", "label": { "en-US": "Standard (65rem)" } },
+        { "value": "wide", "label": { "en-US": "Wide (80rem)" } },
+        { "value": "full", "label": { "en-US": "Full" } }
+      ]
+    },
+    {
+      "id": "textAlign",
+      "type": "select",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "default": "left",
+      "group": "appearance",
+      "options": [
+        { "value": "left", "label": { "en-US": "Left" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "right", "label": { "en-US": "Right" } }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": { "en-US": "Content" }
+    },
+    {
+      "id": "appearance",
+      "label": { "en-US": "Appearance" }
+    }
+  ],
+  "motionSupport": {
+    "levels": ["local"],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Entire block container"
+    },
+    "list": {
+      "kind": "decorative",
+      "selector": "[data-target='list']",
+      "description": "Category list wrapper",
+      "multiple": false,
+      "animatable": ["opacity", "transform"],
+      "canTrigger": false
+    },
+    "items": {
+      "kind": "text",
+      "selector": "[data-target='item']",
+      "description": "Individual category names",
+      "multiple": true,
+      "animatable": ["opacity", "transform"],
+      "canTrigger": false
+    }
+  }
+}

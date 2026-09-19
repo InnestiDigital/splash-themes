@@ -1,0 +1,277 @@
+{
+  "component": "ImageHotspots",
+  "type": "image-hotspots",
+  "label": {
+    "en-US": "Interactive Hotspots"
+  },
+  "category": "media",
+  "compatibleSectionRoles": [
+    "media-gallery",
+    "editorial-body"
+  ],
+  "typographySlots": [],
+  "$fragments": ["media-art-direction"],
+  "$fragmentOmit": ["focalPoint"],
+  "settings": [
+    {
+      "type": "media",
+      "id": "image",
+      "label": {
+        "en-US": "Base Image"
+      },
+      "group": "content"
+    },
+    {
+      "type": "richtext-single",
+      "id": "altText",
+      "label": {
+        "en-US": "Image Alt Text"
+      },
+      "translatable": true,
+      "group": "content"
+    },
+    {
+      "type": "repeater",
+      "id": "hotspots",
+      "label": {
+        "en-US": "Hotspots"
+      },
+      "group": "content",
+      "maxItems": 12,
+      "fields": [
+        {
+          "type": "richtext-single",
+          "id": "title",
+          "label": {
+            "en-US": "Title"
+          },
+          "translatable": true,
+          "typographyRole": "heading3",
+          "defaultPresetKey": "section-title"
+        },
+        {
+          "type": "richtext-block",
+          "id": "description",
+          "label": {
+            "en-US": "Description"
+          },
+          "translatable": true,
+          "typographyRole": "body",
+          "defaultPresetKey": "body"
+        },
+        {
+          "type": "range",
+          "id": "x",
+          "label": {
+            "en-US": "Horizontal Position (%)"
+          },
+          "default": 50,
+          "options": {
+            "min": 0,
+            "max": 100,
+            "step": 1
+          }
+        },
+        {
+          "type": "range",
+          "id": "y",
+          "label": {
+            "en-US": "Vertical Position (%)"
+          },
+          "default": 50,
+          "options": {
+            "min": 0,
+            "max": 100,
+            "step": 1
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "markerStyle",
+      "label": {
+        "en-US": "Marker Style"
+      },
+      "default": "numbered",
+      "group": "options",
+      "options": [
+        {
+          "value": "numbered",
+          "label": {
+            "en-US": "Numbered"
+          }
+        },
+        {
+          "value": "dot",
+          "label": {
+            "en-US": "Pulsing Dot"
+          }
+        },
+        {
+          "value": "plus",
+          "label": {
+            "en-US": "Plus"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "revealOn",
+      "label": {
+        "en-US": "Reveal Caption On"
+      },
+      "default": "hover",
+      "group": "options",
+      "options": [
+        {
+          "value": "hover",
+          "label": {
+            "en-US": "Hover / Focus (tap on touch)"
+          }
+        },
+        {
+          "value": "click",
+          "label": {
+            "en-US": "Click / Tap"
+          }
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "guidedTour",
+      "label": {
+        "en-US": "Guided tour navigation"
+      },
+      "default": false,
+      "group": "options"
+    },
+    {
+      "type": "select",
+      "id": "aspectRatio",
+      "label": {
+        "en-US": "Aspect Ratio"
+      },
+      "default": "4:3",
+      "group": "appearance",
+      "options": [
+        {
+          "value": "16:9",
+          "label": {
+            "en-US": "Wide (16:9)"
+          }
+        },
+        {
+          "value": "3:2",
+          "label": {
+            "en-US": "Photo (3:2)"
+          }
+        },
+        {
+          "value": "4:3",
+          "label": {
+            "en-US": "Standard (4:3)"
+          }
+        },
+        {
+          "value": "1:1",
+          "label": {
+            "en-US": "Square (1:1)"
+          }
+        },
+        {
+          "value": "auto",
+          "label": {
+            "en-US": "Auto (image's own ratio)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "borderRadius",
+      "label": {
+        "en-US": "Corner Radius"
+      },
+      "default": "md",
+      "group": "appearance",
+      "options": ["none", "sm", "md", "lg"]
+    },
+    {
+      "type": "select",
+      "id": "internalPadding",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "default": "none",
+      "group": "appearance",
+      "options": ["none", "xs", "sm", "md", "lg", "xl"]
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "options",
+      "label": {
+        "en-US": "Options"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": []
+  },
+  "motionHints": {
+    "containsDynamicChildren": true,
+    "isolateTransforms": [
+      "markers"
+    ]
+  },
+  "targets": {
+    "root": {
+      "description": "Entire hotspots block container",
+      "kind": "root"
+    },
+    "image": {
+      "selector": "[data-target='image']",
+      "description": "Base image",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "media"
+    },
+    "markers": {
+      "selector": "[data-target='marker']",
+      "description": "Individual hotspot markers",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur"
+      ],
+      "canTrigger": true,
+      "kind": "group"
+    }
+  }
+}

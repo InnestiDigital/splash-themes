@@ -1,0 +1,220 @@
+{
+  "component": "ProjectIndex",
+  "type": "project-index",
+  "label": {
+    "en-US": "Project Index"
+  },
+  "category": "content",
+  "description": {
+    "en-US": "A minimalist typographic works index — each project is a clean row (number · title · year/location · category). On a fine-pointer device, hovering a row reveals a thumbnail that trails the cursor (the studio 'peek'). Reduced-motion, touch and keyboard safe; rows fall back to an inline thumbnail on mobile."
+  },
+  "compatibleSectionRoles": [
+    "content",
+    "editorial-body",
+    "media-gallery"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "repeater",
+      "id": "projects",
+      "label": { "en-US": "Projects" },
+      "group": "content",
+      "maxItems": 40,
+      "fields": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": { "en-US": "Title" },
+          "translatable": true
+        },
+        {
+          "type": "text",
+          "id": "meta",
+          "label": { "en-US": "Meta (year · location)" },
+          "translatable": true
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": { "en-US": "Category" }
+        },
+        {
+          "type": "media",
+          "id": "image",
+          "label": { "en-US": "Preview image" }
+        },
+        {
+          "type": "text",
+          "id": "link",
+          "label": { "en-US": "Link URL (optional)" }
+        }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "showNumber",
+      "label": { "en-US": "Show index numbers" },
+      "default": true,
+      "group": "content",
+      "note": "Prefix each row with a zero-padded ordinal (01, 02, …)."
+    },
+    {
+      "type": "toggle",
+      "id": "showCategory",
+      "label": { "en-US": "Show category column" },
+      "default": true,
+      "group": "content"
+    },
+    {
+      "type": "select",
+      "id": "scale",
+      "label": { "en-US": "Row scale" },
+      "default": "comfortable",
+      "group": "layout",
+      "options": [
+        { "value": "compact", "label": { "en-US": "Compact" } },
+        { "value": "comfortable", "label": { "en-US": "Comfortable" } },
+        { "value": "display", "label": { "en-US": "Display (oversized)" } }
+      ]
+    },
+    {
+      "id": "measureWidth",
+      "type": "select",
+      "label": { "en-US": "Content Width" },
+      "default": "wide",
+      "canvasDefault": "full",
+      "group": "layout",
+      "options": [
+        { "value": "content", "label": { "en-US": "Reading (65ch)" } },
+        { "value": "narrow", "label": { "en-US": "Narrow (45rem)" } },
+        { "value": "standard", "label": { "en-US": "Standard (65rem)" } },
+        { "value": "wide", "label": { "en-US": "Wide (80rem)" } },
+        { "value": "full", "label": { "en-US": "Full" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "previewSize",
+      "label": { "en-US": "Hover preview size" },
+      "default": "medium",
+      "group": "peek",
+      "note": "Size of the thumbnail that trails the cursor on hover (fine-pointer devices only).",
+      "options": [
+        { "value": "small", "label": { "en-US": "Small (14rem)" } },
+        { "value": "medium", "label": { "en-US": "Medium (20rem)" } },
+        { "value": "large", "label": { "en-US": "Large (28rem)" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "previewRatio",
+      "label": { "en-US": "Hover preview ratio" },
+      "default": "4:3",
+      "group": "peek",
+      "options": [
+        { "value": "1:1", "label": { "en-US": "Square (1:1)" } },
+        { "value": "4:3", "label": { "en-US": "Landscape (4:3)" } },
+        { "value": "3:2", "label": { "en-US": "Photo (3:2)" } },
+        { "value": "3:4", "label": { "en-US": "Portrait (3:4)" } }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "enableFilter",
+      "label": { "en-US": "Enable category filter bar" },
+      "default": false,
+      "group": "filter",
+      "note": "Renders clickable filter chips derived from the projects' Category field and filters the list client-side. The visible rows renumber sequentially."
+    },
+    {
+      "type": "toggle",
+      "id": "shareableFilter",
+      "label": { "en-US": "Shareable filter (URL sync)" },
+      "default": false,
+      "group": "filter",
+      "note": "Sync the active category to the page URL so a filtered view can be shared and the browser back/forward buttons navigate between selections. No effect unless the filter bar is enabled.",
+      "showIf": { "enableFilter": true }
+    },
+    {
+      "type": "text",
+      "id": "filterAllLabel",
+      "label": { "en-US": "Label for the \"All\" chip" },
+      "default": "All",
+      "translatable": true,
+      "group": "filter",
+      "showIf": { "enableFilter": true }
+    },
+    {
+      "type": "toggle",
+      "id": "enableSort",
+      "label": { "en-US": "Enable sort control" },
+      "default": false,
+      "group": "sort",
+      "note": "Renders a sort control that reorders the list client-side by title (A–Z / Z–A). The visible rows renumber to follow the display order. Composes with the category filter."
+    },
+    {
+      "type": "select",
+      "id": "defaultOrder",
+      "label": { "en-US": "Default order" },
+      "default": "original",
+      "group": "sort",
+      "note": "The order the list starts in before the visitor changes it. No effect unless the sort control is enabled.",
+      "showIf": { "enableSort": true },
+      "options": [
+        { "value": "original", "label": { "en-US": "Original order" } },
+        { "value": "az", "label": { "en-US": "Title A–Z" } },
+        { "value": "za", "label": { "en-US": "Title Z–A" } }
+      ]
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "layout", "label": { "en-US": "Layout" } },
+    { "id": "peek", "label": { "en-US": "Hover Preview" } },
+    { "id": "filter", "label": { "en-US": "Filtering" } },
+    { "id": "sort", "label": { "en-US": "Sorting" } }
+  ],
+  "presets": [
+    {
+      "name": { "en-US": "Selected Works" },
+      "settings": {
+        "showNumber": true,
+        "showCategory": true,
+        "scale": "comfortable",
+        "measureWidth": "wide",
+        "previewSize": "medium",
+        "previewRatio": "4:3",
+        "projects": [
+          { "title": { "en-US": "Project one" }, "meta": "Year · Location", "category": "Category", "image": "" },
+          { "title": { "en-US": "Project two" }, "meta": "Year · Location", "category": "Category", "image": "" },
+          { "title": { "en-US": "Project three" }, "meta": "Year · Location", "category": "Category", "image": "" }
+        ]
+      },
+      "description": {
+        "en-US": "Four projects as a typographic index with a cursor-trailing hover preview."
+      },
+      "category": "content",
+      "isDefault": true
+    }
+  ],
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Entire project index"
+    },
+    "rows": {
+      "kind": "group",
+      "selector": "[data-target='row']",
+      "description": "Individual project rows",
+      "multiple": true,
+      "addressable": true,
+      "animatable": ["opacity", "transform"],
+      "canTrigger": true
+    }
+  },
+  "motionSupport": {
+    "levels": ["local", "group"],
+    "excluded": []
+  }
+}

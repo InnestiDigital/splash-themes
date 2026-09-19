@@ -1,0 +1,493 @@
+{
+  "component": "PullQuote",
+  "type": "pull-quote",
+  "label": {
+    "en-US": "Pull Quote"
+  },
+  "category": "editorial",
+  "compatibleSectionRoles": [
+    "supporting-text",
+    "editorial-body"
+  ],
+  "typographySlots": [],
+  "$fragments": [
+    "color-roles"
+  ],
+  "$fragmentOverrides": {
+    "background": {
+      "default": "transparent"
+    }
+  },
+  "settings": [
+    {
+      "type": "richtext-block",
+      "id": "body",
+      "label": {
+        "en-US": "Quote Text"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "pullquote",
+      "defaultPresetKey": "body",
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "type": "richtext-single",
+      "id": "attribution",
+      "label": {
+        "en-US": "Attribution"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "caption",
+      "defaultPresetKey": "caption"
+    },
+    {
+      "type": "image",
+      "id": "portrait",
+      "label": {
+        "en-US": "Portrait"
+      },
+      "group": "content",
+      "note": {
+        "en-US": "Optional face for the quoted voice, shown with the attribution."
+      }
+    },
+    {
+      "type": "richtext-single",
+      "id": "role",
+      "label": {
+        "en-US": "Role / Affiliation"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "caption",
+      "note": {
+        "en-US": "Secondary line under the name — a title, firm, or affiliation."
+      }
+    },
+    {
+      "type": "url",
+      "id": "citeUrl",
+      "label": {
+        "en-US": "Source Link"
+      },
+      "group": "content",
+      "note": {
+        "en-US": "When set, the attribution becomes a link to the quote's source (opens in a new tab)."
+      }
+    },
+    {
+      "type": "select",
+      "id": "accentStyle",
+      "label": {
+        "en-US": "Accent Style"
+      },
+      "default": "line",
+      "group": "style",
+      "options": [
+        {
+          "value": "line",
+          "label": {
+            "en-US": "Line"
+          }
+        },
+        {
+          "value": "bar",
+          "label": {
+            "en-US": "Bar"
+          }
+        },
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "quoteMark",
+      "label": {
+        "en-US": "Quotation Mark"
+      },
+      "default": "none",
+      "group": "style",
+      "note": {
+        "en-US": "Decorative typographic quote glyph. Purely ornamental (aria-hidden)."
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "open",
+          "label": {
+            "en-US": "Opening mark (“)"
+          }
+        },
+        {
+          "value": "pair",
+          "label": {
+            "en-US": "Paired marks (“ ”)"
+          }
+        },
+        {
+          "value": "guillemet",
+          "label": {
+            "en-US": "Guillemets (« »)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "attributionLayout",
+      "label": {
+        "en-US": "Attribution Layout"
+      },
+      "default": "stacked",
+      "group": "style",
+      "note": {
+        "en-US": "Stacked centers the byline under the quote; Byline row sets the portrait beside the name."
+      },
+      "options": [
+        {
+          "value": "stacked",
+          "label": {
+            "en-US": "Stacked"
+          }
+        },
+        {
+          "value": "byline",
+          "label": {
+            "en-US": "Byline row"
+          }
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "accentColor",
+      "label": {
+        "en-US": "Accent Color"
+      },
+      "default": "#108A00",
+      "group": "style"
+    },
+    {
+      "type": "select",
+      "id": "textAlign",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "default": "center",
+      "group": "style",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": {
+        "en-US": "Size Preset"
+      },
+      "default": "standard",
+      "group": "style",
+      "note": {
+        "en-US": "Use presets for common contexts. Fine-tune with Custom Font Size if needed."
+      },
+      "options": [
+        {
+          "value": "compact",
+          "label": {
+            "en-US": "Compact (sidebar)"
+          }
+        },
+        {
+          "value": "standard",
+          "label": {
+            "en-US": "Standard"
+          }
+        },
+        {
+          "value": "display",
+          "label": {
+            "en-US": "Display (hero)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "fontSize",
+      "label": {
+        "en-US": "Custom Font Size (px)"
+      },
+      "group": "style",
+      "note": {
+        "en-US": "Overrides size preset when set"
+      },
+      "options": {
+        "min": 16,
+        "max": 120,
+        "step": 4,
+        "unit": "px"
+      }
+    },
+    {
+      "type": "select",
+      "id": "letterSpacing",
+      "label": {
+        "en-US": "Letter Spacing"
+      },
+      "default": "-0.02em",
+      "group": "style",
+      "options": [
+        {
+          "value": "-0.02em",
+          "label": {
+            "en-US": "Tight (-0.02em)"
+          }
+        },
+        {
+          "value": "0em",
+          "label": {
+            "en-US": "Normal (0em)"
+          }
+        },
+        {
+          "value": "0.05em",
+          "label": {
+            "en-US": "Wide (0.05em)"
+          }
+        },
+        {
+          "value": "0.1em",
+          "label": {
+            "en-US": "Extra Wide (0.1em)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface Style"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "measureWidth",
+      "type": "select",
+      "label": {
+        "en-US": "Content Width"
+      },
+      "default": "wide",
+      "canvasDefault": "full",
+      "group": "appearance",
+      "options": [
+        { "value": "content",  "label": { "en-US": "Reading (65ch)" } },
+        { "value": "narrow",   "label": { "en-US": "Narrow (45rem)" } },
+        { "value": "standard", "label": { "en-US": "Standard (65rem)" } },
+        { "value": "wide",     "label": { "en-US": "Wide (80rem)" } },
+        { "value": "full",     "label": { "en-US": "Full" } }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en-US": "Editorial Quote"
+      },
+      "settings": {
+        "accentStyle": "line",
+        "accentColor": "#108A00",
+        "quoteMark": "open",
+        "textAlign": "center",
+        "size": "standard",
+        "letterSpacing": "-0.02em",
+        "background": "transparent",
+        "textTone": "section"
+      },
+      "description": {
+        "en-US": "Centered editorial quote at standard size. Use inside long-form articles."
+      },
+      "category": "editorial",
+      "isDefault": true
+    },
+    {
+      "name": {
+        "en-US": "Dark Statement"
+      },
+      "settings": {
+        "accentStyle": "bar",
+        "accentColor": "#FFFFFF",
+        "quoteMark": "open",
+        "textAlign": "left",
+        "size": "display",
+        "letterSpacing": "-0.02em",
+        "background": "inverse",
+        "textTone": "inverse"
+      },
+      "description": {
+        "en-US": "Left-aligned oversized statement on dark background. Use as a full-section accent."
+      },
+      "category": "editorial"
+    },
+    {
+      "name": {
+        "en-US": "Attributed Voice"
+      },
+      "settings": {
+        "accentStyle": "none",
+        "quoteMark": "open",
+        "textAlign": "left",
+        "size": "standard",
+        "letterSpacing": "-0.02em",
+        "attributionLayout": "byline",
+        "background": "transparent",
+        "textTone": "section"
+      },
+      "description": {
+        "en-US": "Left-aligned quote with a portrait byline — a name, role, and optional source link beside a face."
+      },
+      "category": "editorial"
+    }
+  ],
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Entire block container",
+      "animatable": [
+        "motion-path"
+      ]
+    },
+    "body": {
+      "kind": "text",
+      "selector": "[data-target='body']",
+      "description": "Quote text",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    },
+    "attribution": {
+      "kind": "text",
+      "selector": "[data-target='attribution']",
+      "description": "Attribution text",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": true
+    },
+    "accent": {
+      "kind": "decorative",
+      "selector": "[data-target='accent']",
+      "description": "Decorative accent element",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "clip-path",
+        "motion-path"
+      ],
+      "canTrigger": false
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local"
+    ],
+    "excluded": []
+  }
+}

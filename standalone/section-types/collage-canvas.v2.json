@@ -1,0 +1,120 @@
+{
+  "type": "collage-canvas",
+  "label": "Collage Canvas",
+  "description": "A free-composition surface: an optional heading, then a canvas whose blocks are placed by hand — overlapping, rotated, resized — instead of flowing one after another. On narrow screens the canvas either stacks in reading order or shrinks the whole composition, whichever the section chooses.",
+  "usesContainer": true,
+  "layoutSlots": [
+    { "role": "section-heading", "required": false, "multiple": false, "description": "Heading above the canvas — ordinary flow, never free-placed" },
+    { "role": "editorial-body", "required": true, "multiple": true, "description": "Canvas layer — every block placed here carries its own position, size and rotation on the canvas. Reading order is the order the blocks appear in the navigation tree, and later blocks paint over earlier ones." }
+  ],
+  "layout": {
+    "engine": "grid",
+    "tiers": [
+      { "id": "full", "minWidth": "md" },
+      { "id": "stack", "minWidth": null }
+    ],
+    "columns": {
+      "full": "minmax(0, 1fr)",
+      "stack": "minmax(0, 1fr)"
+    },
+    "rows": {
+      "full": "auto auto",
+      "stack": "auto auto"
+    },
+    "areas": {
+      "full": ["intro", "canvas"],
+      "stack": ["intro", "canvas"]
+    },
+    "gap": { "row": "lg", "column": "none" },
+    "placeItems": "start stretch",
+    "zones": {
+      "intro": { "flow": "stack", "gap": "md", "placeSelf": "start stretch" },
+      "canvas": { "flow": "stack", "gap": "none", "placeSelf": "start stretch" }
+    },
+    "slots": [
+      { "role": "section-heading", "zone": "intro", "flow": "stack", "flowOptions": { "gap": "md" } },
+      {
+        "role": "editorial-body",
+        "zone": "canvas",
+        "flow": "layered",
+        "flowOptions": {
+          "gap": "md",
+          "height": "ratio-16x9",
+          "collapse": "stack",
+          "designWidth": 1440
+        }
+      }
+    ]
+  },
+  "settings": [
+    {
+      "id": "canvasHeight",
+      "type": "select",
+      "label": "Canvas Height",
+      "description": "How tall the canvas box is — free-placed blocks are measured against it, so this is what the composition is authored inside",
+      "default": "ratio-16x9",
+      "group": "layout",
+      "layoutBind": [{ "target": "slot.editorial-body.flowOptions.height" }],
+      "options": [
+        {
+          "value": "ratio-16x9",
+          "label": "Widescreen (16:9)",
+          "layoutValues": { "slot.editorial-body.flowOptions.height": "ratio-16x9" }
+        },
+        {
+          "value": "ratio-4x3",
+          "label": "Classic (4:3)",
+          "layoutValues": { "slot.editorial-body.flowOptions.height": "ratio-4x3" }
+        },
+        {
+          "value": "viewport",
+          "label": "Full viewport",
+          "layoutValues": { "slot.editorial-body.flowOptions.height": "viewport" }
+        },
+        {
+          "value": "content-min",
+          "label": "Compact",
+          "layoutValues": { "slot.editorial-body.flowOptions.height": "content-min" }
+        }
+      ],
+      "note": "An absolutely-placed block adds nothing to its parent's height, so the canvas states its own — there is no 'as tall as the content' option."
+    },
+    {
+      "id": "canvasCollapse",
+      "type": "select",
+      "label": "Narrow Screens",
+      "description": "What the canvas does below the tablet breakpoint: give up free placement and stack the blocks in reading order, or keep the composition and shrink it",
+      "default": "stack",
+      "group": "layout",
+      "layoutBind": [{ "target": "slot.editorial-body.flowOptions.collapse" }],
+      "options": [
+        {
+          "value": "stack",
+          "label": "Stack in reading order",
+          "layoutValues": { "slot.editorial-body.flowOptions.collapse": "stack" }
+        },
+        {
+          "value": "scale",
+          "label": "Shrink the composition",
+          "layoutValues": { "slot.editorial-body.flowOptions.collapse": "scale" }
+        }
+      ],
+      "note": "Shrinking keeps a deliberate composition intact, but a wide canvas scaled to a phone can end up too small to read. Stacking is the legible default."
+    },
+    {
+      "id": "canvasSpacing",
+      "type": "select",
+      "label": "Heading Spacing",
+      "description": "Space between the heading and the canvas below it",
+      "default": "lg",
+      "group": "layout",
+      "layoutBind": [{ "target": "gap.row" }],
+      "options": [
+        { "value": "sm", "label": "Tight", "layoutValues": { "gap.row": "sm" } },
+        { "value": "md", "label": "Normal", "layoutValues": { "gap.row": "md" } },
+        { "value": "lg", "label": "Spacious", "layoutValues": { "gap.row": "lg" } },
+        { "value": "xl", "label": "Editorial", "layoutValues": { "gap.row": "xl" } }
+      ]
+    }
+  ]
+}

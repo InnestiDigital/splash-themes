@@ -1,0 +1,219 @@
+{
+  "component": "CanvasBadge",
+  "type": "canvas-badge",
+  "label": {
+    "en-US": "Badge"
+  },
+  "category": "content",
+  "description": {
+    "en-US": "Add a short branded label for a status, category, promotion, or callout."
+  },
+  "surfaces": [
+    "canvas"
+  ],
+  "tier": "basic",
+  "keywords": [
+    "label",
+    "tag",
+    "pill",
+    "status",
+    "callout"
+  ],
+  "compatibleSectionRoles": [
+    "supporting-text",
+    "media-chrome",
+    "section-cta"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": {
+        "en-US": "Label"
+      },
+      "default": "New",
+      "group": "content",
+      "translatable": true,
+      "validation": {
+        "maxLength": 80
+      }
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": {
+        "en-US": "Size"
+      },
+      "default": "md",
+      "group": "layout",
+      "options": [
+        { "value": "sm", "label": { "en-US": "Small" } },
+        { "value": "md", "label": { "en-US": "Medium" } },
+        { "value": "lg", "label": { "en-US": "Large" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": {
+        "en-US": "Width"
+      },
+      "default": "hug",
+      "group": "layout",
+      "options": [
+        { "value": "hug", "label": { "en-US": "Fit label" } },
+        { "value": "full", "label": { "en-US": "Full width" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": {
+        "en-US": "Horizontal alignment"
+      },
+      "default": "center",
+      "group": "layout",
+      "options": [
+        { "value": "left", "label": { "en-US": "Left" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "right", "label": { "en-US": "Right" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "verticalAlign",
+      "label": {
+        "en-US": "Vertical alignment"
+      },
+      "default": "center",
+      "group": "layout",
+      "options": [
+        { "value": "top", "label": { "en-US": "Top" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "bottom", "label": { "en-US": "Bottom" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "variant",
+      "label": {
+        "en-US": "Appearance"
+      },
+      "default": "filled",
+      "group": "style",
+      "options": [
+        { "value": "filled", "label": { "en-US": "Filled" } },
+        { "value": "outline", "label": { "en-US": "Outline" } },
+        { "value": "soft", "label": { "en-US": "Soft" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "typographyRole",
+      "label": {
+        "en-US": "Typography"
+      },
+      "default": "brandBody",
+      "group": "style",
+      "options": [
+        { "value": "brandBody", "label": { "en-US": "Brand body" } },
+        { "value": "brandHeadline", "label": { "en-US": "Brand headline" } },
+        { "value": "body", "label": { "en-US": "Body" } },
+        { "value": "caption", "label": { "en-US": "Caption" } },
+        { "value": "eyebrow", "label": { "en-US": "Eyebrow" } },
+        { "value": "heading3", "label": { "en-US": "Heading 3" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "backgroundRole",
+      "label": {
+        "en-US": "Badge tone"
+      },
+      "default": "brandPrimary",
+      "group": "style",
+      "options": [
+        { "value": "brandPrimary", "label": { "en-US": "Brand primary" } },
+        { "value": "brandSecondary", "label": { "en-US": "Brand secondary" } },
+        { "value": "brandSurface", "label": { "en-US": "Brand surface" } },
+        { "value": "brandOnSurface", "label": { "en-US": "Brand on surface" } },
+        { "value": "background", "label": { "en-US": "Section background" } },
+        { "value": "surface", "label": { "en-US": "Section surface" } },
+        { "value": "text", "label": { "en-US": "Section text" } },
+        { "value": "accent", "label": { "en-US": "Section accent" } },
+        { "value": "transparent", "label": { "en-US": "Transparent" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "foregroundRole",
+      "label": {
+        "en-US": "Label tone"
+      },
+      "default": "brandSurface",
+      "group": "style",
+      "options": [
+        { "value": "brandSurface", "label": { "en-US": "Brand surface" } },
+        { "value": "brandOnSurface", "label": { "en-US": "Brand on surface" } },
+        { "value": "brandPrimary", "label": { "en-US": "Brand primary" } },
+        { "value": "brandSecondary", "label": { "en-US": "Brand secondary" } },
+        { "value": "text", "label": { "en-US": "Section text" } },
+        { "value": "muted", "label": { "en-US": "Muted text" } },
+        { "value": "faint", "label": { "en-US": "Faint text" } },
+        { "value": "accent", "label": { "en-US": "Section accent" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "shape",
+      "label": {
+        "en-US": "Corner shape"
+      },
+      "default": "pill",
+      "group": "style",
+      "options": [
+        { "value": "square", "label": { "en-US": "Square" } },
+        { "value": "rounded", "label": { "en-US": "Rounded" } },
+        { "value": "pill", "label": { "en-US": "Pill" } }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "uppercase",
+      "label": {
+        "en-US": "Uppercase label"
+      },
+      "default": false,
+      "group": "advanced"
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "layout", "label": { "en-US": "Layout" } },
+    { "id": "style", "label": { "en-US": "Style" } },
+    { "id": "advanced", "label": { "en-US": "Advanced" } }
+  ],
+  "targets": {
+    "root": {
+      "description": "Entire badge block",
+      "kind": "root"
+    },
+    "badge": {
+      "selector": "[data-target='badge']",
+      "description": "Badge surface",
+      "multiple": false,
+      "kind": "shape"
+    },
+    "text": {
+      "selector": "[data-target='text']",
+      "description": "Badge label",
+      "multiple": false,
+      "kind": "text"
+    }
+  },
+  "motionSupport": {
+    "levels": [],
+    "excluded": []
+  }
+}

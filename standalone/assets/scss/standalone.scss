@@ -1,0 +1,1381 @@
+// ============================================================================
+// Standalone Theme SCSS
+// Based on TD Shop Design Tokens
+// ============================================================================
+
+// 62.5% root — 1rem = 10px — enables simple px→rem conversion (divide by 10)
+html { font-size: 62.5%; }
+
+// Minimal global base, previously provided by Bootstrap's Reboot (removed from
+// the global css array, CSS-01). body margin and border-box must stay global:
+// the [data-theme] reset below cannot reach <body> itself nor content
+// teleported to <body> (Lightbox, Modal, Toast, SectionNav, ProjectIndex,
+// CursorLayer).
+html, body { margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; }
+
+// Body base type. Components size themselves in explicit rem off the 62.5%
+// root, so on desktop the bare <body> value is invisible — but it leaves the
+// document default at 10px, which fails the intrinsic mobile-readability
+// standard (≥14px base) and reads tiny for any inheriting text. Set a readable
+// base on mobile (parity asymmetry: follow good mobile practice, not the
+// non-responsive reference). rem keys off <html>, so this never shifts the
+// rem-based layout.
+@media (max-width: $bp-md) {
+  body { font-size: 1.5rem; }
+}
+
+// CSS Custom Properties (Design Tokens)
+// Default standalone palette
+:root {
+  // Primary Colors — dark teal-blue from reference
+  --color-primary: #1E3D4F;
+  --color-primary-light: #2a5268;
+  --color-secondary: #222222;
+
+  // Accent — orange from reference (used sparingly for CTAs, hover states)
+  --color-accent: #FF8614;
+
+  // Dark section scheme defaults
+  --color-dark-bg: #1a1a1a;
+  --color-dark-text: #ffffff;
+  --color-dark-border: rgba(255,255,255,0.12);
+  --color-accent-rose: #EA587D;
+
+  // Muted text — semantic tokens for secondary/tertiary text.
+  --color-text-muted: #666666;
+  --color-text-faint: #999999;
+
+  // Neutral Colors
+  --color-text: #222222;
+  --color-text-light: #A6A6A6;
+  --color-text-lighter: #CCCCCC;
+  --color-background: #ffffff; // White per design reference (probes measured rgb(255,255,255))
+  --color-background-light: #F7F7F7;
+  --color-background-lighter: #FAFAFA;
+  // --color-editorial-blue / -dark retired: they pinned the design reference's
+  // teal (#1B8AB7) into every tenant; their only consumers reach them through
+  // always-defined --color-primary/--color-secondary fallbacks, so the vars
+  // were dead weight. Accent roles come from the palette tokens above.
+
+  // Status Colors
+  --color-success: #198754;
+  --color-error: #D63301;
+  --color-warning: #ffc107;
+  --color-info: #0dcaf0;
+
+  // Border and Spacing
+  --border-radius: 0.4rem;
+  --border-radius-lg: 0.8rem;
+  --border-radius-xl: 1.2rem;
+  --border-radius-full: 9999rem;
+  --border-radius-button: 4.0rem;  // Pill buttons (40px) per reference
+  --border-color: #E8E8E8;
+  --border-color-input: #CCCCCC;
+
+  // Typography — Editorial serif + geometric sans per reference
+  // DM Serif Display for headings (display serif)
+  // Inter for body and UI (matches reference geometric sans)
+  // The theme ships a GENERIC fallback stack only — it must not force a
+  // specific display face on every tenant. The per-site face comes from the
+  // seeded typography roles (typography_presets / typography_roles), which the
+  // token layer surfaces as --type-<role>-font-family vars; these tokens win
+  // over the stack below. A former literal here ('Sul Sans', the design
+  // reference's face) leaked into every tenant regardless of configuration.
+  --font-family-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  // Body leads with the --type-body-font-family hook so the seeded token layer
+  // decides the face; Inter stays as the neutral fallback for missing glyphs.
+  --font-family: var(--type-body-font-family, 'Inter'), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  // ── LEGIBILITY FLOOR (theme-wide contract) ──────────────────────────────
+  // Root is 62.5% => 1rem = 10px. Nothing in this theme may render below the
+  // floor set by these tokens:
+  //   --font-size-xs (1.1rem / 11px) = absolute floor, pure meta/labels only
+  //     (tags, pill labels, placeholder captions, badge text).
+  //   --font-size-sm (1.2rem / 12px) = floor for anything PROSE-like — card
+  //     excerpts, image captions, hero intros, legal/copyright lines.
+  // A hardcoded font-size below the matching token (e.g. `font-size: 0.8rem`)
+  // is a DEFECT, not a style choice — "desktop reference parity" is retired as
+  // a justification for sub-floor type. Use var(--font-size-xs|sm, <fallback>)
+  // so the token layer can lift the whole theme in one place.
+  --font-size-xs: 1.1rem;     // 11px
+  --font-size-sm: 1.2rem;     // 12px — reference footer/caption size
+  --font-size-base: 1.8rem;   // 18px — reference body size
+  --font-size-lg: 2.2rem;     // 22px
+  --font-size-xl: 2.8rem;     // 28px
+  --font-size-2xl: clamp(2.8rem, 2.46rem + 0.95vw, 3.6rem);   // 28->36px fluid — desktop 36px unchanged
+  --font-size-3xl: clamp(3.2rem, 2.51rem + 1.9vw, 4.8rem);    // 32->48px fluid — section titles, desktop 48px unchanged
+  --font-size-4xl: clamp(4.2rem, 3.26rem + 2.62vw, 6.4rem);   // 42->64px fluid — hero display, desktop 64px unchanged
+
+  --line-height-base: 1.6;
+  --line-height-tight: 1.15;
+  --line-height-relaxed: 1.8;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  // Letter spacing — tight for headings (editorial feel)
+  --letter-spacing-heading: -0.03em;
+  --letter-spacing-body: 0em;
+  --letter-spacing-eyebrow: 0.12em;
+
+  // Spacing — generous whitespace per reference (rem, 1rem = 10px)
+  --spacing-xs: 0.4rem;
+  --spacing-sm: 0.8rem;
+  --spacing-md: 1.6rem;
+  --spacing-lg: 2.4rem;
+  --spacing-xl: 4.0rem;
+  --spacing-2xl: 6.4rem;
+  --spacing-3xl: 9.6rem;
+  --spacing-4xl: 12.8rem;
+
+  // Shadows — subtle per reference (barely-there)
+  --shadow-sm: 0 0.1rem 0.3rem 0 rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 0.3rem 0.9rem rgba(0, 0, 0, 0.02);
+  --shadow-lg: 0 0.8rem 2.0rem rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 1.5rem 4.0rem rgba(0, 0, 0, 0.06);
+
+  // Tinted surfaces
+  --color-primary-subtle: rgba(30, 61, 79, 0.06);
+  --color-error-subtle: rgba(214, 51, 1, 0.08);
+  --color-warning-subtle: rgba(255, 193, 7, 0.1);
+  --color-info-subtle: rgba(13, 202, 240, 0.1);
+  --color-success-subtle: rgba(25, 135, 84, 0.1);
+
+  // Semantic color variants
+  --color-error-dark: #b82a00;
+  --color-warning-text: #d97706;
+
+  // Order status palette
+  --color-status-pending-bg: rgba(245, 158, 11, 0.1);
+  --color-status-pending: #d97706;
+  --color-status-processing-bg: rgba(59, 130, 246, 0.1);
+  --color-status-processing: #2563eb;
+  --color-status-shipped-bg: rgba(168, 85, 247, 0.1);
+  --color-status-shipped: #9333ea;
+  --color-status-delivered-bg: rgba(16, 185, 129, 0.1);
+  --color-status-delivered: #059669;
+  --color-status-cancelled-bg: var(--color-error-subtle);
+  --color-status-cancelled: var(--color-error);
+
+  // Absolute values
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  // Cart badge
+  --color-cart-badge: #FF8614;
+
+  // Star rating
+  --color-star-rating: #f5a623;
+
+  // Focus color
+  --color-focus: #1E3D4F;
+
+  // Focus rings
+  --color-primary-focus-ring: rgba(30, 61, 79, 0.2);
+  --color-error-focus-ring: rgba(214, 51, 1, 0.2);
+
+  // Transitions — smooth, slightly slower (editorial feel)
+  --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 600ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  // Z-index
+  --z-dropdown: 1000;
+  --z-sticky: 1020;
+  --z-fixed: 1030;
+  --z-modal-backdrop: 1040;
+  --z-modal: 1050;
+  --z-popover: 1060;
+  --z-tooltip: 1070;
+
+  // Header / Navigation — clean white bar, subtle shadow
+  --header-bg-color: #FFFFFF;
+  --header-text-color: #222222;
+  --nav-bg-color: #FFFFFF;
+  --nav-link-color: #222222;
+  --nav-link-hover-color: #1E3D4F;
+  // Base accent-bar colour follows the palette accent. This used to be
+  // `transparent`, and since --accent-bar-color is only overridden by a layout
+  // *palette* (all built-in layouts ship `palette: null`), a header with
+  // `showAccentBar: true` rendered an invisible bar. Palettes still override.
+  --accent-bar-color: var(--color-accent);
+  --accent-bar-height: 0;
+
+  // Footer — rounded card, light type on a dark surface.
+  //
+  // Derived from the palette, NOT a fixed colour. This used to be a literal
+  // #1B8AB7 (the design reference's teal), which every tenant inherited no
+  // matter what palette they configured — and because the var was always
+  // defined, Footer.vue's palette-aware fallback could never fire. It is also
+  // the value that put white footer text at ~3.2:1, below the 4.5:1 AA floor.
+  //
+  // --color-dark-bg IS the palette's "dark surface" role (theme setting
+  // `darkBgColor`), so tenants get their own dark tone and white type clears AA.
+  --footer-bg-color: var(--color-dark-bg, #1a1a1a);
+  --footer-text-color: var(--color-dark-text, #FFFFFF);
+  // Links sit on the same dark surface as the rest of the footer, so they take
+  // the same ink by default. Without this the grid footer's nav links fell back
+  // to a literal near-black (#0C1920) that Footer.vue carried inline — 1.54:1
+  // on a #123A63 surface, effectively invisible. Same failure shape as the
+  // teal above: a var that is never defined makes the hardcoded fallback the
+  // real value, so the fallback has to be the one that is correct.
+  --footer-link-color: var(--footer-text-color, #FFFFFF);
+
+  // Layout — slightly wider for editorial breathing room
+  --container-max-width: 128rem; // 1280px
+
+  // ==========================================================================
+  // UI Primitive Tokens
+  // --------------------------------------------------------------------------
+  // Insulation layer between author-editable theme tokens and UI primitives
+  // (Button, Input, Modal, Tabs, etc). Defaults pass through theme tokens so
+  // existing behavior is unchanged. To deviate UI styling from brand, override
+  // --ui-* without touching --color-* / --font-* / --spacing-*.
+  // ==========================================================================
+
+  // Color
+  --ui-color-primary: var(--color-primary, #1E3D4F);
+  --ui-color-primary-hover: var(--color-primary-light, #2a5268);
+  --ui-color-primary-focus-ring: var(--color-primary-focus-ring, rgba(30, 61, 79, 0.2));
+  --ui-color-secondary: var(--color-secondary, #222222);
+  --ui-color-text: var(--color-text, #222222);
+  --ui-color-text-muted: var(--color-text-light, #A6A6A6);
+  --ui-color-text-faint: var(--color-text-lighter, #CCCCCC);
+  --ui-color-bg: var(--color-background, #FFFFFF);
+  --ui-color-bg-subtle: var(--color-background-light, #F7F7F7);
+  --ui-color-border: var(--border-color, #E8E8E8);
+  --ui-color-border-input: var(--border-color-input, #CCCCCC);
+  --ui-color-error: var(--color-error, #D63301);
+  --ui-color-error-dark: var(--color-error-dark, #b82a00);
+  --ui-color-error-subtle: var(--color-error-subtle, rgba(214, 51, 1, 0.08));
+  --ui-color-error-focus-ring: var(--color-error-focus-ring, rgba(214, 51, 1, 0.2));
+  --ui-color-warning: var(--color-warning, #ffc107);
+  --ui-color-warning-subtle: var(--color-warning-subtle, rgba(255, 193, 7, 0.1));
+  --ui-color-success: var(--color-success, #198754);
+  --ui-color-success-subtle: var(--color-success-subtle, rgba(25, 135, 84, 0.1));
+  --ui-color-info: var(--color-info, #0dcaf0);
+  --ui-color-info-subtle: var(--color-info-subtle, rgba(13, 202, 240, 0.1));
+
+  // Spacing
+  --ui-spacing-xs: var(--spacing-xs, 0.4rem);
+  --ui-spacing-sm: var(--spacing-sm, 0.8rem);
+  --ui-spacing-md: var(--spacing-md, 1.6rem);
+  --ui-spacing-lg: var(--spacing-lg, 2.4rem);
+  --ui-spacing-xl: var(--spacing-xl, 4.0rem);
+  --ui-spacing-2xl: var(--spacing-2xl, 6.4rem);
+
+  // Radius
+  --ui-radius: var(--border-radius, 0.4rem);
+  --ui-radius-lg: var(--border-radius-lg, 0.8rem);
+  --ui-radius-xl: var(--border-radius-xl, 1.2rem);
+
+  // Typography — independent of author preset cascade
+  --ui-font-size-sm: var(--font-size-sm, 1.2rem);
+  --ui-font-size-base: var(--font-size-base, 1.8rem);
+  --ui-font-size-lg: var(--font-size-lg, 2.2rem);
+  --ui-font-weight-normal: var(--font-weight-normal, 400);
+  --ui-font-weight-medium: var(--font-weight-medium, 500);
+  --ui-font-weight-semibold: var(--font-weight-semibold, 600);
+  --ui-font-weight-bold: var(--font-weight-bold, 700);
+  --ui-line-height-base: var(--line-height-base, 1.6);
+  --ui-line-height-relaxed: var(--line-height-relaxed, 1.8);
+
+  // Shadow
+  --ui-shadow-lg: var(--shadow-lg, 0 0.8rem 2.0rem rgba(0, 0, 0, 0.04));
+  --ui-shadow-xl: var(--shadow-xl, 0 1.5rem 4.0rem rgba(0, 0, 0, 0.06));
+
+  // Motion
+  --ui-transition-fast: var(--transition-fast, 200ms cubic-bezier(0.4, 0, 0.2, 1));
+  --ui-transition-base: var(--transition-base, 400ms cubic-bezier(0.4, 0, 0.2, 1));
+
+  // Z-index
+  --ui-z-modal-backdrop: var(--z-modal-backdrop, 1040);
+  --ui-z-modal: var(--z-modal, 1050);
+  --ui-z-tooltip: var(--z-tooltip, 1070);
+}
+
+// ============================================================================
+// Reduced Motion
+// ============================================================================
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+    --transition-base: 0ms;
+    --transition-slow: 0ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// ============================================================================
+// Responsive Breakpoints Mixin — values come from the canonical scale
+// ($bp-sm/md/lg/xl = 640/768/1024/1280, injected by nuxt.config.ts and
+// mirrored in shared/features/cms/composition/responsive.ts). Never hardcode
+// a pixel breakpoint; use these mixins or the $bp-* vars directly (CSS-20).
+// ============================================================================
+
+@mixin mobile {
+  @media (min-width: 0px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $bp-sm) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $bp-md) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (min-width: $bp-lg) {
+    @content;
+  }
+}
+
+@mixin xlarge {
+  @media (min-width: $bp-xl) {
+    @content;
+  }
+}
+
+// ============================================================================
+// Reset and Base Styles — scoped to [data-theme="standalone"]
+// to prevent CSS bleeding in multi-theme builds
+// ============================================================================
+
+[data-theme="standalone"] {
+  // Reset
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  // Body defaults — typography role cascade with literal/static-var fallback.
+  // Order: role var (set by typography presets when bound) → legacy CSS var
+  // (defined in :root above for unbound contexts: admin, preview loading,
+  // sites without preset coverage).
+  font-family: var(--rt-role-body-family, var(--font-family));
+  color: var(--color-text);
+  background-color: var(--color-background);
+  line-height: var(--rt-role-body-line-height, var(--line-height-base));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  // Heading FACE defaults stay global — block-owned headings (grid cards,
+  // section headings, hero) depend on the family/weight/line-height/tracking
+  // via inheritance. The size ladder + margin-bottom are CONTENT typography
+  // and moved to the .prose contract below, so blocks no longer fight a global
+  // size ladder (CSS-10). The nested `a` (heading links inherit color) stays.
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--rt-role-heading1-family, var(--font-family-heading));
+    font-weight: var(--font-weight-semibold);
+    line-height: var(--rt-role-heading1-line-height, var(--line-height-tight));
+    letter-spacing: var(--letter-spacing-heading);
+    // Balance heading line lengths so the last line is never a lone short word.
+    // Browsers cap balancing to a small line count and ignore it where unsupported — pure progressive polish.
+    text-wrap: balance;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  // Form Elements
+  input,
+  textarea,
+  select {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    border: 0.1rem solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+
+    &:focus-visible {
+      outline: 0.2rem solid var(--color-primary);
+      outline-offset: 0.1rem;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 0.3rem rgba(16, 138, 0, 0.1);
+    }
+
+    &:disabled {
+      background-color: var(--color-background-light);
+      color: var(--color-text-lighter);
+      cursor: not-allowed;
+    }
+  }
+
+  button {
+    font-family: var(--font-family);
+    cursor: pointer;
+    border: none;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  // ── Rich-text (.prose) contract ────────────────────────────────────────
+  // Content typography for AUTHORED rich text ONLY (p rhythm, link colors,
+  // list indent, tables, heading size ladder + margin). Previously these were
+  // bare element selectors under [data-theme] that cascaded into EVERY block's
+  // internals, forcing ~10 blocks to carry `:deep(p)` / `:deep(a)` counter-
+  // resets. Now gated behind a `.prose` container applied at each rich-text
+  // v-html surface. `:where(.prose)` keeps the specificity at (0,1,1) — the
+  // SAME weight the old bare-element globals had — so these defaults still beat
+  // the `* { margin: 0 }` reset yet a block's own `:deep(p)` / `:deep(a)`
+  // (0,2,1) keeps winning cleanly instead of tying (CSS-10).
+  //
+  // Intentionally NOT in .prose (kept global above, element-intrinsic — NOT
+  // content typography): body font, heading FACE, input/textarea/select,
+  // button. Narrowing those would silently break ContactForm / SearchBar /
+  // QuantitySelector and block-owned headings.
+  :where(.prose) {
+    h1, h2, h3, h4, h5, h6 { margin-bottom: var(--spacing-md); }
+    h1 { font-size: var(--rt-role-heading1-size, var(--font-size-4xl)); }
+    h2 { font-size: var(--rt-role-heading2-size, var(--font-size-3xl)); }
+    h3 { font-size: var(--rt-role-heading3-size, var(--font-size-2xl)); }
+    h4 { font-size: var(--rt-role-heading4-size, var(--font-size-xl)); }
+    h5, h6 { font-size: var(--font-size-lg); }
+
+    p {
+      // Avoid orphans/rivers in authored body prose (ignored where unsupported).
+      text-wrap: pretty;
+      margin-bottom: var(--spacing-md);
+      &:last-child { margin-bottom: 0; }
+    }
+
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
+      transition: color var(--transition-fast);
+
+      &:hover {
+        color: var(--color-primary-light);
+        text-decoration: underline;
+      }
+
+      &:active {
+        color: var(--color-secondary);
+      }
+    }
+
+    // Lists
+    ul, ol {
+      padding-left: var(--spacing-xl);
+      margin-bottom: var(--spacing-md);
+
+      li { margin-bottom: var(--spacing-sm); }
+    }
+
+    // Tables
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: var(--spacing-lg);
+      // Wide authored tables (multi-column rosters) scroll horizontally
+      // instead of blowing out the text measure on narrow viewports.
+      display: block;
+      overflow-x: auto;
+
+      thead { background-color: var(--color-background-light); }
+
+      th {
+        padding: var(--spacing-md);
+        text-align: left;
+        font-weight: var(--font-weight-semibold);
+        border-bottom: 2px solid var(--border-color);
+      }
+
+      td {
+        padding: var(--spacing-md);
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      tr:hover { background-color: var(--color-background-lighter); }
+    }
+  }
+} // end [data-theme="standalone"]
+
+// ============================================================================
+// Utility Classes — scoped to [data-theme="standalone"]
+// ============================================================================
+
+[data-theme="standalone"] {
+
+// Display
+.d-none {
+  display: none;
+}
+
+.d-inline {
+  display: inline;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.d-grid {
+  display: grid;
+}
+
+// Flex Utilities
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.items-stretch {
+  align-items: stretch;
+}
+
+.gap-xs {
+  gap: var(--spacing-xs);
+}
+
+.gap-sm {
+  gap: var(--spacing-sm);
+}
+
+.gap-md {
+  gap: var(--spacing-md);
+}
+
+.gap-lg {
+  gap: var(--spacing-lg);
+}
+
+.gap-xl {
+  gap: var(--spacing-xl);
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.flex-auto {
+  flex: 1 1 auto;
+}
+
+// Text Alignment
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+// Text Utilities
+.font-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.text-sm {
+  font-size: var(--font-size-sm);
+}
+
+.text-base {
+  font-size: var(--font-size-base);
+}
+
+.text-lg {
+  font-size: var(--font-size-lg);
+}
+
+.text-xl {
+  font-size: var(--font-size-xl);
+}
+
+.text-2xl {
+  font-size: var(--font-size-2xl);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.text-success {
+  color: var(--color-success);
+}
+
+.text-error {
+  color: var(--color-error);
+}
+
+.text-warning {
+  color: var(--color-warning);
+}
+
+.text-info {
+  color: var(--color-info);
+}
+
+.text-muted {
+  color: var(--color-text-lighter);
+}
+
+// Background Colors
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+.bg-success {
+  background-color: var(--color-success);
+}
+
+.bg-error {
+  background-color: var(--color-error);
+}
+
+.bg-warning {
+  background-color: var(--color-warning);
+}
+
+.bg-info {
+  background-color: var(--color-info);
+}
+
+.bg-light {
+  background-color: var(--color-background-light);
+}
+
+.bg-lighter {
+  background-color: var(--color-background-lighter);
+}
+
+// Spacing - Margin
+.m-0 { margin: 0; }
+.m-xs { margin: var(--spacing-xs); }
+.m-sm { margin: var(--spacing-sm); }
+.m-md { margin: var(--spacing-md); }
+.m-lg { margin: var(--spacing-lg); }
+.m-xl { margin: var(--spacing-xl); }
+.m-2xl { margin: var(--spacing-2xl); }
+.m-3xl { margin: var(--spacing-3xl); }
+
+.mt-0 { margin-top: 0; }
+.mt-xs { margin-top: var(--spacing-xs); }
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mt-xl { margin-top: var(--spacing-xl); }
+.mt-2xl { margin-top: var(--spacing-2xl); }
+.mt-3xl { margin-top: var(--spacing-3xl); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-xs { margin-bottom: var(--spacing-xs); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+.mb-xl { margin-bottom: var(--spacing-xl); }
+.mb-2xl { margin-bottom: var(--spacing-2xl); }
+.mb-3xl { margin-bottom: var(--spacing-3xl); }
+
+// Bootstrap 5 logical properties — ms-* (start) and me-* (end) instead of ml-*/mr-*
+.ms-0 { margin-inline-start: 0; }
+.ms-xs { margin-inline-start: var(--spacing-xs); }
+.ms-sm { margin-inline-start: var(--spacing-sm); }
+.ms-md { margin-inline-start: var(--spacing-md); }
+.ms-lg { margin-inline-start: var(--spacing-lg); }
+.ms-xl { margin-inline-start: var(--spacing-xl); }
+.ms-2xl { margin-inline-start: var(--spacing-2xl); }
+.ms-3xl { margin-inline-start: var(--spacing-3xl); }
+
+.me-0 { margin-inline-end: 0; }
+.me-xs { margin-inline-end: var(--spacing-xs); }
+.me-sm { margin-inline-end: var(--spacing-sm); }
+.me-md { margin-inline-end: var(--spacing-md); }
+.me-lg { margin-inline-end: var(--spacing-lg); }
+.me-xl { margin-inline-end: var(--spacing-xl); }
+.me-2xl { margin-inline-end: var(--spacing-2xl); }
+.me-3xl { margin-inline-end: var(--spacing-3xl); }
+
+// Spacing - Padding
+.p-0 { padding: 0; }
+.p-xs { padding: var(--spacing-xs); }
+.p-sm { padding: var(--spacing-sm); }
+.p-md { padding: var(--spacing-md); }
+.p-lg { padding: var(--spacing-lg); }
+.p-xl { padding: var(--spacing-xl); }
+.p-2xl { padding: var(--spacing-2xl); }
+.p-3xl { padding: var(--spacing-3xl); }
+
+.pt-0 { padding-top: 0; }
+.pt-xs { padding-top: var(--spacing-xs); }
+.pt-sm { padding-top: var(--spacing-sm); }
+.pt-md { padding-top: var(--spacing-md); }
+.pt-lg { padding-top: var(--spacing-lg); }
+.pt-xl { padding-top: var(--spacing-xl); }
+.pt-2xl { padding-top: var(--spacing-2xl); }
+.pt-3xl { padding-top: var(--spacing-3xl); }
+
+.pb-0 { padding-bottom: 0; }
+.pb-xs { padding-bottom: var(--spacing-xs); }
+.pb-sm { padding-bottom: var(--spacing-sm); }
+.pb-md { padding-bottom: var(--spacing-md); }
+.pb-lg { padding-bottom: var(--spacing-lg); }
+.pb-xl { padding-bottom: var(--spacing-xl); }
+.pb-2xl { padding-bottom: var(--spacing-2xl); }
+.pb-3xl { padding-bottom: var(--spacing-3xl); }
+
+// Bootstrap 5 logical properties — ps-* and pe-* instead of pl-*/pr-*
+.ps-0 { padding-inline-start: 0; }
+.ps-xs { padding-inline-start: var(--spacing-xs); }
+.ps-sm { padding-inline-start: var(--spacing-sm); }
+.ps-md { padding-inline-start: var(--spacing-md); }
+.ps-lg { padding-inline-start: var(--spacing-lg); }
+.ps-xl { padding-inline-start: var(--spacing-xl); }
+.ps-2xl { padding-inline-start: var(--spacing-2xl); }
+.ps-3xl { padding-inline-start: var(--spacing-3xl); }
+
+.pe-0 { padding-inline-end: 0; }
+.pe-xs { padding-inline-end: var(--spacing-xs); }
+.pe-sm { padding-inline-end: var(--spacing-sm); }
+.pe-md { padding-inline-end: var(--spacing-md); }
+.pe-lg { padding-inline-end: var(--spacing-lg); }
+.pe-xl { padding-inline-end: var(--spacing-xl); }
+.pe-2xl { padding-inline-end: var(--spacing-2xl); }
+.pe-3xl { padding-inline-end: var(--spacing-3xl); }
+
+// Responsive Utilities
+@include tablet {
+  .tablet\:d-none { display: none; }
+  .tablet\:d-block { display: block; }
+  .tablet\:d-flex { display: flex; }
+  .tablet\:flex-row { flex-direction: row; }
+  .tablet\:flex-column { flex-direction: column; }
+}
+
+@include desktop {
+  .desktop\:d-none { display: none; }
+  .desktop\:d-block { display: block; }
+  .desktop\:d-flex { display: flex; }
+  .desktop\:flex-row { flex-direction: row; }
+  .desktop\:flex-column { flex-direction: column; }
+}
+
+@include large {
+  .large\:d-none { display: none; }
+  .large\:d-block { display: block; }
+  .large\:d-flex { display: flex; }
+  .large\:flex-row { flex-direction: row; }
+  .large\:flex-column { flex-direction: column; }
+}
+
+@include xlarge {
+  .xlarge\:d-none { display: none; }
+  .xlarge\:d-block { display: block; }
+  .xlarge\:d-flex { display: flex; }
+  .xlarge\:flex-row { flex-direction: row; }
+  .xlarge\:flex-column { flex-direction: column; }
+}
+
+// ============================================================================
+// Component Styles
+// ============================================================================
+
+// Buttons — pill shape per reference (40px border-radius)
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.2rem;
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--border-radius-button);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  letter-spacing: 0;
+  text-transform: none;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.btn-primary {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  border-color: var(--color-text);
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-text);
+    color: var(--color-background);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+  }
+}
+
+.btn-secondary {
+  background-color: var(--color-primary);
+  color: white;
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-primary-light);
+  }
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-text);
+  border-color: var(--color-text);
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-text);
+    color: var(--color-background);
+  }
+}
+
+.btn-sm {
+  padding: 0.6rem 1.2rem;
+  font-size: 1.1rem;
+}
+
+.btn-lg {
+  padding: 1.2rem 2.4rem;
+  font-size: 1.4rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+// Cards
+.card {
+  background-color: var(--color-background);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition-base);
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+}
+
+.card-header {
+  padding: var(--spacing-lg);
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--color-background-light);
+}
+
+.card-body {
+  padding: var(--spacing-lg);
+}
+
+.card-footer {
+  padding: var(--spacing-lg);
+  border-top: 1px solid var(--border-color);
+  background-color: var(--color-background-light);
+}
+
+// Alerts
+.alert {
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  border-left: 4px solid;
+}
+
+.alert-success {
+  background-color: rgba(25, 135, 84, 0.1);
+  color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.alert-error {
+  background-color: rgba(214, 51, 1, 0.1);
+  color: var(--color-error);
+  border-color: var(--color-error);
+}
+
+.alert-warning {
+  background-color: rgba(255, 193, 7, 0.1);
+  color: var(--color-warning);
+  border-color: var(--color-warning);
+}
+
+.alert-info {
+  background-color: rgba(13, 202, 240, 0.1);
+  color: var(--color-info);
+  border-color: var(--color-info);
+}
+
+// Badge
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--border-radius);
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.badge-secondary {
+  background-color: var(--color-secondary);
+}
+
+.badge-success {
+  background-color: var(--color-success);
+}
+
+.badge-error {
+  background-color: var(--color-error);
+}
+
+.badge-warning {
+  background-color: var(--color-warning);
+}
+
+// Container
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: var(--spacing-lg);
+  padding-right: var(--spacing-lg);
+
+  @include tablet {
+    max-width: 540px;
+  }
+
+  @include desktop {
+    max-width: 720px;
+  }
+
+  @include large {
+    max-width: 960px;
+  }
+
+  @include xlarge {
+    max-width: 1140px;
+  }
+}
+
+// Grid
+.grid {
+  display: grid;
+  gap: var(--spacing-lg);
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include large {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// ============================================================================
+// Utility Helpers
+// ============================================================================
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.max-w-full {
+  max-width: 100%;
+}
+
+.max-h-full {
+  max-height: 100%;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-50 {
+  opacity: 0.5;
+}
+
+.opacity-100 {
+  opacity: 1;
+}
+
+.rounded {
+  border-radius: var(--border-radius);
+}
+
+.rounded-lg {
+  border-radius: var(--border-radius-lg);
+}
+
+.rounded-xl {
+  border-radius: var(--border-radius-xl);
+}
+
+.shadow {
+  box-shadow: var(--shadow-md);
+}
+
+.shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+.shadow-xl {
+  box-shadow: var(--shadow-xl);
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+.pointer-events-auto {
+  pointer-events: auto;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.sticky {
+  position: sticky;
+}
+
+.top-0 {
+  top: 0;
+}
+
+.right-0 {
+  right: 0;
+}
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.left-0 {
+  left: 0;
+}
+
+// ============================================================================
+// Hero Panel Inset — editorial floating-panel layout
+// ============================================================================
+// In flat-render mode (no SectionRenderer), blocks land directly in
+// #main-content as .block-placement children. The hero is always first.
+// Setting the CSS custom properties here cascades into HeroBanner.vue's
+// margin-inline + margin-top rules without touching shared/ code.
+
+#main-content > .block-placement:first-child {
+  // Feed the floating-panel tokens into the hero-banner margin vars.
+  // 6vw ≈ 86px @ 1440px — matches design reference whitespace.
+  --hero-panel-inset-x: 6vw;
+  // 4rem (40px) top clearance below the header.
+  --hero-panel-top: 4rem;
+}
+
+// ============================================================================
+// Block-Specific Utilities
+// ============================================================================
+
+// Eyebrow text — small editorial label above headings.
+// Consumes the typography slot/role cascade so block authors can override
+// the eyebrow preset per-instance, with role-default fallback, and
+// literal fallbacks for sites without typography presets defined.
+.block-eyebrow {
+  display: block;
+  font-family: var(--rt-slot-eyebrow-family, var(--rt-role-eyebrow-family, var(--font-family)));
+  font-size: var(--rt-slot-eyebrow-size, var(--rt-role-eyebrow-size, 13px));
+  font-weight: var(--rt-slot-eyebrow-weight, var(--rt-role-eyebrow-weight, inherit));
+  line-height: var(--rt-slot-eyebrow-line-height, var(--rt-role-eyebrow-line-height, 1.4));
+  letter-spacing: var(--rt-slot-eyebrow-letter-spacing, var(--rt-role-eyebrow-letter-spacing, 1px));
+  text-transform: var(--rt-slot-eyebrow-text-transform, var(--rt-role-eyebrow-text-transform, uppercase));
+  color: var(--rt-slot-eyebrow-color, var(--rt-role-eyebrow-color, var(--section-text-muted, inherit)));
+  margin-bottom: var(--spacing-sm);
+}
+
+} // end [data-theme="standalone"] utility classes
+
+// ============================================================================
+// PRINT / SAVE-AS-PDF LAYER
+// ============================================================================
+// Turns any public page into a clean, ink-friendly document when printed or
+// exported to PDF (Ctrl/Cmd-P). Architecture studios routinely share printed
+// project sheets and team pages, but an SPA built for scroll, motion and
+// full-bleed hero imagery prints poorly by default: fixed chrome repeats on
+// every sheet, 100vh heroes blow a whole page, scroll indicators and the
+// custom cursor bleed onto paper, and cards split across page boundaries.
+//
+// This layer is print-media only — it can never affect the on-screen render.
+// It: (1) flattens the page to a static, white-framed document, (2) hides
+// interactive / decorative chrome that is meaningless on paper, (3) keeps the
+// design's photography and coloured section panels true (print-color-adjust),
+// (4) prevents figures, cards and headings from breaking awkwardly across
+// sheets, and (5) appends the destination URL after in-content links so a
+// printout stays navigable.
+@media print {
+
+  // --- Page + document frame ---------------------------------------------
+  @page {
+    margin: 1.5cm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    // Photos and coloured service/CTA panels are the whole point of a studio
+    // portfolio — force browsers to honour them rather than stripping to save
+    // ink. The @page margin already frames the sheet in white.
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  // The theme root uses a flex column with min-height:100vh to pin the footer.
+  // On paper that forces at least one full blank sheet after short pages.
+  [data-theme="standalone"] {
+    display: block !important;
+    min-height: 0 !important;
+    background: #fff !important;
+  }
+
+  // Un-pin the header so it prints once at the top instead of reprinting on
+  // top of every sheet. (Other fixed/sticky chrome — progress ring, cursor,
+  // intro curtain, marquee, lightbox — is display:none'd below, so a blanket
+  // universal reset that would flatten in-block positioning is not needed.)
+  .header-shell,
+  .header-shell__content {
+    position: static !important;
+  }
+
+  // --- Chrome that has no meaning on paper --------------------------------
+  .header-shell__hamburger,
+  .header-shell__mobile-nav,
+  .header-shell__mobile-menu,
+  .header-shell__mobile-actions,
+  .header-shell__mobile-action-btn,
+  .header-actions-zone,
+  .splash-header__menu-trigger,
+  .splash-header__drawer,
+  .splash-header__drawer-close,
+  .section-nav,
+  .cursor-layer,
+  .intro-reveal,
+  .marquee-block,
+  .lightbox,
+  .horizontal-scroll__progress,
+  [data-chrome-element="progress"],
+  // Floating decorative geometry (hairline rules, accent shapes) reads as stray
+  // marks on paper — drop it. Content-bearing chrome (text/image) is preserved.
+  [data-chrome-element="line"],
+  [data-chrome-element="shape"],
+  [data-motion-suppressed] .scatter-collage__hint {
+    display: none !important;
+  }
+
+  // Keep the masthead (wordmark + tagline) but let it sit inline at the top of
+  // the document instead of floating.
+  .header-shell {
+    box-shadow: none !important;
+    border-bottom: 1px solid #ddd;
+  }
+  .header-shell__bg,
+  .header-shell__accent-bar {
+    background: transparent !important;
+  }
+
+  // --- Hero: compact banner, not a full-page bleed ------------------------
+  // Hero content is position:relative (flows) with absolute media behind it, so
+  // dropping the enforced min-height only shrinks the banner — the headline and
+  // imagery both survive. Media is restored to absolute below.
+  .hero-block,
+  .hero-block__inner {
+    min-height: 0 !important;
+    height: auto !important;
+  }
+  .hero-block__media {
+    position: absolute !important;
+  }
+
+  // --- Break control ------------------------------------------------------
+  h1, h2, h3, h4 {
+    break-after: avoid-page;
+    page-break-after: avoid; // legacy alias for older print engines
+  }
+  figure,
+  img,
+  blockquote,
+  li,
+  .info-card,
+  .filterable-gallery__card,
+  .article-list__item,
+  .project-index__row,
+  .case-study-card,
+  .profile-grid__member {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  // --- Legible ink + navigable links --------------------------------------
+  // Append the destination after real content links (skip nav chips, media
+  // wrappers and in-page anchors, where a trailing URL would be noise).
+  .editorial-text a[href^="http"]::after,
+  .text-section a[href^="http"]::after,
+  .article-list__item a[href^="http"]::after,
+  p a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+    word-break: break-all;
+    color: #555;
+  }
+
+  // Footer stays — it carries the studio's contact details, which is exactly
+  // what a printed sheet should retain — but drop any interactive affordances.
+  .splash-footer {
+    box-shadow: none !important;
+  }
+}

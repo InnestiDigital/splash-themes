@@ -1,0 +1,260 @@
+{
+  "component": "ImageTrail",
+  "type": "image-trail",
+  "label": {
+    "en-US": "Image Trail"
+  },
+  "description": {
+    "en-US": "An ambient hero region where sweeping the cursor spawns a trail of project images that spring in at the pointer and gently decay — an Awwwards-style 'flowing gallery'. The heading, subheading and call-to-action stay legible above the trail. Touch, reduced-motion and the editor fall back to a calm static collage so the works are never lost. Trail images are decorative; the text carries the meaning."
+  },
+  "compatibleSectionRoles": [
+    "hero",
+    "media-gallery",
+    "content"
+  ],
+  "category": "hero",
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "eyebrow",
+      "label": {
+        "en-US": "Eyebrow"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "eyebrow",
+      "defaultPresetKey": "eyebrow",
+      "validation": {
+        "maxLength": 60
+      },
+      "note": "Small kicker above the heading. Leave empty to hide."
+    },
+    {
+      "type": "richtext-single",
+      "id": "heading",
+      "label": {
+        "en-US": "Heading"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "sectionTitle",
+      "defaultPresetKey": "section-title",
+      "validation": {
+        "maxLength": 120
+      }
+    },
+    {
+      "type": "richtext-inline",
+      "id": "subheading",
+      "label": {
+        "en-US": "Subheading"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "lead",
+      "defaultPresetKey": "intro",
+      "note": "Optional supporting line under the heading."
+    },
+    {
+      "type": "text",
+      "id": "ctaLabel",
+      "label": {
+        "en-US": "Button label"
+      },
+      "group": "content",
+      "translatable": true,
+      "note": "Optional. A button appears only when both a label and a link are set."
+    },
+    {
+      "type": "text",
+      "id": "ctaLink",
+      "label": {
+        "en-US": "Button link (URL)"
+      },
+      "group": "content"
+    },
+    {
+      "type": "repeater",
+      "id": "images",
+      "label": {
+        "en-US": "Trail images"
+      },
+      "group": "content",
+      "maxItems": 20,
+      "note": "The pool the trail cycles through as the cursor moves. 6–12 works well.",
+      "fields": [
+        {
+          "type": "media",
+          "id": "media",
+          "label": {
+            "en-US": "Image"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "minHeight",
+      "label": {
+        "en-US": "Section height"
+      },
+      "default": "md",
+      "group": "layout",
+      "options": [
+        { "value": "sm", "label": { "en-US": "Short (40vh)" } },
+        { "value": "md", "label": { "en-US": "Medium (62vh)" } },
+        { "value": "lg", "label": { "en-US": "Tall (80vh)" } },
+        { "value": "screen", "label": { "en-US": "Full screen (100vh)" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "textAlign",
+      "label": {
+        "en-US": "Text alignment"
+      },
+      "default": "center",
+      "group": "layout",
+      "options": [
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "left", "label": { "en-US": "Left" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "imageSize",
+      "label": {
+        "en-US": "Trail image size"
+      },
+      "default": "medium",
+      "group": "layout",
+      "options": [
+        { "value": "small", "label": { "en-US": "Small" } },
+        { "value": "medium", "label": { "en-US": "Medium" } },
+        { "value": "large", "label": { "en-US": "Large" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "imageShape",
+      "label": {
+        "en-US": "Trail image shape"
+      },
+      "default": "landscape",
+      "group": "layout",
+      "options": [
+        { "value": "landscape", "label": { "en-US": "Landscape (4:3)" } },
+        { "value": "portrait", "label": { "en-US": "Portrait (3:4)" } },
+        { "value": "square", "label": { "en-US": "Square (1:1)" } },
+        { "value": "original", "label": { "en-US": "Original" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "spawnDensity",
+      "label": {
+        "en-US": "Trail density"
+      },
+      "default": "normal",
+      "group": "layout",
+      "options": [
+        { "value": "sparse", "label": { "en-US": "Sparse" } },
+        { "value": "normal", "label": { "en-US": "Normal" } },
+        { "value": "dense", "label": { "en-US": "Dense" } }
+      ],
+      "note": "How closely images spawn as the cursor travels."
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Border Radius"
+      },
+      "options": [
+        "none",
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "lg",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "layout", "label": { "en-US": "Layout" } },
+    { "id": "appearance", "label": { "en-US": "Appearance" } }
+  ],
+  "presets": [
+    {
+      "name": { "en-US": "Studio works trail" },
+      "settings": {
+        "eyebrow": { "en-US": "Featured stories", "it": "Storie in evidenza" },
+        "heading": { "en-US": "Explore the collection", "it": "Esplora la raccolta" },
+        "subheading": { "en-US": "Move across the canvas to discover each story.", "it": "Muovi il cursore sulla composizione per scoprire ogni storia." },
+        "ctaLabel": { "en-US": "See all projects", "it": "Tutti i progetti" },
+        "ctaLink": "/stories",
+        "images": [
+          { "media": "" },
+          { "media": "" },
+          { "media": "" },
+          { "media": "" }
+        ],
+        "minHeight": "lg",
+        "textAlign": "center",
+        "imageSize": "medium",
+        "imageShape": "landscape",
+        "spawnDensity": "normal",
+        "borderRadius": "none",
+        "internalPadding": "lg"
+      },
+      "description": {
+        "en-US": "A full-bleed hero: the studio's projects trail the cursor while the title and a link to the full portfolio stay crisp on top."
+      },
+      "category": "hero",
+      "isDefault": true
+    }
+  ],
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Image trail hero region"
+    },
+    "content": {
+      "selector": "[data-target='content']",
+      "description": "Heading / subheading / CTA block",
+      "animatable": ["opacity", "translate"],
+      "canTrigger": false,
+      "kind": "content"
+    },
+    "trail": {
+      "selector": "[data-target='trail']",
+      "description": "Static fallback collage layer",
+      "animatable": ["opacity"],
+      "canTrigger": false,
+      "kind": "media"
+    }
+  },
+  "motionSupport": {
+    "levels": ["local"],
+    "excluded": []
+  }
+}

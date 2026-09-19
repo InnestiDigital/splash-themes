@@ -1,0 +1,296 @@
+{
+  "component": "ProcessSteps",
+  "type": "process-steps",
+  "label": {
+    "en-US": "Process Steps"
+  },
+  "category": "content",
+  "description": {
+    "en-US": "An editorial 'how we work' / method band — oversized ghost ordinals (01, 02, 03) with a kicker, title and description per step, tied together by a hairline rule. Horizontal band or stacked list; staggers into view on scroll, reduced-motion safe. Semantic accent colour, no per-block hex. Steps can optionally carry an image, turning the method band into an illustrated walkthrough."
+  },
+  "compatibleSectionRoles": [
+    "content",
+    "supporting-text"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": { "en-US": "Section Title (optional)" },
+      "group": "content",
+      "translatable": true
+    },
+    {
+      "type": "repeater",
+      "id": "steps",
+      "label": { "en-US": "Steps" },
+      "group": "content",
+      "maxItems": 8,
+      "fields": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": { "en-US": "Kicker (small label above title)" },
+          "translatable": true
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": { "en-US": "Step Title" },
+          "translatable": true
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": { "en-US": "Description" },
+          "translatable": true
+        },
+        {
+          "type": "image",
+          "id": "image",
+          "label": { "en-US": "Image (optional)" }
+        },
+        {
+          "type": "text",
+          "id": "imageAlt",
+          "label": { "en-US": "Image alt text" },
+          "translatable": true
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": { "en-US": "Layout" },
+      "default": "band",
+      "group": "layout",
+      "note": "Band = horizontal columns that fold to fewer as space shrinks. Stack = single column with the numeral beside each step. Spine = a connected vertical timeline whose accent line fills as you scroll.",
+      "options": [
+        { "value": "band", "label": { "en-US": "Horizontal band" } },
+        { "value": "stack", "label": { "en-US": "Stacked list" } },
+        { "value": "spine", "label": { "en-US": "Vertical spine (scroll-fill timeline)" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": { "en-US": "Alignment (band only)" },
+      "default": "left",
+      "group": "layout",
+      "options": [
+        { "value": "left", "label": { "en-US": "Left" } },
+        { "value": "center", "label": { "en-US": "Center" } }
+      ]
+    },
+    {
+      "id": "measureWidth",
+      "type": "select",
+      "label": { "en-US": "Content Width" },
+      "default": "wide",
+      "canvasDefault": "full",
+      "group": "layout",
+      "options": [
+        { "value": "content", "label": { "en-US": "Reading (65ch)" } },
+        { "value": "narrow", "label": { "en-US": "Narrow (45rem)" } },
+        { "value": "standard", "label": { "en-US": "Standard (65rem)" } },
+        { "value": "wide", "label": { "en-US": "Wide (80rem)" } },
+        { "value": "full", "label": { "en-US": "Full" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "mediaRatio",
+      "label": { "en-US": "Image Shape" },
+      "default": "landscape",
+      "group": "layout",
+      "note": "Aspect ratio for per-step images (only affects steps that have an image).",
+      "options": [
+        { "value": "landscape", "label": { "en-US": "Landscape (4:3)" } },
+        { "value": "square", "label": { "en-US": "Square (1:1)" } },
+        { "value": "portrait", "label": { "en-US": "Portrait (3:4)" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "numberFormat",
+      "label": { "en-US": "Number Format" },
+      "default": "padded",
+      "group": "style",
+      "options": [
+        { "value": "padded", "label": { "en-US": "Padded (01, 02, 03)" } },
+        { "value": "plain", "label": { "en-US": "Plain (1, 2, 3)" } },
+        { "value": "none", "label": { "en-US": "No numbers" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "numberStyle",
+      "label": { "en-US": "Number Weight" },
+      "default": "ghost",
+      "group": "style",
+      "options": [
+        { "value": "ghost", "label": { "en-US": "Ghost (faint accent)" } },
+        { "value": "solid", "label": { "en-US": "Solid (full accent)" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "accentRole",
+      "label": { "en-US": "Accent Colour" },
+      "default": "accent",
+      "group": "style",
+      "note": "Uses the theme's semantic colour roles — no per-block hex.",
+      "options": [
+        { "value": "accent", "label": { "en-US": "Accent" } },
+        { "value": "primary", "label": { "en-US": "Primary" } },
+        { "value": "heading", "label": { "en-US": "Heading colour" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "connector",
+      "label": { "en-US": "Step Divider" },
+      "default": "rule",
+      "group": "style",
+      "options": [
+        { "value": "rule", "label": { "en-US": "Hairline rule above each step" } },
+        { "value": "none", "label": { "en-US": "None" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "reveal",
+      "label": { "en-US": "Scroll Reveal" },
+      "default": "on",
+      "group": "motion",
+      "note": "Staggers each step into view as the band is scrolled to. Always off under reduced-motion.",
+      "options": [
+        { "value": "on", "label": { "en-US": "On" } },
+        { "value": "off", "label": { "en-US": "Off" } }
+      ]
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "layout", "label": { "en-US": "Layout" } },
+    { "id": "style", "label": { "en-US": "Style" } },
+    { "id": "motion", "label": { "en-US": "Motion" } }
+  ],
+  "presets": [
+    {
+      "name": { "en-US": "How We Work" },
+      "settings": {
+        "layout": "band",
+        "numberFormat": "padded",
+        "numberStyle": "ghost",
+        "accentRole": "accent",
+        "connector": "rule",
+        "align": "left",
+        "measureWidth": "wide",
+        "title": { "en-US": "How we work", "it": "Come lavoriamo" },
+        "steps": [
+          {
+            "label": { "en-US": "Listen", "it": "Ascolto" },
+            "title": { "en-US": "Brief & site reading", "it": "Brief e lettura del luogo" },
+            "description": { "en-US": "We start from the place and the people who will live it — constraints, light, history.", "it": "Partiamo dal luogo e da chi lo vivrà — vincoli, luce, storia." }
+          },
+          {
+            "label": { "en-US": "Design", "it": "Progetto" },
+            "title": { "en-US": "Concept & drawings", "it": "Concept e disegni" },
+            "description": { "en-US": "A clear idea, tested through models and drawings until the plan holds together.", "it": "Un'idea chiara, verificata con modelli e disegni finché il progetto tiene." }
+          },
+          {
+            "label": { "en-US": "Build", "it": "Cantiere" },
+            "title": { "en-US": "Delivery on site", "it": "Realizzazione in cantiere" },
+            "description": { "en-US": "We follow the work through to handover, protecting the intent at every detail.", "it": "Seguiamo il lavoro fino alla consegna, difendendo l'intento in ogni dettaglio." }
+          }
+        ]
+      },
+      "description": {
+        "en-US": "Three-step method band with big ghost numerals — a studio 'how we work' section."
+      },
+      "category": "content",
+      "isDefault": true
+    },
+    {
+      "name": { "en-US": "Method (stacked)" },
+      "settings": {
+        "layout": "stack",
+        "numberFormat": "padded",
+        "numberStyle": "solid",
+        "accentRole": "primary",
+        "connector": "rule",
+        "align": "left",
+        "measureWidth": "standard",
+        "steps": [
+          {
+            "title": { "en-US": "Consult", "it": "Consulenza" },
+            "description": { "en-US": "An honest first read of what is possible and what it will take." }
+          },
+          {
+            "title": { "en-US": "Develop", "it": "Sviluppo" },
+            "description": { "en-US": "Design developed in the open, decision by decision." }
+          },
+          {
+            "title": { "en-US": "Deliver", "it": "Consegna" },
+            "description": { "en-US": "Built, checked, handed over — and stood behind." }
+          }
+        ]
+      },
+      "description": {
+        "en-US": "Vertical method list — solid numerals beside each step for a compact column."
+      },
+      "category": "content"
+    },
+    {
+      "name": { "en-US": "Illustrated method" },
+      "settings": {
+        "layout": "band",
+        "numberFormat": "padded",
+        "numberStyle": "ghost",
+        "accentRole": "accent",
+        "connector": "none",
+        "align": "left",
+        "measureWidth": "full",
+        "mediaRatio": "landscape",
+        "title": { "en-US": "How we work", "it": "Come lavoriamo" },
+        "steps": [
+          { "label": { "en-US": "Listen", "it": "Ascolto" }, "title": { "en-US": "Brief & site reading", "it": "Brief e lettura del luogo" }, "description": { "en-US": "We start from the place and the people who will live it.", "it": "Partiamo dal luogo e da chi lo vivrà." }, "image": "/images/reference/approach-editorial.jpg", "imageAlt": { "en-US": "Site reading", "it": "Lettura del luogo" } },
+          { "label": { "en-US": "Design", "it": "Progetto" }, "title": { "en-US": "Concept & drawings", "it": "Concept e disegni" }, "description": { "en-US": "A clear idea, tested through models and drawings until the plan holds.", "it": "Un'idea chiara, verificata finché il progetto tiene." }, "image": "/images/reference/gallery-interior-01.jpg", "imageAlt": { "en-US": "Concept drawings", "it": "Disegni di concept" } },
+          { "label": { "en-US": "Build", "it": "Cantiere" }, "title": { "en-US": "Delivery on site", "it": "Realizzazione in cantiere" }, "description": { "en-US": "We follow the work through to handover, protecting the intent.", "it": "Seguiamo il lavoro fino alla consegna." }, "image": "/images/reference/project-corso-vittorio.jpg", "imageAlt": { "en-US": "On site", "it": "In cantiere" } }
+        ]
+      },
+      "description": { "en-US": "Illustrated three-step method — each phase carries a photo above its numeral and copy." },
+      "category": "content"
+    }
+  ],
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Entire process-steps band"
+    },
+    "items": {
+      "kind": "group",
+      "selector": "[data-target='items']",
+      "description": "The list of steps",
+      "multiple": false
+    },
+    "item": {
+      "kind": "group",
+      "selector": "[data-target='item']",
+      "description": "Individual step",
+      "multiple": true,
+      "addressable": true,
+      "animatable": ["opacity", "transform", "blur"],
+      "canTrigger": true
+    }
+  },
+  "motionSupport": {
+    "levels": ["local", "group"],
+    "excluded": []
+  },
+  "motionHints": {
+    "containsDynamicChildren": true
+  }
+}

@@ -1,0 +1,283 @@
+{
+  "component": "StatCounter",
+  "type": "stat-counter",
+  "label": {
+    "en-US": "Stat Counter"
+  },
+  "category": "content",
+  "description": {
+    "en-US": "A band of key metrics that count up when scrolled into view — plain number tween or mechanical rolling-digit odometer. Locale number formatting, reduced-motion safe."
+  },
+  "compatibleSectionRoles": [
+    "content",
+    "supporting-text"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "repeater",
+      "id": "stats",
+      "label": { "en-US": "Stats" },
+      "group": "content",
+      "maxItems": 6,
+      "fields": [
+        {
+          "type": "number",
+          "id": "value",
+          "label": { "en-US": "Value" }
+        },
+        {
+          "type": "number",
+          "id": "max",
+          "label": { "en-US": "Progress max (= 100% fill)" },
+          "note": "Only used by the ring/bar visual. The value that equals a full fill. Default 100."
+        },
+        {
+          "type": "number",
+          "id": "decimals",
+          "label": { "en-US": "Decimal places (0–4)" },
+          "default": 0
+        },
+        {
+          "type": "text",
+          "id": "prefix",
+          "label": { "en-US": "Prefix (e.g. € or +)" }
+        },
+        {
+          "type": "text",
+          "id": "suffix",
+          "label": { "en-US": "Suffix (e.g. %, m², k)" }
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": { "en-US": "Label" },
+          "translatable": true
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "countMode",
+      "label": { "en-US": "Count Style" },
+      "default": "tween",
+      "group": "motion",
+      "options": [
+        { "value": "tween", "label": { "en-US": "Number tween (count up)" } },
+        { "value": "odometer", "label": { "en-US": "Odometer (rolling digits)" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "speed",
+      "label": { "en-US": "Speed" },
+      "default": "normal",
+      "group": "motion",
+      "options": [
+        { "value": "slow", "label": { "en-US": "Slow" } },
+        { "value": "normal", "label": { "en-US": "Normal" } },
+        { "value": "fast", "label": { "en-US": "Fast" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "trigger",
+      "label": { "en-US": "Trigger" },
+      "default": "in-view",
+      "group": "motion",
+      "options": [
+        { "value": "in-view", "label": { "en-US": "When scrolled into view" } },
+        { "value": "immediate", "label": { "en-US": "Immediately on load" } }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "once",
+      "label": { "en-US": "Play Once" },
+      "default": true,
+      "group": "motion",
+      "note": "Off = re-counts every time it re-enters the viewport."
+    },
+    {
+      "type": "select",
+      "id": "groupStyle",
+      "label": { "en-US": "Number Format" },
+      "default": "none",
+      "group": "style",
+      "options": [
+        { "value": "none", "label": { "en-US": "Plain (1250)" } },
+        { "value": "comma", "label": { "en-US": "Comma groups (1,250.5)" } },
+        { "value": "dot", "label": { "en-US": "Dot groups (1.250,5 — it-IT)" } },
+        { "value": "space", "label": { "en-US": "Space groups (1 250,5)" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "visual",
+      "label": { "en-US": "Progress Visual" },
+      "default": "none",
+      "group": "style",
+      "note": "Optional gauge that fills to Value / Progress-max as the number counts up. Best for percentage-style figures. 'Stacked share bar' instead renders all stats as shares of one segmented bar with a legend.",
+      "options": [
+        { "value": "none", "label": { "en-US": "None" } },
+        { "value": "ring", "label": { "en-US": "Radial ring" } },
+        { "value": "bar", "label": { "en-US": "Horizontal bar" } },
+        { "value": "stacked", "label": { "en-US": "Stacked share bar" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "density",
+      "label": { "en-US": "Density" },
+      "default": "comfortable",
+      "group": "style",
+      "note": "Minimum column width; the grid auto-folds to fewer columns as space shrinks.",
+      "options": [
+        { "value": "compact", "label": { "en-US": "Compact" } },
+        { "value": "comfortable", "label": { "en-US": "Comfortable" } },
+        { "value": "wide", "label": { "en-US": "Wide" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": { "en-US": "Alignment" },
+      "default": "left",
+      "group": "style",
+      "options": [
+        { "value": "left", "label": { "en-US": "Left" } },
+        { "value": "center", "label": { "en-US": "Center" } }
+      ]
+    },
+    {
+      "id": "measureWidth",
+      "type": "select",
+      "label": { "en-US": "Content Width" },
+      "default": "wide",
+      "canvasDefault": "full",
+      "group": "style",
+      "options": [
+        { "value": "content", "label": { "en-US": "Reading (65ch)" } },
+        { "value": "narrow", "label": { "en-US": "Narrow (45rem)" } },
+        { "value": "standard", "label": { "en-US": "Standard (65rem)" } },
+        { "value": "wide", "label": { "en-US": "Wide (80rem)" } },
+        { "value": "full", "label": { "en-US": "Full" } }
+      ]
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "motion", "label": { "en-US": "Motion" } },
+    { "id": "style", "label": { "en-US": "Style" } }
+  ],
+  "presets": [
+    {
+      "name": { "en-US": "Studio Numbers" },
+      "settings": {
+        "countMode": "tween",
+        "speed": "normal",
+        "groupStyle": "dot",
+        "density": "comfortable",
+        "align": "left",
+        "measureWidth": "wide",
+        "stats": [
+          { "value": 240, "suffix": "+", "label": { "en-US": "Projects delivered", "it": "Progetti realizzati" } },
+          { "value": 18, "label": { "en-US": "Years practising", "it": "Anni di attività" } },
+          { "value": 95000, "suffix": " m²", "label": { "en-US": "Built & restored", "it": "Costruiti e restaurati" } }
+        ]
+      },
+      "description": {
+        "en-US": "Three headline metrics that count up — studio 'by the numbers' band."
+      },
+      "category": "content",
+      "isDefault": true
+    },
+    {
+      "name": { "en-US": "Odometer Metrics" },
+      "settings": {
+        "countMode": "odometer",
+        "speed": "normal",
+        "groupStyle": "comma",
+        "density": "comfortable",
+        "align": "center",
+        "measureWidth": "standard",
+        "stats": [
+          { "value": 1250, "label": { "en-US": "Tonnes CO₂ saved" } },
+          { "value": 4, "suffix": "★", "label": { "en-US": "Awards won" } },
+          { "value": 99, "suffix": "%", "label": { "en-US": "On-time delivery" } }
+        ]
+      },
+      "description": {
+        "en-US": "Mechanical rolling-digit reels — each figure spins into place like a counter."
+      },
+      "category": "content"
+    },
+    {
+      "name": { "en-US": "Progress Rings" },
+      "settings": {
+        "countMode": "tween",
+        "speed": "normal",
+        "align": "center",
+        "density": "comfortable",
+        "measureWidth": "wide",
+        "visual": "ring",
+        "stats": [
+          { "value": 98, "max": 100, "suffix": "%", "label": { "en-US": "Materials recovered", "it": "Materiale recuperato" } },
+          { "value": 92, "max": 100, "suffix": "%", "label": { "en-US": "Energy efficiency gain", "it": "Efficienza energetica" } },
+          { "value": 100, "max": 100, "suffix": "%", "label": { "en-US": "On-time delivery", "it": "Consegne puntuali" } }
+        ]
+      },
+      "description": {
+        "en-US": "Percentage metrics with a radial ring that draws to Value / Progress-max as the number counts up — recovery, efficiency, reliability figures."
+      },
+      "category": "content"
+    },
+    {
+      "name": { "en-US": "Programme Split" },
+      "settings": {
+        "countMode": "tween",
+        "speed": "normal",
+        "align": "left",
+        "measureWidth": "standard",
+        "visual": "stacked",
+        "stats": [
+          { "value": 60, "suffix": "%", "label": { "en-US": "Residential", "it": "Residenziale" } },
+          { "value": 25, "suffix": "%", "label": { "en-US": "Retail", "it": "Commerciale" } },
+          { "value": 15, "suffix": "%", "label": { "en-US": "Public realm", "it": "Spazio pubblico" } }
+        ]
+      },
+      "description": {
+        "en-US": "A single segmented bar showing how a mixed-use scheme breaks down by programme — each value becomes its share of the whole, with a legend."
+      },
+      "category": "content"
+    }
+  ],
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Entire stat-counter band"
+    },
+    "items": {
+      "kind": "group",
+      "selector": "[data-target='items']",
+      "description": "The grid of stats",
+      "multiple": false
+    },
+    "item": {
+      "kind": "group",
+      "selector": "[data-target='item']",
+      "description": "Individual stat cell",
+      "multiple": true,
+      "addressable": true,
+      "animatable": ["opacity", "transform", "blur"],
+      "canTrigger": true
+    }
+  },
+  "motionSupport": {
+    "levels": ["local", "group"],
+    "excluded": []
+  },
+  "motionHints": {
+    "containsDynamicChildren": true
+  }
+}

@@ -1,0 +1,175 @@
+{
+  "component": "CertificationsGrid",
+  "type": "certifications-grid",
+  "label": {
+    "en-US": "Certifications Grid"
+  },
+  "category": "content",
+  "compatibleSectionRoles": [
+    "content",
+    "supporting-text"
+  ],
+  "description": {
+    "en-US": "3×2 grid of certification tiles with logos column, compliance rows, and 3-column footer. Used for the Certificazioni section."
+  },
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "repeater",
+      "id": "certs",
+      "label": {
+        "en-US": "Certifications"
+      },
+      "group": "content",
+      "maxItems": 6,
+      "fields": [
+        {
+          "type": "text",
+          "id": "prefix",
+          "label": { "en-US": "Prefix / Standard body (e.g. ISO, UNI EN ISO)" }
+        },
+        {
+          "type": "text",
+          "id": "number",
+          "label": { "en-US": "Cert number (e.g. 9001:2015)" }
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": { "en-US": "Description" }
+        },
+        {
+          "type": "text",
+          "id": "year",
+          "label": { "en-US": "Year / validity (e.g. 2015 · valid to 2027)" }
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": { "en-US": "Verification / registry URL (optional)" }
+        }
+      ]
+    },
+    {
+      "type": "repeater",
+      "id": "logos",
+      "label": {
+        "en-US": "Logos"
+      },
+      "group": "content",
+      "maxItems": 5,
+      "fields": [
+        {
+          "type": "image",
+          "id": "image",
+          "label": { "en-US": "Logo Image" }
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": { "en-US": "Logo Name (alt text / placeholder)" }
+        }
+      ]
+    },
+    {
+      "type": "repeater",
+      "id": "complianceRows",
+      "label": {
+        "en-US": "Compliance Rows"
+      },
+      "group": "content",
+      "maxItems": 6,
+      "fields": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": { "en-US": "Row text" }
+        }
+      ]
+    },
+    {
+      "type": "repeater",
+      "id": "footerColumns",
+      "label": {
+        "en-US": "Footer Columns"
+      },
+      "group": "content",
+      "maxItems": 4,
+      "fields": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": { "en-US": "Column title" }
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": { "en-US": "Column subtitle (optional)" }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "tileColumns",
+      "label": {
+        "en-US": "Certification tile columns"
+      },
+      "default": "3",
+      "group": "content",
+      "options": [
+        { "value": "3", "label": { "en-US": "3 columns (default)" } },
+        { "value": "2", "label": { "en-US": "2 columns" } },
+        { "value": "4", "label": { "en-US": "4 columns" } }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": { "en-US": "Content" }
+    }
+  ],
+  "motionSupport": {
+    "levels": ["local", "group"],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    },
+    "tiles": {
+      "selector": "[data-target='tiles']",
+      "description": "Cert tiles grid",
+      "multiple": false,
+      "kind": "group"
+    },
+    "tile": {
+      "selector": "[data-target='tile']",
+      "description": "Individual cert tile",
+      "multiple": true,
+      "addressable": true,
+      "animatable": ["opacity", "transform", "blur", "clip-path"],
+      "canTrigger": true,
+      "kind": "group"
+    },
+    "logos": {
+      "selector": "[data-target='logos']",
+      "description": "Logo stack column",
+      "multiple": false,
+      "kind": "group"
+    },
+    "compliance": {
+      "selector": "[data-target='compliance']",
+      "description": "Compliance rows block",
+      "multiple": false,
+      "kind": "group"
+    },
+    "footer-cols": {
+      "selector": "[data-target='footer-cols']",
+      "description": "3-column footer block",
+      "multiple": false,
+      "kind": "group"
+    }
+  }
+}

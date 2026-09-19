@@ -1,0 +1,168 @@
+{
+  "id": "feed-settings",
+  "label": {
+    "en-US": "Article feed"
+  },
+  "groups": [
+    {
+      "id": "data",
+      "label": {
+        "en-US": "Data"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    }
+  ],
+  "settings": [
+    {
+      "type": "number",
+      "id": "pageSize",
+      "label": {
+        "en-US": "Per page"
+      },
+      "default": 12,
+      "min": 1,
+      "max": 100,
+      "group": "data"
+    },
+    {
+      "type": "select",
+      "id": "feedDisplay",
+      "label": {
+        "en-US": "Display"
+      },
+      "default": "card",
+      "group": "appearance",
+      "options": [
+        {
+          "value": "card",
+          "label": {
+            "en-US": "Cards"
+          }
+        },
+        {
+          "value": "list",
+          "label": {
+            "en-US": "Compact list"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "cardSubtitle",
+      "label": {
+        "en-US": "Card subtitle"
+      },
+      "default": "excerpt",
+      "group": "appearance",
+      "options": [
+        {
+          "value": "excerpt",
+          "label": {
+            "en-US": "Excerpt"
+          }
+        },
+        {
+          "value": "date",
+          "label": {
+            "en-US": "Publication date"
+          }
+        },
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "cardImageRatio",
+      "label": {
+        "en-US": "Card image ratio"
+      },
+      "default": "natural",
+      "group": "layout",
+      "note": "\"Natural\" keeps each image's own proportions; every other value crops the card media to a fixed frame.",
+      "options": [
+        {
+          "value": "natural",
+          "label": {
+            "en-US": "Natural (no crop)"
+          }
+        },
+        {
+          "value": "portrait-3-4",
+          "label": {
+            "en-US": "Portrait (3:4)"
+          }
+        },
+        {
+          "value": "landscape-3-2",
+          "label": {
+            "en-US": "Landscape (3:2)"
+          }
+        },
+        {
+          "value": "square",
+          "label": {
+            "en-US": "Square (1:1)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "boolean",
+      "id": "leadFeature",
+      "label": {
+        "en-US": "Lead feature (first item as hero)"
+      },
+      "default": false,
+      "group": "appearance"
+    },
+    {
+      "type": "select",
+      "id": "leadImageRatio",
+      "label": {
+        "en-US": "Lead image ratio"
+      },
+      "default": "wide-16-9",
+      "group": "layout",
+      "options": [
+        {
+          "value": "wide-16-9",
+          "label": {
+            "en-US": "Wide (16:9)"
+          }
+        },
+        {
+          "value": "cinematic-21-9",
+          "label": {
+            "en-US": "Cinematic (21:9)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "boolean",
+      "id": "groupByYear",
+      "label": {
+        "en-US": "Group by year (archive)"
+      },
+      "default": false,
+      "group": "appearance"
+    }
+  ]
+}

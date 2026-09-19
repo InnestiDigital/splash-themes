@@ -1,0 +1,205 @@
+{
+  "component": "EventCalendar",
+  "type": "event-calendar",
+  "label": {
+    "en-US": "Event Calendar",
+    "it": "Calendario appuntamenti"
+  },
+  "category": "content",
+  "compatibleSectionRoles": [
+    "content",
+    "editorial-body",
+    "supporting-text"
+  ],
+  "description": {
+    "en-US": "A dated list of appointments grouped by month — assemblies, ceremonies, meetings, volunteering shifts. Past events are hidden by default and can be revealed on demand.",
+    "it": "Elenco di appuntamenti raggruppati per mese."
+  },
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "sectionHeading",
+      "label": {
+        "en-US": "Section Heading (optional)",
+        "it": "Titolo sezione (opzionale)"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "sectionTitle",
+      "defaultPresetKey": "section-title",
+      "validation": {
+        "maxLength": 120
+      }
+    },
+    {
+      "type": "repeater",
+      "id": "events",
+      "label": {
+        "en-US": "Events",
+        "it": "Appuntamenti"
+      },
+      "group": "content",
+      "maxItems": 60,
+      "fields": [
+        {
+          "type": "text",
+          "id": "date",
+          "label": {
+            "en-US": "Date",
+            "it": "Data"
+          },
+          "validation": {
+            "required": true
+          },
+          "note": {
+            "en-US": "ISO format: 2026-09-14 for an all-day event, 2026-09-14T18:30 with a time."
+          }
+        },
+        {
+          "type": "richtext-single",
+          "id": "title",
+          "label": {
+            "en-US": "Title",
+            "it": "Titolo"
+          },
+          "translatable": true,
+          "typographyRole": "body",
+          "defaultPresetKey": "body",
+          "validation": {
+            "required": true,
+            "maxLength": 160
+          }
+        },
+        {
+          "type": "richtext-single",
+          "id": "location",
+          "label": {
+            "en-US": "Location",
+            "it": "Luogo"
+          },
+          "translatable": true,
+          "typographyRole": "body",
+          "defaultPresetKey": "body",
+          "validation": {
+            "maxLength": 160
+          }
+        },
+        {
+          "type": "richtext-single",
+          "id": "description",
+          "label": {
+            "en-US": "Description",
+            "it": "Descrizione"
+          },
+          "translatable": true,
+          "typographyRole": "body",
+          "defaultPresetKey": "body",
+          "validation": {
+            "maxLength": 400
+          }
+        },
+        {
+          "type": "text",
+          "id": "url",
+          "label": {
+            "en-US": "Link (optional)",
+            "it": "Link (opzionale)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "showPast",
+      "label": {
+        "en-US": "Past Events",
+        "it": "Appuntamenti passati"
+      },
+      "default": "toggle",
+      "group": "behaviour",
+      "options": [
+        {
+          "value": "hide",
+          "label": {
+            "en-US": "Hide"
+          }
+        },
+        {
+          "value": "toggle",
+          "label": {
+            "en-US": "Hide behind a toggle"
+          }
+        },
+        {
+          "value": "show",
+          "label": {
+            "en-US": "Always show"
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "behaviour",
+      "label": {
+        "en-US": "Behaviour"
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    },
+    "sectionHeading": {
+      "selector": "[data-target='sectionHeading']",
+      "description": "Section heading above the calendar",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    },
+    "month": {
+      "selector": "[data-target='month']",
+      "description": "Each month group heading",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "kind": "text"
+    },
+    "item": {
+      "selector": "[data-target='item']",
+      "description": "Each event row",
+      "multiple": true,
+      "addressable": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur"
+      ],
+      "canTrigger": true,
+      "kind": "group"
+    }
+  }
+}

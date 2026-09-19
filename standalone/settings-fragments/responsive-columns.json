@@ -1,0 +1,210 @@
+{
+  "id": "responsive-columns",
+  "label": {
+    "en-US": "Responsive columns"
+  },
+  "groups": [
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "columnsTablet",
+      "label": {
+        "en-US": "Columns · Tablet"
+      },
+      "default": "auto",
+      "group": "layout",
+      "note": {
+        "en-US": "Column count at tablet widths. Auto = inherit the desktop value's automatic reduction."
+      },
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en-US": "Auto"
+          }
+        },
+        {
+          "value": "1",
+          "label": {
+            "en-US": "1 column"
+          }
+        },
+        {
+          "value": "2",
+          "label": {
+            "en-US": "2 columns"
+          }
+        },
+        {
+          "value": "3",
+          "label": {
+            "en-US": "3 columns"
+          }
+        },
+        {
+          "value": "4",
+          "label": {
+            "en-US": "4 columns"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "columnsMobile",
+      "label": {
+        "en-US": "Columns · Mobile"
+      },
+      "default": "auto",
+      "group": "layout",
+      "note": {
+        "en-US": "Column count at mobile widths. Auto = inherit the desktop value's automatic reduction."
+      },
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en-US": "Auto"
+          }
+        },
+        {
+          "value": "1",
+          "label": {
+            "en-US": "1 column"
+          }
+        },
+        {
+          "value": "2",
+          "label": {
+            "en-US": "2 columns"
+          }
+        },
+        {
+          "value": "3",
+          "label": {
+            "en-US": "3 columns"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "gapTablet",
+      "label": {
+        "en-US": "Gap · Tablet"
+      },
+      "default": "auto",
+      "group": "layout",
+      "note": {
+        "en-US": "Space between cells at tablet widths. Auto = inherit the desktop gap."
+      },
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en-US": "Auto"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "en-US": "None (0)"
+          }
+        },
+        {
+          "value": "8",
+          "label": {
+            "en-US": "8px"
+          }
+        },
+        {
+          "value": "16",
+          "label": {
+            "en-US": "16px"
+          }
+        },
+        {
+          "value": "24",
+          "label": {
+            "en-US": "24px"
+          }
+        },
+        {
+          "value": "32",
+          "label": {
+            "en-US": "32px"
+          }
+        },
+        {
+          "value": "48",
+          "label": {
+            "en-US": "48px"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "gapMobile",
+      "label": {
+        "en-US": "Gap · Mobile"
+      },
+      "default": "auto",
+      "group": "layout",
+      "note": {
+        "en-US": "Space between cells at mobile widths. Auto = inherit the desktop gap."
+      },
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en-US": "Auto"
+          }
+        },
+        {
+          "value": "0",
+          "label": {
+            "en-US": "None (0)"
+          }
+        },
+        {
+          "value": "8",
+          "label": {
+            "en-US": "8px"
+          }
+        },
+        {
+          "value": "16",
+          "label": {
+            "en-US": "16px"
+          }
+        },
+        {
+          "value": "24",
+          "label": {
+            "en-US": "24px"
+          }
+        },
+        {
+          "value": "32",
+          "label": {
+            "en-US": "32px"
+          }
+        },
+        {
+          "value": "48",
+          "label": {
+            "en-US": "48px"
+          }
+        }
+      ]
+    }
+  ]
+}

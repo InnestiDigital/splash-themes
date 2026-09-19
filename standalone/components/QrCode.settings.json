@@ -1,0 +1,247 @@
+{
+  "component": "QrCode",
+  "type": "qr-code",
+  "label": {
+    "en-US": "QR Code"
+  },
+  "category": "content",
+  "description": {
+    "en-US": "Create a deterministic QR code for a link or short text, with an optional caption."
+  },
+  "surfaces": [
+    "canvas"
+  ],
+  "tier": "basic",
+  "keywords": [
+    "qr",
+    "scan",
+    "link",
+    "url",
+    "code"
+  ],
+  "compatibleSectionRoles": [
+    "supporting-text",
+    "media-chrome",
+    "section-cta"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "text",
+      "id": "value",
+      "label": {
+        "en-US": "Link or text"
+      },
+      "default": "https://example.com",
+      "group": "content",
+      "validation": {
+        "required": true,
+        "maxLength": 2048
+      }
+    },
+    {
+      "type": "richtext-single",
+      "id": "caption",
+      "label": {
+        "en-US": "Caption"
+      },
+      "group": "content",
+      "translatable": true,
+      "validation": {
+        "maxLength": 160
+      }
+    },
+    {
+      "type": "text",
+      "id": "altText",
+      "label": {
+        "en-US": "Accessible name"
+      },
+      "group": "accessibility",
+      "translatable": true,
+      "note": "Describe where the code leads. The caption or encoded value is used when this is empty.",
+      "validation": {
+        "maxLength": 240
+      }
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": {
+        "en-US": "Size"
+      },
+      "default": "md",
+      "group": "layout",
+      "options": [
+        { "value": "sm", "label": { "en-US": "Small" } },
+        { "value": "md", "label": { "en-US": "Medium" } },
+        { "value": "lg", "label": { "en-US": "Large" } },
+        { "value": "xl", "label": { "en-US": "Extra large" } },
+        { "value": "full", "label": { "en-US": "Full width" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": {
+        "en-US": "Horizontal alignment"
+      },
+      "default": "center",
+      "group": "layout",
+      "options": [
+        { "value": "left", "label": { "en-US": "Left" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "right", "label": { "en-US": "Right" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "verticalAlign",
+      "label": {
+        "en-US": "Vertical alignment"
+      },
+      "default": "center",
+      "group": "layout",
+      "options": [
+        { "value": "top", "label": { "en-US": "Top" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "bottom", "label": { "en-US": "Bottom" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "captionAlign",
+      "label": {
+        "en-US": "Caption alignment"
+      },
+      "default": "center",
+      "group": "layout",
+      "options": [
+        { "value": "left", "label": { "en-US": "Left" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "right", "label": { "en-US": "Right" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "foregroundRole",
+      "label": {
+        "en-US": "Code tone"
+      },
+      "default": "brandOnSurface",
+      "group": "style",
+      "options": [
+        { "value": "brandOnSurface", "label": { "en-US": "Brand on surface" } },
+        { "value": "brandPrimary", "label": { "en-US": "Brand primary" } },
+        { "value": "brandSecondary", "label": { "en-US": "Brand secondary" } },
+        { "value": "brandSurface", "label": { "en-US": "Brand surface" } },
+        { "value": "text", "label": { "en-US": "Section text" } },
+        { "value": "muted", "label": { "en-US": "Muted text" } },
+        { "value": "accent", "label": { "en-US": "Section accent" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "backgroundRole",
+      "label": {
+        "en-US": "Code background"
+      },
+      "default": "brandSurface",
+      "group": "style",
+      "options": [
+        { "value": "brandSurface", "label": { "en-US": "Brand surface" } },
+        { "value": "brandPrimary", "label": { "en-US": "Brand primary" } },
+        { "value": "brandSecondary", "label": { "en-US": "Brand secondary" } },
+        { "value": "brandOnSurface", "label": { "en-US": "Brand on surface" } },
+        { "value": "background", "label": { "en-US": "Section background" } },
+        { "value": "surface", "label": { "en-US": "Section surface" } },
+        { "value": "text", "label": { "en-US": "Section text" } },
+        { "value": "accent", "label": { "en-US": "Section accent" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "captionRole",
+      "label": {
+        "en-US": "Caption tone"
+      },
+      "default": "brandSecondary",
+      "group": "style",
+      "options": [
+        { "value": "brandSecondary", "label": { "en-US": "Brand secondary" } },
+        { "value": "brandOnSurface", "label": { "en-US": "Brand on surface" } },
+        { "value": "brandPrimary", "label": { "en-US": "Brand primary" } },
+        { "value": "brandSurface", "label": { "en-US": "Brand surface" } },
+        { "value": "text", "label": { "en-US": "Section text" } },
+        { "value": "muted", "label": { "en-US": "Muted text" } },
+        { "value": "faint", "label": { "en-US": "Faint text" } },
+        { "value": "accent", "label": { "en-US": "Section accent" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "errorCorrection",
+      "label": {
+        "en-US": "Error correction"
+      },
+      "default": "M",
+      "group": "advanced",
+      "note": {
+        "en-US": "Higher levels remain scannable after more damage but make the code denser."
+      },
+      "options": [
+        { "value": "L", "label": { "en-US": "Low" } },
+        { "value": "M", "label": { "en-US": "Medium" } },
+        { "value": "Q", "label": { "en-US": "Quartile" } },
+        { "value": "H", "label": { "en-US": "High" } }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "quietZone",
+      "label": {
+        "en-US": "Clear border"
+      },
+      "default": 4,
+      "group": "advanced",
+      "note": {
+        "en-US": "Blank modules around the code help scanners recognize it."
+      },
+      "options": {
+        "min": 0,
+        "max": 12,
+        "step": 1,
+        "unit": "modules"
+      }
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "layout", "label": { "en-US": "Layout" } },
+    { "id": "style", "label": { "en-US": "Style" } },
+    { "id": "accessibility", "label": { "en-US": "Accessibility" } },
+    { "id": "advanced", "label": { "en-US": "Advanced" } }
+  ],
+  "targets": {
+    "root": {
+      "description": "Entire QR code block",
+      "kind": "root"
+    },
+    "code": {
+      "selector": "[data-target='code']",
+      "description": "Generated QR code",
+      "multiple": false,
+      "kind": "media"
+    },
+    "caption": {
+      "selector": "[data-target='caption']",
+      "description": "QR code caption",
+      "multiple": false,
+      "kind": "text"
+    }
+  },
+  "motionSupport": {
+    "levels": [],
+    "excluded": []
+  }
+}

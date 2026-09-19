@@ -1,0 +1,58 @@
+{
+  "component": "AsymmetricTileGrid",
+  "type": "asymmetric-tile-grid",
+  "label": { "en-US": "Asymmetric Tile Grid" },
+  "category": "media",
+  "description": { "en-US": "2-column asymmetric image grid: two stacked tiles on the left, one tall tile on the right with optional caption overlays and a white pill CTA." },
+  "compatibleSectionRoles": ["media-gallery", "editorial-body"],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "hidden",
+      "id": "leftTiles",
+      "label": { "en-US": "Left Tiles" },
+      "group": "content",
+      "default": []
+    },
+    {
+      "type": "hidden",
+      "id": "rightTile",
+      "label": { "en-US": "Right Tile" },
+      "group": "content",
+      "default": {}
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": { "en-US": "Gap (px)" },
+      "group": "layout",
+      "default": 16,
+      "options": { "min": 0, "max": 48, "step": 4, "unit": "px" }
+    },
+    {
+      "type": "select",
+      "id": "parallax",
+      "label": { "en-US": "Scroll parallax depth" },
+      "group": "behavior",
+      "default": "off",
+      "note": "Desktop scroll-depth effect: each tile's image drifts vertically against scroll at a different rate, so the three tiles read as layered architectural depth (right tall tile closest/fastest, left-bottom slowest). Off by default; automatically disabled on mobile, in the editor preview, and when the visitor prefers reduced motion.",
+      "options": [
+        { "value": "off", "label": { "en-US": "Off" } },
+        { "value": "subtle", "label": { "en-US": "Subtle" } },
+        { "value": "strong", "label": { "en-US": "Strong" } }
+      ]
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "layout", "label": { "en-US": "Layout" } },
+    { "id": "behavior", "label": { "en-US": "Behavior" } }
+  ],
+  "targets": {
+    "root": { "kind": "root", "description": "Tile grid container", "animatable": ["opacity", "transform"] },
+    "tile-left-top": { "kind": "media", "selector": "[data-target='tile-left-top']", "description": "Top-left tile", "animatable": ["opacity", "transform"], "canTrigger": true },
+    "tile-left-bottom": { "kind": "media", "selector": "[data-target='tile-left-bottom']", "description": "Bottom-left tile", "animatable": ["opacity", "transform"], "canTrigger": true },
+    "tile-right": { "kind": "media", "selector": "[data-target='tile-right']", "description": "Right tall tile", "animatable": ["opacity", "transform"], "canTrigger": true }
+  },
+  "motionSupport": { "levels": ["local", "group"], "excluded": [] }
+}

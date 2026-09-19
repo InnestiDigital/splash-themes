@@ -1,0 +1,279 @@
+{
+  "component": "HorizontalScroll",
+  "type": "horizontal-scroll",
+  "name": "Horizontal Scroll",
+  "label": {
+    "en-US": "Horizontal Scroll"
+  },
+  "category": "media",
+  "compatibleSectionRoles": [
+    "media-gallery"
+  ],
+  "$fragments": [
+    "color-roles"
+  ],
+  "$fragmentOmit": [
+    "textTone"
+  ],
+  "$fragmentOverrides": {
+    "background": {
+      "default": "transparent"
+    }
+  },
+  "settings": [
+    {
+      "type": "blocks",
+      "id": "items",
+      "label": {
+        "en-US": "Items"
+      },
+      "group": "content",
+      "default": [],
+      "allowedBlocks": [
+        "image-banner",
+        "hero-block",
+        "text-card-block",
+        "text-section",
+        "cta-section",
+        "pull-quote",
+        "editorial-text",
+        "side-by-side-editorial",
+        "case-study-card",
+        "video-block"
+      ]
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": {
+        "en-US": "Height"
+      },
+      "default": "viewport",
+      "group": "layout",
+      "options": [
+        {
+          "value": "viewport",
+          "label": {
+            "en-US": "Viewport"
+          }
+        },
+        {
+          "value": "large",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "medium",
+          "label": {
+            "en-US": "Medium"
+          }
+        }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "showProgress",
+      "label": {
+        "en-US": "Show Progress Bar"
+      },
+      "default": true,
+      "group": "layout"
+    },
+    {
+      "type": "toggle",
+      "id": "snapToItem",
+      "label": {
+        "en-US": "Snap to Item"
+      },
+      "default": true,
+      "group": "layout"
+    },
+    {
+      "type": "toggle",
+      "id": "pointerDrag",
+      "label": {
+        "en-US": "Drag & wheel (desktop)"
+      },
+      "default": false,
+      "group": "layout",
+      "note": "Lets mouse users grab and drag the track, and scroll it horizontally with the mouse wheel. No effect on touch devices or when reduced motion is on."
+    },
+    {
+      "type": "range",
+      "id": "scrollSpeed",
+      "label": {
+        "en-US": "Scroll Speed"
+      },
+      "default": 1,
+      "group": "layout",
+      "options": {
+        "min": 0.5,
+        "max": 3,
+        "step": 0.1
+      }
+    },
+    {
+      "type": "select",
+      "id": "gap",
+      "label": {
+        "en-US": "Item Gap"
+      },
+      "default": "medium",
+      "group": "layout",
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "small",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "medium",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "large",
+          "label": {
+            "en-US": "Large"
+          }
+        }
+      ]
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "contentAlignH",
+      "type": "select",
+      "label": {
+        "en-US": "Content Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en-US": "Default Horizontal Scroll"
+      },
+      "settings": {
+        "height": "viewport",
+        "showProgress": true,
+        "snapToItem": true,
+        "scrollSpeed": 1,
+        "gap": "medium",
+        "background": "section"
+      }
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Horizontal scroll container",
+      "kind": "root"
+    },
+    "track": {
+      "selector": "[data-target='track']",
+      "description": "Scrollable track element",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false,
+      "kind": "media"
+    },
+    "items": {
+      "selector": "[data-target='items']",
+      "description": "Individual scroll items",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": true,
+      "kind": "group"
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group",
+      "choreography"
+    ],
+    "excluded": [],
+    "nestedBehavior": {
+      "scrollContext": "horizontal",
+      "intersectionRootRequired": true,
+      "disabledTriggerTypes": [
+        "scroll",
+        "intersection"
+      ],
+      "warnOnScrollScenes": true,
+      "warnOnIntersectionScenes": true
+    }
+  }
+}

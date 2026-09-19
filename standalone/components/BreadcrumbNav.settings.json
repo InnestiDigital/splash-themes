@@ -1,0 +1,85 @@
+{
+  "component": "BreadcrumbNav",
+  "type": "breadcrumb-nav",
+  "label": {
+    "en-US": "Breadcrumb Navigation"
+  },
+  "typographySlots": [
+    {
+      "slot": "segment",
+      "label": "Segment",
+      "defaultRole": "label"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "separator",
+      "label": {
+        "en-US": "Separator"
+      },
+      "default": "/",
+      "group": "options"
+    },
+    {
+      "type": "checkbox",
+      "id": "showHome",
+      "label": {
+        "en-US": "Show Home"
+      },
+      "default": true,
+      "group": "options"
+    },
+    {
+      "type": "text",
+      "id": "homeLabel",
+      "label": {
+        "en-US": "Home Label"
+      },
+      "default": "Home",
+      "group": "options",
+      "translatable": true
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "options",
+      "label": {
+        "en-US": "Options"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "description": "Entire breadcrumb navigation container",
+      "kind": "root"
+    }
+  }
+}

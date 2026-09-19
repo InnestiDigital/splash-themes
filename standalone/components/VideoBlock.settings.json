@@ -1,0 +1,408 @@
+{
+  "component": "VideoBlock",
+  "type": "video-block",
+  "label": {
+    "en-US": "Video Block"
+  },
+  "category": "media",
+  "compatibleSectionRoles": [
+    "editorial-body",
+    "media-gallery",
+    "media-chrome"
+  ],
+  "typographySlots": [],
+  "$fragments": [
+    "media-side",
+    "color-roles"
+  ],
+  "$fragmentOverrides": {
+    "mediaSide": {
+      "default": "right",
+      "showIf": {
+        "layout": "side-text"
+      }
+    },
+    "background": {
+      "default": "transparent"
+    }
+  },
+  "$fragmentOmit": [
+    "textTone"
+  ],
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "title",
+      "label": {
+        "en-US": "Title"
+      },
+      "group": "content",
+      "translatable": true,
+      "preset": "section-title"
+    },
+    {
+      "type": "richtext-block",
+      "id": "description",
+      "label": {
+        "en-US": "Description"
+      },
+      "group": "content",
+      "translatable": true,
+      "preset": "body"
+    },
+    {
+      "type": "select",
+      "id": "source",
+      "label": {
+        "en-US": "Video Source"
+      },
+      "default": "embed",
+      "group": "content",
+      "options": [
+        {
+          "value": "embed",
+          "label": {
+            "en-US": "Embed (YouTube / Vimeo)"
+          }
+        },
+        {
+          "value": "file",
+          "label": {
+            "en-US": "Self-hosted file"
+          }
+        }
+      ]
+    },
+    {
+      "type": "url",
+      "id": "videoUrl",
+      "label": {
+        "en-US": "Video URL (YouTube or Vimeo)"
+      },
+      "group": "content",
+      "placeholder": "https://www.youtube.com/watch?v=...",
+      "showIf": {
+        "source": "embed"
+      }
+    },
+    {
+      "type": "select",
+      "id": "embedLoad",
+      "label": {
+        "en-US": "Embed Loading"
+      },
+      "default": "eager",
+      "group": "content",
+      "note": "Facade renders a lightweight poster + play button and only loads the YouTube/Vimeo player (heavy JS + cookies) on click — faster and more private.",
+      "options": [
+        {
+          "value": "eager",
+          "label": {
+            "en-US": "Load immediately"
+          }
+        },
+        {
+          "value": "facade",
+          "label": {
+            "en-US": "Click to load (faster, private)"
+          }
+        }
+      ],
+      "showIf": {
+        "source": "embed"
+      }
+    },
+    {
+      "type": "video",
+      "id": "videoFile",
+      "label": {
+        "en-US": "Video File"
+      },
+      "group": "content",
+      "showIf": {
+        "source": "file"
+      }
+    },
+    {
+      "type": "image",
+      "id": "posterImage",
+      "label": {
+        "en-US": "Poster Image"
+      },
+      "group": "content",
+      "showIf": {
+        "source": "file"
+      }
+    },
+    {
+      "type": "toggle",
+      "id": "autoplay",
+      "label": {
+        "en-US": "Autoplay"
+      },
+      "default": false,
+      "group": "content",
+      "note": "Autoplay requires the video to be muted (browser policy).",
+      "showIf": {
+        "source": "file"
+      }
+    },
+    {
+      "type": "toggle",
+      "id": "muted",
+      "label": {
+        "en-US": "Muted"
+      },
+      "default": true,
+      "group": "content",
+      "showIf": {
+        "source": "file"
+      }
+    },
+    {
+      "type": "toggle",
+      "id": "loop",
+      "label": {
+        "en-US": "Loop"
+      },
+      "default": false,
+      "group": "content",
+      "showIf": {
+        "source": "file"
+      }
+    },
+    {
+      "type": "toggle",
+      "id": "showControls",
+      "label": {
+        "en-US": "Show Controls"
+      },
+      "default": true,
+      "group": "content",
+      "showIf": {
+        "source": "file"
+      }
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      },
+      "default": "contained",
+      "group": "layout",
+      "options": [
+        {
+          "value": "full",
+          "label": {
+            "en-US": "Full Width"
+          }
+        },
+        {
+          "value": "contained",
+          "label": {
+            "en-US": "Contained"
+          }
+        },
+        {
+          "value": "side-text",
+          "label": {
+            "en-US": "Side Text"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "aspect",
+      "label": {
+        "en-US": "Aspect Ratio"
+      },
+      "default": "16-9",
+      "group": "layout",
+      "options": [
+        {
+          "value": "16-9",
+          "label": {
+            "en-US": "Widescreen (16:9)"
+          }
+        },
+        {
+          "value": "21-9",
+          "label": {
+            "en-US": "Cinematic (21:9)"
+          }
+        },
+        {
+          "value": "band",
+          "label": {
+            "en-US": "Wide Band (ambient strip)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "displayMode",
+      "label": {
+        "en-US": "Display Mode"
+      },
+      "default": "featured",
+      "group": "layout",
+      "options": [
+        {
+          "value": "featured",
+          "label": {
+            "en-US": "Featured (full-width)"
+          }
+        },
+        {
+          "value": "inline",
+          "label": {
+            "en-US": "Inline (flows with text)"
+          }
+        }
+      ]
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Corner Radius"
+      },
+      "default": "lg",
+      "group": "appearance",
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        }
+      ]
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "contentAlignH",
+      "type": "select",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "layout"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local"
+    ],
+    "excluded": [],
+    "nestedConstraints": {
+      "lazyLoadClipsToScrollAncestor": true,
+      "note": "iframe loading=lazy clips to scroll ancestor bounding box. Items off-screen horizontally may not load until scrolled into view. Use loading=eager when nesting inside horizontal-scroll."
+    }
+  },
+  "targets": {
+    "player": {
+      "selector": "[data-target='player']",
+      "description": "Video player wrapper",
+      "multiple": false,
+      "animatable": [
+        "opacity"
+      ],
+      "canTrigger": false,
+      "kind": "media"
+    },
+    "heading": {
+      "selector": "[data-target='heading']",
+      "description": "Section title",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    },
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    }
+  }
+}

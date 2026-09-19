@@ -1,0 +1,183 @@
+{
+  "component": "ExpandingPanels",
+  "type": "expanding-panels",
+  "label": {
+    "en-US": "Expanding Panels"
+  },
+  "category": "media",
+  "description": {
+    "en-US": "An editorial hover-accordion: image panels sit as slim spines and grow to reveal a full caption when hovered, focused, or tapped. On mobile it folds to a vertical stack of tap-to-open panels. Keyboard operable and reduced-motion safe."
+  },
+  "compatibleSectionRoles": [
+    "media-gallery",
+    "content",
+    "editorial-body"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "repeater",
+      "id": "panels",
+      "label": { "en-US": "Panels" },
+      "group": "content",
+      "maxItems": 8,
+      "fields": [
+        {
+          "type": "media",
+          "id": "image",
+          "label": { "en-US": "Image" }
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": { "en-US": "Title" },
+          "translatable": true
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": { "en-US": "Subtitle (year · location)" },
+          "translatable": true
+        },
+        {
+          "type": "text",
+          "id": "link",
+          "label": { "en-US": "Link URL (optional)" }
+        },
+        {
+          "type": "text",
+          "id": "linkLabel",
+          "label": { "en-US": "Link label" },
+          "default": "View project",
+          "translatable": true
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": { "en-US": "Height (desktop)" },
+      "default": "large",
+      "group": "layout",
+      "note": "How tall the panel row stands on desktop. On mobile the panels stack and size to content.",
+      "options": [
+        { "value": "viewport", "label": { "en-US": "Full viewport" } },
+        { "value": "large", "label": { "en-US": "Large (70vh)" } },
+        { "value": "medium", "label": { "en-US": "Medium (55vh)" } },
+        { "value": "small", "label": { "en-US": "Small (40vh)" } }
+      ]
+    },
+    {
+      "id": "measureWidth",
+      "type": "select",
+      "label": { "en-US": "Content Width" },
+      "default": "full",
+      "canvasDefault": "full",
+      "group": "layout",
+      "options": [
+        { "value": "content", "label": { "en-US": "Reading (65ch)" } },
+        { "value": "narrow", "label": { "en-US": "Narrow (45rem)" } },
+        { "value": "standard", "label": { "en-US": "Standard (65rem)" } },
+        { "value": "wide", "label": { "en-US": "Wide (80rem)" } },
+        { "value": "full", "label": { "en-US": "Full" } }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "initialActive",
+      "label": { "en-US": "Initially open panel" },
+      "default": 1,
+      "group": "layout",
+      "note": "1-based index of the panel that starts expanded. Set 0 for none (all slim until hovered).",
+      "options": { "min": 0, "max": 8 }
+    },
+    {
+      "type": "select",
+      "id": "expandRatio",
+      "label": { "en-US": "Expand strength" },
+      "default": "bold",
+      "group": "motion",
+      "note": "How dramatically the active panel grows versus its neighbours.",
+      "options": [
+        { "value": "subtle", "label": { "en-US": "Subtle" } },
+        { "value": "balanced", "label": { "en-US": "Balanced" } },
+        { "value": "bold", "label": { "en-US": "Bold" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "autoCycle",
+      "label": { "en-US": "Auto-cycle showcase" },
+      "default": "off",
+      "group": "motion",
+      "note": "When on, the open panel advances by itself like a self-running reel. Pauses while a visitor hovers or keyboard-focuses the panels; never runs under reduced-motion or on mobile. Desktop only.",
+      "options": [
+        { "value": "off", "label": { "en-US": "Off" } },
+        { "value": "on", "label": { "en-US": "On" } }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "cycleInterval",
+      "label": { "en-US": "Cycle interval (seconds)" },
+      "default": 4,
+      "group": "motion",
+      "note": "Seconds each panel stays open before the reel advances. Only applies when Auto-cycle is on. Minimum 2.",
+      "options": { "min": 2, "max": 12 }
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "layout", "label": { "en-US": "Layout" } },
+    { "id": "motion", "label": { "en-US": "Motion" } }
+  ],
+  "presets": [
+    {
+      "name": { "en-US": "Selected Works" },
+      "settings": {
+        "height": "large",
+        "measureWidth": "full",
+        "initialActive": 1,
+        "expandRatio": "bold",
+        "panels": [
+          { "image": "", "title": { "en-US": "First panel" }, "subtitle": "Add a short description", "link": "", "linkLabel": { "en-US": "Learn more" } },
+          { "image": "", "title": { "en-US": "Second panel" }, "subtitle": "Add a short description", "link": "", "linkLabel": { "en-US": "Learn more" } },
+          { "image": "", "title": { "en-US": "Third panel" }, "subtitle": "Add a short description", "link": "", "linkLabel": { "en-US": "Learn more" } }
+        ]
+      },
+      "description": {
+        "en-US": "Five projects as an interactive spine-to-spread accordion — the studio's works, one hover at a time."
+      },
+      "category": "media",
+      "isDefault": true
+    }
+  ],
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Entire expanding-panels accordion"
+    },
+    "panels": {
+      "kind": "group",
+      "selector": "[data-target='panels']",
+      "description": "The panel track",
+      "multiple": false
+    },
+    "panel": {
+      "kind": "group",
+      "selector": "[data-target='panel']",
+      "description": "Individual panel",
+      "multiple": true,
+      "addressable": true,
+      "animatable": ["opacity", "transform", "blur"],
+      "canTrigger": true
+    }
+  },
+  "motionSupport": {
+    "levels": ["local", "group"],
+    "excluded": []
+  },
+  "motionHints": {
+    "containsDynamicChildren": true
+  }
+}

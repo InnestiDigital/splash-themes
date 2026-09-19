@@ -1,0 +1,457 @@
+{
+  "component": "ItemGridBlock",
+  "type": "item-grid-block",
+  "label": {
+    "en-US": "Item Grid"
+  },
+  "description": {
+    "en-US": "Unified item grid. Use layout=list for vertical stacked/grid items (services, offerings); use layout=row for horizontal facts/stats with optional dividers."
+  },
+  "category": "content",
+  "compatibleSectionRoles": [
+    "supporting-text",
+    "editorial-body"
+  ],
+  "typographySlots": [
+    { "slot": "title", "label": "Item Title", "defaultRole": "heading3" },
+    { "slot": "description", "label": "Item Description", "defaultRole": "body" },
+    { "slot": "label", "label": "Item Label", "defaultRole": "label" },
+    { "slot": "value", "label": "Item Value", "defaultRole": "heading3" }
+  ],
+  "$fragments": [
+    "responsive-columns",
+    "color-roles"
+  ],
+  "$fragmentOmit": ["gapTablet", "gapMobile"],
+  "$fragmentOverrides": {
+    "columnsTablet": {
+      "showIf": {
+        "layout": "list",
+        "listMode": "grid",
+        "gridColumnMode": "fixed"
+      }
+    },
+    "columnsMobile": {
+      "showIf": {
+        "layout": "list",
+        "listMode": "grid",
+        "gridColumnMode": "fixed"
+      }
+    },
+    "background": {
+      "default": "section"
+    }
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      },
+      "default": "list",
+      "group": "content",
+      "options": [
+        { "value": "list", "label": { "en-US": "List (vertical)" } },
+        { "value": "row", "label": { "en-US": "Row (horizontal facts)" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "listMode",
+      "label": {
+        "en-US": "List Mode"
+      },
+      "default": "stacked",
+      "group": "content",
+      "showIf": { "layout": "list" },
+      "options": [
+        { "value": "stacked", "label": { "en-US": "Stacked" } },
+        { "value": "grid", "label": { "en-US": "Grid" } }
+      ]
+    },
+    {
+      "type": "repeater",
+      "id": "items",
+      "label": {
+        "en-US": "Items"
+      },
+      "group": "content",
+      "maxItems": 12,
+      "fields": [
+        {
+          "type": "richtext-single",
+          "id": "title",
+          "label": {
+            "en-US": "Title"
+          },
+          "translatable": true,
+          "typographyRole": "heading3",
+          "defaultPresetKey": "section-title"
+        },
+        {
+          "type": "richtext-block",
+          "id": "description",
+          "label": {
+            "en-US": "Description"
+          },
+          "translatable": true,
+          "typographyRole": "body",
+          "defaultPresetKey": "body"
+        },
+        {
+          "type": "richtext-single",
+          "id": "label",
+          "label": {
+            "en-US": "Label"
+          },
+          "translatable": true,
+          "typographyRole": "caption",
+          "defaultPresetKey": "caption",
+          "validation": { "maxLength": 80 }
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": {
+            "en-US": "Value"
+          },
+          "translatable": true,
+          "placeholder": "e.g. 2.4m, 1967, 42"
+        },
+        {
+          "type": "text",
+          "id": "unit",
+          "label": {
+            "en-US": "Unit"
+          },
+          "placeholder": "e.g. km, ft, °C"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": {
+            "en-US": "Icon (emoji or symbol)"
+          },
+          "placeholder": "e.g. ✦"
+        },
+        {
+          "type": "url",
+          "id": "linkUrl",
+          "label": {
+            "en-US": "Link URL"
+          }
+        },
+        {
+          "type": "text",
+          "id": "linkText",
+          "label": {
+            "en-US": "Link Text"
+          },
+          "translatable": true
+        },
+        {
+          "type": "repeater",
+          "id": "tags",
+          "label": {
+            "en-US": "Tags"
+          },
+          "fields": [
+            {
+              "type": "text",
+              "id": "label",
+              "label": {
+                "en-US": "Label"
+              }
+            },
+            {
+              "type": "url",
+              "id": "href",
+              "label": {
+                "en-US": "Link"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "columns",
+      "label": {
+        "en-US": "Columns"
+      },
+      "default": 3,
+      "group": "layout",
+      "options": {
+        "min": 2,
+        "max": 6
+      }
+    },
+    {
+      "type": "select",
+      "id": "gridColumnMode",
+      "label": { "en-US": "Grid Column Mode" },
+      "default": "auto",
+      "group": "layout",
+      "showIf": { "layout": "list", "listMode": "grid" },
+      "note": { "en-US": "Auto = responsive auto-fill (min 300px cards, current default). Fixed = the exact Columns count you set, with per-breakpoint overrides." },
+      "options": [
+        { "value": "auto", "label": { "en-US": "Auto (auto-fill)" } },
+        { "value": "fixed", "label": { "en-US": "Fixed columns" } }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "dividerEnabled",
+      "label": {
+        "en-US": "Show Dividers"
+      },
+      "default": true,
+      "group": "style",
+      "showIf": { "layout": "row" }
+    },
+    {
+      "type": "select",
+      "id": "dividerStyle",
+      "label": {
+        "en-US": "Divider Style"
+      },
+      "default": "line",
+      "group": "style",
+      "showIf": { "layout": "row" },
+      "options": [
+        { "value": "line", "label": { "en-US": "Line" } },
+        { "value": "dot", "label": { "en-US": "Dot" } },
+        { "value": "slash", "label": { "en-US": "Slash" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "labelStyle",
+      "label": {
+        "en-US": "Label Style"
+      },
+      "default": "normal",
+      "group": "style",
+      "options": [
+        { "value": "uppercase", "label": { "en-US": "Uppercase" } },
+        { "value": "small-caps", "label": { "en-US": "Small Caps" } },
+        { "value": "normal", "label": { "en-US": "Normal" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "tagVariant",
+      "label": {
+        "en-US": "Tag Style"
+      },
+      "default": "outline",
+      "group": "style",
+      "options": [
+        { "value": "outline", "label": { "en-US": "Outline" } },
+        { "value": "filled", "label": { "en-US": "Filled" } },
+        { "value": "subtle", "label": { "en-US": "Subtle" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "tagSize",
+      "label": {
+        "en-US": "Tag Size"
+      },
+      "default": "sm",
+      "group": "style",
+      "options": [
+        { "value": "sm", "label": { "en-US": "Small" } },
+        { "value": "md", "label": { "en-US": "Medium" } }
+      ]
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface Style"
+      },
+      "options": [
+        { "value": "none", "label": { "en-US": "None" } },
+        { "value": "subtle", "label": { "en-US": "Subtle" } },
+        { "value": "filled", "label": { "en-US": "Filled" } }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Border Radius"
+      },
+      "options": [
+        { "value": "none", "label": { "en-US": "None" } },
+        { "value": "sm", "label": { "en-US": "Small" } },
+        { "value": "md", "label": { "en-US": "Medium" } },
+        { "value": "lg", "label": { "en-US": "Large" } },
+        { "value": "pill", "label": { "en-US": "Pill" } }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "itemAlignX",
+      "type": "select",
+      "label": {
+        "en-US": "Horizontal Alignment"
+      },
+      "default": "start",
+      "group": "layout",
+      "options": [
+        { "value": "start", "label": { "en-US": "Start" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "end", "label": { "en-US": "End" } },
+        { "value": "stretch", "label": { "en-US": "Stretch" } }
+      ]
+    },
+    {
+      "id": "itemAlignY",
+      "type": "select",
+      "label": {
+        "en-US": "Vertical Alignment"
+      },
+      "default": "start",
+      "group": "layout",
+      "options": [
+        { "value": "start", "label": { "en-US": "Top" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "end", "label": { "en-US": "Bottom" } },
+        { "value": "stretch", "label": { "en-US": "Stretch" } }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": { "en-US": "Content" }
+    },
+    {
+      "id": "appearance",
+      "label": { "en-US": "Appearance" }
+    },
+    {
+      "id": "style",
+      "label": { "en-US": "Style" }
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en-US": "Project Specs"
+      },
+      "settings": {
+        "layout": "row",
+        "items": [
+          {
+            "label": {
+              "en-US": "Height"
+            },
+            "value": {
+              "en-US": "42"
+            },
+            "unit": "m"
+          },
+          {
+            "label": {
+              "en-US": "Width"
+            },
+            "value": {
+              "en-US": "18"
+            },
+            "unit": "m"
+          },
+          {
+            "label": {
+              "en-US": "Year"
+            },
+            "value": {
+              "en-US": "1967"
+            },
+            "unit": ""
+          },
+          {
+            "label": {
+              "en-US": "Weight"
+            },
+            "value": {
+              "en-US": "7,000"
+            },
+            "unit": "t"
+          }
+        ],
+        "dividerEnabled": true,
+        "dividerStyle": "line",
+        "labelStyle": "uppercase",
+        "background": "section",
+        "textTone": "section"
+      }
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Item grid container",
+      "kind": "root"
+    },
+    "item": {
+      "selector": "[data-target='item']",
+      "description": "Individual item",
+      "multiple": true,
+      "addressable": true,
+      "canTrigger": false,
+      "kind": "group"
+    },
+    "label": {
+      "selector": "[data-target='label']",
+      "description": "Item label text",
+      "multiple": true,
+      "canTrigger": false,
+      "kind": "text"
+    },
+    "value": {
+      "selector": "[data-target='value']",
+      "description": "Item value text",
+      "multiple": true,
+      "canTrigger": false,
+      "kind": "text"
+    },
+    "divider": {
+      "selector": "[data-target='divider']",
+      "description": "Divider between items (row layout)",
+      "multiple": true,
+      "canTrigger": false,
+      "kind": "decorative"
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": []
+  }
+}

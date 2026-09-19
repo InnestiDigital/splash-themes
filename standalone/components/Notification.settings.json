@@ -1,0 +1,177 @@
+{
+  "component": "Notification",
+  "type": "notification",
+  "label": {
+    "en-US": "Notification"
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "position",
+      "label": {
+        "en-US": "Position"
+      },
+      "default": "top-right",
+      "group": "display",
+      "options": [
+        {
+          "value": "top-left",
+          "label": {
+            "en-US": "Top Left"
+          }
+        },
+        {
+          "value": "top-right",
+          "label": {
+            "en-US": "Top Right"
+          }
+        },
+        {
+          "value": "bottom-left",
+          "label": {
+            "en-US": "Bottom Left"
+          }
+        },
+        {
+          "value": "bottom-right",
+          "label": {
+            "en-US": "Bottom Right"
+          }
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "autoCloseDelay",
+      "label": {
+        "en-US": "Auto Close Delay (ms)"
+      },
+      "default": 5000,
+      "group": "display"
+    },
+    {
+      "type": "number",
+      "id": "maxVisible",
+      "label": {
+        "en-US": "Max Visible Notifications"
+      },
+      "default": 3,
+      "group": "display"
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface Style"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Border Radius"
+      },
+      "options": [
+        "none",
+        "sm",
+        "md",
+        "lg",
+        "pill"
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "textAlign",
+      "type": "select",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "center",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "display",
+      "label": {
+        "en-US": "Display"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Notification container",
+      "kind": "root"
+    }
+  },
+  "motionSupport": {
+    "levels": [],
+    "excluded": []
+  }
+}

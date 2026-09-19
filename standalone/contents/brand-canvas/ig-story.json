@@ -1,0 +1,136 @@
+{
+  "sections": [
+    {
+      "name": "Canvas",
+      "anchor": "canvas",
+      "colorScheme": "light",
+      "sectionRole": "hero",
+      "sectionType": "stacked",
+      "containerMode": "full-bleed",
+      "sectionSpaceY": "none",
+      "containerInsetX": "none",
+      "layoutConfig": { "shellLayout": "stacked", "stackGap": "none" }
+    }
+  ],
+  "blocks": [
+    {
+      "type": "canvas-shape",
+      "sectionRef": 0,
+      "settings": {
+        "shape": "rectangle",
+        "size": "full",
+        "fillRole": "brandSurface",
+        "strokeWidth": 0
+      },
+      "placement": {
+        "canvas": { "x": 50, "y": 50, "width": 100, "height": 100, "rotation": 0, "zIndex": 1, "locked": true }
+      }
+    },
+    {
+      "type": "canvas-shape",
+      "sectionRef": 0,
+      "settings": {
+        "shape": "rectangle",
+        "size": "full",
+        "fillRole": "brandPrimary",
+        "strokeWidth": 0
+      },
+      "placement": {
+        "canvas": { "x": 50, "y": 19, "width": 100, "height": 38, "rotation": 0, "zIndex": 2, "locked": true }
+      }
+    },
+    {
+      "type": "canvas-shape",
+      "sectionRef": 0,
+      "settings": {
+        "shape": "ellipse",
+        "size": "full",
+        "fillRole": "brandSecondary",
+        "strokeWidth": 0,
+        "opacity": 0.75
+      },
+      "placement": {
+        "canvas": { "x": 83, "y": 58, "width": 52, "height": 30, "rotation": -12, "zIndex": 3, "locked": false }
+      }
+    },
+    {
+      "type": "brand-mark",
+      "sectionRef": 0,
+      "settings": {
+        "markVariant": "inverse",
+        "size": "full",
+        "align": "center",
+        "verticalAlign": "center",
+        "foregroundRole": "brandSurface"
+      },
+      "placement": {
+        "canvas": { "x": 50, "y": 8, "width": 70, "height": 7, "rotation": 0, "zIndex": 4, "locked": false }
+      }
+    },
+    {
+      "type": "canvas-badge",
+      "sectionRef": 0,
+      "settings": {
+        "text": { "en-US": "New story" },
+        "variant": "outline",
+        "backgroundRole": "brandSurface",
+        "foregroundRole": "brandSurface",
+        "align": "center",
+        "uppercase": true
+      },
+      "placement": {
+        "canvas": { "x": 50, "y": 22, "width": 32, "height": 6, "rotation": 0, "zIndex": 5, "locked": false }
+      }
+    },
+    {
+      "type": "canvas-text",
+      "sectionRef": 0,
+      "settings": {
+        "content": { "en-US": "<h1>Tell the story one frame at a time.</h1>" },
+        "typographyRole": "brandHeadline",
+        "foregroundRole": "brandOnSurface",
+        "backgroundRole": "transparent",
+        "textAlign": "left",
+        "blockAlign": "left",
+        "measureWidth": "full",
+        "verticalAlign": "center"
+      },
+      "placement": {
+        "canvas": { "x": 50, "y": 49, "width": 80, "height": 28, "rotation": 0, "zIndex": 6, "locked": false }
+      }
+    },
+    {
+      "type": "qr-code",
+      "sectionRef": 0,
+      "settings": {
+        "value": { "en-US": "https://example.com" },
+        "altText": { "en-US": "QR code for the campaign link" },
+        "size": "full",
+        "foregroundRole": "brandOnSurface",
+        "backgroundRole": "brandSurface",
+        "align": "center",
+        "verticalAlign": "center",
+        "errorCorrection": "M"
+      },
+      "placement": {
+        "canvas": { "x": 20, "y": 84, "width": 22, "height": 13, "rotation": 0, "zIndex": 7, "locked": false }
+      }
+    },
+    {
+      "type": "canvas-text",
+      "sectionRef": 0,
+      "settings": {
+        "content": { "en-US": "<p>Scan to discover more</p>" },
+        "typographyRole": "brandBody",
+        "foregroundRole": "brandOnSurface",
+        "textAlign": "left",
+        "blockAlign": "left",
+        "measureWidth": "full",
+        "verticalAlign": "center"
+      },
+      "placement": {
+        "canvas": { "x": 62, "y": 84, "width": 52, "height": 10, "rotation": 0, "zIndex": 8, "locked": false }
+      }
+    }
+  ]
+}

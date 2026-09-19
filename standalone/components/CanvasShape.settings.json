@@ -1,0 +1,264 @@
+{
+  "component": "CanvasShape",
+  "type": "canvas-shape",
+  "label": {
+    "en-US": "Shape"
+  },
+  "category": "layout",
+  "description": {
+    "en-US": "Add a rectangle, ellipse, or line using semantic brand and theme tones."
+  },
+  "surfaces": [
+    "canvas"
+  ],
+  "tier": "basic",
+  "keywords": [
+    "rectangle",
+    "circle",
+    "ellipse",
+    "line",
+    "decoration"
+  ],
+  "compatibleSectionRoles": [
+    "media-chrome",
+    "media-gallery",
+    "supporting-text"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "select",
+      "id": "shape",
+      "label": {
+        "en-US": "Shape"
+      },
+      "default": "rectangle",
+      "group": "content",
+      "options": [
+        { "value": "rectangle", "label": { "en-US": "Rectangle" } },
+        { "value": "ellipse", "label": { "en-US": "Ellipse" } },
+        { "value": "line", "label": { "en-US": "Line" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "size",
+      "label": {
+        "en-US": "Size"
+      },
+      "default": "full",
+      "group": "layout",
+      "options": [
+        { "value": "sm", "label": { "en-US": "Small" } },
+        { "value": "md", "label": { "en-US": "Medium" } },
+        { "value": "lg", "label": { "en-US": "Large" } },
+        { "value": "full", "label": { "en-US": "Full width" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": {
+        "en-US": "Horizontal alignment"
+      },
+      "default": "center",
+      "group": "layout",
+      "options": [
+        { "value": "left", "label": { "en-US": "Left" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "right", "label": { "en-US": "Right" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "verticalAlign",
+      "label": {
+        "en-US": "Vertical alignment"
+      },
+      "default": "center",
+      "group": "layout",
+      "options": [
+        { "value": "top", "label": { "en-US": "Top" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "bottom", "label": { "en-US": "Bottom" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "aspectRatio",
+      "label": {
+        "en-US": "Aspect ratio"
+      },
+      "default": "square",
+      "group": "layout",
+      "showIf": {
+        "allOf": [
+          {
+            "shape": [
+              "rectangle",
+              "ellipse"
+            ]
+          },
+          {
+            "id": "size",
+            "notEquals": "full"
+          }
+        ]
+      },
+      "options": [
+        { "value": "square", "label": { "en-US": "Square (1:1)" } },
+        { "value": "portrait", "label": { "en-US": "Portrait (4:5)" } },
+        { "value": "classic", "label": { "en-US": "Classic (4:3)" } },
+        { "value": "landscape", "label": { "en-US": "Landscape (3:2)" } },
+        { "value": "wide", "label": { "en-US": "Wide (16:9)" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "lineOrientation",
+      "label": {
+        "en-US": "Line direction"
+      },
+      "default": "horizontal",
+      "group": "layout",
+      "showIf": {
+        "shape": "line"
+      },
+      "options": [
+        { "value": "horizontal", "label": { "en-US": "Horizontal" } },
+        { "value": "vertical", "label": { "en-US": "Vertical" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "fillRole",
+      "label": {
+        "en-US": "Fill tone"
+      },
+      "default": "brandPrimary",
+      "group": "style",
+      "showIf": {
+        "shape": [
+          "rectangle",
+          "ellipse"
+        ]
+      },
+      "options": [
+        { "value": "brandPrimary", "label": { "en-US": "Brand primary" } },
+        { "value": "brandSecondary", "label": { "en-US": "Brand secondary" } },
+        { "value": "brandSurface", "label": { "en-US": "Brand surface" } },
+        { "value": "brandOnSurface", "label": { "en-US": "Brand on surface" } },
+        { "value": "background", "label": { "en-US": "Section background" } },
+        { "value": "surface", "label": { "en-US": "Section surface" } },
+        { "value": "text", "label": { "en-US": "Section text" } },
+        { "value": "muted", "label": { "en-US": "Muted text" } },
+        { "value": "accent", "label": { "en-US": "Section accent" } },
+        { "value": "transparent", "label": { "en-US": "Transparent" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "strokeRole",
+      "label": {
+        "en-US": "Outline or line tone"
+      },
+      "default": "brandSecondary",
+      "group": "style",
+      "options": [
+        { "value": "brandSecondary", "label": { "en-US": "Brand secondary" } },
+        { "value": "brandPrimary", "label": { "en-US": "Brand primary" } },
+        { "value": "brandSurface", "label": { "en-US": "Brand surface" } },
+        { "value": "brandOnSurface", "label": { "en-US": "Brand on surface" } },
+        { "value": "text", "label": { "en-US": "Section text" } },
+        { "value": "muted", "label": { "en-US": "Muted text" } },
+        { "value": "faint", "label": { "en-US": "Faint text" } },
+        { "value": "accent", "label": { "en-US": "Section accent" } },
+        { "value": "transparent", "label": { "en-US": "Transparent" } }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "strokeWidth",
+      "label": {
+        "en-US": "Outline or line width"
+      },
+      "default": 0,
+      "group": "style",
+      "options": {
+        "min": 0,
+        "max": 12,
+        "step": 1,
+        "unit": "px"
+      }
+    },
+    {
+      "type": "select",
+      "id": "cornerRadius",
+      "label": {
+        "en-US": "Corner radius"
+      },
+      "default": "none",
+      "group": "style",
+      "showIf": {
+        "shape": "rectangle"
+      },
+      "options": [
+        { "value": "none", "label": { "en-US": "None" } },
+        { "value": "sm", "label": { "en-US": "Small" } },
+        { "value": "md", "label": { "en-US": "Medium" } },
+        { "value": "lg", "label": { "en-US": "Large" } },
+        { "value": "pill", "label": { "en-US": "Pill" } }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "opacity",
+      "label": {
+        "en-US": "Opacity"
+      },
+      "default": 1,
+      "group": "advanced",
+      "options": {
+        "min": 0.1,
+        "max": 1,
+        "step": 0.05
+      }
+    },
+    {
+      "type": "text",
+      "id": "accessibilityLabel",
+      "label": {
+        "en-US": "Accessibility label"
+      },
+      "group": "accessibility",
+      "translatable": true,
+      "note": "Leave empty for a decorative shape. Add a label only when the shape conveys meaning.",
+      "validation": {
+        "maxLength": 160
+      }
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "layout", "label": { "en-US": "Layout" } },
+    { "id": "style", "label": { "en-US": "Style" } },
+    { "id": "accessibility", "label": { "en-US": "Accessibility" } },
+    { "id": "advanced", "label": { "en-US": "Advanced" } }
+  ],
+  "targets": {
+    "root": {
+      "description": "Entire shape block",
+      "kind": "root"
+    },
+    "shape": {
+      "selector": "[data-target='shape']",
+      "description": "Rendered rectangle, ellipse, or line",
+      "multiple": false,
+      "kind": "shape"
+    }
+  },
+  "motionSupport": {
+    "levels": [],
+    "excluded": []
+  }
+}

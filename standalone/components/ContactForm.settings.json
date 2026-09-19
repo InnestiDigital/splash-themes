@@ -1,0 +1,185 @@
+{
+  "component": "ContactForm",
+  "type": "contact-form",
+  "label": {
+    "en-US": "Contact Form"
+  },
+  "category": "cta",
+  "compatibleSectionRoles": [
+    "section-cta"
+  ],
+  "typographySlots": [
+    {
+      "slot": "submit",
+      "label": "Submit Button",
+      "defaultRole": "label"
+    },
+    {
+      "slot": "success",
+      "label": "Success Message",
+      "defaultRole": "body"
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "submitText",
+      "label": {
+        "en-US": "Submit Button Text"
+      },
+      "default": "Send Message",
+      "group": "content",
+      "translatable": true
+    },
+    {
+      "type": "text",
+      "id": "successMessage",
+      "label": {
+        "en-US": "Success Message"
+      },
+      "default": "Message sent successfully",
+      "group": "content",
+      "translatable": true
+    },
+    {
+      "type": "checkbox",
+      "id": "showPhone",
+      "label": {
+        "en-US": "Show Phone Field"
+      },
+      "default": true,
+      "group": "options"
+    },
+    {
+      "type": "checkbox",
+      "id": "showSubject",
+      "label": {
+        "en-US": "Show Subject Field"
+      },
+      "default": true,
+      "group": "options"
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface Style"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Border Radius"
+      },
+      "options": [
+        "none",
+        "sm",
+        "md",
+        "lg",
+        "pill"
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "type": "api-method",
+      "id": "apiMethod",
+      "label": {
+        "en-US": "Submit API Method"
+      },
+      "group": "api",
+      "note": "API method to call when a visitor submits. Must accept { name, email, phone, subject, message }.",
+      "allowedTags": ["contact"]
+    }
+  ],
+  "groups": [
+    {
+      "id": "options",
+      "label": {
+        "en-US": "Options"
+      }
+    },
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "api",
+      "label": {
+        "en-US": "API"
+      }
+    }
+  ],
+  "events": [
+    "submit"
+  ],
+  "targets": {
+    "root": {
+      "description": "Entire form container",
+      "kind": "root"
+    },
+    "cta": {
+      "selector": "[data-target='cta']",
+      "description": "Submit button",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": true,
+      "kind": "decorative"
+    }
+  },
+  "motionSupport": {
+    "levels": [],
+    "excluded": []
+  }
+}

@@ -1,0 +1,491 @@
+{
+  "component": "Timeline",
+  "type": "timeline",
+  "label": {
+    "en-US": "Timeline"
+  },
+  "category": "content",
+  "compatibleSectionRoles": [
+    "editorial-body"
+  ],
+  "typographySlots": [],
+  "$fragments": [
+    "color-roles"
+  ],
+  "$fragmentOmit": [
+    "textTone"
+  ],
+  "$fragmentOverrides": {
+    "background": {
+      "default": "transparent"
+    }
+  },
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "title",
+      "label": {
+        "en-US": "Section Title"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "heading2",
+      "defaultPresetKey": "section-title"
+    },
+    {
+      "type": "repeater",
+      "id": "steps",
+      "label": {
+        "en-US": "Steps"
+      },
+      "group": "content",
+      "maxItems": 10,
+      "fields": [
+        {
+          "type": "text",
+          "id": "date",
+          "label": {
+            "en-US": "Date / Year"
+          },
+          "translatable": true,
+          "placeholder": "e.g. 2016 · Marzo 2024"
+        },
+        {
+          "type": "richtext-single",
+          "id": "title",
+          "label": {
+            "en-US": "Step Title"
+          },
+          "translatable": true,
+          "typographyRole": "heading3",
+          "defaultPresetKey": "section-title"
+        },
+        {
+          "type": "richtext-block",
+          "id": "description",
+          "label": {
+            "en-US": "Description"
+          },
+          "translatable": true,
+          "typographyRole": "body",
+          "defaultPresetKey": "body"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": {
+            "en-US": "Icon (Material Icon name)"
+          },
+          "placeholder": "e.g. person_add, shopping_cart, redeem"
+        },
+        {
+          "type": "image",
+          "id": "image",
+          "label": {
+            "en-US": "Image (optional)"
+          }
+        },
+        {
+          "type": "text",
+          "id": "imageAlt",
+          "label": {
+            "en-US": "Image Alt Text"
+          },
+          "translatable": true
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "variant",
+      "label": {
+        "en-US": "Layout"
+      },
+      "default": "vertical",
+      "group": "style",
+      "options": [
+        {
+          "value": "vertical",
+          "label": {
+            "en-US": "Vertical"
+          }
+        },
+        {
+          "value": "horizontal",
+          "label": {
+            "en-US": "Horizontal"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "verticalLayout",
+      "label": { "en-US": "Vertical Arrangement" },
+      "help": { "en-US": "Standard stacks every step down one rail. Alternating places steps on either side of a centered rail on wide screens (collapses to a single column on tablet and mobile)." },
+      "default": "standard",
+      "group": "style",
+      "showIf": { "variant": "vertical" },
+      "options": [
+        { "value": "standard", "label": { "en-US": "Standard" } },
+        { "value": "alternating", "label": { "en-US": "Alternating" } }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "accentColor",
+      "label": {
+        "en-US": "Accent Color"
+      },
+      "default": "#108A00",
+      "group": "style"
+    },
+    {
+      "type": "select",
+      "id": "progressReveal",
+      "label": {
+        "en-US": "Scroll Progress Rail"
+      },
+      "help": {
+        "en-US": "Vertical layout only. The connector line fills and markers light up as the reader scrolls through. Automatically disabled under reduced-motion."
+      },
+      "default": "on",
+      "group": "style",
+      "showIf": {
+        "variant": "vertical"
+      },
+      "options": [
+        {
+          "value": "on",
+          "label": {
+            "en-US": "On"
+          }
+        },
+        {
+          "value": "off",
+          "label": {
+            "en-US": "Off"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "stepDisclosure",
+      "label": {
+        "en-US": "Progressive Disclosure"
+      },
+      "help": {
+        "en-US": "Vertical layout only. Collapses each step's description (and image) behind a per-step expand control, so a long chronology reads as a scannable list of dated headlines. Editor always shows full content."
+      },
+      "default": "off",
+      "group": "style",
+      "showIf": {
+        "variant": "vertical"
+      },
+      "options": [
+        {
+          "value": "on",
+          "label": {
+            "en-US": "On"
+          }
+        },
+        {
+          "value": "off",
+          "label": {
+            "en-US": "Off"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "horizontalScroll",
+      "label": { "en-US": "Horizontal Scroll" },
+      "help": { "en-US": "Horizontal layout only. Lays the steps out as one continuous scroll-snapping filmstrip instead of a wrapping grid — ideal for long chronologies. Swipe or trackpad on touch devices, arrow buttons on desktop." },
+      "default": "off",
+      "group": "style",
+      "showIf": { "variant": "horizontal" },
+      "options": [
+        { "value": "off", "label": { "en-US": "Off" } },
+        { "value": "on", "label": { "en-US": "On" } }
+      ]
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "textAlign",
+      "type": "select",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "appearance"
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Card Surface"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Card Radius"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "pill",
+          "label": {
+            "en-US": "Pill"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en-US": "How It Works"
+      },
+      "settings": {
+        "title": {
+          "en-US": "How It Works"
+        },
+        "steps": [
+          {
+            "title": {
+              "en-US": "Sign Up"
+            },
+            "description": {
+              "en-US": "Create your free membership account to get started."
+            },
+            "icon": "person_add"
+          },
+          {
+            "title": {
+              "en-US": "Earn Points"
+            },
+            "description": {
+              "en-US": "Earn points on qualifying purchases with your card."
+            },
+            "icon": "savings"
+          },
+          {
+            "title": {
+              "en-US": "Browse Rewards"
+            },
+            "description": {
+              "en-US": "Explore thousands of products in our rewards marketplace."
+            },
+            "icon": "shopping_cart"
+          },
+          {
+            "title": {
+              "en-US": "Redeem"
+            },
+            "description": {
+              "en-US": "Use your points to get the rewards you love."
+            },
+            "icon": "redeem"
+          }
+        ]
+      }
+    },
+    {
+      "name": {
+        "en-US": "Editorial Chronology"
+      },
+      "settings": {
+        "title": {
+          "en-US": "Diario"
+        },
+        "steps": [
+          {
+            "date": "2016",
+            "title": {
+              "en-US": "The Beginning"
+            },
+            "description": {
+              "en-US": "The first survey of the site sets the direction for the restoration."
+            },
+            "image": "/images/reference/gallery-exterior.jpg",
+            "imageAlt": "Exterior view at the start of the project"
+          },
+          {
+            "date": "2020",
+            "title": {
+              "en-US": "Structural Works"
+            },
+            "description": {
+              "en-US": "Interiors are consolidated and reshaped around the original volumes."
+            },
+            "image": "/images/reference/gallery-interior-01.jpg",
+            "imageAlt": "Interior during the structural phase"
+          },
+          {
+            "date": "2024",
+            "title": {
+              "en-US": "Completion"
+            },
+            "description": {
+              "en-US": "The editorial vision comes together in the finished spaces."
+            },
+            "image": "/images/reference/approach-editorial.jpg",
+            "imageAlt": "Editorial view of the completed work"
+          }
+        ]
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": [],
+    "animatableVars": [
+      { "name": "--motion-accent", "type": "color", "description": "Marker and connector accent color" }
+    ]
+  },
+  "targets": {
+    "items": {
+      "kind": "root",
+      "selector": "[data-target='item']",
+      "description": "Individual timeline step",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    },
+    "heading": {
+      "kind": "text",
+      "selector": "[data-target='heading']",
+      "description": "Section heading",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    },
+    "root": {
+      "kind": "root",
+      "description": "Entire block container",
+      "animatable": [
+        "motion-path"
+      ]
+    }
+  }
+}

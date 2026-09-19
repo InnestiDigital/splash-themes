@@ -1,0 +1,367 @@
+{
+  "component": "CaseStudyCard",
+  "type": "case-study-card",
+  "label": {
+    "en-US": "Case Study Card"
+  },
+  "category": "content",
+  "compatibleSectionRoles": [
+    "editorial-body"
+  ],
+  "typographySlots": [
+    {
+      "slot": "body",
+      "label": "Body",
+      "defaultRole": "body"
+    },
+    {
+      "slot": "tag",
+      "label": "Tag",
+      "defaultRole": "label"
+    },
+    {
+      "slot": "link",
+      "label": "Link",
+      "defaultRole": "label"
+    }
+  ],
+  "$fragments": [
+    "media-side",
+    "color-roles"
+  ],
+  "$fragmentOverrides": {
+    "mediaSide": {
+      "default": "above",
+      "omitOptions": [
+        "below"
+      ]
+    },
+    "background": {
+      "default": "section"
+    }
+  },
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "heading",
+      "label": {
+        "en-US": "Heading"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "heading3",
+      "defaultPresetKey": "section-title"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": {
+        "en-US": "Body"
+      },
+      "group": "content",
+      "translatable": true
+    },
+    {
+      "type": "image",
+      "id": "media",
+      "label": {
+        "en-US": "Media"
+      },
+      "group": "media"
+    },
+    {
+      "type": "text",
+      "id": "mediaAlt",
+      "label": {
+        "en-US": "Media Alt Text"
+      },
+      "group": "media",
+      "translatable": true
+    },
+    {
+      "type": "repeater",
+      "id": "tags",
+      "label": {
+        "en-US": "Tags"
+      },
+      "group": "content",
+      "fields": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": {
+            "en-US": "Label"
+          },
+          "translatable": true
+        }
+      ]
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": {
+        "en-US": "Link URL"
+      },
+      "group": "cta"
+    },
+    {
+      "type": "text",
+      "id": "linkText",
+      "label": {
+        "en-US": "Link Text"
+      },
+      "group": "cta",
+      "translatable": true
+    },
+    {
+      "type": "select",
+      "id": "hoverEffect",
+      "label": {
+        "en-US": "Hover Effect"
+      },
+      "default": "lift",
+      "group": "style",
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "lift",
+          "label": {
+            "en-US": "Lift"
+          }
+        },
+        {
+          "value": "depth",
+          "label": {
+            "en-US": "Depth"
+          }
+        }
+      ]
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "textAlign",
+      "type": "select",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "layout"
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface Style"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Border Radius"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "pill",
+          "label": {
+            "en-US": "Pill"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "media",
+      "label": {
+        "en-US": "Media"
+      }
+    },
+    {
+      "id": "cta",
+      "label": {
+        "en-US": "Call to Action"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Card container",
+      "kind": "root"
+    },
+    "media": {
+      "selector": "[data-target='media']",
+      "description": "Media element (parallax-ready)",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false,
+      "kind": "media"
+    },
+    "heading": {
+      "selector": "[data-target='heading']",
+      "description": "Card heading",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    },
+    "tags": {
+      "selector": "[data-target='tags']",
+      "description": "Tag items",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false,
+      "kind": "text"
+    },
+    "body": {
+      "selector": "[data-target='body']",
+      "description": "Card body text",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": [],
+    "nestedConstraints": {
+      "waapiTransformConflict": true,
+      "affectedTargets": [
+        "root"
+      ],
+      "note": "CSS hover lift (transform: translateY) is suppressed by WAAPI fill:forwards on root. Do not assign transform animations to root when this block is inside a horizontal-scroll container."
+    }
+  }
+}

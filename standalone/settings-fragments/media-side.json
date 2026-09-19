@@ -1,0 +1,52 @@
+{
+  "id": "media-side",
+  "label": {
+    "en-US": "Media side"
+  },
+  "groups": [
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    }
+  ],
+  "settings": [
+    {
+      "type": "select",
+      "id": "mediaSide",
+      "label": {
+        "en-US": "Media Side"
+      },
+      "default": "left",
+      "group": "layout",
+      "note": "Which side of the text the image, gallery or video sits on.",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        },
+        {
+          "value": "above",
+          "label": {
+            "en-US": "Above"
+          }
+        },
+        {
+          "value": "below",
+          "label": {
+            "en-US": "Below"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "component": "ArticleList",
+  "type": "article-list",
+  "label": {
+    "en-US": "Article List"
+  },
+  "$fragments": [
+    "feed-settings"
+  ],
+  "$fragmentOverrides": {
+    "cardImageRatio": {
+      "showIf": {
+        "field": "variant",
+        "equals": "editorial-grid"
+      }
+    },
+    "leadFeature": {
+      "showIf": {
+        "field": "variant",
+        "equals": "editorial-grid"
+      }
+    },
+    "leadImageRatio": {
+      "showIf": {
+        "field": "variant",
+        "equals": "editorial-grid"
+      }
+    },
+    "groupByYear": {
+      "showIf": {
+        "field": "variant",
+        "equals": "editorial-grid"
+      }
+    }
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "source",
+      "label": {
+        "en-US": "Source"
+      },
+      "options": [
+        {
+          "value": "current",
+          "label": {
+            "en-US": "Current blog"
+          }
+        },
+        {
+          "value": "specific",
+          "label": {
+            "en-US": "Specific blog"
+          }
+        }
+      ],
+      "default": "current",
+      "group": "data"
+    },
+    {
+      "type": "select",
+      "id": "blogId",
+      "label": {
+        "en-US": "Blog"
+      },
+      "options": {
+        "source": "blog-index-pages"
+      },
+      "showIf": {
+        "field": "source",
+        "equals": "specific"
+      },
+      "group": "data"
+    },
+    {
+      "type": "select",
+      "id": "sort",
+      "label": {
+        "en-US": "Sort"
+      },
+      "options": [
+        {
+          "value": "newest",
+          "label": {
+            "en-US": "Newest first"
+          }
+        },
+        {
+          "value": "oldest",
+          "label": {
+            "en-US": "Oldest first"
+          }
+        }
+      ],
+      "default": "newest",
+      "group": "data"
+    },
+    {
+      "type": "select",
+      "id": "variant",
+      "label": {
+        "en-US": "Card variant"
+      },
+      "options": [
+        {
+          "value": "default",
+          "label": {
+            "en-US": "Default grid"
+          }
+        },
+        {
+          "value": "editorial-grid",
+          "label": {
+            "en-US": "Editorial grid"
+          }
+        }
+      ],
+      "default": "default",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "data",
+      "label": {
+        "en-US": "Data"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "description": "Entire article-list container",
+      "kind": "root"
+    }
+  }
+}

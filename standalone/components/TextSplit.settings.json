@@ -1,0 +1,158 @@
+{
+  "component": "TextSplit",
+  "type": "text-split",
+  "label": {
+    "en-US": "Two-Column Text Split"
+  },
+  "category": "editorial",
+  "description": {
+    "en-US": "Two independent text columns side by side, each with its own alignment. Optional teal hairline divider below."
+  },
+  "compatibleSectionRoles": [
+    "editorial-body",
+    "supporting-text",
+    "section-heading"
+  ],
+  "settings": [
+    {
+      "type": "richtext-block",
+      "id": "leftBody",
+      "label": { "en-US": "Left Column" },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "body",
+      "options": { "toolbar": "full" }
+    },
+    {
+      "type": "richtext-block",
+      "id": "rightBody",
+      "label": { "en-US": "Right Column" },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "body",
+      "options": { "toolbar": "full" }
+    },
+    {
+      "type": "select",
+      "id": "leftAlign",
+      "label": { "en-US": "Left Column Alignment" },
+      "default": "left",
+      "group": "layout",
+      "options": [
+        { "value": "left",    "label": { "en-US": "Left" } },
+        { "value": "center",  "label": { "en-US": "Center" } },
+        { "value": "right",   "label": { "en-US": "Right" } },
+        { "value": "justify", "label": { "en-US": "Justify" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "rightAlign",
+      "label": { "en-US": "Right Column Alignment" },
+      "default": "right",
+      "group": "layout",
+      "options": [
+        { "value": "left",    "label": { "en-US": "Left" } },
+        { "value": "center",  "label": { "en-US": "Center" } },
+        { "value": "right",   "label": { "en-US": "Right" } },
+        { "value": "justify", "label": { "en-US": "Justify" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "columnRatio",
+      "label": { "en-US": "Column Ratio" },
+      "default": "50-50",
+      "group": "layout",
+      "options": [
+        { "value": "50-50", "label": { "en-US": "50 / 50 (equal)" } },
+        { "value": "66-33", "label": { "en-US": "66 / 33 (left wider)" } },
+        { "value": "75-25", "label": { "en-US": "75 / 25 (left dominant)" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "columnGap",
+      "label": { "en-US": "Column Gap" },
+      "default": "lg",
+      "group": "layout",
+      "options": [
+        { "value": "sm", "label": { "en-US": "Small (2rem)" } },
+        { "value": "md", "label": { "en-US": "Medium (4rem)" } },
+        { "value": "lg", "label": { "en-US": "Large (6rem)" } },
+        { "value": "xl", "label": { "en-US": "Extra Large (8rem)" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "stickyColumn",
+      "label": { "en-US": "Pinned Editorial Column" },
+      "default": "none",
+      "group": "layout",
+      "note": "Keeps the chosen column pinned in view while the other column scrolls past it. Disabled automatically on narrow (single-column) layouts.",
+      "options": [
+        { "value": "none",  "label": { "en-US": "None (default)" } },
+        { "value": "left",  "label": { "en-US": "Pin Left Column" } },
+        { "value": "right", "label": { "en-US": "Pin Right Column" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "stickyTop",
+      "label": { "en-US": "Pinned Offset From Top" },
+      "default": "md",
+      "group": "layout",
+      "options": [
+        { "value": "sm", "label": { "en-US": "Small" } },
+        { "value": "md", "label": { "en-US": "Medium" } },
+        { "value": "lg", "label": { "en-US": "Large" } }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "dividerEnabled",
+      "label": { "en-US": "Show Divider" },
+      "default": true,
+      "group": "style",
+      "note": "Thin horizontal hairline below the two columns"
+    },
+    {
+      "type": "color",
+      "id": "dividerColor",
+      "label": { "en-US": "Divider Color" },
+      "default": "#1B8AB7",
+      "group": "style",
+      "note": "Defaults to theme accent teal (#1B8AB7). Only controls the divider line — not text or background.",
+      "showIf": { "dividerEnabled": true }
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "layout",  "label": { "en-US": "Layout" } },
+    { "id": "style",   "label": { "en-US": "Style" } }
+  ],
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Entire block container"
+    },
+    "left-body": {
+      "kind": "text",
+      "selector": "[data-target='left-body']",
+      "description": "Left column text",
+      "animatable": ["opacity", "transform"],
+      "canTrigger": true
+    },
+    "right-body": {
+      "kind": "text",
+      "selector": "[data-target='right-body']",
+      "description": "Right column text",
+      "animatable": ["opacity", "transform"],
+      "canTrigger": true
+    }
+  },
+  "motionSupport": {
+    "levels": ["local", "group"],
+    "excluded": []
+  }
+}

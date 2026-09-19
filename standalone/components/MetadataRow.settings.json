@@ -1,0 +1,149 @@
+{
+  "component": "MetadataRow",
+  "type": "metadata-row",
+  "label": {
+    "en-US": "Metadata Row"
+  },
+  "category": "editorial",
+  "compatibleSectionRoles": [
+    "editorial-body",
+    "supporting-text",
+    "section-heading"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "repeater",
+      "id": "items",
+      "label": {
+        "en-US": "Items"
+      },
+      "group": "content",
+      "maxItems": 8,
+      "fields": [
+        {
+          "type": "richtext-single",
+          "id": "label",
+          "label": {
+            "en-US": "Label"
+          },
+          "role": "caption",
+          "translatable": true
+        },
+        {
+          "type": "richtext-inline",
+          "id": "value",
+          "label": {
+            "en-US": "Value"
+          },
+          "role": "body",
+          "translatable": true
+        }
+      ]
+    },
+    {
+      "id": "layout",
+      "type": "select",
+      "label": {
+        "en-US": "Layout"
+      },
+      "default": "inline",
+      "group": "layout",
+      "options": [
+        { "value": "inline", "label": { "en-US": "Inline row" } },
+        { "value": "stack",  "label": { "en-US": "Spec sheet (stacked)" } },
+        { "value": "grid",   "label": { "en-US": "Facts grid" } }
+      ]
+    },
+    {
+      "id": "columnMin",
+      "type": "select",
+      "label": {
+        "en-US": "Grid column width"
+      },
+      "default": "medium",
+      "group": "layout",
+      "showIf": { "layout": "grid" },
+      "options": [
+        { "value": "narrow", "label": { "en-US": "Narrow (more columns)" } },
+        { "value": "medium", "label": { "en-US": "Medium" } },
+        { "value": "wide",   "label": { "en-US": "Wide (fewer columns)" } }
+      ]
+    },
+    {
+      "id": "dividers",
+      "type": "toggle",
+      "label": {
+        "en-US": "Row dividers"
+      },
+      "default": true,
+      "group": "layout"
+    },
+    {
+      "id": "separator",
+      "type": "select",
+      "label": {
+        "en-US": "Separator"
+      },
+      "default": "pipe",
+      "group": "layout",
+      "options": [
+        { "value": "none", "label": { "en-US": "None" } },
+        { "value": "pipe", "label": { "en-US": "Pipe ( | )" } },
+        { "value": "dot",  "label": { "en-US": "Dot ( · )" } }
+      ]
+    },
+    {
+      "id": "textAlign",
+      "type": "select",
+      "label": {
+        "en-US": "Alignment"
+      },
+      "default": "left",
+      "group": "layout",
+      "options": [
+        { "value": "left",   "label": { "en-US": "Left" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "right",  "label": { "en-US": "Right" } }
+      ]
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "layout",  "label": { "en-US": "Layout" } }
+  ],
+  "motionSupport": {
+    "levels": ["local"],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Metadata row wrapper"
+    },
+    "item": {
+      "kind": "root",
+      "selector": "[data-target='item']",
+      "description": "Single label/value pair",
+      "multiple": true,
+      "animatable": ["opacity", "transform"],
+      "canTrigger": false
+    },
+    "label": {
+      "kind": "text",
+      "selector": "[data-target='label']",
+      "description": "Item label",
+      "multiple": true,
+      "animatable": ["opacity", "transform"],
+      "canTrigger": false
+    },
+    "value": {
+      "kind": "text",
+      "selector": "[data-target='value']",
+      "description": "Item value",
+      "multiple": true,
+      "animatable": ["opacity", "transform"],
+      "canTrigger": false
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "sections": [
+    {
+      "name": "Canvas",
+      "anchor": "canvas",
+      "colorScheme": "light",
+      "sectionRole": "hero",
+      "sectionType": "stacked",
+      "containerMode": "full-bleed",
+      "sectionSpaceY": "none",
+      "containerInsetX": "none",
+      "layoutConfig": { "shellLayout": "stacked", "stackGap": "none" }
+    }
+  ],
+  "blocks": [
+    {
+      "type": "canvas-shape",
+      "sectionRef": 0,
+      "settings": {
+        "shape": "rectangle",
+        "size": "full",
+        "fillRole": "brandSurface",
+        "strokeWidth": 0
+      },
+      "placement": {
+        "canvas": { "x": 50, "y": 50, "width": 100, "height": 100, "rotation": 0, "zIndex": 1, "locked": true }
+      }
+    },
+    {
+      "type": "canvas-shape",
+      "sectionRef": 0,
+      "settings": {
+        "shape": "rectangle",
+        "size": "full",
+        "fillRole": "brandPrimary",
+        "strokeWidth": 0
+      },
+      "placement": {
+        "canvas": { "x": 17.5, "y": 50, "width": 35, "height": 100, "rotation": 0, "zIndex": 2, "locked": true }
+      }
+    },
+    {
+      "type": "canvas-shape",
+      "sectionRef": 0,
+      "settings": {
+        "shape": "line",
+        "size": "full",
+        "lineOrientation": "vertical",
+        "strokeRole": "brandSecondary",
+        "strokeWidth": 4
+      },
+      "placement": {
+        "canvas": { "x": 36.5, "y": 50, "width": 5, "height": 78, "rotation": 0, "zIndex": 3, "locked": false }
+      }
+    },
+    {
+      "type": "brand-mark",
+      "sectionRef": 0,
+      "settings": {
+        "markVariant": "inverse",
+        "size": "full",
+        "align": "center",
+        "verticalAlign": "center",
+        "foregroundRole": "brandSurface"
+      },
+      "placement": {
+        "canvas": { "x": 17.5, "y": 50, "width": 24, "height": 48, "rotation": 0, "zIndex": 4, "locked": false }
+      }
+    },
+    {
+      "type": "canvas-text",
+      "sectionRef": 0,
+      "settings": {
+        "content": { "en-US": "<h1>Your company. Your point of view.</h1>" },
+        "typographyRole": "brandHeadline",
+        "foregroundRole": "brandOnSurface",
+        "backgroundRole": "transparent",
+        "textAlign": "left",
+        "blockAlign": "left",
+        "measureWidth": "full",
+        "verticalAlign": "center"
+      },
+      "placement": {
+        "canvas": { "x": 65, "y": 43, "width": 52, "height": 46, "rotation": 0, "zIndex": 5, "locked": false }
+      }
+    },
+    {
+      "type": "canvas-badge",
+      "sectionRef": 0,
+      "settings": {
+        "text": { "en-US": "Build what matters" },
+        "variant": "soft",
+        "backgroundRole": "brandPrimary",
+        "foregroundRole": "brandPrimary",
+        "align": "left"
+      },
+      "placement": {
+        "canvas": { "x": 55, "y": 78, "width": 32, "height": 12, "rotation": 0, "zIndex": 6, "locked": false }
+      }
+    }
+  ]
+}

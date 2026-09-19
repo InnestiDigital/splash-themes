@@ -1,0 +1,260 @@
+{
+  "component": "ComparisonTable",
+  "type": "comparison-table",
+  "label": {
+    "en-US": "Comparison Table"
+  },
+  "category": "content",
+  "description": {
+    "en-US": "A responsive, accessible comparison table built on real <table> semantics: compare up to four columns of service tiers or specs, highlight a featured column with an optional badge, render smart yes/no cells from plain text, and stack into per-column cards on mobile."
+  },
+  "compatibleSectionRoles": [
+    "content",
+    "editorial-body"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "repeater",
+      "id": "columns",
+      "label": { "en-US": "Columns" },
+      "group": "content",
+      "maxItems": 4,
+      "fields": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": { "en-US": "Column label" },
+          "translatable": true
+        },
+        {
+          "type": "checkbox",
+          "id": "featured",
+          "label": { "en-US": "Highlight this column" },
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": { "en-US": "Badge" },
+          "translatable": true,
+          "note": "Optional small chip shown on the column header, e.g. \"Consigliato\"."
+        },
+        {
+          "type": "text",
+          "id": "ctaLabel",
+          "label": { "en-US": "CTA label" },
+          "translatable": true,
+          "note": "Optional button under the column, e.g. \"Richiedi preventivo\". Requires a CTA link."
+        },
+        {
+          "type": "url",
+          "id": "ctaUrl",
+          "label": { "en-US": "CTA link" },
+          "note": "Where the column button goes. External http(s) links open in a new tab."
+        }
+      ]
+    },
+    {
+      "type": "repeater",
+      "id": "rows",
+      "label": { "en-US": "Rows" },
+      "group": "content",
+      "maxItems": 12,
+      "fields": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": { "en-US": "Feature / attribute" },
+          "translatable": true
+        },
+        {
+          "type": "text",
+          "id": "c1",
+          "label": { "en-US": "Column 1 value" },
+          "translatable": true,
+          "note": "Yes/no words (yes, sì, no, ✓, ✗) render as icons; anything else renders as text."
+        },
+        {
+          "type": "text",
+          "id": "c2",
+          "label": { "en-US": "Column 2 value" },
+          "translatable": true
+        },
+        {
+          "type": "text",
+          "id": "c3",
+          "label": { "en-US": "Column 3 value" },
+          "translatable": true
+        },
+        {
+          "type": "text",
+          "id": "c4",
+          "label": { "en-US": "Column 4 value" },
+          "translatable": true
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "featuredAccent",
+      "label": { "en-US": "Accent the highlighted column" },
+      "default": true,
+      "group": "style"
+    },
+    {
+      "type": "checkbox",
+      "id": "rowDividers",
+      "label": { "en-US": "Show row dividers" },
+      "default": true,
+      "group": "style"
+    },
+    {
+      "type": "select",
+      "id": "density",
+      "label": { "en-US": "Density" },
+      "default": "comfortable",
+      "group": "style",
+      "options": [
+        { "value": "comfortable", "label": { "en-US": "Comfortable" } },
+        { "value": "compact", "label": { "en-US": "Compact" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "mobileLayout",
+      "label": { "en-US": "Mobile layout" },
+      "default": "stack",
+      "group": "style",
+      "options": [
+        { "value": "stack", "label": { "en-US": "Stacked cards" } },
+        { "value": "deck", "label": { "en-US": "Swipe deck" } }
+      ],
+      "note": "Mobile only: \"Stacked cards\" lists each column vertically; \"Swipe deck\" lays them out as horizontal, swipeable cards with pagination dots."
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": { "en-US": "Border Radius" },
+      "options": [
+        "none",
+        "sm",
+        "md",
+        "lg"
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": { "en-US": "Internal Padding" },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "contentAlignH",
+      "type": "select",
+      "label": { "en-US": "Content Alignment" },
+      "options": [
+        { "value": "left", "label": { "en-US": "Left" } },
+        { "value": "center", "label": { "en-US": "Center" } },
+        { "value": "right", "label": { "en-US": "Right" } }
+      ],
+      "default": "left",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "style", "label": { "en-US": "Style" } },
+    { "id": "appearance", "label": { "en-US": "Appearance" } }
+  ],
+  "presets": [
+    {
+      "name": { "en-US": "Service Tiers" },
+      "settings": {
+        "featuredAccent": true,
+        "rowDividers": true,
+        "density": "comfortable",
+        "borderRadius": "none",
+        "internalPadding": "none",
+        "contentAlignH": "left",
+        "columns": [
+          {
+            "label": { "en-US": "Essential", "it-IT": "Essenziale" },
+            "featured": false,
+            "badge": { "en-US": "", "it-IT": "" }
+          },
+          {
+            "label": { "en-US": "Studio", "it-IT": "Studio" },
+            "featured": true,
+            "badge": { "en-US": "Recommended", "it-IT": "Consigliato" }
+          },
+          {
+            "label": { "en-US": "Full Practice", "it-IT": "Completo" },
+            "featured": false,
+            "badge": { "en-US": "", "it-IT": "" }
+          }
+        ],
+        "rows": [
+          {
+            "label": { "en-US": "Site survey & measurement", "it-IT": "Rilievo e misurazione" },
+            "c1": { "en-US": "yes", "it-IT": "sì" },
+            "c2": { "en-US": "yes", "it-IT": "sì" },
+            "c3": { "en-US": "yes", "it-IT": "sì" }
+          },
+          {
+            "label": { "en-US": "Concept design revisions", "it-IT": "Revisioni di progetto" },
+            "c1": { "en-US": "2", "it-IT": "2" },
+            "c2": { "en-US": "5", "it-IT": "5" },
+            "c3": { "en-US": "Unlimited", "it-IT": "Illimitate" }
+          },
+          {
+            "label": { "en-US": "3D visualisation", "it-IT": "Visualizzazione 3D" },
+            "c1": { "en-US": "no", "it-IT": "no" },
+            "c2": { "en-US": "yes", "it-IT": "sì" },
+            "c3": { "en-US": "yes", "it-IT": "sì" }
+          },
+          {
+            "label": { "en-US": "Restoration heritage report", "it-IT": "Relazione di restauro" },
+            "c1": { "en-US": "no", "it-IT": "no" },
+            "c2": { "en-US": "no", "it-IT": "no" },
+            "c3": { "en-US": "yes", "it-IT": "sì" }
+          },
+          {
+            "label": { "en-US": "On-site works supervision", "it-IT": "Direzione lavori" },
+            "c1": { "en-US": "—", "it-IT": "—" },
+            "c2": { "en-US": "Milestones", "it-IT": "Fasi chiave" },
+            "c3": { "en-US": "Full", "it-IT": "Completa" }
+          }
+        ]
+      },
+      "description": {
+        "en-US": "Three service tiers with a highlighted, badged middle column — smart yes/no icons where a cell reads yes/no, plain text everywhere else."
+      },
+      "category": "content",
+      "isDefault": true
+    }
+  ],
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Entire comparison table block"
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local"
+    ],
+    "excluded": []
+  }
+}

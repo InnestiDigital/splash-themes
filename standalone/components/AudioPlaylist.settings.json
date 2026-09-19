@@ -1,0 +1,188 @@
+{
+  "component": "AudioPlaylist",
+  "type": "audio-playlist",
+  "label": {
+    "en-US": "Audio Playlist",
+    "it": "Playlist audio"
+  },
+  "category": "content",
+  "compatibleSectionRoles": [
+    "content",
+    "editorial-body",
+    "supporting-text"
+  ],
+  "description": {
+    "en-US": "A list of audio tracks — anthems, marches, recordings, interviews — played by the browser's native audio player. One player is reused across the list; selecting a track loads it, and the next track can start automatically.",
+    "it": "Un elenco di brani audio riprodotti dal lettore nativo del browser."
+  },
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "sectionHeading",
+      "label": {
+        "en-US": "Section Heading (optional)",
+        "it": "Titolo sezione (opzionale)"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "sectionTitle",
+      "defaultPresetKey": "section-title",
+      "validation": {
+        "maxLength": 120
+      }
+    },
+    {
+      "type": "text",
+      "id": "emptyMessage",
+      "label": {
+        "en-US": "Empty-state message",
+        "it": "Messaggio per elenco vuoto"
+      },
+      "group": "content",
+      "translatable": true,
+      "note": "Shown when the playlist has no tracks. Optional; a generic message is used when empty.",
+      "validation": {
+        "maxLength": 200
+      }
+    },
+    {
+      "type": "repeater",
+      "id": "tracks",
+      "label": {
+        "en-US": "Tracks",
+        "it": "Brani"
+      },
+      "group": "content",
+      "maxItems": 40,
+      "fields": [
+        {
+          "type": "richtext-single",
+          "id": "title",
+          "label": {
+            "en-US": "Title",
+            "it": "Titolo"
+          },
+          "translatable": true,
+          "typographyRole": "body",
+          "defaultPresetKey": "body",
+          "validation": {
+            "required": true,
+            "maxLength": 160
+          }
+        },
+        {
+          "type": "richtext-single",
+          "id": "subtitle",
+          "label": {
+            "en-US": "Performer / Note",
+            "it": "Esecutore / Nota"
+          },
+          "translatable": true,
+          "typographyRole": "body",
+          "defaultPresetKey": "body",
+          "validation": {
+            "maxLength": 160
+          }
+        },
+        {
+          "type": "text",
+          "id": "url",
+          "label": {
+            "en-US": "Audio File URL",
+            "it": "URL file audio"
+          },
+          "validation": {
+            "required": true
+          },
+          "note": {
+            "en-US": "Upload the file to the media library and paste its URL. MP3 and M4A play everywhere; OGG does not play in Safari."
+          }
+        },
+        {
+          "type": "text",
+          "id": "duration",
+          "label": {
+            "en-US": "Duration (optional)",
+            "it": "Durata (opzionale)"
+          },
+          "note": {
+            "en-US": "Shown as a label only, e.g. 3:42. Not read from the file."
+          }
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "autoAdvance",
+      "label": {
+        "en-US": "Play Next Automatically",
+        "it": "Riproduci automaticamente il successivo"
+      },
+      "default": true,
+      "group": "behaviour"
+    },
+    {
+      "type": "checkbox",
+      "id": "showDownload",
+      "label": {
+        "en-US": "Show Download Link",
+        "it": "Mostra link di download"
+      },
+      "default": false,
+      "group": "behaviour"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "behaviour",
+      "label": {
+        "en-US": "Behaviour"
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    },
+    "sectionHeading": {
+      "selector": "[data-target='sectionHeading']",
+      "description": "Section heading above the playlist",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    },
+    "item": {
+      "selector": "[data-target='item']",
+      "description": "Each track row",
+      "multiple": true,
+      "addressable": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur"
+      ],
+      "canTrigger": true,
+      "kind": "group"
+    }
+  }
+}

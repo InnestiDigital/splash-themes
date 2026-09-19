@@ -1,0 +1,436 @@
+{
+  "component": "CTASection",
+  "type": "cta-section",
+  "label": {
+    "en-US": "CTA Section"
+  },
+  "category": "cta",
+  "compatibleSectionRoles": [
+    "section-cta",
+    "editorial-body"
+  ],
+  "typographySlots": [],
+  "$fragments": [
+    "color-roles"
+  ],
+  "$fragmentOverrides": {
+    "background": {
+      "default": "section"
+    }
+  },
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "heading",
+      "label": {
+        "en-US": "Heading"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "heading2",
+      "defaultPresetKey": "section-title",
+      "validation": {
+        "maxLength": 120
+      }
+    },
+    {
+      "type": "richtext-block",
+      "id": "body",
+      "label": {
+        "en-US": "Body"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "body",
+      "defaultPresetKey": "body"
+    },
+    {
+      "type": "text",
+      "id": "ctaText",
+      "label": {
+        "en-US": "Primary Button Text"
+      },
+      "group": "content",
+      "translatable": true
+    },
+    {
+      "type": "url",
+      "id": "ctaUrl",
+      "label": {
+        "en-US": "Primary Button URL"
+      },
+      "group": "content"
+    },
+    {
+      "type": "select",
+      "id": "ctaStyle",
+      "label": {
+        "en-US": "Primary Button Style"
+      },
+      "default": "solid",
+      "group": "content",
+      "options": [
+        {
+          "value": "solid",
+          "label": {
+            "en-US": "Solid"
+          }
+        },
+        {
+          "value": "outline",
+          "label": {
+            "en-US": "Outline"
+          }
+        },
+        {
+          "value": "text",
+          "label": {
+            "en-US": "Text"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "ctaIcon",
+      "label": { "en-US": "Primary Button Icon" },
+      "default": "none",
+      "group": "content",
+      "note": "Optional trailing arrow that nudges on hover. Inherits the button text color.",
+      "options": [
+        { "value": "none", "label": { "en-US": "None" } },
+        { "value": "arrow", "label": { "en-US": "Arrow →" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "ctaColorScheme",
+      "label": {
+        "en-US": "Button Color"
+      },
+      "default": "primary",
+      "group": "content",
+      "note": "Semantic role only — maps to theme palette. No freeform hex.",
+      "showIf": { "ctaStyle": "solid" },
+      "options": [
+        { "value": "primary", "label": { "en-US": "Primary (theme primaryColor)" } },
+        { "value": "accent",  "label": { "en-US": "Accent (theme accentColor / teal)" } }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "secondaryCtaText",
+      "label": {
+        "en-US": "Secondary Button Text"
+      },
+      "group": "content",
+      "translatable": true
+    },
+    {
+      "type": "url",
+      "id": "secondaryCtaUrl",
+      "label": {
+        "en-US": "Secondary Button URL"
+      },
+      "group": "content"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      },
+      "default": "centered",
+      "group": "style",
+      "options": [
+        {
+          "value": "centered",
+          "label": {
+            "en-US": "Centered"
+          }
+        },
+        {
+          "value": "split",
+          "label": {
+            "en-US": "Split"
+          }
+        },
+        {
+          "value": "stacked",
+          "label": {
+            "en-US": "Stacked"
+          }
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "id": "backgroundImage",
+      "label": {
+        "en-US": "Background Image"
+      },
+      "group": "style",
+      "note": "Optional background image behind the CTA content"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "contentAlignH",
+      "type": "select",
+      "label": {
+        "en-US": "Content Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "center",
+      "group": "appearance"
+    },
+    {
+      "id": "contentAlignV",
+      "type": "select",
+      "label": {
+        "en-US": "Vertical Alignment"
+      },
+      "options": [
+        {
+          "value": "top",
+          "label": {
+            "en-US": "Top"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "bottom",
+          "label": {
+            "en-US": "Bottom"
+          }
+        }
+      ],
+      "default": "center",
+      "group": "appearance"
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Corner Radius"
+      },
+      "options": [
+        "none",
+        "sm",
+        "md",
+        "lg",
+        "pill"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "measureWidth",
+      "type": "select",
+      "label": {
+        "en-US": "Content Width"
+      },
+      "default": "standard",
+      "canvasDefault": "full",
+      "group": "appearance",
+      "options": [
+        { "value": "content",  "label": { "en-US": "Reading (65ch)" } },
+        { "value": "narrow",   "label": { "en-US": "Narrow (45rem)" } },
+        { "value": "standard", "label": { "en-US": "Standard (65rem)" } },
+        { "value": "wide",     "label": { "en-US": "Wide (80rem)" } },
+        { "value": "full",     "label": { "en-US": "Full" } }
+      ]
+    },
+    {
+      "id": "compact",
+      "type": "toggle",
+      "label": {
+        "en-US": "Compact (inline CTA)"
+      },
+      "default": false,
+      "group": "appearance",
+      "note": "Removes vertical section padding. Use when the CTA is a small pill inline in a stacked section."
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en-US": "Centered CTA"
+      },
+      "settings": {
+        "layout": "centered",
+        "ctaStyle": "solid",
+        "background": "section",
+        "textTone": "section"
+      },
+      "description": {
+        "en-US": "Centered call-to-action with headline and button. Use for primary page-level CTAs."
+      },
+      "category": "cta",
+      "isDefault": true
+    },
+    {
+      "name": {
+        "en-US": "Split CTA with Image"
+      },
+      "settings": {
+        "layout": "split",
+        "ctaStyle": "outline",
+        "background": "inverse",
+        "textTone": "inverse"
+      },
+      "description": {
+        "en-US": "Two-column layout with supporting image alongside the CTA copy. Best for mid-page conversion moments."
+      },
+      "category": "cta"
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Entire CTA section container",
+      "kind": "root"
+    },
+    "heading": {
+      "selector": "[data-target='heading']",
+      "description": "Heading text",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    },
+    "body": {
+      "selector": "[data-target='body']",
+      "description": "Body rich text",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    },
+    "cta": {
+      "selector": "[data-target='cta']",
+      "description": "Action buttons container",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": true,
+      "kind": "decorative"
+    },
+    "background": {
+      "selector": "[data-target='background']",
+      "description": "Background image layer",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false,
+      "kind": "media"
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": []
+  }
+}

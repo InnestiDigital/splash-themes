@@ -1,0 +1,350 @@
+{
+  "component": "ChapterDivider",
+  "type": "chapter-divider",
+  "label": {
+    "en-US": "Chapter Divider"
+  },
+  "category": "editorial",
+  "compatibleSectionRoles": [
+    "section-heading"
+  ],
+  "typographySlots": [],
+  "$fragments": [
+    "color-roles"
+  ],
+  "$fragmentOverrides": {
+    "background": {
+      "default": "transparent"
+    }
+  },
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "eyebrow",
+      "label": {
+        "en-US": "Eyebrow"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "eyebrow",
+      "defaultPresetKey": "eyebrow",
+      "validation": {
+        "maxLength": 100
+      }
+    },
+    {
+      "type": "richtext-single",
+      "id": "heading",
+      "label": {
+        "en-US": "Heading"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "heading2",
+      "defaultPresetKey": "section-title",
+      "validation": {
+        "maxLength": 200
+      }
+    },
+    {
+      "type": "richtext-single",
+      "id": "subtitle",
+      "label": {
+        "en-US": "Subtitle"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "heading3",
+      "defaultPresetKey": "section-title",
+      "validation": {
+        "maxLength": 300
+      }
+    },
+    {
+      "type": "number",
+      "id": "chapterNumber",
+      "label": {
+        "en-US": "Chapter Number"
+      },
+      "group": "content",
+      "options": {
+        "min": 1,
+        "max": 999
+      }
+    },
+    {
+      "type": "select",
+      "id": "accentStyle",
+      "label": {
+        "en-US": "Accent Style"
+      },
+      "default": "line",
+      "group": "style",
+      "options": [
+        {
+          "value": "line",
+          "label": {
+            "en-US": "Line"
+          }
+        },
+        {
+          "value": "dot",
+          "label": {
+            "en-US": "Dot"
+          }
+        },
+        {
+          "value": "number",
+          "label": {
+            "en-US": "Number"
+          }
+        },
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "id": "backgroundImage",
+      "label": {
+        "en-US": "Background Image"
+      },
+      "group": "style"
+    },
+    {
+      "type": "select",
+      "id": "textAlign",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "default": "center",
+      "group": "style",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": {
+        "en-US": "Height"
+      },
+      "default": "auto",
+      "group": "layout",
+      "options": [
+        {
+          "value": "full-viewport",
+          "label": {
+            "en-US": "Full Viewport"
+          }
+        },
+        {
+          "value": "auto",
+          "label": {
+            "en-US": "Auto"
+          }
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "overlayOpacity",
+      "label": {
+        "en-US": "Overlay Opacity"
+      },
+      "default": 0.5,
+      "group": "style",
+      "showIf": {
+        "backgroundImage": true
+      },
+      "options": {
+        "min": 0,
+        "max": 1,
+        "step": 0.1
+      }
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en-US": "Dark Full Screen"
+      },
+      "settings": {
+        "accentStyle": "line",
+        "textAlign": "center",
+        "height": "full-viewport",
+        "background": "inverse",
+        "textTone": "inverse"
+      },
+      "description": {
+        "en-US": "Full-viewport dark section break with centered headline. Use between major page chapters."
+      },
+      "category": "editorial",
+      "isDefault": true
+    },
+    {
+      "name": {
+        "en-US": "Numbered Chapter"
+      },
+      "settings": {
+        "accentStyle": "number",
+        "textAlign": "center",
+        "height": "full-viewport",
+        "chapterNumber": 1,
+        "background": "inverse",
+        "textTone": "inverse"
+      },
+      "description": {
+        "en-US": "Full-viewport section break with a visible chapter number. Best for numbered editorial series."
+      },
+      "category": "editorial"
+    }
+  ],
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Divider container",
+      "animatable": [
+        "motion-path"
+      ]
+    },
+    "eyebrow": {
+      "kind": "text",
+      "selector": "[data-target='eyebrow']",
+      "description": "Eyebrow text label",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    },
+    "heading": {
+      "kind": "text",
+      "selector": "[data-target='heading']",
+      "description": "Chapter heading",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    },
+    "subheading": {
+      "kind": "text",
+      "selector": "[data-target='subheading']",
+      "description": "Subtitle text",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    },
+    "accent": {
+      "kind": "decorative",
+      "selector": "[data-target='accent']",
+      "description": "Accent element (line/dot/number)",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false
+    },
+    "background": {
+      "kind": "decorative",
+      "selector": "[data-target='background']",
+      "description": "Background layer",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local"
+    ],
+    "excluded": [],
+    "animatableVars": [
+      { "name": "--motion-accent", "type": "color", "description": "Accent element color (line/dot/number)" },
+      { "name": "--motion-reveal", "type": "percentage", "description": "Heading reveal progress (0-100%)" }
+    ]
+  },
+  "roleNotes": {
+    "section-heading": "Full viewport height may break editorial-split sidebar layout. Use height=auto for editorial-split sections."
+  }
+}

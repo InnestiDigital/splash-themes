@@ -1,0 +1,164 @@
+{
+  "type": "editorial-split",
+  "label": "Editorial Split",
+  "description": "Content on one side, heading and supporting text on the other. Blocks placed by layout role.",
+  "usesContainer": true,
+  "layoutSlots": [
+    { "role": "section-heading", "required": true, "multiple": false, "description": "Section title and intro (renders at top of content column). For a sidebar-style label heading, place a Section Heading in the supporting-text slot instead." },
+    { "role": "editorial-body", "required": true, "multiple": true, "description": "Main content blocks (stack vertically in content column)" },
+    { "role": "supporting-text", "required": false, "multiple": true, "description": "Sidebar or supplementary content (renders in chrome column). Accepts Section Heading for label-column patterns (category, date, section label)." },
+    { "role": "media-gallery", "required": false, "multiple": true, "description": "Image or media blocks (render in content column, alongside editorial body)" },
+    { "role": "media-chrome", "required": false, "multiple": true, "description": "Image or media blocks (render in sidebar/chrome column, alongside supporting text)" },
+    { "role": "section-cta", "required": false, "multiple": true, "description": "Call-to-action blocks (render at bottom of chrome column)" }
+  ],
+  "settings": [
+    {
+      "id": "shellSide",
+      "type": "select",
+      "display": "visual-picker",
+      "label": "Sidebar Side",
+      "default": "right",
+      "group": "layout",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" },
+        { "value": "alternate", "label": "Alternate" }
+      ]
+    },
+    {
+      "id": "showSeparators",
+      "type": "toggle",
+      "label": "Show Divider",
+      "description": "Adds a vertical line between content and sidebar columns",
+      "default": false,
+      "group": "layout"
+    },
+    {
+      "id": "contentWidthRatio",
+      "type": "select",
+      "display": "visual-picker",
+      "label": "Column Widths",
+      "default": "wide-left",
+      "group": "layout",
+      "options": [
+        { "value": "equal", "label": "Equal (50 / 50)" },
+        { "value": "wide-left", "label": "Wide Left (66 / 33)" },
+        { "value": "wide-right", "label": "Wide Right (33 / 66)" },
+        { "value": "narrow-left", "label": "Narrow Left (26 / 74)" },
+        { "value": "sidebar-left", "label": "Sidebar Left (20 / 80)" },
+        { "value": "sidebar-right", "label": "Sidebar Right (80 / 20)" }
+      ]
+    },
+    {
+      "id": "contentSurface",
+      "type": "select",
+      "label": "Content Surface",
+      "default": "none",
+      "group": "layout",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "outlined", "label": "Outlined card (thin border)" }
+      ]
+    },
+    {
+      "id": "stackGap",
+      "type": "select",
+      "label": "Block Spacing",
+      "description": "Space between blocks within this section",
+      "default": "md",
+      "group": "layout",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "sm", "label": "Tight" },
+        { "value": "md", "label": "Normal" },
+        { "value": "lg", "label": "Spacious" }
+      ]
+    },
+    {
+      "id": "chromeAlign",
+      "type": "select",
+      "label": "Sidebar Position",
+      "description": "Controls vertical alignment of the sidebar relative to content",
+      "default": "sticky-top",
+      "group": "layout",
+      "options": [
+        { "value": "sticky-top", "label": "Follow Scroll", "description": "Sidebar stays visible as you scroll past main content" },
+        { "value": "center", "label": "Centered", "description": "Sidebar is vertically centered next to content" },
+        { "value": "top", "label": "Top", "description": "Sidebar aligns to top of content area" },
+        { "value": "bottom", "label": "Bottom", "description": "Sidebar aligns to bottom of content area" }
+      ]
+    },
+    {
+      "id": "typographyScale",
+      "type": "select",
+      "label": "Typography Scale",
+      "description": "Scales all headings within this section",
+      "default": "default",
+      "group": "layout",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "display", "label": "Display (larger headings)" },
+        { "value": "compact", "label": "Compact (smaller headings)" }
+      ]
+    },
+    {
+      "id": "dividerTop",
+      "type": "select",
+      "label": "Top Edge Shape",
+      "description": "Decorative SVG separator at the top of this section, filled with the section background so the colour flows into the section above.",
+      "default": "none",
+      "group": "divider",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "wave", "label": "Wave" },
+        { "value": "curve", "label": "Curve" },
+        { "value": "tilt", "label": "Tilt" },
+        { "value": "triangle", "label": "Triangle" },
+        { "value": "zigzag", "label": "Zigzag" },
+        { "value": "arrow", "label": "Arrow" }
+      ]
+    },
+    {
+      "id": "dividerBottom",
+      "type": "select",
+      "label": "Bottom Edge Shape",
+      "description": "Decorative SVG separator at the bottom of this section, filled with the section background so the colour flows into the section below.",
+      "default": "none",
+      "group": "divider",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "wave", "label": "Wave" },
+        { "value": "curve", "label": "Curve" },
+        { "value": "tilt", "label": "Tilt" },
+        { "value": "triangle", "label": "Triangle" },
+        { "value": "zigzag", "label": "Zigzag" },
+        { "value": "arrow", "label": "Arrow" }
+      ]
+    },
+    {
+      "id": "dividerHeight",
+      "type": "select",
+      "label": "Divider Height",
+      "description": "Height of the shape dividers on this section.",
+      "default": "md",
+      "group": "divider",
+      "options": [
+        { "value": "sm", "label": "Small" },
+        { "value": "md", "label": "Medium" },
+        { "value": "lg", "label": "Large" }
+      ]
+    },
+    {
+      "id": "dividerFlip",
+      "type": "toggle",
+      "label": "Flip Direction",
+      "description": "Mirror the divider shapes horizontally.",
+      "default": false,
+      "group": "divider"
+    }
+  ],
+  "groups": [
+    { "id": "layout", "label": "Layout" },
+    { "id": "divider", "label": "Shape Dividers" }
+  ]
+}

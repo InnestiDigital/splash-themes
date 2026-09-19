@@ -1,0 +1,243 @@
+{
+  "component": "TableOfContents",
+  "type": "table-of-contents",
+  "label": {
+    "en-US": "Table of Contents"
+  },
+  "description": {
+    "en-US": "Navigable list of page sections with anchor links. Works best in a sticky sidebar."
+  },
+  "category": "navigation",
+  "compatibleSectionRoles": [
+    "supporting-text",
+    "section-heading"
+  ],
+  "typographySlots": [],
+  "$fragments": [
+    "color-roles"
+  ],
+  "$fragmentOverrides": {
+    "background": {
+      "default": "transparent"
+    }
+  },
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "title",
+      "label": {
+        "en-US": "Title"
+      },
+      "default": "On This Page",
+      "preset": "section-title",
+      "group": "content"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      },
+      "default": "list",
+      "group": "style",
+      "options": [
+        {
+          "value": "list",
+          "label": {
+            "en-US": "Vertical List"
+          }
+        },
+        {
+          "value": "inline",
+          "label": {
+            "en-US": "Inline"
+          }
+        },
+        {
+          "value": "numbered",
+          "label": {
+            "en-US": "Numbered List"
+          }
+        }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "highlightCurrent",
+      "label": {
+        "en-US": "Highlight Current Section"
+      },
+      "default": true,
+      "group": "style"
+    },
+    {
+      "type": "toggle",
+      "id": "showProgressRail",
+      "label": {
+        "en-US": "Show Progress Rail"
+      },
+      "default": false,
+      "group": "style"
+    },
+    {
+      "type": "toggle",
+      "id": "floatingDock",
+      "label": {
+        "en-US": "Floating Dock Rail"
+      },
+      "default": false,
+      "group": "style"
+    },
+    {
+      "type": "select",
+      "id": "dockSide",
+      "label": {
+        "en-US": "Dock Side"
+      },
+      "default": "right",
+      "group": "style",
+      "showIf": {
+        "floatingDock": true
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ]
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface Style"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Border Radius"
+      },
+      "options": [
+        "none",
+        "sm",
+        "md",
+        "lg",
+        "pill"
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "textAlign",
+      "type": "select",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "appearance"
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local"
+    ],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "description": "Entire table of contents container",
+      "kind": "root"
+    },
+    "title": {
+      "kind": "text",
+      "selector": "[data-target='title']",
+      "description": "Section title label",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false
+    },
+    "items": {
+      "kind": "text",
+      "selector": "[data-target='item']",
+      "description": "Individual TOC entries",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false
+    }
+  }
+}

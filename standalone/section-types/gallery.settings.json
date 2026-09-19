@@ -1,0 +1,190 @@
+{
+  "type": "gallery",
+  "label": "Gallery",
+  "description": "Image gallery section with grid, masonry, or strip layouts.",
+  "usesContainer": true,
+  "layoutSlots": [
+    { "role": "section-heading", "required": false, "multiple": false, "description": "Gallery title and intro (renders at top)" },
+    { "role": "editorial-body", "required": false, "multiple": true, "description": "Optional intro blocks (render between heading and gallery)" },
+    { "role": "media-gallery", "required": true, "multiple": true, "description": "Gallery items (render in grid/masonry/strip layout)" },
+    { "role": "section-cta", "required": false, "multiple": true, "description": "Call-to-action blocks (render at bottom of gallery)" }
+  ],
+  "settings": [
+    {
+      "id": "layout",
+      "type": "select",
+      "label": "Layout",
+      "default": "grid",
+      "group": "layout",
+      "options": [
+        { "value": "grid", "label": "Grid" },
+        { "value": "masonry", "label": "Masonry" },
+        { "value": "strip", "label": "Strip" },
+        { "value": "carousel", "label": "Carousel" }
+      ]
+    },
+    {
+      "id": "columns",
+      "type": "select",
+      "label": "Columns",
+      "default": "3",
+      "group": "layout",
+      "options": [
+        { "value": "2", "label": "2 Columns" },
+        { "value": "3", "label": "3 Columns" },
+        { "value": "4", "label": "4 Columns" }
+      ],
+      "conditional": { "field": "layout", "value": ["grid", "masonry", "strip"] }
+    },
+    {
+      "id": "gap",
+      "type": "select",
+      "label": "Block Spacing",
+      "description": "Space between blocks within this section",
+      "default": "md",
+      "group": "layout",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "sm", "label": "Tight" },
+        { "value": "md", "label": "Normal" },
+        { "value": "lg", "label": "Loose" }
+      ]
+    },
+    {
+      "id": "stripPattern",
+      "type": "select",
+      "label": "Featured Pattern",
+      "default": "every-third",
+      "description": "Controls which items are displayed larger in the strip layout",
+      "group": "layout",
+      "options": [
+        { "value": "first", "label": "First Item Large" },
+        { "value": "every-third", "label": "Every Third Large" },
+        { "value": "alternating", "label": "Alternating Large/Small" }
+      ],
+      "showIf": { "layout": "strip" }
+    },
+    {
+      "id": "autoplay",
+      "type": "toggle",
+      "label": "Auto Play",
+      "default": false,
+      "group": "carousel",
+      "showIf": { "layout": "carousel" }
+    },
+    {
+      "id": "interval",
+      "type": "number",
+      "label": "Interval (seconds)",
+      "default": 5,
+      "min": 3,
+      "max": 10,
+      "group": "carousel",
+      "showIf": { "layout": "carousel", "autoplay": true }
+    },
+    {
+      "id": "showDots",
+      "type": "toggle",
+      "label": "Show Dots",
+      "default": true,
+      "group": "carousel",
+      "showIf": { "layout": "carousel" }
+    },
+    {
+      "id": "showArrows",
+      "type": "toggle",
+      "label": "Show Arrows",
+      "default": true,
+      "group": "carousel",
+      "showIf": { "layout": "carousel" }
+    },
+    {
+      "id": "carouselColumns",
+      "type": "select",
+      "label": "Slides per Page",
+      "description": "Desktop slide count. Tablet caps at 2; mobile always shows 1.",
+      "default": "3",
+      "group": "carousel",
+      "options": [
+        { "value": "1", "label": "1 — Full bleed" },
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4 — Compact" }
+      ],
+      "showIf": { "layout": "carousel" }
+    },
+    {
+      "id": "typographyScale",
+      "type": "select",
+      "label": "Typography Scale",
+      "description": "Scales all headings within this section",
+      "default": "default",
+      "group": "layout",
+      "options": [
+        { "value": "default", "label": "Default" },
+        { "value": "display", "label": "Display (larger headings)" },
+        { "value": "compact", "label": "Compact (smaller headings)" }
+      ]
+    },
+    {
+      "id": "dividerTop",
+      "type": "select",
+      "label": "Top Edge Shape",
+      "description": "Decorative SVG separator at the top of this section, filled with the section background so the colour flows into the section above.",
+      "default": "none",
+      "group": "divider",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "wave", "label": "Wave" },
+        { "value": "curve", "label": "Curve" },
+        { "value": "tilt", "label": "Tilt" },
+        { "value": "triangle", "label": "Triangle" },
+        { "value": "zigzag", "label": "Zigzag" },
+        { "value": "arrow", "label": "Arrow" }
+      ]
+    },
+    {
+      "id": "dividerBottom",
+      "type": "select",
+      "label": "Bottom Edge Shape",
+      "description": "Decorative SVG separator at the bottom of this section, filled with the section background so the colour flows into the section below.",
+      "default": "none",
+      "group": "divider",
+      "options": [
+        { "value": "none", "label": "None" },
+        { "value": "wave", "label": "Wave" },
+        { "value": "curve", "label": "Curve" },
+        { "value": "tilt", "label": "Tilt" },
+        { "value": "triangle", "label": "Triangle" },
+        { "value": "zigzag", "label": "Zigzag" },
+        { "value": "arrow", "label": "Arrow" }
+      ]
+    },
+    {
+      "id": "dividerHeight",
+      "type": "select",
+      "label": "Divider Height",
+      "description": "Height of the shape dividers on this section.",
+      "default": "md",
+      "group": "divider",
+      "options": [
+        { "value": "sm", "label": "Small" },
+        { "value": "md", "label": "Medium" },
+        { "value": "lg", "label": "Large" }
+      ]
+    },
+    {
+      "id": "dividerFlip",
+      "type": "toggle",
+      "label": "Flip Direction",
+      "description": "Mirror the divider shapes horizontally.",
+      "default": false,
+      "group": "divider"
+    }
+  ],
+  "groups": [
+    { "id": "layout", "label": "Layout" },
+    { "id": "carousel", "label": "Carousel Settings" },
+    { "id": "divider", "label": "Shape Dividers" }
+  ]
+}

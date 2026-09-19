@@ -1,0 +1,218 @@
+{
+  "component": "FilterableGallery",
+  "type": "filterable-gallery",
+  "label": {
+    "en-US": "Filterable Gallery"
+  },
+  "category": "media",
+  "description": {
+    "en-US": "A portfolio project index with category filter chips. Clicking a filter animates the grid with a FLIP reflow — surviving cards glide to their new position while entering cards fade in. Accessible (aria-pressed chips + live count), reduced-motion safe, keyboard operable. Optionally switch to a masonry layout to show images at their natural aspect ratio, uncropped."
+  },
+  "compatibleSectionRoles": [
+    "media-gallery",
+    "content",
+    "editorial-body"
+  ],
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "repeater",
+      "id": "projects",
+      "label": { "en-US": "Projects" },
+      "group": "content",
+      "maxItems": 48,
+      "fields": [
+        {
+          "type": "media",
+          "id": "image",
+          "label": { "en-US": "Image" }
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": { "en-US": "Title" },
+          "translatable": true
+        },
+        {
+          "type": "text",
+          "id": "meta",
+          "label": { "en-US": "Meta (year · location)" },
+          "translatable": true
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": { "en-US": "Category (used as the filter chip)" },
+          "note": "Projects sharing the exact same category text are grouped under one chip."
+        },
+        {
+          "type": "text",
+          "id": "link",
+          "label": { "en-US": "Link URL (optional)" }
+        }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "showFilters",
+      "label": { "en-US": "Show filter chips" },
+      "default": true,
+      "group": "content",
+      "note": "Off = a plain gallery with no filter bar (all projects shown)."
+    },
+    {
+      "type": "toggle",
+      "id": "enableLightbox",
+      "label": { "en-US": "Open image full screen on click (lightbox)" },
+      "default": false,
+      "group": "content",
+      "note": "On = tiles without a Link URL open a full-screen, swipe- and keyboard-browsable lightbox limited to the currently filtered images."
+    },
+    {
+      "type": "text",
+      "id": "allLabel",
+      "label": { "en-US": "\"All\" chip label" },
+      "default": "All",
+      "translatable": true,
+      "group": "content"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": { "en-US": "Layout" },
+      "default": "grid",
+      "group": "layout",
+      "note": "Masonry shows each image at its natural aspect ratio, uncropped, flowing into intrinsic columns (the Image Ratio is ignored). Grid crops every image to the chosen Image Ratio.",
+      "options": [
+        { "value": "grid", "label": { "en-US": "Grid (uniform cropped)" } },
+        { "value": "masonry", "label": { "en-US": "Masonry (natural ratio)" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "aspectRatio",
+      "label": { "en-US": "Image Ratio" },
+      "default": "4:3",
+      "group": "layout",
+      "options": [
+        { "value": "1:1", "label": { "en-US": "Square (1:1)" } },
+        { "value": "4:3", "label": { "en-US": "Landscape (4:3)" } },
+        { "value": "3:2", "label": { "en-US": "Photo (3:2)" } },
+        { "value": "16:9", "label": { "en-US": "Wide (16:9)" } },
+        { "value": "3:4", "label": { "en-US": "Portrait (3:4)" } },
+        { "value": "auto", "label": { "en-US": "Natural" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "density",
+      "label": { "en-US": "Density" },
+      "default": "comfortable",
+      "group": "layout",
+      "note": "Minimum column width; the grid auto-folds to fewer columns as space shrinks (no media query).",
+      "options": [
+        { "value": "compact", "label": { "en-US": "Compact (more columns)" } },
+        { "value": "comfortable", "label": { "en-US": "Comfortable" } },
+        { "value": "wide", "label": { "en-US": "Wide (fewer, larger)" } }
+      ]
+    },
+    {
+      "id": "measureWidth",
+      "type": "select",
+      "label": { "en-US": "Content Width" },
+      "default": "wide",
+      "canvasDefault": "full",
+      "group": "layout",
+      "options": [
+        { "value": "content", "label": { "en-US": "Reading (65ch)" } },
+        { "value": "narrow", "label": { "en-US": "Narrow (45rem)" } },
+        { "value": "standard", "label": { "en-US": "Standard (65rem)" } },
+        { "value": "wide", "label": { "en-US": "Wide (80rem)" } },
+        { "value": "full", "label": { "en-US": "Full" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "captionStyle",
+      "label": { "en-US": "Caption" },
+      "default": "below",
+      "group": "style",
+      "options": [
+        { "value": "below", "label": { "en-US": "Below image" } },
+        { "value": "overlay", "label": { "en-US": "Overlay on hover" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "reflowSpeed",
+      "label": { "en-US": "Reflow Speed" },
+      "default": "normal",
+      "group": "motion",
+      "options": [
+        { "value": "slow", "label": { "en-US": "Slow" } },
+        { "value": "normal", "label": { "en-US": "Normal" } },
+        { "value": "fast", "label": { "en-US": "Fast" } }
+      ]
+    }
+  ],
+  "groups": [
+    { "id": "content", "label": { "en-US": "Content" } },
+    { "id": "layout", "label": { "en-US": "Layout" } },
+    { "id": "style", "label": { "en-US": "Style" } },
+    { "id": "motion", "label": { "en-US": "Motion" } }
+  ],
+  "presets": [
+    {
+      "name": { "en-US": "Selected Works" },
+      "settings": {
+        "showFilters": true,
+        "allLabel": { "en-US": "All", "it": "Tutti" },
+        "layout": "grid",
+        "aspectRatio": "4:3",
+        "density": "comfortable",
+        "measureWidth": "wide",
+        "captionStyle": "below",
+        "reflowSpeed": "normal",
+        "projects": [
+          { "image": "", "title": { "en-US": "Project one" }, "meta": "Year · Location", "category": "Category A" },
+          { "image": "", "title": { "en-US": "Project two" }, "meta": "Year · Location", "category": "Category B" },
+          { "image": "", "title": { "en-US": "Project three" }, "meta": "Year · Location", "category": "Category A" },
+          { "image": "", "title": { "en-US": "Project four" }, "meta": "Year · Location", "category": "Category B" }
+        ]
+      },
+      "description": {
+        "en-US": "Eight projects across four categories with an animated filter bar — the studio's works index."
+      },
+      "category": "media",
+      "isDefault": true
+    }
+  ],
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Entire filterable gallery"
+    },
+    "items": {
+      "kind": "group",
+      "selector": "[data-target='items']",
+      "description": "The project grid",
+      "multiple": false
+    },
+    "item": {
+      "kind": "group",
+      "selector": "[data-target='item']",
+      "description": "Individual project card",
+      "multiple": true,
+      "addressable": true,
+      "animatable": ["opacity", "transform", "blur"],
+      "canTrigger": true
+    }
+  },
+  "motionSupport": {
+    "levels": ["local", "group"],
+    "excluded": []
+  },
+  "motionHints": {
+    "containsDynamicChildren": true
+  }
+}

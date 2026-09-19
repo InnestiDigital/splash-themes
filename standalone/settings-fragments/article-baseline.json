@@ -1,0 +1,65 @@
+{
+  "id": "article-baseline",
+  "label": {
+    "en-US": "Article baseline"
+  },
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    }
+  ],
+  "settings": [
+    {
+      "type": "boolean",
+      "id": "showAuthor",
+      "label": {
+        "en-US": "Show author"
+      },
+      "default": true,
+      "group": "content"
+    },
+    {
+      "type": "boolean",
+      "id": "showPublishedDate",
+      "label": {
+        "en-US": "Show published date"
+      },
+      "default": true,
+      "group": "content"
+    },
+    {
+      "type": "boolean",
+      "id": "showBackLink",
+      "label": {
+        "en-US": "Show back-to-index link"
+      },
+      "default": true,
+      "group": "content",
+      "helpText": {
+        "en-US": "A small breadcrumb link at the top of the article that returns to its parent blog or project index."
+      }
+    },
+    {
+      "type": "boolean",
+      "id": "showRelated",
+      "label": {
+        "en-US": "Show related articles"
+      },
+      "default": true,
+      "group": "content"
+    },
+    {
+      "type": "text",
+      "id": "relatedTitle",
+      "label": {
+        "en-US": "Related articles heading"
+      },
+      "translatable": true,
+      "default": "",
+      "group": "content"
+    }
+  ]
+}

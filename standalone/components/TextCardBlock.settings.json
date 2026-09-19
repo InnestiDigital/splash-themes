@@ -1,0 +1,501 @@
+{
+  "component": "TextCardBlock",
+  "type": "text-card-block",
+  "label": {
+    "en-US": "Text Card"
+  },
+  "category": "content",
+  "compatibleSectionRoles": [
+    "editorial-body"
+  ],
+  "typographySlots": [
+    {
+      "slot": "title",
+      "label": "Title",
+      "defaultRole": "heading2"
+    },
+    {
+      "slot": "description",
+      "label": "Description",
+      "defaultRole": "body"
+    },
+    {
+      "slot": "cta",
+      "label": "CTA Button",
+      "defaultRole": "label"
+    }
+  ],
+  "$fragments": [
+    "media-side",
+    "color-roles"
+  ],
+  "$fragmentOverrides": {
+    "mediaSide": {
+      "default": "right",
+      "showIf": {
+        "showMedia": true
+      },
+      "omitOptions": [
+        "above",
+        "below"
+      ]
+    },
+    "background": {
+      "default": "section"
+    }
+  },
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "title",
+      "label": {
+        "en-US": "Title"
+      },
+      "group": "content",
+      "translatable": true,
+      "preset": "section-title",
+      "typographyRole": "heading2",
+      "defaultPresetKey": "section-title",
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "type": "richtext-block",
+      "id": "description",
+      "label": {
+        "en-US": "Description"
+      },
+      "group": "content",
+      "translatable": true,
+      "preset": "body",
+      "typographyRole": "body",
+      "defaultPresetKey": "body"
+    },
+    {
+      "type": "image",
+      "id": "image",
+      "label": {
+        "en-US": "Image"
+      },
+      "group": "content"
+    },
+    {
+      "type": "toggle",
+      "id": "showMedia",
+      "label": {
+        "en-US": "Show Image"
+      },
+      "default": true,
+      "group": "content"
+    },
+    {
+      "type": "select",
+      "id": "imageAspect",
+      "label": {
+        "en-US": "Image Aspect Ratio"
+      },
+      "default": "square",
+      "group": "content",
+      "showIf": {
+        "showMedia": true
+      },
+      "options": [
+        {
+          "value": "square",
+          "label": {
+            "en-US": "Square (1:1)"
+          }
+        },
+        {
+          "value": "landscape",
+          "label": {
+            "en-US": "Landscape (16:9)"
+          }
+        },
+        {
+          "value": "portrait",
+          "label": {
+            "en-US": "Portrait (3:4)"
+          }
+        },
+        {
+          "value": "auto",
+          "label": {
+            "en-US": "Auto"
+          }
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "ctaText",
+      "label": {
+        "en-US": "CTA Text"
+      },
+      "group": "content",
+      "translatable": true
+    },
+    {
+      "type": "text",
+      "id": "ctaUrl",
+      "label": {
+        "en-US": "CTA URL"
+      },
+      "group": "content"
+    },
+    {
+      "type": "select",
+      "id": "ctaStyle",
+      "label": {
+        "en-US": "CTA Style"
+      },
+      "default": "primary",
+      "group": "design",
+      "options": [
+        {
+          "value": "primary",
+          "label": {
+            "en-US": "Primary"
+          }
+        },
+        {
+          "value": "secondary",
+          "label": {
+            "en-US": "Secondary"
+          }
+        },
+        {
+          "value": "outline",
+          "label": {
+            "en-US": "Outline"
+          }
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "statusLabel",
+      "label": {
+        "en-US": "Status Label (optional)"
+      },
+      "group": "content",
+      "translatable": true,
+      "helpText": {
+        "en-US": "Optional pill badge overlaid on the image (e.g. 'In corso', 'New')."
+      }
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": {
+        "en-US": "Height"
+      },
+      "default": "auto",
+      "group": "design",
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en-US": "Auto"
+          }
+        },
+        {
+          "value": "small",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "medium",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "large",
+          "label": {
+            "en-US": "Large"
+          }
+        }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "overlayEnabled",
+      "label": {
+        "en-US": "Enable Image Overlay"
+      },
+      "default": false,
+      "group": "design"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "textAlign",
+      "type": "select",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "appearance"
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface Style"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Border Radius"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "pill",
+          "label": {
+            "en-US": "Pill"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "imageHover",
+      "type": "select",
+      "label": { "en-US": "Image Hover Effect" },
+      "note": { "en-US": "Subtle zoom on the card image when hovered. Respects reduced-motion; only affects cards that have an image." },
+      "default": "none",
+      "group": "design",
+      "options": [
+        { "value": "none", "label": { "en-US": "None" } },
+        { "value": "zoom", "label": { "en-US": "Zoom In" } }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "design",
+      "label": {
+        "en-US": "Design"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "id": "image-right",
+      "label": {
+        "en-US": "Image Right"
+      },
+      "settings": {
+        "mediaSide": "right",
+        "imageAspect": "square",
+        "height": "auto",
+        "ctaStyle": "primary",
+        "background": "section",
+        "textTone": "section"
+      },
+      "description": {
+        "en-US": "Text on left, product/lifestyle image on right. Use for feature highlights and promo tiles."
+      },
+      "category": "marketing",
+      "isDefault": true
+    },
+    {
+      "id": "image-left-dark",
+      "label": {
+        "en-US": "Image Left Dark"
+      },
+      "settings": {
+        "mediaSide": "left",
+        "imageAspect": "square",
+        "height": "auto",
+        "ctaStyle": "primary",
+        "background": "inverse",
+        "textTone": "inverse"
+      },
+      "description": {
+        "en-US": "Image on left with dark text treatment. Alternate layout for visual variety in multi-tile rows."
+      },
+      "category": "marketing"
+    },
+    {
+      "id": "info-only",
+      "label": {
+        "en-US": "Info Card (no image)"
+      },
+      "settings": {
+        "mediaSide": "right",
+        "showMedia": false,
+        "height": "auto",
+        "ctaStyle": "primary",
+        "background": "section",
+        "textTone": "section"
+      },
+      "description": {
+        "en-US": "Compact text-only card with optional CTA. Use for short informational content without imagery."
+      },
+      "category": "info"
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local"
+    ],
+    "excluded": []
+  },
+  "targets": {
+    "heading": {
+      "selector": "[data-target='heading']",
+      "description": "Card title",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    },
+    "cta": {
+      "selector": "[data-target='cta']",
+      "description": "Call-to-action button",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": true,
+      "kind": "decorative"
+    },
+    "media": {
+      "selector": "[data-target='media']",
+      "description": "Card image",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path",
+        "motion-path"
+      ],
+      "canTrigger": true,
+      "kind": "media"
+    },
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    },
+    "body": {
+      "selector": "[data-target='body']",
+      "description": "Card description",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    }
+  }
+}

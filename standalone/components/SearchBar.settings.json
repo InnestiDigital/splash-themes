@@ -1,0 +1,101 @@
+{
+  "component": "SearchBar",
+  "type": "search-bar",
+  "label": {
+    "en-US": "Search Bar"
+  },
+  "isLayoutComponent": true,
+  "authAware": true,
+  "settings": [
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": {
+        "en-US": "Placeholder Text"
+      },
+      "default": "Search products...",
+      "group": "options",
+      "translatable": true
+    },
+    {
+      "type": "select",
+      "id": "variant",
+      "label": {
+        "en-US": "Variant"
+      },
+      "default": "standalone",
+      "group": "options",
+      "options": [
+        {
+          "value": "standalone",
+          "label": {
+            "en-US": "Standalone (with dropdown)"
+          }
+        },
+        {
+          "value": "inline",
+          "label": {
+            "en-US": "Inline (compact, no dropdown)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "showSuggestions",
+      "label": {
+        "en-US": "Show Suggestions"
+      },
+      "default": true,
+      "group": "options",
+      "showIf": {
+        "id": "variant",
+        "equals": "standalone"
+      }
+    },
+    {
+      "type": "number",
+      "id": "maxSuggestions",
+      "label": {
+        "en-US": "Max Suggestions"
+      },
+      "default": 5,
+      "group": "options",
+      "showIf": {
+        "id": "showSuggestions",
+        "equals": true
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "showRecentSearches",
+      "label": {
+        "en-US": "Show Recent Searches"
+      },
+      "default": true,
+      "group": "options",
+      "showIf": {
+        "id": "variant",
+        "equals": "standalone"
+      }
+    }
+  ],
+  "groups": [
+    {
+      "id": "options",
+      "label": {
+        "en-US": "Options"
+      }
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Search bar container",
+      "kind": "root"
+    }
+  },
+  "motionSupport": {
+    "levels": [],
+    "excluded": []
+  }
+}

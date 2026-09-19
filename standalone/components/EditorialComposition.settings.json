@@ -1,0 +1,332 @@
+{
+  "component": "EditorialComposition",
+  "type": "editorial-composition",
+  "label": {
+    "en-US": "Editorial Composition"
+  },
+  "category": "media",
+  "description": {
+    "en-US": "Semantic editorial composition with role-based layout, responsive collapse, and motion targets."
+  },
+  "compatibleSectionRoles": [
+    "media-gallery",
+    "media-chrome",
+    "editorial-body",
+    "section-heading"
+  ],
+  "typographySlots": [],
+  "$fragments": [
+    "color-roles"
+  ],
+  "$fragmentOmit": [
+    "textTone"
+  ],
+  "$fragmentOverrides": {
+    "background": {
+      "default": "section"
+    }
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "templateId",
+      "label": {
+        "en-US": "Template"
+      },
+      "group": "content",
+      "default": "asymmetric-hero",
+      "options": [
+        {
+          "value": "asymmetric-hero",
+          "label": {
+            "en-US": "Asymmetric Hero"
+          }
+        },
+        {
+          "value": "offset-media-stack",
+          "label": {
+            "en-US": "Offset Media Stack"
+          }
+        },
+        {
+          "value": "captioned-editorial-spread",
+          "label": {
+            "en-US": "Captioned Editorial Spread"
+          }
+        }
+      ]
+    },
+    {
+      "type": "hidden",
+      "id": "items",
+      "label": {
+        "en-US": "Items"
+      },
+      "group": "content",
+      "default": []
+    },
+    {
+      "type": "hidden",
+      "id": "knobs",
+      "label": {
+        "en-US": "Composition Knobs"
+      },
+      "group": "content",
+      "default": {
+        "dominance": "balanced",
+        "overlap": "normal",
+        "alignment": "balanced",
+        "density": "normal"
+      }
+    },
+    {
+      "type": "range",
+      "id": "dominance",
+      "label": {
+        "en-US": "Dominance"
+      },
+      "group": "composition",
+      "default": 0.5,
+      "options": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "ticks": [
+          {
+            "value": 0,
+            "label": "Text"
+          },
+          {
+            "value": 0.5,
+            "label": "Balanced"
+          },
+          {
+            "value": 1,
+            "label": "Media"
+          }
+        ]
+      }
+    },
+    {
+      "type": "range",
+      "id": "overlap",
+      "label": {
+        "en-US": "Overlap / Spacing"
+      },
+      "group": "composition",
+      "default": 0.5,
+      "options": {
+        "min": 0,
+        "max": 1,
+        "step": 0.01,
+        "ticks": [
+          {
+            "value": 0,
+            "label": "Tight"
+          },
+          {
+            "value": 0.5,
+            "label": "Normal"
+          },
+          {
+            "value": 1,
+            "label": "Spacious"
+          }
+        ]
+      }
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": {
+        "en-US": "Alignment"
+      },
+      "group": "composition",
+      "default": "balanced",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "balanced",
+          "label": {
+            "en-US": "Balanced"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": {
+        "en-US": "Height"
+      },
+      "group": "layout",
+      "default": "large",
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en-US": "Auto"
+          }
+        },
+        {
+          "value": "viewport",
+          "label": {
+            "en-US": "Viewport"
+          }
+        },
+        {
+          "value": "large",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "medium",
+          "label": {
+            "en-US": "Medium"
+          }
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "composition",
+      "label": {
+        "en-US": "Composition"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Composition container",
+      "animatable": [
+        "opacity",
+        "transform"
+      ]
+    },
+    "primary-media": {
+      "kind": "media",
+      "selector": "[data-target='primary-media']",
+      "description": "Primary image",
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "motion-path"
+      ],
+      "canTrigger": true
+    },
+    "secondary-media": {
+      "kind": "media",
+      "selector": "[data-target='secondary-media']",
+      "description": "Secondary image",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "motion-path"
+      ],
+      "canTrigger": true
+    },
+    "headline": {
+      "kind": "text",
+      "selector": "[data-target='headline']",
+      "description": "Display headline",
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur"
+      ],
+      "canTrigger": true
+    },
+    "caption": {
+      "kind": "text",
+      "selector": "[data-target='caption']",
+      "description": "Caption text",
+      "animatable": [
+        "opacity",
+        "transform"
+      ]
+    },
+    "eyebrow": {
+      "kind": "text",
+      "selector": "[data-target='eyebrow']",
+      "description": "Eyebrow label",
+      "animatable": [
+        "opacity",
+        "transform"
+      ]
+    },
+    "body": {
+      "kind": "text",
+      "selector": "[data-target='body']",
+      "description": "Body text",
+      "animatable": [
+        "opacity",
+        "transform"
+      ]
+    },
+    "ornament": {
+      "kind": "decorative",
+      "selector": "[data-target='ornament']",
+      "description": "Decorative element",
+      "multiple": true,
+      "animatable": [
+        "opacity",
+        "transform",
+        "motion-path"
+      ],
+      "canTrigger": false
+    },
+    "meta": {
+      "kind": "text",
+      "selector": "[data-target='meta']",
+      "description": "Metadata text",
+      "animatable": [
+        "opacity",
+        "transform"
+      ]
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group",
+      "choreography"
+    ],
+    "excluded": []
+  },
+  "status": "deprecated"
+}

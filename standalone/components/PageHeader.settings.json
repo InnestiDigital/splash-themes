@@ -1,0 +1,367 @@
+{
+  "component": "PageHeader",
+  "type": "page-header",
+  "label": {
+    "en-US": "Page Header"
+  },
+  "category": "utility",
+  "compatibleSectionRoles": [
+    "section-heading"
+  ],
+  "typographySlots": [],
+  "$fragments": [
+    "color-roles"
+  ],
+  "$fragmentOverrides": {
+    "background": {
+      "default": "transparent"
+    }
+  },
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "eyebrow",
+      "label": {
+        "en-US": "Eyebrow"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "eyebrow",
+      "defaultPresetKey": "eyebrow",
+      "validation": {
+        "maxLength": 100
+      }
+    },
+    {
+      "type": "richtext-single",
+      "id": "title",
+      "label": {
+        "en-US": "Page Title"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "heading1",
+      "defaultPresetKey": "display",
+      "validation": {
+        "required": true
+      }
+    },
+    {
+      "type": "richtext-inline",
+      "id": "subtitle",
+      "label": {
+        "en-US": "Subtitle"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "body",
+      "defaultPresetKey": "body"
+    },
+    {
+      "type": "toggle",
+      "id": "showBreadcrumb",
+      "label": {
+        "en-US": "Show Breadcrumb"
+      },
+      "default": true,
+      "group": "content"
+    },
+    {
+      "type": "image",
+      "id": "backgroundImage",
+      "label": {
+        "en-US": "Background Image"
+      },
+      "group": "style"
+    },
+    {
+      "type": "select",
+      "id": "coverHeight",
+      "label": {
+        "en-US": "Cover Height"
+      },
+      "default": "auto",
+      "group": "style",
+      "note": "Sets a minimum height so a background image reads as a hero. Only affects layout when not Auto.",
+      "options": [
+        {
+          "value": "auto",
+          "label": {
+            "en-US": "Auto (content height)"
+          }
+        },
+        {
+          "value": "short",
+          "label": {
+            "en-US": "Short (60vh)"
+          }
+        },
+        {
+          "value": "tall",
+          "label": {
+            "en-US": "Tall (80vh)"
+          }
+        },
+        {
+          "value": "full",
+          "label": {
+            "en-US": "Full screen"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "contentAlignY",
+      "label": {
+        "en-US": "Vertical Alignment"
+      },
+      "default": "top",
+      "group": "layout",
+      "note": "Anchors the title block within a tall cover — top, centered, or bottom. Takes effect only when Cover Height is set.",
+      "options": [
+        {
+          "value": "top",
+          "label": {
+            "en-US": "Top"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "bottom",
+          "label": {
+            "en-US": "Bottom"
+          }
+        }
+      ],
+      "showIf": {
+        "id": "coverHeight",
+        "notEquals": "auto"
+      }
+    },
+    {
+      "type": "select",
+      "id": "scrimStrength",
+      "label": {
+        "en-US": "Image Scrim"
+      },
+      "default": "default",
+      "group": "style",
+      "note": "Darkens the background image for legible text. Gradient darkens toward the bottom — pair with bottom alignment.",
+      "options": [
+        {
+          "value": "default",
+          "label": {
+            "en-US": "Default"
+          }
+        },
+        {
+          "value": "soft",
+          "label": {
+            "en-US": "Soft"
+          }
+        },
+        {
+          "value": "strong",
+          "label": {
+            "en-US": "Strong"
+          }
+        },
+        {
+          "value": "gradient",
+          "label": {
+            "en-US": "Bottom gradient"
+          }
+        }
+      ]
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Background"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "section",
+          "label": {
+            "en-US": "Section"
+          }
+        },
+        {
+          "value": "surface",
+          "label": {
+            "en-US": "Surface"
+          }
+        },
+        {
+          "value": "accent",
+          "label": {
+            "en-US": "Accent"
+          }
+        },
+        {
+          "value": "transparent",
+          "label": {
+            "en-US": "Transparent"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "textAlign",
+      "type": "select",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        },
+        {
+          "value": "justify",
+          "label": {
+            "en-US": "Justify"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "layout"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    }
+  ],
+  "targets": {
+    "eyebrow": {
+      "kind": "text",
+      "selector": "[data-target='eyebrow']",
+      "description": "Eyebrow text label",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    },
+    "heading": {
+      "kind": "text",
+      "selector": "[data-target='heading']",
+      "description": "Page heading",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    },
+    "background": {
+      "kind": "decorative",
+      "selector": "[data-target='background']",
+      "description": "Background overlay",
+      "multiple": false,
+      "animatable": [
+        "opacity"
+      ],
+      "canTrigger": false
+    },
+    "root": {
+      "kind": "root",
+      "description": "Entire block container",
+      "animatable": [
+        "motion-path"
+      ]
+    },
+    "body": {
+      "kind": "text",
+      "selector": "[data-target='body']",
+      "description": "Subtitle text",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local"
+    ],
+    "excluded": []
+  }
+}

@@ -1,0 +1,223 @@
+{
+  "component": "MaterialsBoard",
+  "type": "materials-board",
+  "label": {
+    "en-US": "Materials Board"
+  },
+  "category": "content",
+  "compatibleSectionRoles": [
+    "content",
+    "media-gallery",
+    "supporting-text"
+  ],
+  "description": {
+    "en-US": "An architecture-portfolio materials & finishes palette — editorial swatch tiles with structured metadata (name, spec, supplier) laid out as a swipeable band, auto-fit grid, or editorial stack."
+  },
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "toggle",
+      "id": "showTitle",
+      "label": {
+        "en-US": "Show Block Title"
+      },
+      "default": true,
+      "group": "content",
+      "note": "Disable when the section already provides a heading block."
+    },
+    {
+      "type": "richtext-single",
+      "id": "title",
+      "label": {
+        "en-US": "Section Title"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "heading2",
+      "defaultPresetKey": "section-title"
+    },
+    {
+      "type": "repeater",
+      "id": "materials",
+      "label": {
+        "en-US": "Materials"
+      },
+      "group": "content",
+      "maxItems": 24,
+      "fields": [
+        {
+          "type": "image",
+          "id": "image",
+          "label": { "en-US": "Swatch Image" }
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": { "en-US": "Material Name" }
+        },
+        {
+          "type": "text",
+          "id": "spec",
+          "label": { "en-US": "Spec (e.g. Rift-sawn oak)" }
+        },
+        {
+          "type": "text",
+          "id": "supplier",
+          "label": { "en-US": "Supplier (optional)" }
+        },
+        {
+          "type": "text",
+          "id": "category",
+          "label": { "en-US": "Category (optional — enables filtering)" }
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": { "en-US": "Link (optional)" }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      },
+      "default": "band",
+      "group": "content",
+      "options": [
+        { "value": "band",  "label": { "en-US": "Palette band (swipeable)" } },
+        { "value": "grid",  "label": { "en-US": "Auto-fit grid" } },
+        { "value": "stack", "label": { "en-US": "Editorial stack" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "ratio",
+      "label": {
+        "en-US": "Swatch Ratio"
+      },
+      "default": "square",
+      "group": "content",
+      "showIf": {
+        "layout": ["band", "grid"]
+      },
+      "options": [
+        { "value": "square",   "label": { "en-US": "Square" } },
+        { "value": "portrait", "label": { "en-US": "Portrait" } },
+        { "value": "wide",     "label": { "en-US": "Wide" } }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "sampleSize",
+      "label": {
+        "en-US": "Sample Size"
+      },
+      "default": "md",
+      "group": "content",
+      "options": [
+        { "value": "sm", "label": { "en-US": "Small" } },
+        { "value": "md", "label": { "en-US": "Medium" } },
+        { "value": "lg", "label": { "en-US": "Large" } }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "metaReveal",
+      "label": {
+        "en-US": "Reveal meta on hover"
+      },
+      "default": false,
+      "group": "content",
+      "note": "Hide spec/supplier until hover on desktop; always shown on touch."
+    },
+    {
+      "type": "toggle",
+      "id": "showFilters",
+      "label": {
+        "en-US": "Show category filters"
+      },
+      "default": false,
+      "group": "content",
+      "note": "Show a filter-chip bar above the board. Needs at least 2 distinct categories filled on the materials above; otherwise the bar stays hidden."
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface"
+      },
+      "options": [
+        { "value": "none",   "label": { "en-US": "None" } },
+        { "value": "subtle", "label": { "en-US": "Subtle" } },
+        { "value": "filled", "label": { "en-US": "Filled" } }
+      ],
+      "default": "none",
+      "group": "content"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Corner Radius"
+      },
+      "options": [
+        "none",
+        "sm",
+        "md",
+        "lg",
+        "pill"
+      ],
+      "default": "none",
+      "group": "content"
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "none",
+      "group": "content"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": { "en-US": "Content" }
+    }
+  ],
+  "motionSupport": {
+    "levels": ["local", "group"],
+    "excluded": []
+  },
+  "targets": {
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    },
+    "board": {
+      "selector": "[data-target='board']",
+      "description": "Materials board track / grid / stack",
+      "multiple": false,
+      "kind": "group"
+    },
+    "sample": {
+      "selector": "[data-target='sample']",
+      "description": "Individual material swatch tile",
+      "multiple": true,
+      "addressable": true,
+      "animatable": ["opacity", "transform"],
+      "canTrigger": true,
+      "kind": "group"
+    }
+  }
+}

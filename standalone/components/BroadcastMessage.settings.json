@@ -1,0 +1,337 @@
+{
+  "component": "BroadcastMessage",
+  "type": "broadcast-message",
+  "label": {
+    "en-US": "Broadcast Message"
+  },
+  "typographySlots": [],
+  "settings": [
+    {
+      "type": "richtext-inline",
+      "id": "message",
+      "label": {
+        "en-US": "Message"
+      },
+      "group": "content",
+      "translatable": true,
+      "preset": "body",
+      "validation": {
+        "required": true
+      },
+      "note": {
+        "en-US": "Main notification message text"
+      }
+    },
+    {
+      "type": "select",
+      "id": "variant",
+      "label": {
+        "en-US": "Variant"
+      },
+      "default": "info",
+      "group": "content",
+      "options": [
+        {
+          "value": "info",
+          "label": {
+            "en-US": "Info"
+          }
+        },
+        {
+          "value": "success",
+          "label": {
+            "en-US": "Success"
+          }
+        },
+        {
+          "value": "warning",
+          "label": {
+            "en-US": "Warning"
+          }
+        },
+        {
+          "value": "error",
+          "label": {
+            "en-US": "Error"
+          }
+        },
+        {
+          "value": "promotion",
+          "label": {
+            "en-US": "Promotion"
+          }
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "ctaText",
+      "label": {
+        "en-US": "CTA Text"
+      },
+      "group": "content",
+      "translatable": true,
+      "note": {
+        "en-US": "Optional call-to-action link text"
+      }
+    },
+    {
+      "type": "text",
+      "id": "ctaUrl",
+      "label": {
+        "en-US": "CTA URL"
+      },
+      "group": "content",
+      "note": {
+        "en-US": "URL for the call-to-action link"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "dismissible",
+      "label": {
+        "en-US": "Dismissible"
+      },
+      "default": true,
+      "group": "display",
+      "note": {
+        "en-US": "Allow users to dismiss the notification"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky",
+      "label": {
+        "en-US": "Sticky"
+      },
+      "default": false,
+      "group": "display",
+      "note": {
+        "en-US": "Keep notification at top of page while scrolling"
+      }
+    },
+    {
+      "type": "text",
+      "id": "countdownEnd",
+      "label": {
+        "en-US": "Countdown End (ISO 8601)"
+      },
+      "group": "display",
+      "note": {
+        "en-US": "e.g., 2026-03-15T23:59:59Z - Optional countdown timer for promotions"
+      }
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "textAlign",
+      "type": "select",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        }
+      ],
+      "default": "left",
+      "group": "appearance"
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface Style"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Border Radius"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "pill",
+          "label": {
+            "en-US": "Pill"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "display",
+      "label": {
+        "en-US": "Display"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "id": "info-banner",
+      "label": {
+        "en-US": "Info Banner"
+      },
+      "settings": {
+        "message": {
+          "en-US": "<p>Important information for you</p>"
+        },
+        "variant": "info",
+        "dismissible": true,
+        "sticky": false
+      }
+    },
+    {
+      "id": "promo-banner",
+      "label": {
+        "en-US": "Promo Banner"
+      },
+      "settings": {
+        "message": {
+          "en-US": "<p>Special offer available now</p>"
+        },
+        "variant": "promotion",
+        "ctaText": {
+          "en-US": "Learn More"
+        },
+        "dismissible": true,
+        "sticky": false
+      }
+    }
+  ],
+  "motionSupport": {
+    "levels": [
+      "local"
+    ],
+    "excluded": []
+  },
+  "targets": {
+    "message": {
+      "selector": "[data-target='message']",
+      "description": "Notification text",
+      "multiple": false,
+      "animatable": [
+        "opacity"
+      ],
+      "canTrigger": true,
+      "kind": "text"
+    },
+    "root": {
+      "description": "Entire block container",
+      "kind": "root"
+    },
+    "cta": {
+      "selector": "[data-target='cta']",
+      "description": "Call-to-action link",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": true,
+      "kind": "decorative"
+    },
+    "icon": {
+      "selector": "[data-target='icon']",
+      "description": "Notification icon",
+      "multiple": false,
+      "animatable": [
+        "opacity"
+      ],
+      "canTrigger": false,
+      "kind": "decorative"
+    }
+  }
+}

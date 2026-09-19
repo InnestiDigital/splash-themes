@@ -1,0 +1,163 @@
+{
+  "component": "ServicePanel",
+  "type": "service-panel",
+  "label": {
+    "en-US": "Service Panel"
+  },
+  "category": "content",
+  "compatibleSectionRoles": [
+    "editorial-body",
+    "supporting-text"
+  ],
+  "typographySlots": [],
+  "$fragments": [
+    "media-side"
+  ],
+  "$fragmentOverrides": {
+    "mediaSide": {
+      "default": "left"
+    }
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": {
+        "en-US": "Eyebrow"
+      },
+      "group": "content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": {
+        "en-US": "Heading"
+      },
+      "group": "content",
+      "default": "Servizi"
+    },
+    {
+      "type": "select",
+      "id": "interactive",
+      "label": {
+        "en-US": "Interaction"
+      },
+      "group": "content",
+      "default": "off",
+      "options": [
+        { "value": "off", "label": { "en-US": "Static list" } },
+        { "value": "preview", "label": { "en-US": "Live preview on hover/focus" } }
+      ]
+    },
+    {
+      "type": "image",
+      "id": "sideImage",
+      "label": {
+        "en-US": "Side Image"
+      },
+      "group": "content"
+    },
+    {
+      "type": "text",
+      "id": "sideImageAlt",
+      "label": {
+        "en-US": "Side Image Alt Text"
+      },
+      "group": "content",
+      "translatable": true
+    },
+    {
+      "type": "text",
+      "id": "sideCtaLabel",
+      "label": {
+        "en-US": "Side CTA Label"
+      },
+      "group": "content",
+      "default": "Approfondisci"
+    },
+    {
+      "type": "url",
+      "id": "sideCtaUrl",
+      "label": {
+        "en-US": "Side CTA URL"
+      },
+      "group": "content"
+    },
+    {
+      "type": "repeater",
+      "id": "services",
+      "label": {
+        "en-US": "Services"
+      },
+      "group": "content",
+      "fields": [
+        {
+          "type": "richtext-single",
+          "id": "title",
+          "label": {
+            "en-US": "Title"
+          },
+          "translatable": true
+        },
+        {
+          "type": "richtext-block",
+          "id": "description",
+          "label": {
+            "en-US": "Subtitle / Description"
+          },
+          "translatable": true
+        },
+        {
+          "type": "image",
+          "id": "image",
+          "label": {
+            "en-US": "Preview image (interactive mode)"
+          }
+        },
+        {
+          "type": "repeater",
+          "id": "tags",
+          "label": {
+            "en-US": "Pills (last one renders solid teal)"
+          },
+          "fields": [
+            {
+              "type": "text",
+              "id": "label",
+              "label": {
+                "en-US": "Label"
+              }
+            },
+            {
+              "type": "url",
+              "id": "href",
+              "label": {
+                "en-US": "Link"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    }
+  ],
+  "targets": {
+    "root": {
+      "description": "Service panel container",
+      "kind": "root"
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local"
+    ],
+    "excluded": []
+  }
+}

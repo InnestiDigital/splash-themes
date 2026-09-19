@@ -1,0 +1,482 @@
+{
+  "component": "EditorialText",
+  "type": "editorial-text",
+  "label": {
+    "en-US": "Editorial Text"
+  },
+  "category": "editorial",
+  "description": {
+    "en-US": "Long-form editorial content with rich text, pull quotes, drop caps, and multi-column layout."
+  },
+  "compatibleSectionRoles": [
+    "section-heading",
+    "editorial-body",
+    "supporting-text"
+  ],
+  "typographySlots": [],
+  "$fragments": [
+    "color-roles"
+  ],
+  "$fragmentOverrides": {
+    "background": {
+      "default": "transparent"
+    }
+  },
+  "settings": [
+    {
+      "type": "richtext-single",
+      "id": "eyebrow",
+      "label": {
+        "en-US": "Eyebrow"
+      },
+      "group": "content",
+      "translatable": true,
+      "validation": {
+        "maxLength": 100
+      },
+      "typographyRole": "eyebrow",
+      "defaultPresetKey": "eyebrow"
+    },
+    {
+      "type": "richtext-single",
+      "id": "heading",
+      "label": {
+        "en-US": "Heading"
+      },
+      "group": "content",
+      "translatable": true,
+      "validation": {
+        "maxLength": 200
+      },
+      "typographyRole": "heading1",
+      "defaultPresetKey": "display"
+    },
+    {
+      "type": "richtext-block",
+      "id": "body",
+      "label": {
+        "en-US": "Body"
+      },
+      "group": "content",
+      "translatable": true,
+      "typographyRole": "body",
+      "defaultPresetKey": "body",
+      "options": {
+        "toolbar": "full"
+      }
+    },
+    {
+      "type": "richtext-inline",
+      "id": "pullquoteText",
+      "label": {
+        "en-US": "Pull Quote"
+      },
+      "group": "content",
+      "translatable": true,
+      "note": "Highlighted quote displayed within the text",
+      "typographyRole": "pullquote",
+      "defaultPresetKey": "body"
+    },
+    {
+      "type": "select",
+      "id": "pullquotePosition",
+      "label": {
+        "en-US": "Pull Quote Position"
+      },
+      "default": "center",
+      "group": "content",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        }
+      ]
+    },
+    {
+      "type": "number",
+      "id": "columns",
+      "label": {
+        "en-US": "Columns"
+      },
+      "default": 1,
+      "group": "layout",
+      "options": {
+        "min": 1,
+        "max": 3
+      }
+    },
+    {
+      "type": "toggle",
+      "id": "dropcapEnabled",
+      "label": {
+        "en-US": "Drop Cap"
+      },
+      "default": false,
+      "group": "layout",
+      "note": "Show a large first letter"
+    },
+    {
+      "type": "select",
+      "id": "dropcapStyle",
+      "label": {
+        "en-US": "Drop Cap Style"
+      },
+      "default": "classic",
+      "group": "layout",
+      "options": [
+        {
+          "value": "classic",
+          "label": {
+            "en-US": "Classic"
+          }
+        },
+        {
+          "value": "modern",
+          "label": {
+            "en-US": "Modern"
+          }
+        },
+        {
+          "value": "accent",
+          "label": {
+            "en-US": "Accent"
+          }
+        }
+      ]
+    },
+    {
+      "type": "toggle",
+      "id": "leadParagraph",
+      "label": {
+        "en-US": "Lead Paragraph"
+      },
+      "default": false,
+      "group": "layout",
+      "note": "Render the first paragraph as a larger editorial lede (standfirst)"
+    },
+    {
+      "type": "select",
+      "id": "leadStyle",
+      "label": {
+        "en-US": "Lead Style"
+      },
+      "default": "subtle",
+      "group": "layout",
+      "showIf": {
+        "leadParagraph": true
+      },
+      "options": [
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "prominent",
+          "label": {
+            "en-US": "Prominent"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "textAlign",
+      "label": {
+        "en-US": "Text Alignment"
+      },
+      "default": "left",
+      "group": "style",
+      "options": [
+        {
+          "value": "left",
+          "label": {
+            "en-US": "Left"
+          }
+        },
+        {
+          "value": "center",
+          "label": {
+            "en-US": "Center"
+          }
+        },
+        {
+          "value": "right",
+          "label": {
+            "en-US": "Right"
+          }
+        },
+        {
+          "value": "justify",
+          "label": {
+            "en-US": "Justify"
+          }
+        }
+      ]
+    },
+    {
+      "id": "measureWidth",
+      "type": "select",
+      "label": {
+        "en-US": "Content Width"
+      },
+      "default": "standard",
+      "canvasDefault": "full",
+      "group": "layout",
+      "options": [
+        { "value": "content",  "label": { "en-US": "Reading (65ch)" } },
+        { "value": "narrow",   "label": { "en-US": "Narrow (45rem)" } },
+        { "value": "standard", "label": { "en-US": "Standard (65rem)" } },
+        { "value": "wide",     "label": { "en-US": "Wide (80rem)" } },
+        { "value": "full",     "label": { "en-US": "Full" } }
+      ]
+    },
+    {
+      "id": "internalPadding",
+      "type": "select",
+      "label": {
+        "en-US": "Internal Padding"
+      },
+      "options": [
+        "none",
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl"
+      ],
+      "default": "md",
+      "group": "appearance"
+    },
+    {
+      "id": "surfaceStyle",
+      "type": "select",
+      "label": {
+        "en-US": "Surface Style"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "subtle",
+          "label": {
+            "en-US": "Subtle"
+          }
+        },
+        {
+          "value": "filled",
+          "label": {
+            "en-US": "Filled"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    },
+    {
+      "id": "borderRadius",
+      "type": "select",
+      "label": {
+        "en-US": "Border Radius"
+      },
+      "options": [
+        {
+          "value": "none",
+          "label": {
+            "en-US": "None"
+          }
+        },
+        {
+          "value": "sm",
+          "label": {
+            "en-US": "Small"
+          }
+        },
+        {
+          "value": "md",
+          "label": {
+            "en-US": "Medium"
+          }
+        },
+        {
+          "value": "lg",
+          "label": {
+            "en-US": "Large"
+          }
+        },
+        {
+          "value": "pill",
+          "label": {
+            "en-US": "Pill"
+          }
+        }
+      ],
+      "default": "none",
+      "group": "appearance"
+    }
+  ],
+  "groups": [
+    {
+      "id": "content",
+      "label": {
+        "en-US": "Content"
+      }
+    },
+    {
+      "id": "appearance",
+      "label": {
+        "en-US": "Appearance"
+      }
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en-US": "Layout"
+      }
+    },
+    {
+      "id": "style",
+      "label": {
+        "en-US": "Style"
+      }
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "en-US": "Single Column"
+      },
+      "settings": {
+        "columns": 1,
+        "textAlign": "left",
+        "measureWidth": "standard",
+        "background": "transparent",
+        "textTone": "section"
+      },
+      "description": {
+        "en-US": "Single-column prose block. Use for standard article body text or introductory copy."
+      },
+      "category": "editorial",
+      "isDefault": true
+    },
+    {
+      "name": {
+        "en-US": "Two Column with Drop Cap"
+      },
+      "settings": {
+        "columns": 2,
+        "dropcapEnabled": true,
+        "dropcapStyle": "accent",
+        "leadParagraph": true,
+        "leadStyle": "prominent",
+        "textAlign": "justify",
+        "measureWidth": "standard",
+        "background": "transparent",
+        "textTone": "section"
+      },
+      "description": {
+        "en-US": "Magazine-style two-column layout with a large drop cap on the first paragraph."
+      },
+      "category": "editorial"
+    }
+  ],
+  "targets": {
+    "root": {
+      "kind": "root",
+      "description": "Entire block container"
+    },
+    "eyebrow": {
+      "kind": "text",
+      "selector": "[data-target='eyebrow']",
+      "description": "Eyebrow text label",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    },
+    "heading": {
+      "kind": "text",
+      "selector": "[data-target='heading']",
+      "description": "Heading text",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path",
+        "motion-path"
+      ],
+      "canTrigger": true
+    },
+    "body": {
+      "kind": "text",
+      "selector": "[data-target='body']",
+      "description": "Body text content",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur"
+      ],
+      "canTrigger": true
+    },
+    "dropcap": {
+      "kind": "decorative",
+      "selector": "[data-target='dropcap']",
+      "description": "Drop cap first letter",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform"
+      ],
+      "canTrigger": false
+    },
+    "pullquote": {
+      "kind": "text",
+      "selector": "[data-target='pullquote']",
+      "description": "Pull quote text",
+      "multiple": false,
+      "animatable": [
+        "opacity",
+        "transform",
+        "blur",
+        "clip-path"
+      ],
+      "canTrigger": true
+    }
+  },
+  "motionSupport": {
+    "levels": [
+      "local",
+      "group"
+    ],
+    "excluded": [],
+    "animatableVars": [
+      { "name": "--motion-body-reveal", "type": "percentage", "description": "Body text reveal progress (0-100%)" },
+      { "name": "--motion-heading-tint", "type": "color", "description": "Heading color accent on scroll" }
+    ]
+  }
+}
