@@ -1,0 +1,38 @@
+# SonarCloud — analyze this repo as its own project.
+#
+# Prerequisites (one-time):
+# 1. SonarCloud → project InnestiDigital_splash-themes → Administration →
+#    Analysis Method → "CI-based analysis" (automatic analysis MUST be off,
+#    or SonarCloud rejects scanner runs).
+# 2. Repo secret SONAR_TOKEN (sonarcloud.io → Account → Security).
+# 3. Administration → linked GitHub repo, for PR decoration.
+#
+# Coverage: this repo's unit tests live in splash-cms (tests/themes/**) —
+# until coverage is wired from there, this project reports without it.
+
+name: sonar
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  sonar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: SonarSource/sonarqube-scan-action@v4
+        with:
+          args: >
+            -Dsonar.organization=innestidigital
+            -Dsonar.projectKey=InnestiDigital_splash-themes
+            -Dsonar.projectName=splash-themes
+            -Dsonar.sources=standalone
+            -Dsonar.sourceEncoding=UTF-8
+            -Dsonar.exclusions=**/*.json,**/*.scss,**/*.md,**/*.woff2,**/*.png,**/*.jpg,**/standalone/i18n/**,**/*.test.ts,**/*.spec.ts
+            -Dsonar.cpd.exclusions=**/*.json
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
